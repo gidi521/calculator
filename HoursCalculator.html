@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hours Calculator</title>
+    <meta name="description" content="The Hours Calculator performs basic arithmetic operations on time, including addition and subtraction. It provides a convenient tool for managing and calculating time intervals." />
+    <meta itemprop="description" content="The Hours Calculator is a handy online tool that allows users to perform arithmetic operations on time, such as addition and subtraction. It simplifies time calculations and offers solutions in both hours and minutes formats." />
+    <meta name="author" content="Wide Calculator" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+        <script src="js/modernizr.custom.js"></script>
+    <![endif]-->
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
+        /* Hours Calculator Styles */
+        #hours-calculator {
+            margin-top: -10px;
+            margin-bottom: -10px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #hours-calculator label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        #hours-calculator input {
+            width: 80px;
+            margin-top: 10px;
+        }
+
+        #hours-calculator button {
+            margin-top: 20px;
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #hours-calculator button:hover {
+            background-color: #0056b3;
+        }
+
+        #hours-result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main">
+            <div id="hours-calculator" class="text-center">
+                <h2>Hours Calculator</h2>
+                <label for="hours1">Time 1:</label>
+                <input type="text" id="hours1" placeholder="Hours" />
+                <input type="text" id="minutes1" placeholder="Minutes" />
+                <br />
+                <label for="operation">Operation:</label>
+                <select id="operation">
+                    <option value="add">+</option>
+                    <option value="subtract">-</option>
+                </select>
+                <br />
+                <label for="hours2">Time 2:</label>
+                <input type="text" id="hours2" placeholder="Hours" />
+                <input type="text" id="minutes2" placeholder="Minutes" />
+                <br />
+                <button onclick="calculateHours()">Calculate</button>
+                <p id="hours-result"></p>
+            </div>
+        </div>
+        <div id="content" class="text-center">
+            <p>The Hours Calculator allows you to perform basic arithmetic operations (addition and subtraction) with time. Simply enter the hours and minutes for two time intervals, select the operation you want to perform, and click the "Calculate" button to see the result.</p>
+            <p>For example, if you want to add two times, enter the hours and minutes for both time intervals in the respective input fields, select the "Add" operation, and click "Calculate" to see the sum of the times.</p>
+            <p>Keep in mind that time should be entered in the form of hours and minutes, and both should be integers.</p>
+        </div>
+
+        <script>
+            function calculateHours() {
+                var hours1 = parseInt(document.getElementById('hours1').value);
+                var minutes1 = parseInt(document.getElementById('minutes1').value);
+                var hours2 = parseInt(document.getElementById('hours2').value);
+                var minutes2 = parseInt(document.getElementById('minutes2').value);
+                var operation = document.getElementById('operation').value;
+
+                // 验证输入是否为有效数字
+                if (isNaN(hours1) || isNaN(minutes1) || isNaN(hours2) || isNaN(minutes2) || minutes1 < 0 || minutes1 >= 60 || minutes2 < 0 || minutes2 >= 60) {
+                    alert("Please enter valid time intervals.");
+                    return;
+                }
+
+                // 将时间转换为总分钟
+                var totalMinutes1 = hours1 * 60 + minutes1;
+                var totalMinutes2 = hours2 * 60 + minutes2;
+
+                var resultMinutes;
+                switch (operation) {
+                    case 'add':
+                        resultMinutes = totalMinutes1 + totalMinutes2;
+                        break;
+                    case 'subtract':
+                        resultMinutes = totalMinutes1 - totalMinutes2;
+                        break;
+                    default:
+                        alert("Invalid operation.");
+                        return;
+                }
+
+                // 将结果转换为小时和分钟
+                var resultHours = Math.floor(resultMinutes / 60);
+                var resultMins = resultMinutes % 60;
+
+                document.getElementById('hours-result').textContent = "Result: " + resultHours + " hours " + resultMins + " minutes";
+            }
+        </script>
+
+        <!-- section-bottom -->
+			<section class="section-bottom">
+				<!-- shell -->
+				<div class="shell">
+					<!-- cols -->
+					<div class="cols">
+						<div class="col">
+							<h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
+							<p>Widecalculator aims to deliver swift, exhaustive, and user-friendly online calculators across a multitude of fields.</p>
+													<p>Each calculator on Widecalculator.com has been meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we recognize that perfection is a continuous pursuit and thus, we highly value any feedback regarding potential errors or discrepancies you may encounter your observations are of immense importance to us.</p>
+
+							<a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
+						</div>
+						<div class="col">
+							<h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
+							<p>
+					              Q: Can I link from my website to a calculator?<br>
+                                 A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
+						<p>Q: How should I send suggestions or report problems?
+A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
+		
+							    <a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
+							
+						
+						</div>
+						<div class="col subscribe-col">
+							<h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
+							<div class="col-cnt">
+								<p>Contact Us
+									If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website. We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
+									<a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+									<!--<form method="post">
+									<input type="text" class="field" value="Your Email Here" title="Your Email Here" />
+									<input type="submit" class="submit-btn" value="Submit" />
+								</form>
+								<a href="#">XXXX@Caculator.com</a>-->
+							</div>	
+						</div>
+						<div class="cl">&nbsp;</div>
+					</div>
+					<!-- end of cols -->
+				</div>
+				<!-- end of shell -->
+			</section>
+			<!-- end of section-bottom -->
+		</div>
+		<!-- end of main -->
+		<div id="footer-push"></div>
+	</div>
+	<!-- end of wrapper -->
+	<!-- footer -->
+	<div id="footer">
+		<div class="footer-bottom">
+			<div class="shell">
+				<nav class="footer-nav left">
+					<ul>
+						<li class="active"><a href="https://widecalculator.com/">HOME</a></li>
+						<li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
+						<li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
+					</ul>
+				</nav>
+				<p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+				<div class="cl">&nbsp;</div>
+			</div>	
+		</div>
+	</div>
+	<!-- end of footer -->
+			<div style="display:none;">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-816SNX8L7X');
+</script>
+</div>
+</body>
+</html>
