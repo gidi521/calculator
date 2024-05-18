@@ -18,10 +18,10 @@
     <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
     <script src="js/functions.js" type="text/javascript"></script>
     <style>
-        /* BMR Calculator Styles */
+     /* BMR Calculator Styles */
         #bmr-calculator {
-            margin-top: -10px; /* 减小上边距 */
-            margin-bottom: -10px; /* 减小下边距 */
+            margin-top: -10px;
+            margin-bottom: -10px;
             padding: 30px;
             border: 1px solid #ccc;
             border-radius: 10px;
@@ -34,21 +34,17 @@
 
         #bmr-calculator label {
             font-weight: bold;
-            margin-top: 10px; /* 增加行间距 */
+            margin-top: 10px;
         }
 
         #bmr-calculator input {
             width: 80px;
-            margin-top: 10px; /* 增加行间距 */
-        }
-
-        #bmr-calculator select {
-            margin-top: 10px; /* 增加行间距 */
+            margin-top: 10px;
         }
 
         #bmr-calculator button {
-            margin-top: 20px; /* 增加行间距 */
-            padding: 8px 15px; /* 调整按钮大小 */
+            margin-top: 20px;
+            padding: 8px 15px;
             background-color: #007bff;
             color: #fff;
             border: none;
@@ -62,7 +58,7 @@
 
         #bmr-result {
             font-weight: bold;
-            margin-top: 20px; /* 增加行间距 */
+            margin-top: 20px;
             font-size: 16px;
             text-align: center;
         }
@@ -89,88 +85,59 @@
 		<div class="main">
 			
 					
-		 <!-- BMR Calculator -->
-            <div id="bmr-calculator" class="text-center">
-                <h2>BMR Calculator</h2>
-                <label for="weight">Weight (kg):</label>
-                <input type="text" id="weight" />
-                <br />
-                <label for="height">Height (cm):</label>
-                <input type="text" id="height" />
-                <br />
-                <label for="age">Age:</label>
-                <input type="text" id="age" />
-                <br />
-                <label for="gender">Gender:</label>
-                <select id="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
-                <br />
-                <button onclick="calculateBMR()">Calculate BMR</button>
-                <p>Your BMR is: <span id="bmr-result"></span> calories/day</p>
-            </div>
-            <!-- End of BMR Calculator -->
-        </div>
-	</div>
- <!-- Information section -->
-        <div id="content" class="text-center">
-            <p>BMR, or Basal Metabolic Rate, is an estimate of the number of calories your body needs to maintain basic physiological functions at rest, such as breathing, circulation, and cell production. Knowing your BMR can help you manage your weight by understanding how many calories your body requires to function properly.</p>
-            <p>
-                To calculate your BMR, use the Harris-Benedict equation:<br>
-                For men: BMR = 88.362 + (13.397 * weight in kg) + (4.799 * height in cm) - (5.677 * age in years)<br>
-                For women: BMR = 447.593 + (9.247 * weight in kg) + (3.098 * height in cm) - (4.330 * age in years)
-            </p>
-            <p>
-                This calculator can help you estimate your daily calorie needs by taking into account your weight, height, age, and gender. Keep in mind that this is a rough estimate and actual calorie needs may vary based on factors such as muscle mass, activity level, and overall health.
-            </p>
-        </div>
-        <!-- Your other sections here -->
-	
-</div>
-	
-<script>
-function calculateBMR() {
-    var weight = document.getElementById('weight').value;
-    var height = document.getElementById('height').value;
-    var age = document.getElementById('age').value;
-    var gender = document.getElementById('gender').value;
+		<div id="bmr-calculator" class="text-center">
+				<h2>BMR Calculator</h2>
+				<label for="age">Age:</label>
+				<input type="text" id="age" placeholder="Age" />
+				<br />
+				<label for="gender">Gender:</label>
+				<select id="gender">
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+				</select>
+				<br />
+				<label for="weight">Weight (kg):</label>
+				<input type="text" id="weight" placeholder="Weight" />
+				<br />
+				<label for="height">Height (cm):</label>
+				<input type="text" id="height" placeholder="Height" />
+				<br />
+				<button onclick="calculateBMR()">Calculate</button>
+				<p id="bmr-result"></p>
+			</div>
+		</div>
+		<div id="content" class="text-center">
+			<p>The BMR Calculator helps you estimate the number of calories your body needs to perform basic functions while at rest. Simply enter your age, gender, weight, and height, and click the "Calculate" button to see your BMR.</p>
+			<p>For example, if you want to know your daily calorie needs to maintain your current weight, enter your age, select your gender, input your weight in kilograms, and height in centimeters. Click "Calculate" to see your BMR.</p>
+			<p>Keep in mind that the BMR is a baseline number. Your actual daily calorie needs will be higher depending on your activity level.</p>
+		</div>
 
-    // 验证输入是否为有效数字
-    if (isNaN(weight) || weight <= 0) {
-        alert("Please enter a valid weight in kilograms.");
-        return;
-    }
+		<script>
+			function calculateBMR() {
+				var age = parseInt(document.getElementById('age').value);
+				var gender = document.getElementById('gender').value;
+				var weight = parseFloat(document.getElementById('weight').value);
+				var height = parseFloat(document.getElementById('height').value);
 
-    if (isNaN(height) || height <= 0) {
-        alert("Please enter a valid height in centimeters.");
-        return;
-    }
+				// Validate inputs
+				if (isNaN(age) || isNaN(weight) || isNaN(height) || age <= 0 || weight <= 0 || height <= 0) {
+					alert("Please enter valid values.");
+					return;
+				}
 
-    if (isNaN(age) || age <= 0) {
-        alert("Please enter a valid age.");
-        return;
-    }
+				var bmr;
+				if (gender === 'male') {
+					bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+				} else if (gender === 'female') {
+					bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+				} else {
+					alert("Invalid gender selected.");
+					return;
+				}
 
-    // 转换为浮点数
-    weight = parseFloat(weight);
-    height = parseFloat(height);
-    age = parseFloat(age);
-
-    var bmr = 0;
-
-    if (gender === "male") {
-        bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
-    } else if (gender === "female") {
-        bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
-    }
-
-    document.getElementById('bmr-result').textContent = bmr.toFixed(2);
-}
-
-
-</script>
-		
+				document.getElementById('bmr-result').textContent = "Your BMR: " + bmr.toFixed(2) + " calories/day";
+			}
+		</script>
 
 			<!-- section-bottom -->
 			<section class="section-bottom">
