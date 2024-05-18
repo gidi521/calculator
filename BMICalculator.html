@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>BMI Calculator Body Mass Index</title>
-	<meta name="description" content="The Body Mass Index (BMI) Calculator is a tool designed to assess the health risks associated with being overweight by determining an individual's BMI based on their weight and height. This calculator is suitable for both adults and children, providing a valuable metric for evaluating body weight relative to height." />
-    <meta itemprop="description" content="The BMI Calculator serves individuals of all genders and ages by computing the Body Mass Index (BMI) from entered weight and height measurements. This index, which compares an individual's weight to their height, is a key indicator used to identify potential health risks linked to excess body weight." />
-	<meta name="author" content="Wide Calculator" />
-	<link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
-	
-	<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
-	<!--[if lt IE 9]>
-		<script src="js/modernizr.custom.js"></script>
-	<![endif]-->
-	<script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
-	<script src="js/functions.js" type="text/javascript"></script>
-	<style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <meta name="description" content="The BMI Calculator helps you calculate your Body Mass Index (BMI), which is a measure of body fat based on height and weight. It provides an indication of whether you are underweight, normal weight, overweight, or obese." />
+    <meta itemprop="description" content="The BMI Calculator is a useful tool for estimating body fat based on height and weight measurements. It calculates your Body Mass Index (BMI) and categorizes your weight status into underweight, normal weight, overweight, or obese." />
+    <meta name="author" content="Wide Calculator" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+        <script src="js/modernizr.custom.js"></script>
+    <![endif]-->
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
         /* BMI Calculator Styles */
         #bmi-calculator {
-            margin-top: -10px; /* 减小上边距 */
-            margin-bottom: -10px; /* 减小下边距 */
+            margin-top: -10px;
+            margin-bottom: -10px;
             padding: 30px;
             border: 1px solid #ccc;
             border-radius: 10px;
@@ -34,17 +33,17 @@
 
         #bmi-calculator label {
             font-weight: bold;
-            margin-top: 10px; /* 增加行间距 */
+            margin-top: 10px;
         }
 
         #bmi-calculator input {
             width: 80px;
-            margin-top: 10px; /* 增加行间距 */
+            margin-top: 10px;
         }
 
         #bmi-calculator button {
-            margin-top: 20px; /* 增加行间距 */
-            padding: 8px 15px; /* 调整按钮大小 */
+            margin-top: 20px;
+            padding: 8px 15px;
             background-color: #007bff;
             color: #fff;
             border: none;
@@ -56,138 +55,103 @@
             background-color: #0056b3;
         }
 
-        #bmi-meaning {
+        #bmi-result {
             font-weight: bold;
-            margin-top: 20px; /* 增加行间距 */
+            margin-top: 20px;
             font-size: 16px;
             text-align: center;
         }
     </style>
 </head>
+
 <body>
-	<!-- wrapper -->
-	<div id="wrapper">
-		<!-- header -->
-		<header>
-			<div class="shell">
-				<h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
-				<nav id="navigation">
-					<ul>
-						<li class="active"><a href="https://widecalculator.com/">Home</a></li>
-						<li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
-					</ul>
-				</nav>
-			</div>
-		</header>
-		<!-- end of header -->
-	
-		<!-- main -->
-		<div class="main">
-			
-					
-			<!-- BMI Calculator -->
-<div id="bmi-calculator" class="text-center">
-	<h2>BMI Calculator</h2>
-	<label for="weight">Weight (kg):</label>
-	<input type="text" id="weight" />
-	<br />
-	<label for="height">Height (cm):</label>
-	<input type="text" id="height" />
-	<br />
-	<button onclick="calculateBMI()">Calculate BMI</button>
-	<p>Your BMI is: <span id="bmi-value"></span></p>
-	<p id="bmi-meaning"></p>
-	</div>
-	<!-- End of BMI Calculator -->
-	</div>
-<!-- 添加这段代码 -->
-<div id="content" class="text-center">
-    <p>BMI, short for Body Mass Index, is a commonly used method for measuring the degree of obesity in a person. It calculates by dividing a person's weight (in kilograms) by the square of their height (in meters). BMI is a rough method used to assess whether a person falls within a healthy weight range. According to the World Health Organization (WHO) standards, BMI is classified as follows:</p>
-    <p>
-        BMI less than 18.5: Underweight<br>
-        BMI between 18.5 and 24.9: Normal weight<br>
-        BMI between 25 and 29.9: Overweight<br>
-        BMI greater than or equal to 30: Obesity
-    </p>
-    <p>
-        However, it is important to note that BMI is only a rough measure and does not account for other factors of body composition such as the ratio of muscle to fat, age, gender, and race. Therefore, it should be used cautiously as a general indicator of health.
-    </p>
-</div>
-	<!-- Your other sections here -->
-	
-</div>
-	
-<script>
-function calculateBMI() {
-    var weight = document.getElementById('weight').value;
-    var height = document.getElementById('height').value;
+    <div id="wrapper">
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main">
+            <div id="bmi-calculator" class="text-center">
+                <h2>BMI Calculator</h2>
+                <label for="height">Height (cm):</label>
+                <input type="text" id="height" placeholder="Height" />
+                <br />
+                <label for="weight">Weight (kg):</label>
+                <input type="text" id="weight" placeholder="Weight" />
+                <br />
+                <button onclick="calculateBMI()">Calculate</button>
+                <p id="bmi-result"></p>
+            </div>
+        </div>
+        <div id="content" class="text-center">
+            <p>The BMI Calculator helps you assess your body fat based on your height and weight. Simply enter your height in centimeters and weight in kilograms, then click "Calculate" to see your Body Mass Index (BMI) and weight status.</p>
+            <p>BMI Categories:</p>
+            <ul>
+                <li>Underweight: BMI &lt; 18.5</li>
+                <li>Normal weight: 18.5 ≤ BMI &lt; 24.9</li>
+                <li>Overweight: 25.0 ≤ BMI &lt; 29.9</li>
+                <li>Obese: BMI ≥ 30.0</li>
+            </ul>
+        </div>
 
-    // 验证输入是否为有效数字
-    if (isNaN(weight) || weight <= 0) {
-        alert("Please enter a valid weight in kilograms.");
-        return;
-    }
+        <script>
+            function calculateBMI() {
+                var height = parseFloat(document.getElementById('height').value);
+                var weight = parseFloat(document.getElementById('weight').value);
 
-    if (isNaN(height) || height <= 0) {
-        alert("Please enter a valid height in centimeters.");
-        return;
-    }
+                // Validate inputs
+                if (isNaN(height) || isNaN(weight) || height <= 0 || weight <= 0) {
+                    alert("Please enter valid height and weight.");
+                    return;
+                }
 
-    // 转换为浮点数
-    weight = parseFloat(weight);
-    height = parseFloat(height) / 100; // 转换为米
+                // Calculate BMI
+                var bmi = weight / ((height / 100) * (height / 100));
 
-    var bmi = weight / (height * height);
-    document.getElementById('bmi-value').textContent = bmi.toFixed(2);
+                // Display result
+                document.getElementById('bmi-result').textContent = "Your BMI: " + bmi.toFixed(2);
+            }
+        </script>
 
-    var meaning = "";
-    if (bmi < 18.5) {
-        meaning = "Underweight";
-    } else if (bmi < 24.9) {
-        meaning = "Normal weight";
-    } else if (bmi < 29.9) {
-        meaning = "Overweight";
-    } else {
-        meaning = "Obesity";
-    }
-    document.getElementById('bmi-meaning').textContent = meaning;
-}
-
-</script>
-		
-
-			<!-- section-bottom -->
+       		<!-- section-bottom -->
 			<section class="section-bottom">
 				<!-- shell -->
 				<div class="shell">
 					<!-- cols -->
 					<div class="cols">
 						<div class="col">
-							<h3><span class="about-ico"></span><a href="#">MORE <strong>ABOUT US</strong></a></h3>
+							<h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
 							<p>Widecalculator aims to deliver swift, exhaustive, and user-friendly online calculators across a multitude of fields.</p>
-							<p>Each calculator on Widecalculator.com has been meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we recognize that perfection is a continuous pursuit and thus, we highly value any feedback regarding potential errors or discrepancies you may encounter your observations are of immense importance to us.</p>
+													<p>Each calculator on Widecalculator.com has been meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we recognize that perfection is a continuous pursuit and thus, we highly value any feedback regarding potential errors or discrepancies you may encounter your observations are of immense importance to us.</p>
 
-							<a href="#" class="more-btn">Read More</a>
+							<a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
 						</div>
 						<div class="col">
-							<h3><span class="news-ico"></span><a href="#"><strong>FAQ</strong></a></h3>
+							<h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
 							<p>
-					              Q: Can I link from my website to a calculator?
+					              Q: Can I link from my website to a calculator?<br>
                                  A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
-							<p>Q: How should I send suggestions or report problems?c
+						<p>Q: How should I send suggestions or report problems?
 A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
-
-						    <a href="#" class="more-btn">Read More</a>
+		
+							    <a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
 							
 						
 						</div>
 						<div class="col subscribe-col">
-							<h3><span class="subscribe-ico"></span><a href="#">KEEP IN <strong>TOUCH</strong></a></h3>
+							<h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
 							<div class="col-cnt">
 								<p>Contact Us
 									If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website. We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
-								<a href="#" class="more-btn"> More</a>
-								<!--<form method="post">
+									<a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+									<!--<form method="post">
 									<input type="text" class="field" value="Your Email Here" title="Your Email Here" />
 									<input type="submit" class="submit-btn" value="Submit" />
 								</form>
@@ -212,18 +176,18 @@ A: Your feedback is invaluable to us. For any suggestions or to report an issue,
 			<div class="shell">
 				<nav class="footer-nav left">
 					<ul>
-						<li class="active"><a href="#">HOME</a></li>
+						<li class="active"><a href="https://widecalculator.com/">HOME</a></li>
 						<li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
-						<li><a href="#">CONTACT US</a></li>
+						<li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
 					</ul>
 				</nav>
-				<p class="copy right"> All Rights Reserved Copyright Collect from <a href="Widecalculator.com" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+				<p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
 				<div class="cl">&nbsp;</div>
 			</div>	
 		</div>
 	</div>
 	<!-- end of footer -->
-	<div style="display:none;">
+			<div style="display:none;">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
 <script>
