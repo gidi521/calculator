@@ -11,7 +11,13 @@ body {
     min-width: 942px;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+ h1, h2 {
+            margin-bottom: 10px;
+        }
 
+        p {
+            margin-bottom: 20px;
+        }
 a { color: #b0c5ff; text-decoration: none; cursor: pointer; }
 a:hover { text-decoration: underline; }
 a img { border: 0; }
