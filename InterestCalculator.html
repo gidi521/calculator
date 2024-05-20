@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interest Calculator</title>
-    <meta name="description" content="The Interest Calculator calculates compound interest based on the principal amount, interest rate, and time period. It provides a convenient tool for estimating the growth of investments or loans." />
-    <meta itemprop="description" content="The Interest Calculator is a handy online tool that calculates compound interest based on the principal amount, interest rate, and time period. It simplifies the process of estimating investment growth or loan repayment." />
+    <meta name="description" content="The Interest Calculator calculates compound interest based on the principal amount, interest rate, compounding frequency, and time period. It provides a useful tool for estimating investment growth over time." />
+    <meta itemprop="description" content="The Interest Calculator is a helpful online tool that computes compound interest, allowing users to project investment growth by considering the principal amount, interest rate, compounding frequency, and time period." />
     <meta name="author" content="Wide Calculator" />
     <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
@@ -37,8 +37,9 @@
             display: block;
         }
 
-        #interest-calculator input {
-            width: 60px;
+        #interest-calculator input,
+        #interest-calculator select {
+            width: 150px;
             margin-top: 10px;
             padding: 5px;
             border: 1px solid #ccc;
@@ -60,7 +61,7 @@
             background-color: #0056b3;
         }
 
-        #interest-calculator-result {
+        #interest-result {
             font-weight: bold;
             margin-top: 20px;
             font-size: 16px;
@@ -85,89 +86,162 @@
         <div class="main">
             <div id="interest-calculator" class="text-center">
                 <h2>Interest Calculator</h2>
-                <label for="principal">Principal:</label>
-                <input type="text" id="principal" placeholder="Principal" />
-                <label for="rate">Rate (%):</label>
-                <input type="text" id="rate" placeholder="Rate" />
-                <label for="time">Time (years):</label>
-                <input type="text" id="time" placeholder="Time" />
+                <label for="principal">Principal Amount ($):</label>
+                <input type="number" id="principal" placeholder="Principal Amount" />
+                <label for="interest-rate">Annual Interest Rate (%):</label>
+                <input type="number" id="interest-rate" step="0.01" placeholder="Interest Rate" />
+                <label for="compounding-frequency">Compounding Frequency:</label>
+                <select id="compounding-frequency">
+                    <option value="annually">Annually</option>
+                    <option value="semi-annually">Semi-annually</option>
+                    <option value="quarterly">Quarterly</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+                <label for="time-period">Time Period (years):</label>
+                <input type="number" id="time-period" placeholder="Time Period" />
                 <br />
                 <button onclick="calculateInterest()">Calculate</button>
-                <p id="interest-calculator-result"></p>
+                <p id="interest-result"></p>
             </div>
         </div>
 
         <div id="content" class="text-center">
-            <h2>Compound Interest Calculation: Features, Usage, and More</h2><br>
-            <p>The Interest Calculator is a powerful tool designed to help you calculate compound interest based on the principal amount, interest rate, and time period. In this article, we'll delve into the world of compound interest calculation, exploring its features, usage, and additional information you might find helpful.</p>
-           <br> <h3>Introduction to Compound Interest Calculation:</h3><br>
-            <p>Compound interest is interest calculated on the initial principal and also on the accumulated interest of previous periods. It is a fundamental concept in finance and investment, affecting the growth of savings accounts, investments, and loans.</p>
+            <h2>Understanding Compound Interest Calculation</h2><br>
+            <p>Compound interest is the interest calculated on the initial principal and also on the accumulated interest of previous periods. This powerful concept allows investments to grow exponentially over time.</p>
             <br>
-<h3>Compound Interest Calculation Principle:</h3><br>
-<p>Compound interest calculation involves applying a fixed interest rate over multiple periods, with each period's interest added to the principal for subsequent calculations. The formula for compound interest is:</p>
-<br>
-<p>A = P(1 + r/n)^(nt)</p>
-<br>
-<p>Where:</p>
-<ul>
-  <li>A is the future value of the investment/loan, including interest</li>
-  <li>P is the principal investment/loan</li>
-  <li>r is the annual interest rate (in decimal)</li>
-  <li>n is the number of times that interest is compounded per unit time</li>
-  <li>t is the time the money is invested or borrowed for, in years</li>
-</ul>
-<br>
-<p>The principal, interest rate, compounding frequency, and time period are essential parameters for calculating compound interest accurately.</p>
-<br>
-<h3>Key Features:</h3><br>
-<p>The Interest Calculator typically offers a range of features to assist with calculating compound interest. Some common features include:</p>
-<ul>
-    <li>Calculation of compound interest based on user-provided principal, interest rate, and time period.</li>
-    <li>Options for specifying the compounding frequency (e.g., annually, semi-annually, quarterly).</li>
-    <li>Calculation of both the total amount and the interest amount earned or paid.</li>
-    <li>Visualization of the growth of investments or loans over time.</li>
-    <li>Error handling and validation of inputs to ensure accurate calculations.</li>
-</ul><br>
-<h3>How to Use an Interest Calculator:</h3><br>
-<p>Using an interest calculator is straightforward. Here's a basic guide:</p>
-<ol>
-    <li>Enter the principal amount (initial investment or loan amount).</li>
-    <li>Enter the annual interest rate (in decimal form).</li>
-    <li>Enter the time period (in years) for which the money is invested or borrowed.</li>
-    <li>Specify the compounding frequency, if applicable (e.g., annually, semi-annually).</li>
-    <li>Click the "Calculate" button to obtain the compound interest and total amount.</li>
-</ol><br>
-<h3>Example Applications:</h3><br>
-<p>To better understand compound interest calculation, let's consider a few example applications:</p>
-<ul>
-    <li>Estimating the growth of savings in a bank account over several years with compound interest.</li>
-    <li>Determining the total repayment amount for a loan with compound interest.</li>
-    <li>Assessing the potential returns on an investment with compound interest.</li>
-</ul><br>
-<h3>Conclusion:</h3><br>
-<p>Compound interest calculation is a fundamental concept in finance and investment, influencing various financial decisions. By using an interest calculator, individuals can estimate the future value of investments or loans with ease. Understanding the parameters involved and how compound interest works can empower individuals to make informed financial choices and plan for the future.</p>
-<br>
-<h3>Further Learning:</h3><br>
-<p>For more resources on compound interest calculation and related topics, consider exploring online tutorials, financial planning websites, or educational materials on investment principles and financial mathematics. Continuous learning and practical application are key to mastering the concepts of compound interest and personal finance.</p>
-				<br>
+            <h3>Key Components of Compound Interest:</h3><br>
+            <p>The calculation of compound interest involves several key components:</p>
+            <ul>
+                <li><strong>Principal Amount:</strong> The initial amount of money invested or borrowed.</li>
+                <li><strong>Annual Interest Rate:</strong> The percentage of the principal that is added to the account each year.</li>
+                <li><strong>Compounding Frequency:</strong> How often interest is compounded (e.g., annually, semi-annually, quarterly, monthly).</li>
+                <li><strong>Time Period:</strong> The length of time the money is invested or borrowed for.</li>
+            </ul>
+            <br>
+            <h3>Understanding the Calculation Formula</h3><br>
+            <p>The formula for calculating compound interest is:</p>
+            <ul>
+                <li><strong>Future Value (FV):</strong> FV = P(1 + r/n)^(nt)</li>
+                <ul>
+                    <li><strong>FV:</strong> Future Value</li>
+                    <li><strong>P:</strong> Principal Amount</li>
+                    <li><strong>r:</strong> Annual Interest Rate (in decimal form)</li>
+                    <li><strong>n:</strong> Number of times interest is compounded per time period</li>
+                    <li><strong>t:</strong> Time Period (in years)</li>
+                </ul>
+            </ul>
+            <br>
+            <p>Using this formula, the interest calculator estimates the future value of an investment based on the specified parameters.</p>
+            <br>
+            <h3>Conclusion:</h3><br>
+            <p>The Interest Calculator is a valuable tool for individuals and investors to project the growth of their investments over time. By considering the principal amount, interest rate, compounding frequency, and time period, users can make informed decisions about their financial strategies.</p>
         </div>
-    </div>
+        
+        <script>
+           function calculateInterest() {
+    var principal = parseFloat(document.getElementById('principal').value);
+    var interestRate = parseFloat(document.getElementById('interest-rate').value) / 100; // Convert interest rate to decimal
+    var compoundingFrequency = document.getElementById('compounding-frequency').value;
+    var timePeriod = parseFloat(document.getElementById('time-period').value);
+
+    // Validate inputs
+    if (isNaN(principal) || isNaN(interestRate) || isNaN(timePeriod) || principal <= 0 || interestRate <= 0 || timePeriod <= 0) {
+        alert("Please enter valid inputs.");
+        return;
+    }
+
+    var compoundedInterest;
+    switch (compoundingFrequency) {
+        case 'annually':
+            compoundedInterest = principal * Math.pow(1 + interestRate, timePeriod);
+            break;
+        case 'semi-annually':
+            compoundedInterest = principal * Math.pow(1 + (interestRate / 2), 2 * timePeriod);
+            break;
+        case 'quarterly':
+            compoundedInterest = principal * Math.pow(1 + (interestRate / 4), 4 * timePeriod);
+            break;
+        case 'monthly':
+            compoundedInterest = principal * Math.pow(1 + (interestRate / 12), 12 * timePeriod);
+            break;
+        default:
+            alert("Invalid compounding frequency.");
+            return;
+    }
+
+    var interestEarned = compoundedInterest - principal;
+    var totalAmount = compoundedInterest.toFixed(2);
+
+    document.getElementById('interest-result').innerHTML = "Interest Earned: $" + interestEarned.toFixed(2) + "<br>Total Amount: $" + totalAmount;
+}
+	</script>
+   <!-- section-bottom -->
+   <section class="section-bottom">
+	<!-- shell -->
+	<div class="shell">
+		<!-- cols -->
+		<div class="cols">
+			<div class="col">
+				<h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
+				<p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
+<p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
+
+				<a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
+			</div>
+			<div class="col">
+				<h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
+				<p>
+					  Q: Can I link from my website to a calculator?
+					 A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
+			<p>Q: How should I send suggestions or report problems?
+A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
+
+					<a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
+				<br>
+				<br><br>
+				
+			
+			</div>
+			<div class="col subscribe-col">
+				<h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
+				<div class="col-cnt">
+					<p>Contact Us
+						If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website.</p> <br>
+					<p>We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
+						<a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+						<!--<form method="post">
+						<input type="text" class="field" value="Your Email Here" title="Your Email Here" />
+						<input type="submit" class="submit-btn" value="Submit" />
+					</form>
+					<a href="#">XXXX@Caculator.com</a>-->
+				</div>	
+			</div>
+			<div class="cl">&nbsp;</div>
+		</div>
+		<!-- end of cols -->
+	</div>
+	<!-- end of shell -->
+</section>
+<!-- end of section-bottom -->
+</div>
+<!-- end of main -->
+<div id="footer-push"></div>
 </div>
 <!-- end of wrapper -->
 <!-- footer -->
 <div id="footer">
 <div class="footer-bottom">
 <div class="shell">
-    <nav class="footer-nav left">
-        <ul>
-            <li class="active"><a href="https://widecalculator.com/">HOME</a></li>
-            <li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
-            <li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
-        </ul>
-    </nav>
-    <p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Calculator" target="_blank">Widecalculator.com</a> </p>
-    <div class="cl">&nbsp;</div>
-</div>  
+	<nav class="footer-nav left">
+		<ul>
+			<li class="active"><a href="https://widecalculator.com/">HOME</a></li>
+			<li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
+			<li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
+		</ul>
+	</nav>
+	<p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+	<div class="cl">&nbsp;</div>
+</div>	
 </div>
 </div>
 <!-- end of footer -->
@@ -184,4 +258,4 @@ gtag('config', 'G-816SNX8L7X');
 </div>
 </body>
 </html>
-
+	    
