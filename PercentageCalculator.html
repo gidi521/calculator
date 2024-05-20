@@ -4,13 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Percentage Calculator</title>
-    <meta name="description" content="The Percentage Calculator is a tool designed to calculate percentages easily. This calculator helps in determining percentages based on the given values." />
-    <meta itemprop="description" content="The Percentage Calculator is a handy tool for calculating percentages quickly and accurately. Whether you need to calculate discounts, markups, or percentages of a value, this calculator makes it easy." />
+    <meta name="description" content="The Percentage Calculator helps you calculate percentages quickly and easily. It provides a convenient tool for finding percentages, percentage increases, or decreases for various purposes." />
+    <meta itemprop="description" content="The Percentage Calculator is a handy online tool that allows users to calculate percentages within a specified range. It simplifies the process of finding percentage values, increases, or decreases." />
     <meta name="author" content="Wide Calculator" />
     <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
     <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
-
     <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
     <!--[if lt IE 9]>
         <script src="js/modernizr.custom.js"></script>
@@ -20,8 +19,8 @@
     <style>
         /* Percentage Calculator Styles */
         #percentage-calculator {
-            margin-top: -10px; /* 减小上边距 */
-            margin-bottom: -10px; /* 减小下边距 */
+            margin-top: -10px;
+            margin-bottom: -10px;
             padding: 30px;
             border: 1px solid #ccc;
             border-radius: 10px;
@@ -34,26 +33,27 @@
 
         #percentage-calculator label {
             font-weight: bold;
-            margin-top: 10px; /* 增加行间距 */
+            margin-top: 10px;
+            display: block;
         }
 
         #percentage-calculator input {
-            width: 80px;
-            margin-top: 10px; /* 增加行间距 */
-        }
-
-        #percentage-calculator select {
-            margin-top: 10px; /* 增加行间距 */
+            width: 100px;
+            margin-top: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
 
         #percentage-calculator button {
-            margin-top: 20px; /* 增加行间距 */
-            padding: 8px 15px; /* 调整按钮大小 */
+            margin-top: 20px;
+            padding: 10px 20px;
             background-color: #007bff;
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
         }
 
         #percentage-calculator button:hover {
@@ -62,80 +62,115 @@
 
         #percentage-result {
             font-weight: bold;
-            margin-top: 20px; /* 增加行间距 */
+            margin-top: 20px;
             font-size: 16px;
             text-align: center;
         }
     </style>
 </head>
+
 <body>
-	<!-- wrapper -->
-	<div id="wrapper">
-		<!-- header -->
-		<header>
-			<div class="shell">
-				<h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
-				<nav id="navigation">
-					<ul>
-						<li class="active"><a href="https://widecalculator.com/">Home</a></li>
-						<li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
-					</ul>
-				</nav>
-			</div>
-		</header>
-		<!-- end of header -->
-
-		<!-- main -->
-		<div class="main">
-
-
-		 <!-- Percentage Calculator -->
+    <div id="wrapper">
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main">
             <div id="percentage-calculator" class="text-center">
                 <h2>Percentage Calculator</h2>
                 <label for="value">Value:</label>
-                <input type="text" id="value" />
-                <br />
+                <input type="text" id="value" placeholder="Value" />
                 <label for="percentage">Percentage:</label>
-                <input type="text" id="percentage" />
+                <input type="text" id="percentage" placeholder="Percentage" />
                 <br />
-                <button onclick="calculatePercentage()">Calculate Percentage</button>
-                <p>The percentage is: <span id="percentage-result"></span>%</p>
+                <button onclick="calculatePercentage()">Calculate</button>
+                <p id="percentage-result"></p>
             </div>
-            <!-- End of Percentage Calculator -->
         </div>
-	</div>
- <!-- Information section -->
+
         <div id="content" class="text-center">
-            <p>The Percentage Calculator is a handy tool for calculating percentages quickly and accurately. Whether you need to calculate discounts, markups, or percentages of a value, this calculator makes it easy.</p>
-            <p>
-                To calculate a percentage, simply enter the value and the percentage you want to calculate. Click the Calculate Percentage button, and the result will be displayed instantly.
-            </p>
+            <h2>Exploring Percentage Calculators: Features, Usage, and More</h2><br>
+            <p>The Percentage Calculator is a powerful tool designed to help you calculate percentages quickly and easily. In this article, we'll delve into the world of percentage calculators, exploring their features, usage, and additional information you might find helpful.</p>
+           <br> <h3>Introduction to Percentage Calculators:</h3><br>
+            <p>Percentage calculators are tools used to compute percentages for various values. They are widely used in various fields, including finance, statistics, and everyday calculations.</p>
+            <br>
+<h3>Percentage Calculator Principle:</h3><br>
+<p>The Percentage Calculator operates based on basic mathematical formulas designed to compute the percentage of a given value or the percentage increase or decrease between values. These formulas are straightforward and provide quick and accurate results.</p>
+<br>
+<p>By entering the appropriate values, users can easily obtain the percentage results needed for various applications.</p>
+<br>
+<p>Percentage calculators are widely used in various applications, including finance, sales, and academic settings. They play a crucial role in simplifying complex calculations and ensuring accuracy in numerous contexts.</p>
+	<br>
+<h3>Percentage Calculator Formula:</h3><br>
+<p>The formula for calculating percentages is straightforward:</p>
+<br>
+<p>Percentage of a value:</p>
+<br>
+<p>(Value * Percentage) / 100</p>
+<br>
+<p>Percentage increase or decrease:</p>
+<ul>
+  <li>Percentage Increase: ((New Value - Original Value) / Original Value) * 100</li>
+  <li>Percentage Decrease: ((Original Value - New Value) / Original Value) * 100</li>
+</ul>
+<br>
+<p>These formulas can be easily implemented to find the required percentage values or changes.</p>
+		
+		<br><h3>Key Features:</h3><br>
+            <p>Percentage calculators typically offer a range of features to assist with calculating percentages. Some common features include:</p>
+            <ul>
+                <li>Calculation of simple percentages for given values.</li>
+                <li>Computation of percentage increases or decreases between values.</li>
+                <li>Option to input different values and percentages for versatile calculations.</li>
+                <li>Clear and easy-to-understand results display.</li>
+                <li>Error handling and validation of inputs.</li>
+            </ul><br>
+            <h3>How to Use a Percentage Calculator:</h3><br>
+            <p>Using a percentage calculator is straightforward. Here's a basic guide:</p>
+            <ol>
+                <li>Enter the value and the percentage you want to calculate.</li>
+                <li>Click the "Calculate" button to obtain the percentage result.</li>
+                <li>Review the calculated percentage and use it as needed in your application or analysis.</li>
+            </ol><br>
+            <h3>Example Applications:</h3><br>
+            <p>To better understand how percentage calculators work, let's consider a few example applications:</p>
+            <ul>
+                <li>Calculating discounts during a sale.</li>
+                <li>Determining percentage grades in academic settings.</li>
+                <li>Finding percentage changes in financial data.</li>
+            </ul><br>
+           <br> <h3>Conclusion:</h3><br>
+            <p>Percentage calculators are invaluable tools for anyone needing to calculate percentages for various purposes. By familiarizing yourself with their features and usage, you can obtain reliable and accurate percentage values to suit your needs. Don't forget to explore related concepts such as percentage increases and decreases for a deeper understanding of percentage calculations.</p>
+           <br> <h3>Further Learning:</h3><br>
+            <p>For more resources on percentage calculations and related topics, consider exploring online tutorials, educational websites, or academic papers on mathematics and finance. Continuous learning and exploration are key to mastering the world of percentage calculation!</p>
+				<br>
         </div>
-        <!-- Your other sections here -->
 
-</div>
+				<script>
+					
+                    function calculatePercentage() {
+    var value = parseFloat(document.getElementById('value').value);
+    var percentage = parseFloat(document.getElementById('percentage').value);
 
-<script>
-function calculatePercentage() {
-    var value = document.getElementById('value').value;
-    var percentage = document.getElementById('percentage').value;
-
-    // 验证输入是否为有效数字
-    if (isNaN(value) || isNaN(percentage) || value <= 0 || percentage < 0 || percentage > 100) {
-        alert("Please enter valid values.");
+    // Validate input
+    if (isNaN(value) || isNaN(percentage)) {
+        alert("Please enter valid value and percentage.");
         return;
     }
 
-    // 转换为浮点数
-    value = parseFloat(value);
-    percentage = parseFloat(percentage);
-
     var result = (value * percentage) / 100;
-
-    document.getElementById('percentage-result').textContent = result.toFixed(2);
+    document.getElementById('percentage-result').innerText = "Result: " + result.toFixed(2) + "%";
 }
-</script>
 
+
+				</script>
    <!-- section-bottom -->
    <section class="section-bottom">
 	<!-- shell -->
