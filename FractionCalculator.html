@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Fraction Calculator</title>
-	<meta name="description" content="The Fraction Calculator performs basic arithmetic operations on fractions, including addition, subtraction, multiplication, and division. It provides a convenient tool for simplifying and comparing fractions." />
-	<meta itemprop="description" content="The Fraction Calculator is a handy online tool that allows users to perform various arithmetic operations on fractions, such as addition, subtraction, multiplication, and division. It simplifies fractions and offers solutions in both fraction and decimal formats." />
-	<meta name="author" content="Wide Calculator" />
-	<link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
-	<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
-	<!--[if lt IE 9]>
-		<script src="js/modernizr.custom.js"></script>
-	<![endif]-->
-	<script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
-	<script src="js/functions.js" type="text/javascript"></script>
-	<style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraction Calculator</title>
+    <meta name="description" content="The Fraction Calculator performs basic arithmetic operations on fractions, including addition, subtraction, multiplication, and division. It provides a convenient tool for simplifying and comparing fractions." />
+    <meta itemprop="description" content="The Fraction Calculator is a handy online tool that allows users to perform various arithmetic operations on fractions, such as addition, subtraction, multiplication, and division. It simplifies fractions and offers solutions in both fraction and decimal formats." />
+    <meta name="author" content="Wide Calculator" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+        <script src="js/modernizr.custom.js"></script>
+    <![endif]-->
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
         /* Fraction Calculator Styles */
         #fraction-calculator {
             margin-top: -10px;
@@ -34,21 +34,26 @@
         #fraction-calculator label {
             font-weight: bold;
             margin-top: 10px;
+            display: block;
         }
 
         #fraction-calculator input {
-            width: 80px;
+            width: 60px;
             margin-top: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
 
         #fraction-calculator button {
             margin-top: 20px;
-            padding: 8px 15px;
+            padding: 10px 20px;
             background-color: #007bff;
             color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
         }
 
         #fraction-calculator button:hover {
@@ -61,173 +66,276 @@
             font-size: 16px;
             text-align: center;
         }
+
+        .fraction-inputs {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .fraction {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 10px;
+        }
+
+        .fraction-divider {
+            border-top: 1px solid #000;
+            width: 60px;
+            text-align: center;
+        }
+
+        .fraction input {
+            margin: 5px;
+        }
     </style>
 </head>
 
 <body>
-	<div id="wrapper">
-		<header>
-			<div class="shell">
-				<h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
-				<nav id="navigation">
-					<ul>
-						<li class="active"><a href="https://widecalculator.com/">Home</a></li>
-						<li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
-					</ul>
-				</nav>
-			</div>
-		</header>
-		<div class="main">
-			<div id="fraction-calculator" class="text-center">
-				<h2>Fraction Calculator</h2>
-				<label for="numerator1">Fraction 1:</label>
-				<input type="text" id="numerator1" placeholder="Numerator" />
-				<input type="text" id="denominator1" placeholder="Denominator" />
-				<br />
-				<label for="operation">Operation:</label>
-				<select id="operation">
-					<option value="add">+</option>
-					<option value="subtract">-</option>
-					<option value="multiply">*</option>
-					<option value="divide">/</option>
-				</select>
-				<br />
-				<label for="numerator2">Fraction 2:</label>
-				<input type="text" id="numerator2" placeholder="Numerator" />
-				<input type="text" id="denominator2" placeholder="Denominator" />
-				<br />
-				<button onclick="calculateFraction()">Calculate</button>
-				<p id="fraction-result"></p>
-			</div>
-		</div>
-<div id="content" class="text-center">
-    <p>The Fraction Calculator allows you to perform basic arithmetic operations (addition, subtraction, multiplication, and division) with fractions. Simply enter the numerators and denominators of two fractions, select the operation you want to perform, and click the "Calculate" button to see the result.</p>
-    <p>For example, if you want to add two fractions, enter the numerators and denominators of both fractions in the respective input fields, select the "Add" operation, and click "Calculate" to see the sum of the fractions.</p>
-    <p>Keep in mind that fractions should be entered in the form of numerator/denominator, and both numerators and denominators should be integers.</p>
-</div>
+    <div id="wrapper">
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main">
+            <div id="fraction-calculator" class="text-center">
+                <h2>Fraction Calculator</h2>
+                <div class="fraction-inputs">
+                    <div class="fraction">
+                        <label for="numerator1">Fraction 1:</label>
+                        <input type="text" id="numerator1" placeholder="Numerator" />
+                        <div class="fraction-divider"></div>
+                        <input type="text" id="denominator1" placeholder="Denominator" />
+                    </div>
+                    <div class="fraction">
+                        <label for="numerator2">Fraction 2:</label>
+                        <input type="text" id="numerator2" placeholder="Numerator" />
+                        <div class="fraction-divider"></div>
+                        <input type="text" id="denominator2" placeholder="Denominator" />
+                    </div>
+                </div>
+                <label for="operation">Operation:</label>
+                <select id="operation">
+                    <option value="add">+</option>
+                    <option value="subtract">-</option>
+                    <option value="multiply">*</option>
+                    <option value="divide">/</option>
+                </select>
+                <br />
+                <button onclick="calculateFraction()">Calculate</button>
+                <p id="fraction-result"></p>
+            </div>
+        </div>
+
+        <div id="content" class="text-center">
+            <h2>Exploring Fraction Calculators: Features, Usage, and More</h2>
+            <p>Are you looking to enhance your fraction-solving skills? Fraction calculators are powerful tools designed to help you perform various operations involving fractions with ease. In this article, we'll delve into the world of fraction calculators, exploring their features, usage, and additional information you might find helpful.</p>
+            <h3>Introduction to Fraction Calculators:</h3>
+            <p>Fraction calculators are online tools or applications designed to simplify the process of working with fractions. Whether you're adding, subtracting, multiplying, dividing, or converting fractions, these calculators can streamline the task and provide accurate results quickly.</p>
+            <h3>Key Features:</h3>
+            <p>Fraction calculators typically offer a range of features to assist with fraction-related computations. Some common features include:</p>
+            <ul>
+                <li>Addition, subtraction, multiplication, and division of fractions.</li>
+                <li>Conversion of fractions to decimals or percentages.</li>
+                <li>Simplification of fractions to their lowest terms.</li>
+                <li>Mixed number operations.</li>
+                <li>Error handling and validation of inputs.</li>
+            </ul>
+            <h3>How to Use a Fraction Calculator:</h3>
+            <p>Using a fraction calculator is straightforward. Here's a basic guide:</p>
+            <ol>
+                <li>Enter the fractions you want to work with into the designated fields.</li>
+                <li>Select the operation you wish to perform (addition, subtraction, etc.).</li>
+                <li>Click the "Calculate" or equivalent button to obtain the result.</li>
+                <li>Review the result and any accompanying steps or explanations provided by the calculator.</li>
+            </ol>
+            <h3>Example Problems:</h3>
+            <p>To better understand how fraction calculators work, let's consider a few example problems:</p>
+            <ul>
+                <li>Adding fractions: 1/3 + 2/5</li>
+                <li>Multiplying mixed numbers: 2 1/4 × 3 1/2</li>
+                <li>Converting a fraction to a decimal: 3/4 to 0.75</li>
+            </ul>
+            <h3>Additional Information:</h3>
+            <p>In addition to using fraction calculators, it's beneficial to understand some fundamental concepts related to fractions, such as:</p>
+            <ul>
+                <li>Definition of fractions and their components (numerator, denominator).</li>
+                <li>Simplifying fractions by finding the greatest common divisor.</li>
+                <li>Adding, subtracting, multiplying, and dividing fractions using common methods.</li>
+            </ul>
+            <h3>Conclusion:</h3>
+            <p>Fraction calculators are invaluable tools for anyone working with fractions regularly. By familiarizing yourself with their features and usage, you can tackle fraction problems efficiently and accurately. Don't forget to explore related concepts to deepen your understanding of fractions and their operations.</p>
+            <h3>Further Learning:</h3>
+            <p>For more resources on fraction calculations and related topics, consider exploring online tutorials, educational websites, or math textbooks. Continuous learning is key to mastering the world of fractions!</p>
+        </div>
+        
+        
 
 
-<script>
-function calculateFraction() {
-    var num1 = parseInt(document.getElementById('numerator1').value);
-    var den1 = parseInt(document.getElementById('denominator1').value);
-    var num2 = parseInt(document.getElementById('numerator2').value);
-    var den2 = parseInt(document.getElementById('denominator2').value);
-    var operation = document.getElementById('operation').value;
 
-    // 验证输入是否为有效数字
-    if (isNaN(num1) || isNaN(den1) || isNaN(num2) || isNaN(den2) || den1 === 0 || den2 === 0) {
-        alert("Please enter valid fractions.");
-        return;
-    }
 
-    // 将分数转换为小数
-    var fraction1 = num1 / den1;
-    var fraction2 = num2 / den2;
 
-    var result;
-    switch (operation) {
-        case 'add':
-            result = fraction1 + fraction2;
-            break;
-        case 'subtract':
-            result = fraction1 - fraction2;
-            break;
-        case 'multiply':
-            result = fraction1 * fraction2;
-            break;
-        case 'divide':
-            if (fraction2 === 0) {
-                alert("Cannot divide by zero.");
-                return;
+
+        <script>
+            function calculateFraction() {
+                var num1 = parseInt(document.getElementById('numerator1').value);
+                var den1 = parseInt(document.getElementById('denominator1').value);
+                var num2 = parseInt(document.getElementById('numerator2').value);
+                var den2 = parseInt(document.getElementById('denominator2').value);
+                var operation = document.getElementById('operation').value;
+
+                // 验证输入是否为有效数字
+                if (isNaN(num1) || isNaN(den1) || isNaN(num2) || isNaN(den2) || den1 === 0 || den2 === 0) {
+                    alert("Please enter valid fractions.");
+                    return;
+                }
+
+                var resultNum, resultDen;
+                switch (operation) {
+                    case 'add':
+                        resultNum = (num1 * den2 + num2 * den1);
+                        resultDen = (den1 * den2);
+                        break;
+                    case 'subtract':
+                        resultNum = (num1 * den2 - num2 * den1);
+                        resultDen = (den1 * den2);
+                        break;
+                    case 'multiply':
+                        resultNum = (num1 * num2);
+                        resultDen = (den1 * den2);
+                        break;
+                    case 'divide':
+                        if (num2 === 0) {
+                            alert("Cannot divide by zero.");
+                            return;
+                        }
+                        resultNum = (num1 * den2);
+                        resultDen = (den1 * num2);
+                        break;
+                    default:
+                        alert("Invalid operation.");
+                        return;
+                }
+
+                // Simplify the result fraction
+                var gcd = function(a, b) {
+                    if (!b) {
+                        return a;
+                    }
+                    return gcd(b, a % b);
+                };
+                var commonDivisor = gcd(resultNum, resultDen);
+                resultNum /= commonDivisor;
+                resultDen /= commonDivisor;
+
+                // Display the result as a vertical fraction
+                document.getElementById('fraction-result').innerHTML = 
+                    "<div class='fraction'>" +
+                        "<div>" + resultNum + "</div>" +
+                        "<div class='fraction-divider'></div>" +
+                        "<div>" + resultDen + "</div>" +
+                    "</div>";
             }
-            result = fraction1 / fraction2;
-            break;
-        default:
-            alert("Invalid operation.");
-            return;
-    }
+        </script>
+  
 
-    document.getElementById('fraction-result').textContent = "Result: " + result;
-}
-</script>
 
-			<!-- section-bottom -->
-			<section class="section-bottom">
-				<!-- shell -->
-				<div class="shell">
-					<!-- cols -->
-					<div class="cols">
-						<div class="col">
-							<h3><span class="about-ico"></span><a href="#">MORE <strong>ABOUT US</strong></a></h3>
-							<p>Widecalculator aims to deliver swift, exhaustive, and user-friendly online calculators across a multitude of fields.</p>
-							<p>Each calculator on Widecalculator.com has been meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we recognize that perfection is a continuous pursuit and thus, we highly value any feedback regarding potential errors or discrepancies you may encounter your observations are of immense importance to us.</p>
 
-							<a href="#" class="more-btn">Read More</a>
-						</div>
-						<div class="col">
-							<h3><span class="news-ico"></span><a href="#"><strong>FAQ</strong></a></h3>
-							<p>
-					              Q: Can I link from my website to a calculator?
-                                 A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
-							<p>Q: How should I send suggestions or report problems?c
+
+
+
+
+
+
+
+
+
+		
+   <!-- section-bottom -->
+<section class="section-bottom">
+	<!-- shell -->
+	<div class="shell">
+		<!-- cols -->
+		<div class="cols">
+			<div class="col">
+				<h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
+				<p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
+<p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
+
+				<a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
+			</div>
+			<div class="col">
+				<h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
+				<p>
+					  Q: Can I link from my website to a calculator?<br>
+					 A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
+			<p>Q: How should I send suggestions or report problems?
 A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
 
-						    <a href="#" class="more-btn">Read More</a>
-							
-						
-						</div>
-						<div class="col subscribe-col">
-							<h3><span class="subscribe-ico"></span><a href="#">KEEP IN <strong>TOUCH</strong></a></h3>
-							<div class="col-cnt">
-								<p>Contact Us
-									If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website. We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
-								<a href="#" class="more-btn"> More</a>
-								<!--<form method="post">
-									<input type="text" class="field" value="Your Email Here" title="Your Email Here" />
-									<input type="submit" class="submit-btn" value="Submit" />
-								</form>
-								<a href="#">XXXX@Caculator.com</a>-->
-							</div>	
-						</div>
-						<div class="cl">&nbsp;</div>
-					</div>
-					<!-- end of cols -->
-				</div>
-				<!-- end of shell -->
-			</section>
-			<!-- end of section-bottom -->
+					<a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
+				
+			
+			</div>
+			<div class="col subscribe-col">
+				<h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
+				<div class="col-cnt">
+					<p>Contact Us
+						If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website. We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
+						<a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+						<!--<form method="post">
+						<input type="text" class="field" value="Your Email Here" title="Your Email Here" />
+						<input type="submit" class="submit-btn" value="Submit" />
+					</form>
+					<a href="#">XXXX@Caculator.com</a>-->
+				</div>	
+			</div>
+			<div class="cl">&nbsp;</div>
 		</div>
-		<!-- end of main -->
-		<div id="footer-push"></div>
+		<!-- end of cols -->
 	</div>
-	<!-- end of wrapper -->
-	<!-- footer -->
-	<div id="footer">
-		<div class="footer-bottom">
-			<div class="shell">
-				<nav class="footer-nav left">
-					<ul>
-						<li class="active"><a href="#">HOME</a></li>
-						<li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
-						<li><a href="#">CONTACT US</a></li>
-					</ul>
-				</nav>
-				<p class="copy right"> All Rights Reserved Copyright Collect from <a href="Widecalculator.com" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
-				<div class="cl">&nbsp;</div>
-			</div>	
-		</div>
-	</div>
-	<!-- end of footer -->
-	<div style="display:none;">
+	<!-- end of shell -->
+</section>
+<!-- end of section-bottom -->
+</div>
+<!-- end of main -->
+<div id="footer-push"></div>
+</div>
+<!-- end of wrapper -->
+<!-- footer -->
+<div id="footer">
+<div class="footer-bottom">
+<div class="shell">
+	<nav class="footer-nav left">
+		<ul>
+			<li class="active"><a href="https://widecalculator.com/">HOME</a></li>
+			<li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
+			<li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
+		</ul>
+	</nav>
+	<p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+	<div class="cl">&nbsp;</div>
+</div>	
+</div>
+</div>
+<!-- end of footer -->
+<div style="display:none;">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
 
-  gtag('config', 'G-816SNX8L7X');
+gtag('config', 'G-816SNX8L7X');
 </script>
 </div>
 </body>
