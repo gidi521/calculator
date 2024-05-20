@@ -107,6 +107,21 @@
 <p>By initializing the generator with a specific seed value, users can reproduce the same sequence of random numbers, making the process reproducible and useful for testing and debugging purposes.</p>
 <br>
 <p>Random number generators are widely used in various applications, including statistical sampling, cryptography, gaming, and simulations. They play a crucial role in generating unpredictable outcomes, ensuring fairness and security in numerous contexts.</p>
+	<br>
+<h3>Random Number Generator Formula:</h3><br>
+<p>The formula for generating random numbers depends on the specific algorithm used by the random number generator. One common approach is the linear congruential generator (LCG), which uses the recurrence relation:</p>
+<br>
+<p>X<sub>n+1</sub> = (a * X<sub>n</sub> + c) mod m</p>
+<br>
+<p>Where:</p>
+<ul>
+  <li>X<sub>n</sub> is the current pseudo-random number</li>
+  <li>a, c, and m are constants chosen to achieve desirable statistical properties</li>
+  <li>mod represents the modulo operation, ensuring that the result falls within a specified range</li>
+</ul>
+<br>
+<p>The initial value, or seed, X<sub>0</sub>, determines the starting point of the sequence. By iterating this formula, a sequence of pseudo-random numbers is generated.</p>
+		
 		<br><h3>Key Features:</h3><br>
             <p>Random number generators typically offer a range of features to assist with generating random numbers. Some common features include:</p>
             <ul>
