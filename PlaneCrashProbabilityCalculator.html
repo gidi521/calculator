@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plane Crash Probability Calculator</title>
+    <meta name="description" content="The Plane Crash Probability Calculator estimates the likelihood of a plane crash based on various factors such as flight duration, weather conditions, and aircraft type." />
+    <meta itemprop="description" content="The Plane Crash Probability Calculator is a tool designed to estimate the likelihood of a plane crash based on factors like flight duration, weather conditions, and aircraft type." />
+    <meta name="author" content="Wide Calculator" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+        <script src="js/modernizr.custom.js"></script>
+    <![endif]-->
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
+        /* Plane Crash Probability Calculator Styles */
+        #plane-crash-calculator {
+            margin-top: -10px;
+            margin-bottom: -10px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #plane-crash-calculator label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        #plane-crash-calculator input {
+            width: 60px;
+            margin-top: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #plane-crash-calculator button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #plane-crash-calculator button:hover {
+            background-color: #0056b3;
+        }
+
+        #plane-crash-result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main">
+            <div id="plane-crash-calculator" class="text-center">
+                <h2>Plane Crash Probability Calculator</h2>
+                <label for="flight-duration">Flight Duration (hours):</label>
+                <input type="text" id="flight-duration" placeholder="Flight Duration" />
+                <label for="weather">Weather Conditions (1-10):</label>
+                <input type="text" id="weather" placeholder="Weather Conditions" />
+                <label for="aircraft-type">Aircraft Type:</label>
+                <select id="aircraft-type" onchange="updateAircraftModels()">
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                </select>
+                <label for="aircraft-model">Aircraft Model:</label>
+                <select id="aircraft-model">
+                    <!-- Options will be dynamically populated -->
+                </select>
+                <br />
+                <button onclick="calculateCrashProbability()">Calculate</button>
+                <p id="plane-crash-result"></p>
+            </div>
+        </div>
+
+        <div id="content" class="text-center">
+            <h2>Exploring Plane Crash Probability</h2><br>
+            <p>The Plane Crash Probability Calculator is a valuable tool designed to estimate the likelihood of a plane crash based on various factors such as flight duration, weather conditions, and aircraft type. It provides passengers and aviation professionals with insights to better understand and prepare for potential risks during air travel.</p>
+            <br>
+            <h3>Introduction to Plane Crash Probability:</h3><br>
+            <p>Plane crash probability refers to the likelihood of an aircraft being involved in an accident resulting in damage or loss of life. While air travel is generally considered safe, various factors such as flight duration, weather conditions, and aircraft type can influence the probability of a crash.</p>
+            <br>
+            <h3>Factors Affecting Plane Crash Probability:</h3><br>
+            <p>The probability of a plane crash can be influenced by several factors, including:</p>
+            <ul>
+                <li>Flight duration: Longer flights may have higher crash probabilities due to increased exposure to potential hazards.</li>
+                <li>Weather conditions: Adverse weather such as storms or fog can increase the likelihood of accidents.</li>
+                <li>Aircraft type: Different aircraft models may have varying safety records and crash probabilities.</li>
+            </ul>
+            <br>
+            <br>  <h3>Weather Conditions (1-10):</h3><br>
+<p>The "Weather Conditions" parameter allows you to rate the current weather conditions on a scale of 1 to 10, with 1 representing the best weather conditions and 10 representing the worst.</p>
+<p>Here are examples for each level:</p>
+<ul>
+  <li>1: Clear skies, calm winds, excellent visibility.</li>
+  <li>2: Mostly clear skies, light breeze, good visibility.</li>
+  <li>3: Partly cloudy, moderate breeze, fair visibility.</li>
+  <li>4: Increasing cloud cover, gusty winds, moderate visibility.</li>
+  <li>5: Overcast skies, strong winds, reduced visibility.</li>
+  <li>6: Light rain showers, windy conditions, limited visibility.</li>
+  <li>7: Moderate rain, thunderstorms in the vicinity, poor visibility.</li>
+  <li>8: Heavy rain, thunderstorms nearby, very poor visibility.</li>
+  <li>9: Severe thunderstorms, heavy rain, extreme winds, extremely poor visibility.</li>
+  <li>10: Hurricane conditions, torrential rain, extremely strong winds, near-zero visibility.</li>
+</ul>
+<p>By assessing weather conditions, you can better understand the potential impact on flight safety and the likelihood of encountering hazardous conditions during air travel.</p>
+
+<br><h3>Using the Plane Crash Probability Calculator:</h3><br>
+            <p>To use the Plane Crash Probability Calculator, follow these steps:</p>
+            <ol>
+                <li>Enter the flight duration in hours.</li>
+                <li>Rate the weather conditions on a scale of 1 to 10, with 1 being the best weather and 10 being the worst.</li>
+                <li>Select the aircraft type and model from the dropdown menus.</li>
+                <li>Click the "Calculate" button to estimate the probability of a plane crash.</li>
+            </ol>
+            <br>
+            <h3>Interpreting the Results:</h3><br>
+            <p>The calculated result represents an estimate of the likelihood of a plane crash based on the input parameters. A lower probability indicates a lower risk of a crash, while a higher probability suggests a higher risk.</p>
+            <br>
+            <h3>Conclusion:</h3><br>
+            <p>The Plane Crash Probability Calculator is a valuable tool for assessing the potential risks associated with air travel. By considering factors such as flight duration, weather conditions, and aircraft type, passengers and aviation professionals can make informed decisions to enhance safety and preparedness during flights.</p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+    <script>
+        // Define the aircraft models for each type
+        const aircraftModels = {
+            small: ['Cessna 172', 'Piper PA-28', 'Beechcraft Bonanza'],
+            medium: ['Boeing 737', 'Airbus A320', 'Embraer E190'],
+            large: ['Boeing 747', 'Airbus A380', 'Boeing 777']
+        };
+
+        // Function to update the aircraft models based on the selected type
+        function updateAircraftModels() {
+            const aircraftType = document.getElementById('aircraft-type').value;
+            const aircraftModelSelect = document.getElementById('aircraft-model');
+            
+            // Clear the current options
+            aircraftModelSelect.innerHTML = '';
+            
+            // Populate the aircraft models based on the selected type
+            aircraftModels[aircraftType].forEach(model => {
+                const option = document.createElement('option');
+                option.value = model;
+                option.text = model;
+                aircraftModelSelect.appendChild(option);
+            });
+        }
+
+        // Attach the update function to the aircraft type select element
+        document.getElementById('aircraft-type').addEventListener('change', updateAircraftModels);
+
+        // Initialize the aircraft models on page load
+        window.onload = updateAircraftModels;
+
+        // Function to calculate the crash probability
+        function calculateCrashProbability() {
+            var flightDuration = parseInt(document.getElementById('flight-duration').value);
+            var weather = parseInt(document.getElementById('weather').value);
+            var aircraftType = document.getElementById('aircraft-type').value;
+            var aircraftModel = document.getElementById('aircraft-model').value;
+
+            // Validate input
+            if (isNaN(flightDuration) || flightDuration <= 0 || isNaN(weather) || weather < 1 || weather > 10) {
+                alert("Please enter valid flight duration and weather conditions.");
+                return;
+            }
+
+            var baseProbability = 0.00001; // Base probability of a crash
+
+            // Adjust probability based on flight duration
+            var durationFactor = Math.log(flightDuration + 1) / 1000;
+
+            // Adjust probability based on weather conditions
+            var weatherFactor = 1 + (weather / 10); // Assuming linear relationship between weather conditions and probability
+
+            // Adjust probability based on aircraft type and model
+            var aircraftFactor;
+            switch (aircraftType) {
+                case 'small':
+                    aircraftFactor = getAircraftModelFactorForSmall(aircraftModel);
+                    break;
+                case 'medium':
+                    aircraftFactor = getAircraftModelFactorForMedium(aircraftModel);
+                    break;
+                case 'large':
+                    aircraftFactor = getAircraftModelFactorForLarge(aircraftModel);
+                    break;
+                default:
+                    aircraftFactor = 1;
+            }
+
+            // Calculate final probability
+            var crashProbability = baseProbability * durationFactor * weatherFactor * aircraftFactor;
+            var crashProbabilityPercentage = (crashProbability * 100).toFixed(6);
+
+            document.getElementById('plane-crash-result').innerText = "Estimated Crash Probability: " + crashProbabilityPercentage + "%";
+        }
+
+        // Functions to get aircraft model factors based on size
+        function getAircraftModelFactorForSmall(model) {
+            // Adjust probability based on specific small aircraft models
+            switch (model) {
+                case 'Cessna 172':
+                    return 1.5;
+                case 'Piper PA-28':
+                    return 1.4;
+                case 'Beechcraft Bonanza':
+                    return 1.3;
+                default:
+                    return 1;
+            }
+        }
+
+        function getAircraftModelFactorForMedium(model) {
+            // Adjust probability based on specific medium-sized aircraft models
+            switch (model) {
+                case 'Boeing 737':
+                    return 1.2;
+                case 'Airbus A320':
+                    return 1.1;
+                case 'Embraer E190':
+                    return 1.3;
+                default:
+                    return 1;
+            }
+        }
+
+        function getAircraftModelFactorForLarge(model) {
+            // Adjust probability based on specific large aircraft models
+            switch (model) {
+                case 'Boeing 747':
+                    return 1.1;
+                case 'Airbus A380':
+                    return 1.05;
+                case 'Boeing 777':
+                    return 1.15;
+                default:
+                    return 1;
+            }
+        }
+    </script>
+      <!-- section-bottom -->
+   <section class="section-bottom">
+	<!-- shell -->
+	<div class="shell">
+		<!-- cols -->
+		<div class="cols">
+			<div class="col">
+				<h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
+				<p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
+<p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
+
+				<a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
+			</div>
+			<div class="col">
+				<h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
+				<p>
+					  Q: Can I link from my website to a calculator?
+					 A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
+			<p>Q: How should I send suggestions or report problems?
+A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
+
+					<a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
+				<br>
+				<br><br>
+				
+			
+			</div>
+			<div class="col subscribe-col">
+				<h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
+				<div class="col-cnt">
+					<p>Contact Us
+						If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website.</p> <br>
+					<p>We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
+						<a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+						<!--<form method="post">
+						<input type="text" class="field" value="Your Email Here" title="Your Email Here" />
+						<input type="submit" class="submit-btn" value="Submit" />
+					</form>
+					<a href="#">XXXX@Caculator.com</a>-->
+				</div>	
+			</div>
+			<div class="cl">&nbsp;</div>
+		</div>
+		<!-- end of cols -->
+	</div>
+	<!-- end of shell -->
+</section>
+<!-- end of section-bottom -->
+</div>
+<!-- end of main -->
+<div id="footer-push"></div>
+</div>
+<!-- end of wrapper -->
+<!-- footer -->
+<div id="footer">
+<div class="footer-bottom">
+<div class="shell">
+	<nav class="footer-nav left">
+		<ul>
+			<li class="active"><a href="https://widecalculator.com/">HOME</a></li>
+			<li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
+			<li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
+		</ul>
+	</nav>
+	<p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+	<div class="cl">&nbsp;</div>
+</div>	
+</div>
+</div>
+<!-- end of footer -->
+<div style="display:none;">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-816SNX8L7X');
+</script>
+</div>
+</body>
+</html>
