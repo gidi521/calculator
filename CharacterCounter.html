@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Counter</title>
+    <meta name="description" content="The Character Counter helps you count various types of characters in your text, including spaces, visible characters, unique characters, and more." />
+    <meta itemprop="description" content="The Character Counter allows users to input text and see a detailed breakdown of character counts and frequencies." />
+    <meta name="author" content="Wide Calculator" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+        <script src="js/modernizr.custom.js"></script>
+    <![endif]-->
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
+        /* Character Counter Styles */
+        #character-counter {
+            margin-top: -10px;
+            margin-bottom: -10px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #character-counter label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        #character-counter textarea {
+            width: 100%;
+            height: 150px;
+            margin-top: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #character-counter button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #character-counter button:hover {
+            background-color: #0056b3;
+        }
+
+        #results {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        #results table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #results th, #results td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+
+        #results th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main">
+            <div id="character-counter" class="text-center">
+                <h2>Character Counter</h2>
+                <label for="inputText">Enter Your Text:</label>
+                <textarea id="inputText" placeholder="Type or paste your text here..."></textarea>
+                <br />
+                <button onclick="countCharacters()">Count Characters</button>
+                <div id="results"></div>
+            </div>
+        </div>
+
+        <div id="content" class="text-center">
+            <h2>Character Counter</h2><br>
+            <p>The Character Counter is a tool designed to help you understand the composition of your text. In this article, we'll explore the key components of the counter and how it can help you analyze your text.</p>
+            <br> <h3>Introduction:</h3><br>
+            <p>The counter analyzes the text you input and provides a detailed breakdown of character counts, including spaces, visible characters, unique characters, spaces, words, and character frequency.</p>
+            <br>
+            <h3>Calculator Principle:</h3><br>
+            <p>The counter operates based on the text you input. It calculates the number of all characters, visible characters (no spaces), unique characters (no spaces), spaces, words, and character frequency.</p>
+            <br>
+            <p>By reviewing the counter results, you can see how each character is used in your text, helping you understand the composition of your text.</p>
+            <br>
+            <p>Using this counter can help you analyze your text and make informed decisions about text composition.</p>
+            <br>
+            <h3>Components of the Counter:</h3><br>
+            <ul>
+                <li>All Characters: Total characters including spaces.</li>
+                <li>Visible Characters: Total characters excluding spaces.</li>
+                <li>Unique Characters: Number of unique characters excluding spaces.</li>
+                <li>Spaces: Total number of spaces.</li>
+                <li>Words: Total number of words.</li>
+                <li>Character Frequency: Frequency of each character in the text.</li>
+            </ul>
+            <br>
+            <h3>How to Use the Counter:</h3><br>
+            <p>Using the Character Counter is straightforward. Here's a basic guide:</p>
+            <ol>
+                <li>Enter your text in the provided textarea.</li>
+                <li>Click the "Count Characters" button to generate the character count.</li>
+                <li>Review the results to understand the composition of your text.</li>
+            </ol>
+            <br>
+            <h3>Example:</h3><br>
+            <p>For example, let's consider the text "Hello World!". The counter will provide the following results:</p>
+            <ul>
+                <li>All Characters: 12</li>
+                <li>Visible Characters: 11</li>
+                <li>Unique Characters: 8</li>
+                <li>Spaces: 1</li>
+                <li>Words: 2</li>
+            </ul>
+            <br>
+            <h3>Conclusion:</h3><br>
+            <p>The Character Counter is a valuable tool for anyone working with text. By understanding the counter results, you can analyze your text more effectively and make informed decisions about text composition.</p>
+            <br>
+            <h3>Further Learning:</h3><br>
+            <p>For more resources on text analysis and composition, consider exploring online writing resources, educational websites, or consulting with a writing coach. Continuous learning and understanding are key to effective text composition.</p>
+            <br>
+        </div>
+
+        <script>
+            function countCharacters() {
+                var inputText = document.getElementById('inputText').value;
+                var allCharacters = inputText.length;
+                var visibleCharacters = inputText.replace(/\s/g, '').length;
+                var uniqueCharacters = new Set(inputText.replace(/\s/g, '')).size;
+                var spaces = (inputText.match(/\s/g) || []).length;
+                var words = (inputText.match(/\b\w+\b/g) || []).length;
+
+                var frequency = {};
+                for (var char of inputText.replace(/\s/g, '')) {
+                    frequency[char] = (frequency[char] || 0) + 1;
+                }
+
+                var results = `
+                    <p>All Characters: ${allCharacters}</p>
+                    <p>Visible Characters: ${visibleCharacters}</p>
+                    <p>Unique Characters: ${uniqueCharacters}</p>
+                    <p>Spaces: ${spaces}</p>
+                    <p>Words: ${words}</p>
+                    <br />
+                    <h3>Character Frequency</h3>
+                    <p>${Object.keys(frequency).length} unique visible characters</p>
+                    <table>
+                        <tr><th>Character</th><th>Count</th><th>Frequency (%)</th></tr>`;
+                for (var char in frequency) {
+                    results += `
+                        <tr>
+                            <td>${char}</td>
+                            <td>${frequency[char]}</td>
+                            <td>${((frequency[char] / visibleCharacters) * 100).toFixed(2)}</td>
+                        </tr>`;
+                }
+                results += '</table>';
+                document.getElementById('results').innerHTML = results;
+            }
+        </script>
+
+          <!-- section-bottom -->
+   <section class="section-bottom">
+	<!-- shell -->
+	<div class="shell">
+		<!-- cols -->
+		<div class="cols">
+			<div class="col">
+				<h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
+				<p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
+<p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
+
+				<a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
+			</div>
+			<div class="col">
+				<h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
+				<p>
+					  Q: Can I link from my website to a calculator?
+					 A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
+			<p>Q: How should I send suggestions or report problems?
+A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
+
+					<a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
+				<br>
+				<br><br>
+				
+			
+			</div>
+			<div class="col subscribe-col">
+				<h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
+				<div class="col-cnt">
+					<p>Contact Us
+						If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website.</p> <br>
+					<p>We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
+						<a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+						<!--<form method="post">
+						<input type="text" class="field" value="Your Email Here" title="Your Email Here" />
+						<input type="submit" class="submit-btn" value="Submit" />
+					</form>
+					<a href="#">XXXX@Caculator.com</a>-->
+				</div>	
+			</div>
+			<div class="cl">&nbsp;</div>
+		</div>
+		<!-- end of cols -->
+	</div>
+	<!-- end of shell -->
+</section>
+<!-- end of section-bottom -->
+</div>
+<!-- end of main -->
+<div id="footer-push"></div>
+</div>
+<!-- end of wrapper -->
+<!-- footer -->
+<div id="footer">
+<div class="footer-bottom">
+<div class="shell">
+	<nav class="footer-nav left">
+		<ul>
+			<li class="active"><a href="https://widecalculator.com/">HOME</a></li>
+			<li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
+			<li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
+		</ul>
+	</nav>
+	<p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+	<div class="cl">&nbsp;</div>
+</div>	
+</div>
+</div>
+<!-- end of footer -->
+<div style="display:none;">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-816SNX8L7X');
+</script>
+</div>
+</body>
+</html>
