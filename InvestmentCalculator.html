@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Investment Calculator</title>
-    <meta name="description" content="The Investment Calculator helps you estimate the potential growth of your investment based on several factors, including initial amount, interest rate, accumulation schedule, and investment period." />
-    <meta itemprop="description" content="The Investment Calculator allows users to input specific factors to estimate their potential investment growth." />
+    <meta name="description" content="The Investment Calculator helps you estimate the growth of your investment over time, including interest earned and future value." />
+    <meta itemprop="description" content="The Investment Calculator allows users to input investment details to generate a growth schedule." />
     <meta name="author" content="Wide Calculator" />
     <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
@@ -60,11 +60,22 @@
             background-color: #0056b3;
         }
 
-        #investment-result {
-            font-weight: bold;
+        #investment-schedule {
             margin-top: 20px;
-            font-size: 16px;
-            text-align: center;
+        }
+
+        #investment-schedule table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #investment-schedule th, #investment-schedule td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+
+        #investment-schedule th {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
@@ -85,99 +96,110 @@
         <div class="main">
             <div id="investment-calculator" class="text-center">
                 <h2>Investment Calculator</h2>
-                <label for="initial">Initial Amount:</label>
-                <input type="number" id="initial" placeholder="Initial Amount" />
+                <label for="initialAmount">Initial Investment Amount:</label>
+                <input type="number" id="initialAmount" placeholder="Initial Amount" />
 
-                <label for="rate">Annual Interest Rate (%):</label>
-                <input type="number" id="rate" placeholder="Interest Rate" step="0.01" />
+                <label for="interestRate">Annual Interest Rate (%):</label>
+                <input type="number" id="interestRate" placeholder="Interest Rate" />
 
-                <label for="schedule">Accumulation Schedule:</label>
-                <select id="schedule">
-                    <option value="year">Yearly</option>
-                    <option value="month">Monthly</option>
+                <label for="investmentTerm">Investment Term (Years):</label>
+                <input type="number" id="investmentTerm" placeholder="Investment Term" />
+
+                <label for="compoundFrequency">Compound Frequency:</label>
+                <select id="compoundFrequency">
+                    <option value="12">Monthly</option>
+                    <option value="4">Quarterly</option>
+                    <option value="2">Semi-Annually</option>
+                    <option value="1">Annually</option>
                 </select>
 
-                <label for="period">Investment Period (years):</label>
-                <input type="number" id="period" placeholder="Investment Period" />
-
                 <br />
-                <button onclick="calculateInvestment()">Calculate Investment</button>
-                <p id="investment-result"></p>
+                <button onclick="calculateInvestment()">Calculate Investment Growth</button>
+                <div id="investment-schedule"></div>
             </div>
         </div>
 
         <div id="content" class="text-center">
-            <h2>Investment Calculator</h2><br>
-            <p>The Investment Calculator is a powerful tool designed to help you estimate the potential growth of your investment based on various factors. In this article, we'll delve into the significance of each factor, how they contribute to the overall growth, and how to use the calculator effectively.</p>
+            <h2>Investment Growth Schedule</h2><br>
+            <p>The Investment Growth Schedule is a tool designed to help you understand the growth of your investment over time. In this article, we'll explore the key components of the schedule and how it can help you manage your investments.</p>
            <br> <h3>Introduction:</h3><br>
-            <p>The calculator considers multiple factors that may influence the growth of your investment, including the initial amount, interest rate, accumulation schedule, and investment period. By analyzing these factors, the calculator provides an estimate of your potential investment growth.</p>
+            <p>The schedule considers the initial amount, interest rate, investment term, and compound frequency. By analyzing these factors, the schedule provides a detailed breakdown of each period and its impact on the investment balance.</p>
             <br>
-            <h3>Calculator Principle:</h3><br>
-            <p>The calculator operates based on standard compound interest formulas. It combines multiple factors to provide a comprehensive growth estimate.</p>
-            <br>
-            <p>By entering your specific information, you can obtain a personalized investment growth assessment.</p>
-            <br>
-            <p>Using this calculator can help you understand the potential impact of your investment choices on your financial growth.</p>
-            <br>
-            <h3>Factors Considered:</h3><br>
-            <ul>
-                <li>Initial amount: The starting amount of your investment.</li>
-                <li>Interest rate: The annual rate at which your investment grows.</li>
-                <li>Accumulation schedule: Whether the interest compounds yearly or monthly.</li>
-                <li>Investment period: The number of years you plan to keep the investment.</li>
-            </ul>
-            <br>
-            <h3>How to Use the Calculator:</h3><br>
-            <p>Using the Investment Calculator is straightforward. Here's a basic guide:</p>
-            <ol>
-                <li>Enter your initial amount.</li>
-                <li>Input the annual interest rate.</li>
-                <li>Select the accumulation schedule (yearly or monthly).</li>
-                <li>Enter the investment period in years.</li>
-                <li>Click the "Calculate Investment" button to obtain your growth estimate.</li>
-            </ol>
-            <br>
-            <h3>Example Applications:</h3><br>
-            <p>To better understand how the calculator works, let's consider a few example applications:</p>
-            <ul>
-                <li>An initial amount of $1,000, an annual interest rate of 5%, compounded yearly, for a period of 10 years.</li>
-                <li>An initial amount of $5,000, an annual interest rate of 7%, compounded monthly, for a period of 15 years.</li>
-            </ul>
-            <br>
-            <h3>Conclusion:</h3><br>
-            <p>The Investment Calculator is an invaluable tool for anyone interested in understanding their potential investment growth. By familiarizing yourself with its features and usage, you can obtain reliable and accurate growth estimates to suit your needs. Remember, this calculator provides an estimate and should not replace professional financial advice.</p>
-           <br> <h3>Further Learning:</h3><br>
-            <p>For more resources on investment and related topics, consider exploring online financial resources, educational websites, or academic papers on investment strategies. Continuous learning and exploration are key to mastering the understanding of financial growth.</p>
-            <br>
+        <h3>Calculator Principle:</h3><br>
+        <p>The schedule operates based on the initial amount, interest rate, investment term, and compound frequency. It calculates the future value using the compound interest formula and provides a detailed schedule of growth.</p>
+        <br>
+        <p>By reviewing the schedule, you can see how each period's interest is added to the principal, helping you understand the progress of your investment growth.</p>
+        <br>
+        <p>Using this calculator can help you plan your finances and make informed decisions about your investments.</p>
+        <br>
+        <h3>Components of the Schedule:</h3><br>
+        <ul>
+            <li>Initial amount: The initial amount of the investment.</li>
+            <li>Interest rate: The annual interest rate of the investment.</li>
+            <li>Investment term: The length of time over which the investment will grow.</li>
+            <li>Compound frequency: The frequency at which interest is compounded (e.g., monthly, quarterly).</li>
+        </ul>
+        <br>
+        <h3>How to Use the Schedule:</h3><br>
+        <p>Using the Investment Growth Schedule is straightforward. Here's a basic guide:</p>
+        <ol>
+            <li>Enter the initial amount, interest rate, investment term, and compound frequency.</li>
+            <li>Click the "Calculate Investment Growth" button to generate the schedule.</li>
+            <li>Review the schedule to understand your investment growth plan.</li>
+        </ol>
+        <br>
+        <h3>Example Schedule:</h3><br>
+        <p>For example, let's consider a $10,000 investment with an annual interest rate of 5% and a 10-year term, compounded monthly.</p>
+        <ul>
+            <li>Future value: $16,470.09</li>
+            <li>Total interest earned: $6,470.09</li>
+        </ul>
+        <br>
+        <h3>Conclusion:</h3><br>
+        <p>The Investment Growth Schedule is a valuable tool for anyone looking to grow their investment. By understanding the schedule, you can manage your finances more effectively and make informed decisions about your investment strategy.</p>
+                   <br> <h3>Further Learning:</h3><br>
+        <p>For more resources on investments and financial planning, consider exploring online financial resources, educational websites, or consulting with a financial advisor. Continuous learning and understanding are key to managing your finances effectively.</p>
+                        <br>
         </div>
 
         <script>
             function calculateInvestment() {
-                var initial = parseFloat(document.getElementById('initial').value);
-                var rate = parseFloat(document.getElementById('rate').value) / 100;
-                var schedule = document.getElementById('schedule').value;
-                var period = parseFloat(document.getElementById('period').value);
+                var initialAmount = parseFloat(document.getElementById('initialAmount').value);
+                var interestRate = parseFloat(document.getElementById('interestRate').value);
+                var investmentTerm = parseFloat(document.getElementById('investmentTerm').value);
+                var compoundFrequency = parseInt(document.getElementById('compoundFrequency').value);
 
-                // Validate input
-                if (isNaN(initial) || isNaN(rate) || isNaN(period)) {
-                    alert("Please enter valid values for initial amount, interest rate, and investment period.");
-                    return;
+                var periodicInterestRate = interestRate / 100 / compoundFrequency;
+                var numberOfPeriods = investmentTerm * compoundFrequency;
+                var futureValue = initialAmount * Math.pow((1 + periodicInterestRate), numberOfPeriods);
+                var investmentSchedule = [];
+
+                for (var i = 0; i <= numberOfPeriods; i++) {
+                    var date = new Date();
+                    date.setMonth(date.getMonth() + (i * (12 / compoundFrequency)));
+                    var balance = initialAmount * Math.pow((1 + periodicInterestRate), i);
+                    investmentSchedule.push({ date: date, balance: balance });
                 }
 
-                var n = schedule === 'month' ? 12 : 1; // Number of compounding periods per year
-                var t = period; // Total number of years
-
-                // Compound interest formula
-                var finalAmount = initial * Math.pow((1 + rate / n), n * t);
-
-                // Calculate the total growth
-                var growth = finalAmount - initial;
-
-                document.getElementById('investment-result').innerText = "Estimated Growth: $" + growth.toFixed(2);
+                displayInvestmentSchedule(investmentSchedule, futureValue);
             }
+
+            function displayInvestmentSchedule(schedule, futureValue) {
+    var table = '<table><tr><th>Date</th><th>Balance</th></tr>';
+    for (var i = 0; i < schedule.length; i++) {
+        var row = schedule[i];
+        table += '<tr><td>' + row.date.toLocaleDateString() + '</td><td>' + row.balance.toFixed(2) + '</td></tr>';
+    }
+    table += '</table>';
+    document.getElementById('investment-schedule').innerHTML = table;
+    
+    var futureValueDisplay = '<h3>Future Value of Investment: $' + futureValue.toFixed(2) + '</h3>';
+    document.getElementById('investment-schedule').innerHTML += futureValueDisplay;
+}
+ 
         </script>
 
-           <!-- section-bottom -->
+          <!-- section-bottom -->
    <section class="section-bottom">
 	<!-- shell -->
 	<div class="shell">
