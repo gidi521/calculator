@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pressure Converter</title>
+    <meta name="description" content="Convert various units of pressure including Atmospheres, Bars, Pascals, and more." />
+    <meta itemprop="description" content="The Pressure Converter allows users to input pressure values and convert them to various units." />
+    <meta name="author" content="Wide Calculator" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+        <script src="js/modernizr.custom.js"></script>
+    <![endif]-->
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
+        /* Pressure Converter Styles */
+        #pressure-converter {
+            margin-top: -10px;
+            margin-bottom: -10px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #pressure-converter label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        #pressure-converter input, #pressure-converter select {
+            width: 100%;
+            margin-top: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #pressure-converter button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #pressure-converter button:hover {
+            background-color: #0056b3;
+        }
+
+        #conversion-result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main">
+            <div id="pressure-converter" class="text-center">
+                <h2>Pressure Converter</h2>
+                <label for="inputPressure">Input Pressure:</label>
+                <input type="number" id="inputPressure" placeholder="Pressure Value" />
+
+                <label for="inputUnit">From:</label>
+                <select id="inputUnit">
+                    <option value="atm">Atmospheres (atm)</option>
+                    <option value="bar">Bars (bar)</option>
+                    <option value="EPa">Exapascals (EPa)</option>
+                    <option value="GPa">Gigapascals (GPa)</option>
+                    <option value="hPa">Hectopascals (hPa)</option>
+                    <option value="inHg">Inches Mercury (inHg)</option>
+                    <option value="kg/cm2">Kilogram / Square Centimeter (kg/cm²)</option>
+                    <option value="kPa">Kilopascals (kPa)</option>
+                    <option value="MPa">Megapascals (MPa)</option>
+                    <option value="mbar">Millibars (mbar)</option>
+                    <option value="mmHg">Millimeters Mercury (mmHg)</option>
+                    <option value="N/cm2">Newtons / Square Centimeter (N/cm²)</option>
+                    <option value="N/m2">Newtons / Square Meter (N/m²)</option>
+                    <option value="Pa">Pascals (Pa)</option>
+                    <option value="PPa">Petapascals (PPa)</option>
+                    <option value="psi">Pounds Per Square Inch (psi)</option>
+                    <option value="TPa">Terapascals (TPa)</option>
+                    <option value="torr">Torr</option>
+                </select>
+
+                <label for="outputUnit">To:</label>
+                <select id="outputUnit">
+                    <option value="atm">Atmospheres (atm)</option>
+                    <option value="bar">Bars (bar)</option>
+                    <option value="EPa">Exapascals (EPa)</option>
+                    <option value="GPa">Gigapascals (GPa)</option>
+                    <option value="hPa">Hectopascals (hPa)</option>
+                    <option value="inHg">Inches Mercury (inHg)</option>
+                    <option value="kg/cm2">Kilogram / Square Centimeter (kg/cm²)</option>
+                    <option value="kPa">Kilopascals (kPa)</option>
+                    <option value="MPa">Megapascals (MPa)</option>
+                    <option value="mbar">Millibars (mbar)</option>
+                    <option value="mmHg">Millimeters Mercury (mmHg)</option>
+                    <option value="N/cm2">Newtons / Square Centimeter (N/cm²)</option>
+                    <option value="N/m2">Newtons / Square Meter (N/m²)</option>
+                    <option value="Pa">Pascals (Pa)</option>
+                    <option value="PPa">Petapascals (PPa)</option>
+                    <option value="psi">Pounds Per Square Inch (psi)</option>
+                    <option value="TPa">Terapascals (TPa)</option>
+                    <option value="torr">Torr</option>
+                </select>
+                <br />
+                <button onclick="convertPressure()">Convert Pressure</button>
+                <div id="conversion-result"></div>
+            </div>
+        </div>
+
+        <div id="content" class="text-center">
+            <h2>Pressure Conversion Guide</h2><br>
+            <p>The Pressure Converter is a tool designed to help you convert between different units of pressure. In this article, we'll explore the key units and how to use the converter effectively.</p>
+            <br> 
+            <h3>Introduction:</h3><br>
+            <p>The converter considers various units such as atmospheres, bars, pascals, and more. By inputting a pressure value and selecting the units, the converter provides an accurate conversion to the desired unit.</p>
+            <br>
+            <h3>Using the Converter:</h3><br>
+            <p>Using the Pressure Converter is straightforward. Here's a basic guide:</p>
+            <ol>
+                <li>Enter the pressure value you want to convert.</li>
+                <li>Select the unit of the input value from the "From Unit" dropdown.</li>
+                <li>Select the unit you want to convert to from the "To Unit" dropdown.</li>
+                <li>Click the "Convert Pressure" button to get the result.</li>
+            </ol>
+            <br>
+            <h3>Example Conversion:</h3><br>
+            <p>For example, let's convert 1 atmosphere (atm) to pascals (Pa). The result is:</p>
+            <ul>
+                <li>1 atm = 101,325 Pa</li>
+            </ul>
+            <br>
+            <h3>Conclusion:</h3><br>
+            <p>The Pressure Converter is a valuable tool for anyone needing to convert pressure values. By understanding the different units and using the converter, you can easily perform conversions and make informed decisions.</p>
+            <br>
+            <h3>Further Learning:</h3><br>
+            <p>For more resources on pressure and unit conversions, consider exploring online educational websites or consulting with experts in the field. Continuous learning is key to effectively managing and understanding pressure units.</p>
+            <br>
+        </div>
+        <script>
+            var conversionFactors = {
+                "atm": 1,
+                "bar": 1.01325,
+                "EPa": 1e-12,
+                "GPa": 1e-9,
+                "hPa": 1013.25,
+                "inHg": 29.92,
+                "kg/cm2": 1.03323,
+                "kPa": 101.325,
+                "MPa": 0.101325,
+                "mbar": 1013.25,
+                "mmHg": 760,
+                "N/cm2": 1.01325,
+                "N/m2": 101325,
+                "Pa": 101325,
+                "PPa": 1e-15,
+                "psi": 14.696,
+                "TPa": 1e-12,
+                "torr": 760
+            };
+
+            function convertPressure() {
+                var inputPressure = parseFloat(document.getElementById('inputPressure').value);
+                var inputUnit = document.getElementById('inputUnit').value;
+                var outputUnit = document.getElementById('outputUnit').value;
+
+                var pressureInAtm = inputPressure / conversionFactors[inputUnit];
+                var convertedPressure = pressureInAtm * conversionFactors[outputUnit];
+
+                document.getElementById('conversion-result').innerHTML = `Converted Pressure: ${convertedPressure.toFixed(6)} ${outputUnit}`;
+            }
+        </script>
+
+         <!-- section-bottom -->
+   <section class="section-bottom">
+	<!-- shell -->
+	<div class="shell">
+		<!-- cols -->
+		<div class="cols">
+			<div class="col">
+				<h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
+				<p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
+<p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
+
+				<a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
+			</div>
+			<div class="col">
+				<h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
+				<p>
+					  Q: Can I link from my website to a calculator?
+					 A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
+			<p>Q: How should I send suggestions or report problems?
+A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
+
+					<a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
+				<br>
+				<br><br>
+				
+			
+			</div>
+			<div class="col subscribe-col">
+				<h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
+				<div class="col-cnt">
+					<p>Contact Us
+						If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website.</p> <br>
+					<p>We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
+						<a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+						<!--<form method="post">
+						<input type="text" class="field" value="Your Email Here" title="Your Email Here" />
+						<input type="submit" class="submit-btn" value="Submit" />
+					</form>
+					<a href="#">XXXX@Caculator.com</a>-->
+				</div>	
+			</div>
+			<div class="cl">&nbsp;</div>
+		</div>
+		<!-- end of cols -->
+	</div>
+	<!-- end of shell -->
+</section>
+<!-- end of section-bottom -->
+</div>
+<!-- end of main -->
+<div id="footer-push"></div>
+</div>
+<!-- end of wrapper -->
+<!-- footer -->
+<div id="footer">
+<div class="footer-bottom">
+<div class="shell">
+	<nav class="footer-nav left">
+		<ul>
+			<li class="active"><a href="https://widecalculator.com/">HOME</a></li>
+			<li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
+			<li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
+		</ul>
+	</nav>
+	<p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+	<div class="cl">&nbsp;</div>
+</div>	
+</div>
+</div>
+<!-- end of footer -->
+<div style="display:none;">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-816SNX8L7X');
+</script>
+</div>
+</body>
+</html>
