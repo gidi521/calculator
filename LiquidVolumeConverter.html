@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquid Volume Converter</title>
+    <meta name="description" content="The Liquid Volume Converter helps you convert between various units of liquid volume, including barrels, bushels, liters, gallons, and more." />
+    <meta itemprop="description" content="The Liquid Volume Converter allows users to input liquid volume details to convert between different units." />
+    <meta name="author" content="Wide Calculator" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+        <script src="js/modernizr.custom.js"></script>
+    <![endif]-->
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
+        /* Liquid Volume Converter Styles */
+        #volume-converter {
+            margin-top: -10px;
+            margin-bottom: -10px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #volume-converter label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        #volume-converter input, #volume-converter select {
+            width: 100%;
+            margin-top: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #volume-converter button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #volume-converter button:hover {
+            background-color: #0056b3;
+        }
+
+        #conversion-result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main">
+            <div id="volume-converter" class="text-center">
+                <h2>Liquid Volume Converter</h2>
+                <label for="inputVolume">Input Volume:</label>
+                <input type="number" id="inputVolume" placeholder="Enter volume" />
+
+                <label for="inputUnit">From Unit:</label>
+                <select id="inputUnit">
+                    <option value="bbl (oil)">Barrels (oil)</option>
+                    <option value="bbl">Barrels (UK)</option>
+                    <option value="bblUS">Barrels (US)</option>
+                    <option value="boardFeet">Board Feet</option>
+                    <option value="bu">Bushels (UK)</option>
+                    <option value="buUS">Bushels (US)</option>
+                    <option value="cL">Centiliters (cL)</option>
+                    <option value="cm3">Cubic Centimeters (cm3, cc)</option>
+                    <option value="dm3">Cubic Decimeter (dm3)</option>
+                    <option value="ft3">Cubic Feet (ft3)</option>
+                    <option value="in3">Cubic Inches (in3)</option>
+                    <option value="m3">Cubic Meters (m3)</option>
+                    <option value="yd3">Cubic Yards (yd3)</option>
+                    <option value="cupsMetric">Cups (Metric)</option>
+                    <option value="cupsImperial">Cups (Imperial)</option>
+                    <option value="cupsUS">Cups (US)</option>
+                    <option value="dL">Deciliters (dL)</option>
+                    <option value="daL">Dekaliters (daL)</option>
+                    <option value="dr">Dram (dr)</option>
+                    <option value="flOz">Fluid Ounces (UK)</option>
+                    <option value="flOzUS">Fluid Ounces (US)</option>
+                    <option value="gal">Gallons (UK)</option>
+                    <option value="galUS">Gallons (US)</option>
+                    <option value="gi">Gills (UK)</option>
+                    <option value="hL">Hectoliters (hL)</option>
+                    <option value="kL">Kiloliters (kL)</option>
+                    <option value="L">Liters (L)</option>
+                    <option value="mL">Milliliters (mL)</option>
+                    <option value="pk">Peck (UK)</option>
+                    <option value="pkUS">Peck (US)</option>
+                    <option value="pt">Pints (UK)</option>
+                    <option value="ptUS">Pints (US)</option>
+                    <option value="qt">Quarts (UK)</option>
+                    <option value="dryQtUS">Quarts (US dry)</option>
+                    <option value="qtUS">Quarts (US)</option>
+                    <option value="tbspMetric">Tablespoons (Metric)</option>
+                    <option value="tbspImperial">Tablespoons (Imperial)</option>
+                    <option value="tbspUS">Tablespoons (US)</option>
+                    <option value="tspMetric">Teaspoons (Metric)</option>
+                    <option value="tspImperial">Teaspoons (Imperial)</option>
+                    <option value="tspUS">Teaspoons (US)</option>
+                </select>
+
+                <label for="outputUnit">To Unit:</label>
+                <select id="outputUnit">
+                    <option value="bbl (oil)">Barrels (oil)</option>
+                    <option value="bbl">Barrels (UK)</option>
+                    <option value="bblUS">Barrels (US)</option>
+                    <option value="boardFeet">Board Feet</option>
+                    <option value="bu">Bushels (UK)</option>
+                    <option value="buUS">Bushels (US)</option>
+                    <option value="cL">Centiliters (cL)</option>
+                    <option value="cm3">Cubic Centimeters (cm3, cc)</option>
+                    <option value="dm3">Cubic Decimeter (dm3)</option>
+                    <option value="ft3">Cubic Feet (ft3)</option>
+                    <option value="in3">Cubic Inches (in3)</option>
+                    <option value="m3">Cubic Meters (m3)</option>
+                    <option value="yd3">Cubic Yards (yd3)</option>
+                    <option value="cupsMetric">Cups (Metric)</option>
+                    <option value="cupsImperial">Cups (Imperial)</option>
+                    <option value="cupsUS">Cups (US)</option>
+                    <option value="dL">Deciliters (dL)</option>
+                    <option value="daL">Dekaliters (daL)</option>
+                    <option value="dr">Dram (dr)</option>
+                    <option value="flOz">Fluid Ounces (UK)</option>
+                    <option value="flOzUS">Fluid Ounces (US)</option>
+                    <option value="gal">Gallons (UK)</option>
+                    <option value="galUS">Gallons (US)</option>
+                    <option value="gi">Gills (UK)</option>
+                    <option value="hL">Hectoliters (hL)</option>
+                    <option value="kL">Kiloliters (kL)</option>
+                    <option value="L">Liters (L)</option>
+                    <option value="mL">Milliliters (mL)</option>
+                    <option value="pk">Peck (UK)</option>
+                    <option value="pkUS">Peck (US)</option>
+                    <option value="pt">Pints (UK)</option>
+                    <option value="ptUS">Pints (US)</option>
+                    <option value="qt">Quarts (UK)</option>
+                    <option value="dryQtUS">Quarts (US dry)</option>
+                    <option value="qtUS">Quarts (US)</option>
+                    <option value="tbspMetric">Tablespoons (Metric)</option>
+                    <option value="tbspImperial">Tablespoons (Imperial)</option>
+                    <option value="tbspUS">Tablespoons (US)</option>
+                    <option value="tspMetric">Teaspoons (Metric)</option>
+                    <option value="tspImperial">Teaspoons (Imperial)</option>
+                    <option value="tspUS">Teaspoons (US)</option>
+                </select>
+                <br />
+                <button onclick="convertVolume()">Convert Volume</button>
+                <div id="conversion-result"></div>
+            </div>
+        </div>
+
+        <div id="content" class="text-center">
+            <h2>Liquid Volume Conversion</h2><br>
+            <p>The Liquid Volume Converter is a tool designed to help you easily convert between various units of liquid volume. Below, we explore the key components of the converter and how it can assist you in managing your volume conversions.</p>
+            <br><h3>Introduction:</h3><br>
+            <p>The converter considers various units such as barrels, bushels, liters, gallons, and more. By inputting the volume and selecting the appropriate units, the converter provides an accurate conversion between your desired units.</p>
+            <br>
+            <h3>Calculator Principle:</h3><br>
+            <p>The converter operates based on the volume input and selected units. It uses predefined conversion factors to accurately convert between different units of liquid volume.</p>
+            <br>
+            <p>By using this converter, you can quickly and easily obtain accurate volume conversions for various applications.</p>
+            <br>
+            <h3>Components of the Converter:</h3><br>
+            <ul>
+                <li>Input volume: The volume to be converted.</li>
+                <li>From unit: The unit of the input volume.</li>
+                <li>To unit: The unit to which the volume will be converted.</li>
+            </ul>
+            <br>
+            <h3>How to Use the Converter:</h3><br>
+            <p>Using the Liquid Volume Converter is straightforward. Here's a basic guide:</p>
+            <ol>
+                <li>Enter the volume to be converted.</li>
+                <li>Select the unit of the input volume.</li>
+                <li>Select the unit to which the volume will be converted.</li>
+                <li>Click the "Convert Volume" button to perform the conversion.</li>
+                <li>Review the conversion result.</li>
+            </ol>
+            <br>
+            <h3>Example Conversion:</h3><br>
+            <p>For example, let's consider converting 100 liters to gallons (US).</p>
+            <ul>
+                <li>Input volume: 100 liters</li>
+                <li>Converted volume: 26.42 gallons (US)</li>
+            </ul>
+            <br>
+            <h3>Conclusion:</h3><br>
+            <p>The Liquid Volume Converter is a valuable tool for anyone needing to convert between different units of liquid volume. By understanding how to use the converter, you can manage your volume conversions more effectively and make informed decisions.</p>
+            <br><h3>Further Learning:</h3><br>
+            <p>For more resources on volume conversions and measurement units, consider exploring online educational websites, or consulting with a professional. Continuous learning and understanding are key to managing your conversions effectively.</p>
+            <br>
+        </div>
+
+        <script>
+            function convertVolume() {
+                var inputVolume = parseFloat(document.getElementById('inputVolume').value);
+                var inputUnit = document.getElementById('inputUnit').value;
+                var outputUnit = document.getElementById('outputUnit').value;
+
+                var conversionFactors = {
+                    "bbl (oil)": 158.987,
+                    "bbl": 163.659,
+                    "bblUS": 119.240,
+                    "boardFeet": 2.36,
+                    "bu": 36.3687,
+                    "buUS": 35.2391,
+                    "cL": 0.01,
+                    "cm3": 0.001,
+                    "dm3": 1,
+                    "ft3": 28.3168,
+                    "in3": 0.0163871,
+                    "m3": 1000,
+                    "yd3": 764.555,
+                    "cupsMetric": 0.25,
+                    "cupsImperial": 0.284131,
+                    "cupsUS": 0.24,
+                    "dL": 0.1,
+                    "daL": 10,
+                    "dr": 0.00369669,
+                    "flOz": 0.0284131,
+                    "flOzUS": 0.0295735,
+                    "gal": 4.54609,
+                    "galUS": 3.78541,
+                    "gi": 0.142065,
+                    "hL": 100,
+                    "kL": 1000,
+                    "L": 1,
+                    "mL": 0.001,
+                    "pk": 9.09218,
+                    "pkUS": 8.80977,
+                    "pt": 0.568261,
+                    "ptUS": 0.473176,
+                    "qt": 1.13652,
+                    "dryQtUS": 1.10122,
+                    "qtUS": 0.946353,
+                    "tbspMetric": 0.015,
+                    "tbspImperial": 0.0177582,
+                    "tbspUS": 0.0147868,
+                    "tspMetric": 0.005,
+                    "tspImperial": 0.00591939,
+                    "tspUS": 0.00492892
+                };
+
+                var inputFactor = conversionFactors[inputUnit];
+                var outputFactor = conversionFactors[outputUnit];
+                var convertedVolume = inputVolume * inputFactor / outputFactor;
+
+                document.getElementById('conversion-result').innerHTML = '<p>' + inputVolume + ' ' + inputUnit + ' = ' + convertedVolume.toFixed(2) + ' ' + outputUnit + '</p>';
+            }
+        </script>
+
+       、   <!-- section-bottom -->
+       <section class="section-bottom">
+        <!-- shell -->
+        <div class="shell">
+            <!-- cols -->
+            <div class="cols">
+                <div class="col">
+                    <h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
+                    <p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
+    <p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
+    
+                    <a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
+                </div>
+                <div class="col">
+                    <h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
+                    <p>
+                          Q: Can I link from my website to a calculator?
+                         A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
+                <p>Q: How should I send suggestions or report problems?
+    A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
+    
+                        <a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
+                    <br>
+                    <br><br>
+                    
+                
+                </div>
+                <div class="col subscribe-col">
+                    <h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
+                    <div class="col-cnt">
+                        <p>Contact Us
+                            If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website.</p> <br>
+                        <p>We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
+                            <a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+                            <!--<form method="post">
+                            <input type="text" class="field" value="Your Email Here" title="Your Email Here" />
+                            <input type="submit" class="submit-btn" value="Submit" />
+                        </form>
+                        <a href="#">XXXX@Caculator.com</a>-->
+                    </div>	
+                </div>
+                <div class="cl">&nbsp;</div>
+            </div>
+            <!-- end of cols -->
+        </div>
+        <!-- end of shell -->
+    </section>
+    <!-- end of section-bottom -->
+    </div>
+    <!-- end of main -->
+    <div id="footer-push"></div>
+    </div>
+    <!-- end of wrapper -->
+    <!-- footer -->
+    <div id="footer">
+    <div class="footer-bottom">
+    <div class="shell">
+        <nav class="footer-nav left">
+            <ul>
+                <li class="active"><a href="https://widecalculator.com/">HOME</a></li>
+                <li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
+                <li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
+            </ul>
+        </nav>
+        <p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+        <div class="cl">&nbsp;</div>
+    </div>	
+    </div>
+    </div>
+    <!-- end of footer -->
+    <div style="display:none;">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'G-816SNX8L7X');
+    </script>
+    </div>
+    </body>
+    </html>
