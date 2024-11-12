@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator</title>
+    <meta name="description" content="The Loan Calculator estimates your monthly loan payment based on the loan amount, interest rate, and loan term. It provides a convenient tool for planning your financial needs." />
+    <meta itemprop="description" content="The Loan Calculator is a handy online tool that helps users estimate their monthly loan payments based on the loan amount, interest rate, and loan term." />
+    <meta name="author" content="Wide Calculator" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+        <script src="js/modernizr.custom.js"></script>
+    <![endif]-->
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
+        /* Loan Calculator Styles */
+        #loan-calculator {
+            margin-top: -10px;
+            margin-bottom: -10px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #loan-calculator label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        #loan-calculator input,
+        #loan-calculator select {
+            width: 150px;
+            margin-top: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #loan-calculator button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #loan-calculator button:hover {
+            background-color: #0056b3;
+        }
+
+        #loan-result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main">
+            <div id="loan-calculator" class="text-center">
+                <h2>Loan Calculator</h2>
+                <label for="loan-amount">Loan Amount ($):</label>
+                <input type="number" id="loan-amount" placeholder="Loan Amount" />
+                <label for="interest-rate">Interest Rate (%):</label>
+                <input type="number" id="interest-rate" step="0.01" placeholder="Interest Rate" />
+                <label for="loan-term">Loan Term (years):</label>
+                <input type="number" id="loan-term" placeholder="Loan Term" />
+                <br />
+                <button onclick="calculateLoan()">Calculate</button>
+                <p id="loan-result"></p>
+            </div>
+        </div>
+
+        <div id="content" class="text-center">
+            <h2>Understanding Your Loan Payments</h2><br>
+            <p>The Loan Calculator helps you estimate your monthly loan payment based on the loan amount, interest rate, and loan term. Understanding your monthly payment is essential for managing your financial planning and budgeting.</p>
+            <br>
+            <h3>Factors Affecting Loan Payments:</h3><br>
+            <p>Your loan payments are influenced by several factors:</p>
+            <ul>
+                <li>Loan Amount: The total amount of money you borrow.</li>
+                <li>Interest Rate: The percentage of the loan amount charged as interest.</li>
+                <li>Loan Term: The length of time you have to repay the loan.</li>
+            </ul>
+            <br>
+            <h3>Understanding the Calculation Formula</h3><br>
+            <p>The calculation of monthly loan payments involves the following formula:</p>
+            <ul>
+                <li><strong>Monthly Payment:</strong> P = L[c(1 + c)^n]/[(1 + c)^n - 1]</li>
+                <ul>
+                    <li><strong>P:</strong> Monthly payment</li>
+                    <li><strong>L:</strong> Loan amount</li>
+                    <li><strong>c:</strong> Monthly interest rate (annual rate divided by 12)</li>
+                    <li><strong>n:</strong> Number of payments (loan term in years multiplied by 12)</li>
+                </ul>
+            </ul>
+            <br> <h3>Conclusion:</h3><br>
+            <p>Knowing your monthly loan payment can help you make informed decisions about your financial planning and budgeting. Use this calculator as a guide to plan your finances effectively.</p>
+            <br>
+        </div>
+
+        <script>
+            function calculateLoan() {
+                var loanAmount = parseFloat(document.getElementById('loan-amount').value);
+                var interestRate = parseFloat(document.getElementById('interest-rate').value) / 100 / 12;
+                var loanTerm = parseInt(document.getElementById('loan-term').value) * 12;
+
+                if (isNaN(loanAmount) || isNaN(interestRate) || isNaN(loanTerm)) {
+                    alert("Please enter valid values for loan amount, interest rate, and loan term.");
+                    return;
+                }
+
+                var monthlyPayment = (loanAmount * interestRate * Math.pow((1 + interestRate), loanTerm)) / (Math.pow((1 + interestRate), loanTerm) - 1);
+                document.getElementById('loan-result').innerText = "Monthly Loan Payment: $" + monthlyPayment.toFixed(2);
+            }
+        </script>
+
+          <!-- section-bottom -->
+   <section class="section-bottom">
+	<!-- shell -->
+	<div class="shell">
+		<!-- cols -->
+		<div class="cols">
+			<div class="col">
+				<h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
+				<p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
+<p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
+
+				<a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
+			</div>
+			<div class="col">
+				<h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
+				<p>
+					  Q: Can I link from my website to a calculator?
+					 A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
+			<p>Q: How should I send suggestions or report problems?
+A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
+
+					<a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
+				<br>
+				<br><br>
+				
+			
+			</div>
+			<div class="col subscribe-col">
+				<h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
+				<div class="col-cnt">
+					<p>Contact Us
+						If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website.</p> <br>
+					<p>We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
+						<a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+						<!--<form method="post">
+						<input type="text" class="field" value="Your Email Here" title="Your Email Here" />
+						<input type="submit" class="submit-btn" value="Submit" />
+					</form>
+					<a href="#">XXXX@Caculator.com</a>-->
+				</div>	
+			</div>
+			<div class="cl">&nbsp;</div>
+		</div>
+		<!-- end of cols -->
+	</div>
+	<!-- end of shell -->
+</section>
+<!-- end of section-bottom -->
+</div>
+<!-- end of main -->
+<div id="footer-push"></div>
+</div>
+<!-- end of wrapper -->
+<!-- footer -->
+<div id="footer">
+<div class="footer-bottom">
+<div class="shell">
+	<nav class="footer-nav left">
+		<ul>
+			<li class="active"><a href="https://widecalculator.com/">HOME</a></li>
+			<li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
+			<li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
+		</ul>
+	</nav>
+	<p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+	<div class="cl">&nbsp;</div>
+</div>	
+</div>
+</div>
+<!-- end of footer -->
+<div style="display:none;">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-816SNX8L7X');
+</script>
+</div>
+</body>
+</html>

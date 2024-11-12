@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inflation Calculator</title>
+    <meta name="description" content="The Inflation Calculator helps you estimate the value of money over time, adjusting for inflation." />
+    <meta itemprop="description" content="The Inflation Calculator allows users to input financial details to understand the effects of inflation on the value of money over time." />
+    <meta name="author" content="Wide Calculator" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+        <script src="js/modernizr.custom.js"></script>
+    <![endif]-->
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
+        /* Inflation Calculator Styles */
+        #inflation-calculator {
+            margin-top: -10px;
+            margin-bottom: -10px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #inflation-calculator label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        #inflation-calculator input, #inflation-calculator select {
+            width: 100%;
+            margin-top: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #inflation-calculator button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #inflation-calculator button:hover {
+            background-color: #0056b3;
+        }
+
+        #inflation-schedule {
+            margin-top: 20px;
+        }
+
+        #inflation-schedule table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #inflation-schedule th, #inflation-schedule td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+
+        #inflation-schedule th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main">
+            <div id="inflation-calculator" class="text-center">
+                <h2>Inflation Calculator</h2>
+                <label for="initialAmount">Initial Amount:</label>
+                <input type="number" id="initialAmount" placeholder="Initial Amount" />
+
+                <label for="inflationRate">Annual Inflation Rate (%):</label>
+                <input type="number" id="inflationRate" placeholder="Inflation Rate" />
+
+                <label for="years">Number of Years:</label>
+                <input type="number" id="years" placeholder="Number of Years" />
+
+                <br />
+                <button onclick="calculateInflation()">Calculate Future Value</button>
+                <div id="inflation-schedule"></div>
+            </div>
+        </div>
+
+        <div id="content" class="text-center">
+            <h2>Inflation Calculator Overview</h2><br>
+            <p>The Inflation Calculator is a tool designed to help you understand the impact of inflation on the value of money over time. In this article, we'll explore how to use the calculator and its benefits.</p>
+            <br> <h3>Introduction:</h3><br>
+            <p>Inflation erodes the purchasing power of money over time. By using this calculator, you can estimate how much a specific amount of money will be worth in the future, considering a given inflation rate.</p>
+            <br>
+            <h3>Calculator Principle:</h3><br>
+            <p>The calculator uses the initial amount, annual inflation rate, and number of years to calculate the future value of money. The formula takes into account the cumulative effect of inflation over the specified period.</p>
+            <br>
+            <p>Reviewing the results can help you understand how inflation affects your savings and investments over time.</p>
+            <br>
+            <p>Using this calculator can assist in financial planning and decision-making.</p>
+            <br>
+            <h3>Components of the Calculator:</h3><br>
+            <ul>
+                <li>Initial amount: The starting value of the money.</li>
+                <li>Inflation rate: The annual rate of inflation.</li>
+                <li>Number of years: The period over which the inflation is applied.</li>
+            </ul>
+            <br>
+            <h3>How to Use the Calculator:</h3><br>
+            <p>Using the Inflation Calculator is straightforward. Here's a basic guide:</p>
+            <ol>
+                <li>Enter the initial amount, inflation rate, and number of years.</li>
+                <li>Click the "Calculate Future Value" button to get the results.</li>
+                <li>Review the future value to understand the impact of inflation.</li>
+            </ol>
+            <br>
+            <h3>Example Calculation:</h3><br>
+            <p>For example, let's consider an initial amount of $10,000 with an annual inflation rate of 3% over 20 years.</p>
+            <ul>
+                <li>Future value: $18,061.11</li>
+            </ul>
+            <br>
+            <h3>Conclusion:</h3><br>
+            <p>The Inflation Calculator is a valuable tool for understanding the effects of inflation on your money. By using this tool, you can better manage your finances and plan for the future.</p>
+            <br> <h3>Further Learning:</h3><br>
+            <p>For more resources on inflation and financial planning, consider exploring online financial resources, educational websites, or consulting with a financial advisor. Continuous learning and understanding are key to managing your finances effectively.</p>
+            <br>
+        </div>
+
+        <script>
+            function calculateInflation() {
+                var initialAmount = parseFloat(document.getElementById('initialAmount').value);
+                var inflationRate = parseFloat(document.getElementById('inflationRate').value) / 100;
+                var years = parseFloat(document.getElementById('years').value);
+
+                var futureValue = initialAmount * Math.pow(1 + inflationRate, years);
+                var inflationSchedule = [];
+
+                for (var i = 0; i <= years; i++) {
+                    var yearValue = initialAmount * Math.pow(1 + inflationRate, i);
+                    inflationSchedule.push({ year: i, value: yearValue });
+                }
+
+                displayInflationSchedule(inflationSchedule);
+            }
+
+            function displayInflationSchedule(schedule) {
+                var table = '<table><tr><th>Year</th><th>Value</th></tr>';
+                for (var i = 0; i < schedule.length; i++) {
+                    var row = schedule[i];
+                    table += '<tr><td>' + row.year + '</td><td>' + row.value.toFixed(2) + '</td></tr>';
+                }
+                table += '</table>';
+                document.getElementById('inflation-schedule').innerHTML = table;
+            }
+        </script>
+
+          <!-- section-bottom -->
+   <section class="section-bottom">
+	<!-- shell -->
+	<div class="shell">
+		<!-- cols -->
+		<div class="cols">
+			<div class="col">
+				<h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
+				<p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
+<p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
+
+				<a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
+			</div>
+			<div class="col">
+				<h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
+				<p>
+					  Q: Can I link from my website to a calculator?
+					 A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
+			<p>Q: How should I send suggestions or report problems?
+A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
+
+					<a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
+				<br>
+				<br><br>
+				
+			
+			</div>
+			<div class="col subscribe-col">
+				<h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
+				<div class="col-cnt">
+					<p>Contact Us
+						If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website.</p> <br>
+					<p>We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
+						<a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+						<!--<form method="post">
+						<input type="text" class="field" value="Your Email Here" title="Your Email Here" />
+						<input type="submit" class="submit-btn" value="Submit" />
+					</form>
+					<a href="#">XXXX@Caculator.com</a>-->
+				</div>	
+			</div>
+			<div class="cl">&nbsp;</div>
+		</div>
+		<!-- end of cols -->
+	</div>
+	<!-- end of shell -->
+</section>
+<!-- end of section-bottom -->
+</div>
+<!-- end of main -->
+<div id="footer-push"></div>
+</div>
+<!-- end of wrapper -->
+<!-- footer -->
+<div id="footer">
+<div class="footer-bottom">
+<div class="shell">
+	<nav class="footer-nav left">
+		<ul>
+			<li class="active"><a href="https://widecalculator.com/">HOME</a></li>
+			<li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
+			<li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
+		</ul>
+	</nav>
+	<p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+	<div class="cl">&nbsp;</div>
+</div>	
+</div>
+</div>
+<!-- end of footer -->
+<div style="display:none;">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-816SNX8L7X');
+</script>
+</div>
+</body>
+</html>

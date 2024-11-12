@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Time Calculator</title>
+	<meta name="description" content="The Time Calculator allows you to perform basic arithmetic operations on time values, including addition, subtraction, multiplication, and division. It provides a convenient tool for calculating time differences and durations." />
+	<meta itemprop="description" content="The Time Calculator is a handy online tool that enables users to perform various arithmetic operations on time values, such as addition, subtraction, multiplication, and division. It helps calculate time differences and durations accurately." />
+	<meta name="author" content="Wide Calculator" />
+	<link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+	<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<!--[if lt IE 9]>
+		<script src="js/modernizr.custom.js"></script>
+	<![endif]-->
+	<script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+	<script src="js/functions.js" type="text/javascript"></script>
+	<style>
+        /* Time Calculator Styles */
+        #time-calculator {
+            margin-top: -10px;
+            margin-bottom: -10px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #time-calculator label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        #time-calculator input {
+            width: 80px;
+            margin-top: 10px;
+        }
+
+        #time-calculator button {
+            margin-top: 20px;
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #time-calculator button:hover {
+            background-color: #0056b3;
+        }
+
+        #time-result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+	<div id="wrapper">
+		<header>
+			<div class="shell">
+				<h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+				<nav id="navigation">
+					<ul>
+						<li class="active"><a href="https://widecalculator.com/">Home</a></li>
+						<li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<div class="main">
+			<div id="time-calculator" class="text-center">
+				<h2>Time Calculator</h2>
+				<label for="time1">Time 1:</label>
+				<input type="time" id="time1" />
+				<br />
+				<label for="operation">Operation:</label>
+				<select id="operation">
+					<option value="add">+</option>
+					<option value="subtract">-</option>
+				</select>
+				<br />
+				<label for="time2">Time 2:</label>
+				<input type="time" id="time2" />
+				<br />
+				<button onclick="calculateTime()">Calculate</button>
+				<p id="time-result"></p>
+			</div>
+		</div>
+<div id="content" class="text-center">
+    <p>The Time Calculator allows you to perform basic arithmetic operations on time values, including addition and subtraction. Simply enter two time values, select the operation you want to perform, and click the "Calculate" button to see the result.</p>
+    <p>For example, if you want to find the difference between two times, enter both times in the respective input fields, select the "-" operation, and click "Calculate" to see the time difference.</p>
+    <p>Keep in mind that time should be entered in the format HH:MM (24-hour format).</p>
+</div>
+
+
+<script>
+function calculateTime() {
+    var time1 = document.getElementById('time1').value;
+    var time2 = document.getElementById('time2').value;
+    var operation = document.getElementById('operation').value;
+
+    // Parse time values
+    var [hours1, minutes1] = time1.split(":").map(Number);
+    var [hours2, minutes2] = time2.split(":").map(Number);
+
+    // Calculate total minutes for each time
+    var totalMinutes1 = hours1 * 60 + minutes1;
+    var totalMinutes2 = hours2 * 60 + minutes2;
+
+    var result;
+    if (operation === 'add') {
+        result = totalMinutes1 + totalMinutes2;
+    } else if (operation === 'subtract') {
+        result = totalMinutes1 - totalMinutes2;
+    } else {
+        alert("Invalid operation.");
+        return;
+    }
+
+    // Convert result back to hours and minutes
+    var hoursResult = Math.floor(result / 60);
+    var minutesResult = result % 60;
+
+    document.getElementById('time-result').textContent = "Result: " + hoursResult + " hours " + minutesResult + " minutes";
+}
+</script>
+
+			   <!-- section-bottom -->
+   <section class="section-bottom">
+	<!-- shell -->
+	<div class="shell">
+		<!-- cols -->
+		<div class="cols">
+			<div class="col">
+				<h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
+				<p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
+<p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
+
+				<a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
+			</div>
+			<div class="col">
+				<h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
+				<p>
+					  Q: Can I link from my website to a calculator?
+					 A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
+			<p>Q: How should I send suggestions or report problems?
+A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
+
+					<a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
+				<br>
+				<br><br>
+				
+			
+			</div>
+			<div class="col subscribe-col">
+				<h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
+				<div class="col-cnt">
+					<p>Contact Us
+						If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website.</p> <br>
+					<p>We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
+						<a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+						<!--<form method="post">
+						<input type="text" class="field" value="Your Email Here" title="Your Email Here" />
+						<input type="submit" class="submit-btn" value="Submit" />
+					</form>
+					<a href="#">XXXX@Caculator.com</a>-->
+				</div>	
+			</div>
+			<div class="cl">&nbsp;</div>
+		</div>
+		<!-- end of cols -->
+	</div>
+	<!-- end of shell -->
+</section>
+<!-- end of section-bottom -->
+</div>
+<!-- end of main -->
+<div id="footer-push"></div>
+</div>
+<!-- end of wrapper -->
+<!-- footer -->
+<div id="footer">
+<div class="footer-bottom">
+<div class="shell">
+	<nav class="footer-nav left">
+		<ul>
+			<li class="active"><a href="https://widecalculator.com/">HOME</a></li>
+			<li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
+			<li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
+		</ul>
+	</nav>
+	<p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+	<div class="cl">&nbsp;</div>
+</div>	
+</div>
+</div>
+<!-- end of footer -->
+<div style="display:none;">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-816SNX8L7X');
+</script>
+</div>
+</body>
+</html>

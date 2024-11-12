@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Loan Calculator</title>
+    <meta name="description" content="The Auto Loan Calculator helps calculate monthly payments and total interest for an auto loan based on the principal amount, interest rate, and loan term. It provides a useful tool for estimating the cost of financing a vehicle." />
+    <meta itemprop="description" content="The Auto Loan Calculator is a helpful online tool that computes monthly payments and total interest for financing a vehicle. By considering the principal amount, interest rate, and loan term, users can make informed decisions about auto financing." />
+    <meta name="author" content="Wide Calculator" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+        <script src="js/modernizr.custom.js"></script>
+    <![endif]-->
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
+        /* Auto Loan Calculator Styles */
+        #auto-loan-calculator {
+            margin-top: -10px;
+            margin-bottom: -10px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #auto-loan-calculator label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        #auto-loan-calculator input,
+        #auto-loan-calculator select {
+            width: 150px;
+            margin-top: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #auto-loan-calculator button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #auto-loan-calculator button:hover {
+            background-color: #0056b3;
+        }
+
+        #auto-loan-result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main">
+            <div id="auto-loan-calculator" class="text-center">
+                <h2>Auto Loan Calculator</h2>
+                <label for="auto-price">Vehicle Price ($):</label>
+                <input type="number" id="auto-price" placeholder="Vehicle Price" />
+                <label for="interest-rate">Annual Interest Rate (%):</label>
+                <input type="number" id="interest-rate" step="0.01" placeholder="Interest Rate" />
+                <label for="loan-term">Loan Term (years):</label>
+                <input type="number" id="loan-term" placeholder="Loan Term" />
+                <br />
+                <button onclick="calculateAutoLoan()">Calculate</button>
+                <p id="auto-loan-result"></p>
+            </div>
+        </div>
+
+        <div id="content" class="text-center">
+                <br> <h2>Understanding Auto Loan Calculation</h2><br>
+                <p>Auto loan calculations help determine the monthly payment and total interest for financing a vehicle. This is essential for making informed decisions about purchasing a car through a loan.</p>
+                <br>
+                <h3>Key Components of Auto Loan Calculation:</h3><br>
+                <p>The calculation of an auto loan involves several key components:</p>
+                <ul>
+                    <li><strong>Vehicle Price:</strong> The total cost of the car you are planning to finance.</li>
+                    <li><strong>Annual Interest Rate:</strong> The percentage of the loan amount charged annually by the lender.</li>
+                    <li><strong>Loan Term:</strong> The duration over which the loan is to be repaid, typically measured in years.</li>
+                </ul>
+                <br>
+                <h3>Understanding the Calculation Formula</h3><br>
+                <p>The formula for calculating the monthly payment of an auto loan is:</p>
+                <ul>
+                    <li><strong>Monthly Payment:</strong> M = P[r(1+r)^n] / [(1+r)^n – 1]</li>
+                    <ul>
+                        <li><strong>M:</strong> Monthly Payment</li>
+                        <li><strong>P:</strong> Principal Amount (Vehicle Price)</li>
+                        <li><strong>r:</strong> Monthly Interest Rate (Annual Interest Rate / 12)</li>
+                        <li><strong>n:</strong> Total Number of Payments (Loan Term in years * 12)</li>
+                    </ul>
+                </ul>
+                <br>
+                <p>Using this formula, the auto loan calculator estimates the monthly payments and total interest based on the specified parameters.</p>
+                <br>
+                <h3>Conclusion:</h3><br>
+                <p>The Auto Loan Calculator is a valuable tool for individuals planning to finance a vehicle. By considering the vehicle price, interest rate, and loan term, users can understand the cost of the loan and plan their finances accordingly.</p>
+      <!-- Content can be added here -->
+        </div>
+        
+        <script>
+           function calculateAutoLoan() {
+    var vehiclePrice = parseFloat(document.getElementById('auto-price').value);
+    var interestRate = parseFloat(document.getElementById('interest-rate').value) / 100; // Convert interest rate to decimal
+    var loanTerm = parseFloat(document.getElementById('loan-term').value);
+
+    // Validate inputs
+    if (isNaN(vehiclePrice) || isNaN(interestRate) || isNaN(loanTerm) || vehiclePrice <= 0 || interestRate <= 0 || loanTerm <= 0) {
+        alert("Please enter valid inputs.");
+        return;
+    }
+
+    var monthlyInterestRate = interestRate / 12;
+    var totalMonths = loanTerm * 12;
+
+    // Calculate monthly payment
+    var monthlyPayment = (vehiclePrice * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -totalMonths));
+
+    // Calculate total payment
+    var totalPayment = monthlyPayment * totalMonths;
+    var totalInterest = totalPayment - vehiclePrice;
+
+    document.getElementById('auto-loan-result').innerHTML = "Monthly Payment: $" + monthlyPayment.toFixed(2) + "<br>Total Interest: $" + totalInterest.toFixed(2) + "<br>Total Payment: $" + totalPayment.toFixed(2);
+}
+	</script>
+
+      <!-- section-bottom -->
+      <section class="section-bottom">
+        <!-- shell -->
+        <div class="shell">
+            <!-- cols -->
+            <div class="cols">
+                <div class="col">
+                    <h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
+                    <p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
+    <p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
+    
+                    <a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
+                </div>
+                <div class="col">
+                    <h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
+                    <p>
+                          Q: Can I link from my website to a calculator?
+                         A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
+                <p>Q: How should I send suggestions or report problems?
+    A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
+    
+                        <a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
+                    <br>
+                    <br><br>
+                    
+                
+                </div>
+                <div class="col subscribe-col">
+                    <h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
+                    <div class="col-cnt">
+                        <p>Contact Us
+                            If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website.</p> <br>
+                        <p>We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
+                            <a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+                            <!--<form method="post">
+                            <input type="text" class="field" value="Your Email Here" title="Your Email Here" />
+                            <input type="submit" class="submit-btn" value="Submit" />
+                        </form>
+                        <a href="#">XXXX@Caculator.com</a>-->
+                    </div>	
+                </div>
+                <div class="cl">&nbsp;</div>
+            </div>
+            <!-- end of cols -->
+        </div>
+        <!-- end of shell -->
+    </section>
+    <!-- end of section-bottom -->
+    </div>
+    <!-- end of main -->
+    <div id="footer-push"></div>
+    </div>
+    <!-- end of wrapper -->
+    <!-- footer -->
+    <div id="footer">
+    <div class="footer-bottom">
+    <div class="shell">
+        <nav class="footer-nav left">
+            <ul>
+                <li class="active"><a href="https://widecalculator.com/">HOME</a></li>
+                <li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
+                <li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
+            </ul>
+        </nav>
+        <p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+        <div class="cl">&nbsp;</div>
+    </div>	
+    </div>
+    </div>
+    <!-- end of footer -->
+    <div style="display:none;">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'G-816SNX8L7X');
+    </script>
+    </div>
+    </body>
+    </html>

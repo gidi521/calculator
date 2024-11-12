@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - WideCalculator</title>
+    <meta name="description" content="Contact WideCalculator for any inquiries, feedback, or suggestions. We value your input and strive to respond promptly to all messages." />
+    <meta name="author" content="Wide Calculator" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+        <script src="js/modernizr.custom.js"></script>
+    <![endif]-->
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label, input, textarea {
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            width: 100px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <!-- wrapper -->
+    <div id="wrapper">
+        <!-- header -->
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!-- end of header -->
+
+        <!-- main -->
+        <div class="main">
+            <div id="content" class="text-center">
+                <h1>Contact Us</h1>
+                <form action="mailto:widecalculator@gmail.com" method="post" enctype="text/plain">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                    
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+        <!-- end of main -->
+
+        <div id="footer-push"></div>
+    </div>
+    <!-- end of wrapper -->
+
+    <!-- footer -->
+    <div id="footer">
+        <div class="footer-bottom">
+            <div class="shell">
+                <nav class="footer-nav left">
+                    <ul>
+                        <li><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About Us</a></li>
+                        <li class="active"><a href="https://widecalculator.com/contactus.html">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <p class="copy right"> All Rights Reserved. Copyright &copy; <a href="https://widecalculator.com" title="WideCalculator" target="_blank">WideCalculator.com</a> </p>
+                <div class="cl">&nbsp;</div>
+            </div>
+        </div>
+    </div>
+    <!-- end of footer -->
+    <div style="display:none;">
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-816SNX8L7X');
+        </script>
+    </div>
+</body>
+</html>

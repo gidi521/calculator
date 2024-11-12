@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Fat Calculator</title>
+    <meta name="description" content="The Body Fat Calculator estimates body fat percentage based on various measurements. It provides a convenient tool for assessing body composition and monitoring fitness progress." />
+    <meta itemprop="description" content="The Body Fat Calculator is a useful online tool for estimating body fat percentage using measurements such as height, weight, and waist circumference. It simplifies the process of assessing body composition and helps individuals track their fitness goals." />
+    <meta name="author" content="Wide Calculator" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+        <script src="js/modernizr.custom.js"></script>
+    <![endif]-->
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
+        /* Body Fat Calculator Styles */
+        #body-fat-calculator {
+            margin-top: -10px;
+            margin-bottom: -10px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #body-fat-calculator label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        #body-fat-calculator input {
+            width: 60px;
+            margin-top: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #body-fat-calculator button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #body-fat-calculator button:hover {
+            background-color: #0056b3;
+        }
+
+        #body-fat-result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main">
+            <div id="body-fat-calculator" class="text-center">
+                <h2>Body Fat Calculator</h2>
+                <label for="height">Height (cm):</label>
+                <input type="text" id="height" placeholder="Height" />
+                <label for="weight">Weight (kg):</label>
+                <input type="text" id="weight" placeholder="Weight" />
+                <label for="waist">Waist Circumference (cm):</label>
+                <input type="text" id="waist" placeholder="Waist Circumference" />
+                <br />
+                <button onclick="calculateBodyFat()">Calculate</button>
+                <p id="body-fat-result"></p>
+            </div>
+        </div>
+
+        <div id="content" class="text-center">
+            <br>  <h2>Understanding Body Fat Percentage: Importance, Measurement, and More</h2><br>
+            <p>The Body Fat Calculator is a valuable tool for estimating body fat percentage, a key indicator of overall health and fitness. In this article, we'll explore the importance of body fat percentage, methods for measuring it, and additional information to help you achieve your fitness goals.</p>
+           <br> <h3>Importance of Body Fat Percentage:</h3><br>
+            <p>Body fat percentage is a crucial metric for assessing overall health and fitness. Unlike body weight alone, which does not distinguish between fat and muscle mass, body fat percentage provides insight into body composition and helps determine optimal weight and fitness levels.</p>
+            <br><h3>Measuring Body Fat Percentage:</h3><br>
+<p>There are several methods for measuring body fat percentage, including:</p>
+<ul>
+    <li>Skinfold calipers: Measures skinfold thickness at various locations on the body to estimate body fat percentage.</li>
+    <li>Bioelectrical impedance analysis (BIA): Sends a low-level electrical current through the body to estimate body fat percentage based on resistance.</li>
+    <li>Dual-energy X-ray absorptiometry (DEXA): Uses X-ray technology to measure body composition, including fat mass and lean mass.</li>
+</ul>
+<br>
+<p>Each method has its advantages and limitations, and the choice of method may depend on factors such as availability, cost, and accuracy.</p>
+<br>
+<p>Regardless of the method used, tracking changes in body fat percentage over time can help individuals monitor their progressand adjust their fitness and nutrition goals accordingly. By maintaining a healthy body fat percentage, individuals can reduce their risk of obesity-related health issues such as heart disease, diabetes, and stroke, while improving overall physical performance and well-being.</p>
+
+<br><h3>Interpreting Body Fat Percentage:</h3><br>
+<p>Body fat percentage ranges vary depending on factors such as age, gender, and fitness level. However, in general:</p>
+<ul>
+    <li>Essential fat: This is the minimal amount of fat necessary for basic physiological functions, such as hormone production and insulation. For men, essential fat typically ranges from 2% to 5%, while for women, it ranges from 10% to 13%.</li>
+    <li>Athletes: Athletes often have lower body fat percentages due to their high levels of lean muscle mass. For male athletes, body fat percentages may range from 6% to 13%, while for female athletes, they may range from 14% to 20%.</li>
+    <li>Fitness enthusiasts: Individuals who prioritize fitness and exercise may aim for body fat percentages slightly higher than athletes but lower than the general population. For men, fitness-focused body fat percentages may range from 14% to 17%, while for women, they may range from 21% to 24%.</li>
+    <li>General population: For optimal health, most men should aim for body fat percentages below 25%, while most women should aim for percentages below 32%. However, individual preferences and goals may vary.</li>
+</ul>
+<br>
+<p>It's essential to note that body fat percentage is just one component of overall health and fitness. Other factors, such as muscle mass, bone density, and cardiovascular endurance, also play crucial roles in determining overall wellness. Therefore, it's essential to adopt a holistic approach to health and fitness, incorporating regular exercise, balanced nutrition, and adequate rest and recovery.</p>
+<br><h3>Conclusion:</h3><br>
+<p>The Body Fat Calculator is a valuable tool for estimating body fat percentage and monitoring changes in body composition over time. By understanding the importance of body fat percentage, interpreting the results accurately, and taking proactive steps to maintain a healthy body composition, individuals can optimize their health and well-being for years to come.</p>
+<br><h3>Further Learning:</h3><br>
+<p>For more resources on body fat percentage, body composition analysis, and related topics, consider exploring reputable fitness and nutrition websites, consulting with certified fitness professionals, or seeking guidance from registered dietitians or healthcare providers. Continuous learning and informed decision-making are key to achieving and maintaining optimal health and fitness.</p><br>
+</div>
+<script>
+    function calculateBodyFat() {
+        var height = parseFloat(document.getElementById('height').value);
+        var weight = parseFloat(document.getElementById('weight').value);
+        var waist = parseFloat(document.getElementById('waist').value);
+
+        // Validate input
+        if (isNaN(height) || isNaN(weight) || isNaN(waist) || height <= 0 || weight <= 0 || waist <= 0) {
+            alert("Please enter valid height, weight, and waist circumference values.");
+            return;
+        }
+
+        // Calculate body fat percentage
+        var bodyFatPercentage = calculatePercentage((weight - 0.8 * waist) / height, 0.9);
+        document.getElementById('body-fat-result').innerText = "Body Fat Percentage: " + bodyFatPercentage.toFixed(2) + "%";
+    }
+
+    // Function to calculate percentage
+    function calculatePercentage(value, percentage) {
+        return (value * percentage * 100);
+    }
+</script>
+   <!-- section-bottom -->
+   <section class="section-bottom">
+	<!-- shell -->
+	<div class="shell">
+		<!-- cols -->
+		<div class="cols">
+			<div class="col">
+				<h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
+				<p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
+<p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
+
+				<a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
+			</div>
+			<div class="col">
+				<h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
+				<p>
+					  Q: Can I link from my website to a calculator?
+					 A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
+			<p>Q: How should I send suggestions or report problems?
+A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
+
+					<a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
+				<br>
+				<br><br>
+				
+			
+			</div>
+			<div class="col subscribe-col">
+				<h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
+				<div class="col-cnt">
+					<p>Contact Us
+						If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website.</p> <br>
+					<p>We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
+						<a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+						<!--<form method="post">
+						<input type="text" class="field" value="Your Email Here" title="Your Email Here" />
+						<input type="submit" class="submit-btn" value="Submit" />
+					</form>
+					<a href="#">XXXX@Caculator.com</a>-->
+				</div>	
+			</div>
+			<div class="cl">&nbsp;</div>
+		</div>
+		<!-- end of cols -->
+	</div>
+	<!-- end of shell -->
+</section>
+<!-- end of section-bottom -->
+</div>
+<!-- end of main -->
+<div id="footer-push"></div>
+</div>
+<!-- end of wrapper -->
+<!-- footer -->
+<div id="footer">
+<div class="footer-bottom">
+<div class="shell">
+	<nav class="footer-nav left">
+		<ul>
+			<li class="active"><a href="https://widecalculator.com/">HOME</a></li>
+			<li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
+			<li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
+		</ul>
+	</nav>
+	<p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+	<div class="cl">&nbsp;</div>
+</div>	
+</div>
+</div>
+<!-- end of footer -->
+<div style="display:none;">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-816SNX8L7X');
+</script>
+</div>
+</body>
+</html>

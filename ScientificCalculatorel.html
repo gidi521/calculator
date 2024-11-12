@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Επιστημονικός Υπολογιστής</title>
+    <meta name="description" content="Ο Επιστημονικός Υπολογιστής προσφέρει προηγμένες μαθηματικές λειτουργίες για επιστημονικούς και μηχανικούς υπολογισμούς." />
+    <meta name="author" content="Ευρύς Υπολογιστής" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+        <script src="js/modernizr.custom.js"></script>
+    <![endif]-->
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
+        /* Στυλ Επιστημονικού Υπολογιστή */
+        #scientific-calculator {
+            margin-top: 20px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #scientific-calculator input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #scientific-calculator button {
+            width: 22%;
+            margin: 5px 1%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #scientific-calculator button:hover {
+            background-color: #0056b3;
+        }
+
+        #scientific-calculator .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Υπολογιστής</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li class="active"><a href="https://widecalculator.com/">Αρχική</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">Σχετικά Με Εμάς</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main">
+            <div id="scientific-calculator" class="text-center">
+                <h2>Επιστημονικός Υπολογιστής</h2>
+                <input type="text" id="display" placeholder="0" readonly>
+                <div class="row">
+                    <button onclick="clearDisplay()">C</button>
+                    <button onclick="deleteLast()">DEL</button>
+                    <button onclick="appendToDisplay('/')">/</button>
+                    <button onclick="appendToDisplay('*')">*</button>
+                </div>
+                <div class="row">
+                    <button onclick="appendToDisplay('7')">7</button>
+                    <button onclick="appendToDisplay('8')">8</button>
+                    <button onclick="appendToDisplay('9')">9</button>
+                    <button onclick="appendToDisplay('-')">-</button>
+                </div>
+                <div class="row">
+                    <button onclick="appendToDisplay('4')">4</button>
+                    <button onclick="appendToDisplay('5')">5</button>
+                    <button onclick="appendToDisplay('6')">6</button>
+                    <button onclick="appendToDisplay('+')">+</button>
+                </div>
+                <div class="row">
+                    <button onclick="appendToDisplay('1')">1</button>
+                    <button onclick="appendToDisplay('2')">2</button>
+                    <button onclick="appendToDisplay('3')">3</button>
+                    <button onclick="calculateResult()">=</button>
+                </div>
+                <div class="row">
+                    <button onclick="appendToDisplay('0')">0</button>
+                    <button onclick="appendToDisplay('.')">.</button>
+                    <button onclick="appendToDisplay('(')">(</button>
+                    <button onclick="appendToDisplay(')')">)</button>
+                </div>
+                <div class="row">
+                    <button onclick="appendToDisplay('Math.sin(')">sin</button>
+                    <button onclick="appendToDisplay('Math.cos(')">cos</button>
+                    <button onclick="appendToDisplay('Math.tan(')">tan</button>
+                    <button onclick="appendToDisplay('Math.sqrt(')">√</button>
+                </div>
+                <div class="row">
+                    <button onclick="appendToDisplay('Math.pow(')">^</button>
+                    <button onclick="appendToDisplay('Math.log(')">ln</button>
+                    <button onclick="appendToDisplay('Math.exp(')">exp</button>
+                    <button onclick="appendToDisplay('Math.PI')">π</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="content" class="text-center">
+            <h2>Επιστημονικοί Υπολογιστές</h2><br>
+                <p>Οι επιστημονικοί υπολογιστές είναι απαραίτητα εργαλεία για όσους ασχολούνται με τα μαθηματικά, τη μηχανική και τις επιστήμες. Παρέχουν προηγμένες λειτουργίες που υπερβαίνουν την απλή αριθμητική, συμπεριλαμβανομένων των τριγωνομετρικών, λογαριθμικών και εκθετικών υπολογισμών.</p>
+                <br><h3>Κύρια Χαρακτηριστικά:</h3><br>
+                <p>Οι επιστημονικοί υπολογιστές συνήθως προσφέρουν μια σειρά από χαρακτηριστικά για την υποστήριξη σύνθετων υπολογισμών. Μερικά κοινά χαρακτηριστικά περιλαμβάνουν:</p>
+                <ul>
+                    <li>Τριγωνομετρικές λειτουργίες (sin, cos, tan, κ.λπ.)</li>
+                    <li>Λογαριθμικές και εκθετικές λειτουργίες</li>
+                    <li>Τετραγωνικές ρίζες και δυνάμεις</li>
+                    <li>Παρένθεση για την ομαδοποίηση εκφράσεων</li>
+                </ul><br>
+                <h3>Πώς να Χρησιμοποιήσετε έναν Επιστημονικό Υπολογιστή:</h3><br>
+                <p>Η χρήση ενός επιστημονικού υπολογιστή περιλαμβάνει την εισαγωγή εκφράσεων και τη χρήση λειτουργιών για την εκτέλεση υπολογισμών. Εδώ είναι ένας βασικός οδηγός:</p>
+                <ol>
+                    <li>Εισαγάγετε τους αριθμούς και τους τελεστές όπως εμφανίζονται στην έκφραση.</li>
+                    <li>Χρησιμοποιήστε τα κουμπιά λειτουργιών (π.χ., sin, cos) για τριγωνομετρικούς υπολογισμούς.</li>
+                    <li>Πατήστε το κουμπί "=" για να λάβετε το αποτέλεσμα.</li>
+                </ol><br>
+                <br>
+            </div>
+    
+            <script>
+                function clearDisplay() {
+                    document.getElementById('display').value = '';
+                }
+    
+                function deleteLast() {
+                    var display = document.getElementById('display');
+                    display.value = display.value.slice(0, -1);
+                }
+    
+                function appendToDisplay(value) {
+                    var display = document.getElementById('display');
+                    display.value += value;
+                }
+    
+                function calculateResult() {
+                    var display = document.getElementById('display');
+                    try {
+                        display.value = eval(display.value);
+                    } catch (e) {
+                        alert('Μη έγκυρη Έκφραση');
+                    }
+                }
+            </script>
+    
+              <!-- κάτω τμήμα -->
+       <section class="section-bottom">
+        <!-- περίβλημα -->
+        <div class="shell">
+            <!-- στήλες -->
+            <div class="cols">
+                <div class="col">
+                    <h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">ΠΕΡΙΣΣΟΤΕΡΑ <strong>ΓΙΑ ΕΜΑΣ</strong></a></h3>
+                    <p>Η Widecalculator στοχεύει να παρέχει γρήγορους, ολοκληρωμένους και εύχρηστους διαδικτυακούς υπολογιστές σε διάφορα πεδία.</p>
+    <p>Κάθε υπολογιστής στο Widecalculator.com δημιουργείται και αναπτύσσεται σχολαστικά εσωτερικά, ακολουθούμενος από αυστηρούς και διεξοδικούς ελέγχους για να εξασφαλίσει την ακρίβεια και την αξιοπιστία. Ωστόσο, κατανοούμε ότι η τελειότητα είναι μια συνεχής προσπάθεια, γι' αυτό εκτιμούμε ιδιαίτερα οποιαδήποτε ανατροφοδότηση σχετικά με πιθανές λάθη ή αποκλίσεις. Οι παρατηρήσεις σας είναι εξαιρετικής σημασίας για εμάς.</p>
+    
+                    <a href="https://widecalculator.com/aboutus.html" class="more-btn">Διαβάστε Περισσότερα</a>
+                </div>
+                <div class="col">
+                    <h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>ΣΥΧΝΕΣ ΕΡΩΤΗΣΕΙΣ</strong></a></h3>
+                    <p>
+                          Ε: Μπορώ να δημιουργήσω σύνδεσμο από την ιστοσελίδα μου προς έναν υπολογιστή;
+                         Α: Φυσικά, είστε ευπρόσδεκτοι να δημιουργήσετε συνδέσμους από την ιστοσελίδα σας προς οποιονδήποτε υπολογιστή ή σελίδα.</p>
+                <p>Ε: Πώς μπορώ να στείλω προτάσεις ή να αναφέρω προβλήματα;
+    A: Η ανατροφοδότησή σας είναι ανεκτίμητη για εμάς. Για οποιεσδήποτε προτάσεις ή για να αναφέρετε ένα πρόβλημα, παρακαλούμε χρησιμοποιήστε τη φόρμα επικοινωνίας μας. Όταν αναφέρετε ένα πρόβλημα με έναν υπολογιστή, θα ήταν εξαιρετικά χρήσιμο αν μπορούσατε να παρέχετε το URL του συγκεκριμένου υπολογιστή και λεπτομέρειες για τις παραμέτρους ή τις εισόδους που χρησιμοποιούσατε όταν προέκυψε το πρόβλημα.</p>
+    
+                        <a href="https://widecalculator.com/FAQ.html" class="more-btn">Διαβάστε Περισσότερα</a>
+                    <br>
+                    <br><br>
+                    
+                
+                </div>
+                <div class="col subscribe-col">
+                    <h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">ΚΡΑΤΗΣΤΕ ΕΠΑΦΗ</a></h3>
+                    <div class="col-cnt">
+                        <p>Επικοινωνήστε μαζί μας
+                            Αν έχετε οποιεσδήποτε ερωτήσεις, σχόλια ή χρειάζεστε βοήθεια, παρακαλούμε χρησιμοποιήστε τη φόρμα επικοινωνίας μας στην ιστοσελίδα μας.</p> <br>
+                        <p>Προσπαθούμε να διατηρούμε άμεση επικοινωνία με τους χρήστες μας και συνήθως στοχεύουμε να απαντούμε σε όλα τα μηνύματα εντός 2 εργάσιμων ημερών. Η ικανοποίησή σας και η ποιότητα της αλληλεπίδρασής μας είναι σημαντικές για εμάς, γι' αυτό μη διστάσετε να επικοινωνήσετε.</p>
+                            <a href="https://widecalculator.com/contactus.html" class="more-btn">Περισσότερα</a>
+                    </div>	
+                </div>
+                <div class="cl">&nbsp;</div>
+            </div>
+            <!-- τέλος των στηλών -->
+        </div>
+        <!-- τέλος του περιβλήματος -->
+    </section>
+    <!-- τέλος του κάτω τμήματος -->
+    </div>
+    <!-- τέλος του κύριου -->
+    <div id="footer-push"></div>
+    </div>
+    <!-- τέλος του περιβλήματος -->
+    <!-- υποσέλιδο -->
+    <div id="footer">
+    <div class="footer-bottom">
+    <div class="shell">
+        <nav class="footer-nav left">
+            <ul>
+                <li class="active"><a href="https://widecalculator.com/">ΑΡΧΙΚΗ</a></li>
+                <li><a href="https://widecalculator.com/aboutus.html">ΣΧΕΤΙΚΑ ΜΕ ΕΜΑΣ</a></li>
+                <li><a href="https://widecalculator.com/contactus.html">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
+            </ul>
+        </nav>
+        <p class="copy right"> Όλα τα Δικαιώματα Διατηρούνται Copyright Συλλέξτε από <a href="https://widecalculator.com/" title="Online Υπολογιστής" target="_blank">Widecalculator.com</a> </p>
+        <div class="cl">&nbsp;</div>
+    </div>	
+    </div>
+    </div>
+    <!-- τέλος του υποσέλιδου -->
+    <div style="display:none;">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'G-816SNX8L7X');
+    </script>
+    </div>
+    </body>
+    </html>
+    

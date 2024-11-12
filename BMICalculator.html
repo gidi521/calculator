@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Calculator</title>
+    <meta name="description" content="The Calorie Calculator estimates the number of calories needed to maintain, lose, or gain weight based on various factors such as age, gender, weight, height, and activity level." />
+    <meta itemprop="description" content="The Calorie Calculator is a useful tool for estimating daily calorie requirements based on individual characteristics and activity level. It provides insights into calorie intake for weight maintenance, loss, or gain." />
+    <meta name="author" content="Wide Calculator" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+        <script src="js/modernizr.custom.js"></script>
+    <![endif]-->
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
+        /* Calorie Calculator Styles */
+        #calorie-calculator {
+            margin-top: -10px;
+            margin-bottom: -10px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #calorie-calculator label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        #calorie-calculator input {
+            width: 60px;
+            margin-top: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #calorie-calculator button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #calorie-calculator button:hover {
+            background-color: #0056b3;
+        }
+
+        #calorie-calculator-result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main">
+            <div id="calorie-calculator" class="text-center">
+                <h2>Calorie Calculator</h2>
+                <label for="age">Age:</label>
+                <input type="text" id="age" placeholder="Age" />
+                <label for="gender">Gender:</label>
+                <select id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <label for="weight">Weight (kg):</label>
+                <input type="text" id="weight" placeholder="Weight" />
+                <label for="height">Height (cm):</label>
+                <input type="text" id="height" placeholder="Height" />
+                <label for="activity-level">Activity Level:</label>
+                <select id="activity-level">
+                    <option value="sedentary">Sedentary</option>
+                    <option value="lightly-active">Lightly Active</option>
+                    <option value="moderately-active">Moderately Active</option>
+                    <option value="very-active">Very Active</option>
+                    <option value="extra-active">Extra Active</option>
+                </select>
+                <button onclick="calculateCalories()">Calculate</button>
+                <p id="calorie-calculator-result"></p>
+            </div>
+        </div>
+
+        <div id="content" class="text-center">
+            <!-- Content related to Calorie Calculator can be added here -->
+                <h2>Understanding Calorie Needs: Calculation, Tips, and More</h2><br>
+                <p>The Calorie Calculator is an essential tool designed to estimate the number of calories you need each day to maintain, lose, or gain weight. This estimation is based on factors such as age, gender, weight, height, and activity level. In this article, we’ll explore how calorie requirements are calculated, provide tips for managing your calorie intake, and discuss related topics.</p>
+                <br>
+                <h3>Introduction to Calorie Needs:</h3><br>
+                <p>Calorie needs vary from person to person, influenced by factors like age, gender, weight, height, and activity level. Understanding your calorie requirements can help you manage your weight more effectively, whether your goal is to lose weight, maintain your current weight, or gain weight.</p>
+                <br>
+                <h3>How Calorie Needs are Calculated:</h3><br>
+                <p>The Basal Metabolic Rate (BMR) is the number of calories your body needs to maintain basic physiological functions at rest. The BMR is then adjusted based on your activity level to estimate your Total Daily Energy Expenditure (TDEE), which is the total number of calories you need in a day.</p>
+                <br>
+                <p>The formula for calculating BMR varies based on gender:</p>
+                <ul>
+                    <li><strong>For Men:</strong> BMR = 10 * weight (kg) + 6.25 * height (cm) - 5 * age (years) + 5</li>
+                    <li><strong>For Women:</strong> BMR = 10 * weight (kg) + 6.25 * height (cm) - 5 * age (years) - 161</li>
+                </ul>
+                <br>
+                <p>Once the BMR is calculated, it is multiplied by an activity factor to determine TDEE:</p>
+                <ul>
+                    <li><strong>Sedentary:</strong> BMR * 1.2 (little or no exercise)</li>
+                    <li><strong>Lightly Active:</strong> BMR * 1.375 (light exercise/sports 1-3 days/week)</li>
+                    <li><strong>Moderately Active:</strong> BMR * 1.55 (moderate exercise/sports 3-5 days/week)</li>
+                    <li><strong>Very Active:</strong> BMR * 1.725 (hard exercise/sports 6-7 days a week)</li>
+                    <li><strong>Extra Active:</strong> BMR * 1.9 (very hard exercise/sports & physical job or 2x training)</li>
+                </ul>
+                <br>
+                <h3>Tips for Managing Your Calorie Intake:</h3><br>
+                <p>Managing your calorie intake is crucial for achieving your weight goals. Here are some tips to help you:</p>
+                <ul>
+                    <li><strong>Track Your Food Intake:</strong> Keep a food diary or use a mobile app to track what you eat and drink.</li>
+                    <li><strong>Eat Balanced Meals:</strong> Ensure your meals include a good balance of carbohydrates, proteins, and fats.</li>
+                    <li><strong>Control Portion Sizes:</strong> Be mindful of portion sizes to avoid overeating.</li>
+                    <li><strong>Stay Hydrated:</strong> Drink plenty of water throughout the day.</li>
+                    <li><strong>Exercise Regularly:</strong> Incorporate physical activity into your daily routine to burn extra calories.</li>
+                </ul>
+                <br>
+                <h3>Understanding Your Calorie Needs:</h3><br>
+                <p>It's important to understand that calorie needs can change over time due to factors such as aging, changes in activity level, and changes in body composition. Regularly reassessing your calorie needs and adjusting your intake accordingly can help you stay on track with your health and fitness goals.</p>
+                <br>
+                <h3>Example Applications:</h3><br>
+                <p>To illustrate how the Calorie Calculator can be used, consider the following scenarios:</p>
+                <ul>
+                    <li>Determining daily calorie intake for weight loss or gain.</li>
+                    <li>Planning balanced meals to meet nutritional goals.</li>
+                    <li>Adjusting calorie intake based on changes in physical activity.</li>
+                </ul>
+                <br>
+                <h3>Conclusion:</h3><br>
+                <p>The Calorie Calculator is a valuable tool for anyone looking to manage their weight and understand their daily calorie needs. By familiarizing yourself with its features and usage, you can make informed decisions about your diet and health. Don't forget to explore related concepts such as macronutrient distribution and the role of physical activity in managing weight.</p>
+                <br>
+                <h3>Further Learning:</h3><br>
+                <p>For more resources on calorie management and nutrition, consider exploring online tutorials, educational websites, or academic papers on dietetics and nutritional science. Continuous learning and exploration are key to mastering the principles of healthy eating and calorie management!</p>
+    
+        </div>
+
+        <script>
+            function calculateCalories() {
+                var age = parseInt(document.getElementById('age').value);
+                var gender = document.getElementById('gender').value;
+                var weight = parseInt(document.getElementById('weight').value);
+                var height = parseInt(document.getElementById('height').value);
+                var activityLevel = document.getElementById('activity-level').value;
+
+                // Validate input
+                if (isNaN(age) || isNaN(weight) || isNaN(height)) {
+                    alert("Please enter valid age, weight, and height values.");
+                    return;
+                }
+
+                // Calculate BMR based on gender
+                var bmr;
+                if (gender === 'male') {
+                    bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+                } else if (gender === 'female') {
+                    bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+                }
+
+                // Adjust BMR based on activity level
+                var activityFactor;
+                switch (activityLevel) {
+                    case 'sedentary':
+                        activityFactor = 1.2;
+                        break;
+                    case 'lightly-active':
+                        activityFactor = 1.375;
+                        break;
+                    case 'moderately-active':
+                        activityFactor = 1.55;
+                        break;
+                    case 'very-active':
+                        activityFactor = 1.725;
+                        break;
+                    case 'extra-active':
+                        activityFactor = 1.9;
+                        break;
+                }
+
+                var calories = Math.round(bmr * activityFactor);
+                document.getElementById('calorie-calculator-result').innerText = "Estimated Daily Calories: " + calories;
+            }
+        </script>
+
+          <!-- section-bottom -->
+   <section class="section-bottom">
+	<!-- shell -->
+	<div class="shell">
+		<!-- cols -->
+		<div class="cols">
+			<div class="col">
+				<h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
+				<p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
+<p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
+
+				<a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
+			</div>
+			<div class="col">
+				<h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
+				<p>
+					  Q: Can I link from my website to a calculator?
+					 A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
+			<p>Q: How should I send suggestions or report problems?
+A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
+
+					<a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
+				<br>
+				<br><br>
+				
+			
+			</div>
+			<div class="col subscribe-col">
+				<h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
+				<div class="col-cnt">
+					<p>Contact Us
+						If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website.</p> <br>
+					<p>We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
+						<a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+						<!--<form method="post">
+						<input type="text" class="field" value="Your Email Here" title="Your Email Here" />
+						<input type="submit" class="submit-btn" value="Submit" />
+					</form>
+					<a href="#">XXXX@Caculator.com</a>-->
+				</div>	
+			</div>
+			<div class="cl">&nbsp;</div>
+		</div>
+		<!-- end of cols -->
+	</div>
+	<!-- end of shell -->
+</section>
+<!-- end of section-bottom -->
+</div>
+<!-- end of main -->
+<div id="footer-push"></div>
+</div>
+<!-- end of wrapper -->
+<!-- footer -->
+<div id="footer">
+<div class="footer-bottom">
+<div class="shell">
+	<nav class="footer-nav left">
+		<ul>
+			<li class="active"><a href="https://widecalculator.com/">HOME</a></li>
+			<li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
+			<li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
+		</ul>
+	</nav>
+	<p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+	<div class="cl">&nbsp;</div>
+</div>	
+</div>
+</div>
+<!-- end of footer -->
+<div style="display:none;">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-816SNX8L7X');
+</script>
+</div>
+</body>
+</html>
