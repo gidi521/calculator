@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip Clock</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            background-color: #ddd;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .clock-section {
+            position: relative;
+            background-color: #add8e6; /* Light blue */
+        }
+
+        .clock {
+            display: flex;
+            gap: 10px;
+        }
+
+        .digit {
+            position: relative;
+            width: 60px;
+            height: 90px;
+            background: #444;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            font-size: 48px;
+            line-height: 90px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .digit::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #222;
+            transform: translateY(-50%);
+        }
+
+        .digit .top, .digit .bottom {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .digit .top {
+            top: 0;
+            background: #666;
+        }
+
+        .digit .bottom {
+            bottom: 0;
+            background: #fff;
+        }
+
+        .digit.flip .top {
+            animation: flipTop 0.6s ease forwards;
+        }
+
+        .digit.flip .bottom {
+            animation: flipBottom 0.6s ease forwards;
+        }
+
+        @keyframes flipTop {
+            0% { transform: rotateX(0); }
+            100% { transform: rotateX(-90deg); }
+        }
+
+        @keyframes flipBottom {
+            0% { transform: rotateX(90deg); }
+            100% { transform: rotateX(0); }
+        }
+
+        .fullscreen-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .fullscreen-btn:hover {
+            color: #ccc;
+        }
+
+        .fullscreen-btn svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .background-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .background-selector img {
+            width: 60px;
+            height: 40px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 5px;
+        }
+
+        .background-selector img:hover {
+            border-color: #fff;
+        }
+
+        .help-section {
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .fullscreen-active .background-section,
+        .fullscreen-active .help-section {
+            display: none;
+        }
+
+        .fullscreen-active .clock-section {
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="section clock-section">
+        <div class="clock">
+            <div class="digit" id="hours-ten">
+                <div class="top">0</div>
+                <div class="bottom">0</div>
+            </div>
+            <div class="digit" id="hours-unit">
+                <div class="top">0</div>
+                <div class="bottom">0</div>
+            </div>
+            <div class="digit" id="minutes-ten">
+                <div class="top">0</div>
+                <div class="bottom">0</div>
+            </div>
+            <div class="digit" id="minutes-unit">
+                <div class="top">0</div>
+                <div class="bottom">0</div>
+            </div>
+            <div class="digit" id="seconds-ten">
+                <div class="top">0</div>
+                <div class="bottom">0</div>
+            </div>
+            <div class="digit" id="seconds-unit">
+                <div class="top">0</div>
+                <div class="bottom">0</div>
+            </div>
+        </div>
+        <button class="fullscreen-btn" onclick="toggleFullscreen()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M4 4h6V2H2v8h2V4zm16 0v6h2V2h-8v2h6zM4 20v-6H2v8h8v-2H4zm16-6v6h-6v2h8v-8h-2z" />
+            </svg>
+        </button>
+    </div>
+
+    <div class="section background-section">
+        <div class="background-selector">
+            <img src="image1.jpg" alt="Background 1" onclick="changeBackground('image1.jpg')">
+            <img src="image2.jpg" alt="Background 2" onclick="changeBackground('image2.jpg')">
+            <img src="image3.jpg" alt="Background 3" onclick="changeBackground('image3.jpg')">
+            <img src="image4.jpg" alt="Background 4" onclick="changeBackground('image4.jpg')">
+        </div>
+    </div>
+
+    <div class="section help-section">
+        <p>这里是帮助</p>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            const timeArray = [
+                ["hours-ten", hours[0]],
+                ["hours-unit", hours[1]],
+                ["minutes-ten", minutes[0]],
+                ["minutes-unit", minutes[1]],
+                ["seconds-ten", seconds[0]],
+                ["seconds-unit", seconds[1]],
+            ];
+
+            timeArray.forEach(([id, value]) => {
+                const digit = document.getElementById(id);
+                const top = digit.querySelector('.top');
+                const bottom = digit.querySelector('.bottom');
+
+                if (bottom.textContent !== value) {
+                    top.textContent = value;
+
+                    digit.classList.add('flip');
+
+                    setTimeout(() => {
+                        bottom.textContent = value;
+                        digit.classList.remove('flip');
+                    }, 300);
+                }
+            });
+        }
+
+        function toggleFullscreen() {
+            const body = document.body;
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+                body.classList.add('fullscreen-active');
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                    body.classList.remove('fullscreen-active');
+                }
+            }
+        }
+
+        function changeBackground(image) {
+            document.body.style.backgroundImage = `url(${image})`;
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundPosition = 'center';
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
