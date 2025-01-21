@@ -6,30 +6,21 @@
     <title>Flip Clock</title>
     <style>
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            color: #fff;
-            background-color: #ddd;
             display: flex;
             flex-direction: column;
-            height: 100vh;
-        }
-
-        .section {
-            flex: 1;
-            display: flex;
             justify-content: center;
             align-items: center;
-        }
-
-        .clock-section {
-            position: relative;
-            background-color: #add8e6; /* Light blue */
+            height: 100vh;
+            background-color: #fff;
+            color: #fff;
+            margin: 0;
+            font-family: Arial, sans-serif;
         }
 
         .clock {
             display: flex;
             gap: 10px;
+            margin-bottom: 20px;
         }
 
         .digit {
@@ -73,7 +64,7 @@
 
         .digit .bottom {
             bottom: 0;
-            background: #fff;
+            background: #555;
         }
 
         .digit.flip .top {
@@ -130,68 +121,48 @@
         .background-selector img:hover {
             border-color: #fff;
         }
-
-        .help-section {
-            font-size: 18px;
-            text-align: center;
-        }
-
-        .fullscreen-active .background-section,
-        .fullscreen-active .help-section {
-            display: none;
-        }
-
-        .fullscreen-active .clock-section {
-            height: 100vh;
-        }
     </style>
 </head>
 <body>
-    <div class="section clock-section">
-        <div class="clock">
-            <div class="digit" id="hours-ten">
-                <div class="top">0</div>
-                <div class="bottom">0</div>
-            </div>
-            <div class="digit" id="hours-unit">
-                <div class="top">0</div>
-                <div class="bottom">0</div>
-            </div>
-            <div class="digit" id="minutes-ten">
-                <div class="top">0</div>
-                <div class="bottom">0</div>
-            </div>
-            <div class="digit" id="minutes-unit">
-                <div class="top">0</div>
-                <div class="bottom">0</div>
-            </div>
-            <div class="digit" id="seconds-ten">
-                <div class="top">0</div>
-                <div class="bottom">0</div>
-            </div>
-            <div class="digit" id="seconds-unit">
-                <div class="top">0</div>
-                <div class="bottom">0</div>
-            </div>
+    <button class="fullscreen-btn" onclick="toggleFullscreen()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M4 4h6V2H2v8h2V4zm16 0v6h2V2h-8v2h6zM4 20v-6H2v8h8v-2H4zm16-6v6h-6v2h8v-8h-2z" />
+        </svg>
+    </button>
+    <div class="clock">
+        <div class="digit" id="hours-ten">
+            <div class="top">0</div>
+            <div class="bottom" style="display: none;">0</div>
         </div>
-        <button class="fullscreen-btn" onclick="toggleFullscreen()">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M4 4h6V2H2v8h2V4zm16 0v6h2V2h-8v2h6zM4 20v-6H2v8h8v-2H4zm16-6v6h-6v2h8v-8h-2z" />
-            </svg>
-        </button>
-    </div>
-
-    <div class="section background-section">
-        <div class="background-selector">
-            <img src="image1.jpg" alt="Background 1" onclick="changeBackground('image1.jpg')">
-            <img src="image2.jpg" alt="Background 2" onclick="changeBackground('image2.jpg')">
-            <img src="image3.jpg" alt="Background 3" onclick="changeBackground('image3.jpg')">
-            <img src="image4.jpg" alt="Background 4" onclick="changeBackground('image4.jpg')">
+        <div class="digit" id="hours-unit">
+            <div class="top">0</div>
+            <div class="bottom" style="display: none;">0</div>
+        </div>
+        <div class="digit" id="minutes-ten">
+            <div class="top">0</div>
+            <div class="bottom" style="display: none;">0</div>
+        </div>
+        <div class="digit" id="minutes-unit">
+            <div class="top">0</div>
+            <div class="bottom" style="display: none;">0</div>
+        </div>
+        <div class="digit" id="seconds-ten">
+            <div class="top">0</div>
+            <div class="bottom" style="display: none;">0</div>
+        </div>
+        <div class="digit" id="seconds-unit">
+            <div class="top">0</div>
+            <div class="bottom" style="display: none;">0</div>
         </div>
     </div>
 
-    <div class="section help-section">
-        <p>这里是帮助</p>
+    <div class="background-selector">
+        <img src="photos/image1.jpg" alt="Background 1" onclick="changeBackground('photos/image1.jpg')">
+        <img src="photos/image2.jpg" alt="Background 2" onclick="changeBackground('photos/image2.jpg')">
+        <img src="photos/image3.jpg" alt="Background 3" onclick="changeBackground('photos/image3.jpg')">
+        <img src="photos/image4.jpg" alt="Background 4" onclick="changeBackground('photos/image4.jpg')">
+        <img src="photos/image5.webp" alt="Background 3" onclick="changeBackground('photos/image5.webp')">
+        <img src="photos/image6.webp" alt="Background 4" onclick="changeBackground('photos/image6.webp')">
     </div>
 
     <script>
@@ -229,14 +200,11 @@
         }
 
         function toggleFullscreen() {
-            const body = document.body;
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen();
-                body.classList.add('fullscreen-active');
             } else {
                 if (document.exitFullscreen) {
                     document.exitFullscreen();
-                    body.classList.remove('fullscreen-active');
                 }
             }
         }
