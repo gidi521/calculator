@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airport Safety Index Calculator</title>
+    <meta name="description" content="The Airport Safety Index Calculator evaluates the safety score of airports worldwide based on historical accident data, security screening records, geographic risk factors, and operational performance." />
+    <meta itemprop="description" content="Calculate the safety index of major international airports by analyzing accident history, security efficiency, geographic risks, and airport management for better travel safety awareness." />
+    <meta name="author" content="Wide Calculator" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+        <script src="js/modernizr.custom.js"></script>
+    <![endif]-->
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
+        /* Airport Safety Index Calculator Styles */
+        #airport-safety-calculator {
+            margin-top: -10px;
+            margin-bottom: -10px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            text-align: center;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #airport-safety-calculator label {
+            font-weight: bold;
+            margin-top: 15px;
+            display: block;
+            text-align: left;
+        }
+
+        #airport-safety-calculator input,
+        #airport-safety-calculator select {
+            width: 100%;
+            margin-top: 8px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        #airport-safety-calculator button {
+            margin-top: 25px;
+            padding: 12px 30px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        #airport-safety-calculator button:hover {
+            background-color: #0056b3;
+        }
+
+        #airport-safety-result {
+            font-weight: bold;
+            margin-top: 25px;
+            font-size: 18px;
+            text-align: center;
+            color: #333;
+            min-height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main">
+            <div id="airport-safety-calculator" class="text-center">
+                <h2>Airport Safety Index Calculator</h2>
+                <label for="airport">Select Airport:</label>
+                <select id="airport">
+                    <option value="ATL">Hartsfield-Jackson Atlanta International Airport (ATL)</option>
+                    <option value="PEK">Beijing Capital International Airport (PEK)</option>
+                    <option value="LHR">London Heathrow Airport (LHR)</option>
+                    <option value="HND">Tokyo Haneda Airport (HND)</option>
+                    <option value="DXB">Dubai International Airport (DXB)</option>
+                    <option value="ORD">Chicago O'Hare International Airport (ORD)</option>
+                    <option value="LAX">Los Angeles International Airport (LAX)</option>
+                    <option value="CDG">Paris Charles de Gaulle Airport (CDG)</option>
+                    <option value="DFW">Dallas/Fort Worth International Airport (DFW)</option>
+                    <option value="AMS">Amsterdam Schiphol Airport (AMS)</option>
+                    <option value="FRA">Frankfurt Airport (FRA)</option>
+                    <option value="IST">Istanbul Airport (IST)</option>
+                    <option value="SIN">Singapore Changi Airport (SIN)</option>
+                    <option value="ICN">Incheon International Airport (ICN)</option>
+                    <option value="DEN">Denver International Airport (DEN)</option>
+                    <option value="JFK">John F. Kennedy International Airport (JFK)</option>
+                    <option value="SFO">San Francisco International Airport (SFO)</option>
+                    <option value="SYD">Sydney Kingsford Smith Airport (SYD)</option>
+                    <option value="MIA">Miami International Airport (MIA)</option>
+                    <option value="GRU">São Paulo–Guarulhos International Airport (GRU)</option>
+                    <option value="MUC">Munich Airport (MUC)</option>
+                    <option value="YYZ">Toronto Pearson International Airport (YYZ)</option>
+                    <option value="BKK">Suvarnabhumi Airport (BKK)</option>
+                    <option value="MEX">Mexico City International Airport (MEX)</option>
+                    <option value="EWR">Newark Liberty International Airport (EWR)</option>
+                    <option value="CLT">Charlotte Douglas International Airport (CLT)</option>
+                    <option value="BOS">Boston Logan International Airport (BOS)</option>
+                    <option value="LAS">McCarran International Airport (LAS)</option>
+                    <option value="SEA">Seattle-Tacoma International Airport (SEA)</option>
+                    <option value="KUL">Kuala Lumpur International Airport (KUL)</option>
+                </select>
+
+                <label for="accidents">Historical Accident Rate (per 100k flights):</label>
+                <input type="number" id="accidents" min="0" step="0.01" placeholder="e.g. 0.05" />
+
+                <label for="security">Security Screening Effectiveness (1-10):</label>
+                <input type="number" id="security" min="1" max="10" step="1" placeholder="1=Low, 10=High" />
+
+                <label for="geographic-risk">Geographic Risk Level (1-10):</label>
+                <input type="number" id="geographic-risk" min="1" max="10" step="1" placeholder="1=Low, 10=High" />
+
+                <label for="operational-performance">Operational Performance Score (1-10):</label>
+                <input type="number" id="operational-performance" min="1" max="10" step="1" placeholder="1=Poor, 10=Excellent" />
+
+                <button onclick="calculateSafetyIndex()">Calculate Safety Index</button>
+                <p id="airport-safety-result"></p>
+            </div>
+        </div>
+
+        <div id="content" class="text-center" style="max-width: 800px; margin: 40px auto; text-align:left; line-height:1.7; font-size:16px; color:#333;">
+            <h2>Understanding Airport Safety Index and Its Importance</h2><br>
+            <p>The Airport Safety Index Calculator provides an insightful assessment of airport safety by combining multiple key factors such as historical accident rates, security screening effectiveness, geographic risk levels, and operational performance. This comprehensive index helps travelers, aviation professionals, and regulatory bodies evaluate and compare safety levels across major airports worldwide.</p>
+
+            <h3>What is the Airport Safety Index?</h3><br>
+            <p>The Airport Safety Index is a composite score that quantifies how safe an airport is based on a variety of metrics that influence air travel safety. This index considers past accident occurrences, efficiency of security protocols, the risks posed by the airport’s geographical location, and the overall operational quality of the airport. A higher safety index score indicates a safer airport with robust safety measures and lower risk factors.</p>
+
+            <h3>Key Factors Affecting Airport Safety</h3><br>
+            <p><strong>1. Historical Accident Rate:</strong> This factor measures the frequency of accidents per 100,000 flights associated with the airport. A low accident rate indicates effective safety management and fewer incidents. Historical data from aviation safety databases provide the basis for this metric.</p>
+
+            <p><strong>2. Security Screening Effectiveness:</strong> Airports implement varying levels of passenger and baggage screening. An effective screening process reduces threats from unauthorized items or individuals, greatly enhancing passenger safety. Scores range from 1 (low effectiveness) to 10 (high effectiveness).</p>
+
+            <p><strong>3. Geographic Risk Level:</strong> Airports situated in regions prone to adverse weather, natural disasters, or geopolitical instability may face higher safety risks. This factor rates geographic-related hazards on a scale of 1 (low risk) to 10 (high risk).</p>
+
+            <p><strong>4. Operational Performance:</strong> This includes air traffic control efficiency, runway maintenance, emergency response preparedness, and overall airport management. Better operational performance supports safer airport environments and smoother flight operations.</p>
+
+            <h3>How Does the Calculator Work?</h3><br>
+            <p>The calculator uses a weighted formula to integrate the above factors into a single safety index score. The formula is designed to reflect realistic influences on airport safety, giving higher weight to accident history and security screening, while also considering geographic risks and operational performance.</p>
+
+            <p><em>Formula:</em></p>
+            <pre style="background:#f4f4f4; padding:10px; border-radius:6px;">
+Airport Safety Index = 100 ×
+  (1 - Historical Accident Rate) ×
+  (Security Screening Effectiveness / 10) ×
+  (1 - Geographic Risk Level / 10) ×
+  (Operational Performance / 10)
+            </pre>
+
+            <p>Each factor is normalized to a 0 to 1 scale to allow a balanced combination. The final score ranges from 0 to 100, where higher scores indicate safer airports.</p>
+
+            <h3>Using the Airport Safety Index Calculator</h3><br>
+            <p>To use this tool, select the airport you are interested in from the dropdown menu. Input the latest or estimated historical accident rate per 100,000 flights, a number reflecting the safety record of that airport. Then, rate the effectiveness of the airport’s security screening, geographic risk, and operational performance on a scale from 1 to 10, where higher values typically represent better safety measures or more risk depending on the factor.</p>
+
+            <p>Once all values are entered, click the "Calculate Safety Index" button. The calculator will provide an estimated safety index score, giving you a clear idea of how that airport ranks in terms of safety.</p>
+
+            <h3>Why Is Airport Safety Important?</h3><br>
+            <p>Air travel safety remains one of the highest priorities in aviation. Airports play a critical role in maintaining that safety through well-maintained infrastructure, stringent security measures, and efficient operational management. A high safety index reflects an airport’s commitment to protecting passengers and minimizing risks.</p>
+
+            <p>Travelers can use the Airport Safety Index as a reference to better understand the safety profiles of airports they fly through or connect at. Airlines and regulatory agencies may also use such indices to target improvements, allocate resources, and establish safety standards.</p>
+
+            <h3>Additional Considerations</h3><br>
+            <p>While this calculator provides an informative overview, it should be combined with other travel safety measures such as airline safety records, pilot training, and in-flight safety protocols. The airport environment is one of many factors contributing to overall flight safety.</p>
+
+            <h3>Conclusion</h3><br>
+            <p>The Airport Safety Index Calculator is a practical tool designed to quantify airport safety by integrating key metrics that impact flight security and risk. It empowers users with knowledge to make informed travel decisions and supports ongoing efforts to enhance airport safety worldwide. By understanding the factors influencing safety and utilizing reliable data, the aviation industry and travelers can collaboratively improve air travel safety standards.</p>
+        </div>
+    </div>
+
+    <script>
+        function calculateSafetyIndex() {
+            // Get input values
+            const accidentRate = parseFloat(document.getElementById('accidents').value);
+            const securityEffectiveness = parseInt(document.getElementById('security').value);
+            const geographicRisk = parseInt(document.getElementById('geographic-risk').value);
+            const operationalPerformance = parseInt(document.getElementById('operational-performance').value);
+
+            // Input validation
+            if (
+                isNaN(accidentRate) || accidentRate < 0 ||
+                isNaN(securityEffectiveness) || securityEffectiveness < 1 || securityEffectiveness > 10 ||
+                isNaN(geographicRisk) || geographicRisk < 1 || geographicRisk > 10 ||
+                isNaN(operationalPerformance) || operationalPerformance < 1 || operationalPerformance > 10
+            ) {
+                alert("Please enter valid values for all fields:\n- Accident rate (≥ 0)\n- Security effectiveness (1-10)\n- Geographic risk (1-10)\n- Operational performance (1-10)");
+                return;
+            }
+
+            // Calculate components normalized 0-1
+            const accidentFactor = 1 - accidentRate; // Assuming accidentRate max ~1, otherwise clipped below
+            const accidentFactorClipped = accidentFactor < 0 ? 0 : accidentFactor;
+
+            const securityFactor = securityEffectiveness / 10;
+            const geographicFactor = 1 - (geographicRisk / 10);
+            const operationalFactor = operationalPerformance / 10;
+
+            // Calculate Safety Index (0-100)
+            const safetyIndex = 100 * accidentFactorClipped * securityFactor * geographicFactor * operationalFactor;
+
+            const safetyIndexRounded = safetyIndex.toFixed(2);
+
+            document.getElementById('airport-safety-result').innerText = `Estimated Airport Safety Index: ${safetyIndexRounded} / 100`;
+        }
+    </script>
+
+      <!-- section-bottom -->
+      <section class="section-bottom">
+        <!-- shell -->
+        <div class="shell">
+            <!-- cols -->
+            <div class="cols">
+                <div class="col">
+                    <h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
+                    <p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
+    <p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
+    
+                    <a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
+                </div>
+                <div class="col">
+                    <h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
+                    <p>
+                          Q: Can I link from my website to a calculator?
+                         A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
+                <p>Q: How should I send suggestions or report problems?
+    A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
+    
+                        <a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
+                    <br>
+                    <br><br>
+                    
+                
+                </div>
+                <div class="col subscribe-col">
+                    <h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
+                    <div class="col-cnt">
+                        <p>Contact Us
+                            If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website.</p> <br>
+                        <p>We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
+                            <a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+                            <!--<form method="post">
+                            <input type="text" class="field" value="Your Email Here" title="Your Email Here" />
+                            <input type="submit" class="submit-btn" value="Submit" />
+                        </form>
+                        <a href="#">XXXX@Caculator.com</a>-->
+                    </div>  
+                </div>
+                <div class="cl">&nbsp;</div>
+            </div>
+            <!-- end of cols -->
+        </div>
+        <!-- end of shell -->
+    </section>
+    <!-- end of section-bottom -->
+    </div>
+    <!-- end of main -->
+    <div id="footer-push"></div>
+    </div>
+    <!-- end of wrapper -->
+    <!-- footer -->
+    <div id="footer">
+    <div class="footer-bottom">
+    <div class="shell">
+        <nav class="footer-nav left">
+            <ul>
+                <li class="active"><a href="https://widecalculator.com/">HOME</a></li>
+                <li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
+                <li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
+            </ul>
+        </nav>
+        <p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+        <div class="cl">&nbsp;</div>
+    </div>  
+    </div>
+    </div>
+    <!-- end of footer -->
+    <div style="display:none;">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'G-816SNX8L7X');
+    </script>
+    </div>
+    </body>
+    </html>
+    
+    

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trump Mobile Comparison Calculator</title>
+    <meta name="description" content="Use the Trump Mobile Comparison Calculator to evaluate Trump Mobile versus Verizon, T-Mobile, and AT&T based on your data usage, international needs, call time, and buying preferences." />
+    <meta itemprop="description" content="This Trump Mobile Comparison Calculator helps you determine the best carrier for your needs, including potential savings and a unique patriotic value assessment." />
+    <meta name="author" content="Wide Calculator" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
+        #trump-mobile-calculator {
+            margin-top: -10px;
+            margin-bottom: -10px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        #trump-mobile-calculator label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        #trump-mobile-calculator input,
+        #trump-mobile-calculator select {
+            width: 80%;
+            margin-top: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #trump-mobile-calculator button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #trump-mobile-calculator button:hover {
+            background-color: #0056b3;
+        }
+
+        #trump-mobile-result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="main">
+            <div id="trump-mobile-calculator" class="text-center">
+                <h2>Trump Mobile Comparison Calculator</h2>
+                <label for="data-usage">Monthly Data Usage (GB):</label>
+                <input type="number" id="data-usage" placeholder="e.g. 10" />
+                
+                <label for="roaming">Need International Roaming?</label>
+                <select id="roaming">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+
+                <label for="call-minutes">Monthly Call Time (minutes):</label>
+                <input type="number" id="call-minutes" placeholder="e.g. 500" />
+
+                <label for="device-payment">Device Purchase Option:</label>
+                <select id="device-payment">
+                    <option value="full">Full Payment</option>
+                    <option value="installment">Installments</option>
+                </select>
+
+                <label for="priority">Most Important to You:</label>
+                <select id="priority">
+                    <option value="price">Low Price</option>
+                    <option value="brand">Brand Recognition</option>
+                    <option value="support">Customer Support</option>
+                </select>
+
+                <button onclick="calculateMobilePlan()">Calculate</button>
+                <p id="trump-mobile-result"></p>
+            </div>
+        </div>
+
+        <div id="content" class="text-center">
+            <h2>Understanding the Trump Mobile Comparison Calculator</h2><br>
+            <p>The Trump Mobile Comparison Calculator is designed for individuals looking to evaluate mobile service providers based on their specific needs. Whether you're choosing between Trump Mobile and major telecom giants like Verizon, T-Mobile, and AT&T, this tool will guide you through cost efficiency, feature suitability, and value alignment.</p><br>
+
+            <h3>Data Usage and Network Plans:</h3><br>
+            <p>Data usage remains one of the most important factors when selecting a mobile carrier. Trump Mobile, like its competitors, offers a range of plans tailored for users with light, moderate, or heavy data consumption. This calculator uses your average monthly data in gigabytes to evaluate the estimated monthly cost across all major providers.</p><br>
+
+            <h3>International Roaming Needs:</h3><br>
+            <p>For travelers, roaming capabilities can be a deciding factor. While Trump Mobile focuses on domestic-first services, it offers international options as add-ons. By selecting your roaming preference, the calculator considers additional fees or potential savings for global usage.</p><br>
+
+            <h3>Call Time and Voice Plans:</h3><br>
+            <p>Calling remains vital, especially for users without unlimited talk plans. This calculator compares call minutes with average plan allowances and any overage fees that may apply to each carrier.</p><br>
+
+            <h3>Device Purchase Strategy:</h3><br>
+            <p>Whether you're purchasing your device outright or via installment plans, each option influences your monthly bill. Trump Mobile emphasizes straightforward, patriotic pricing with no hidden fees. The calculator accounts for potential interest or promotions based on your payment style.</p><br>
+
+            <h3>Personal Priorities in a Carrier:</h3><br>
+            <p>Not all users care about the same things. Some want the lowest price, while others value brand recognition or responsive customer service. This input helps weight the recommendation engine based on your preferences.</p><br>
+
+            <h3>About the “Patriotic Value Premium”:</h3><br>
+            <p>Unique to Trump Mobile, the concept of the “Patriotic Value Premium” reflects its branding as a carrier built on American values. For customers who align with this brand identity, a small premium may be justified by emotional or ideological support. The calculator includes this as a soft score—not a cost—in the final evaluation.</p><br>
+
+            <h3>How to Use the Calculator:</h3><br>
+            <ol>
+                <li>Enter your expected data usage per month in GB.</li>
+                <li>Indicate whether you need international roaming capabilities.</li>
+                <li>Enter your average monthly calling time in minutes.</li>
+                <li>Select whether you're paying for a device in full or through installments.</li>
+                <li>Choose the factor that matters most to you: price, brand, or support.</li>
+                <li>Click “Calculate” to get personalized results and potential annual savings.</li>
+            </ol><br>
+
+            <h3>Results Interpretation:</h3><br>
+            <p>After submitting your inputs, the calculator will recommend the carrier that offers the best balance of cost and value based on your unique usage profile. If Trump Mobile is the best fit, the result will also estimate your possible savings compared to other major carriers.</p><br>
+
+            <h3>Why This Tool Matters:</h3><br>
+            <p>Mobile plans are more complex than ever, with hidden fees, limited offers, and performance inconsistencies. The Trump Mobile Comparison Calculator simplifies this decision-making process by combining real-world data, pricing insights, and preference-based scoring into a single, easy-to-understand output.</p><br>
+
+            <h3>Final Thoughts:</h3><br>
+            <p>If you're considering switching to Trump Mobile or just want to compare your current provider to see if there's a better alternative, this calculator is your first step. Make a choice not just based on price—but on the values and service quality that matter to you.</p><br><br>
+        </div>
+    </div>
+
+    <script>
+        function calculateMobilePlan() {
+            const dataUsage = parseFloat(document.getElementById('data-usage').value);
+            const roaming = document.getElementById('roaming').value;
+            const callMinutes = parseFloat(document.getElementById('call-minutes').value);
+            const devicePayment = document.getElementById('device-payment').value;
+            const priority = document.getElementById('priority').value;
+
+            if (isNaN(dataUsage) || dataUsage <= 0 || isNaN(callMinutes) || callMinutes < 0) {
+                alert("Please enter valid values for data usage and call time.");
+                return;
+            }
+
+            // Simulated plan costs (in USD/month)
+            const plans = {
+                "Trump Mobile": {
+                    base: 30,
+                    perGB: 1.5,
+                    call: 0.02,
+                    roaming: roaming === 'yes' ? 15 : 0,
+                    patriotBonus: -5,
+                    brandScore: 5,
+                    supportScore: 6
+                },
+                "Verizon": {
+                    base: 50,
+                    perGB: 2,
+                    call: 0.015,
+                    roaming: roaming === 'yes' ? 20 : 0,
+                    patriotBonus: 0,
+                    brandScore: 9,
+                    supportScore: 7
+                },
+                "T-Mobile": {
+                    base: 45,
+                    perGB: 1.8,
+                    call: 0.017,
+                    roaming: roaming === 'yes' ? 18 : 0,
+                    patriotBonus: 0,
+                    brandScore: 8,
+                    supportScore: 8
+                },
+                "AT&T": {
+                    base: 48,
+                    perGB: 2.2,
+                    call: 0.02,
+                    roaming: roaming === 'yes' ? 19 : 0,
+                    patriotBonus: 0,
+                    brandScore: 8,
+                    supportScore: 7
+                }
+            };
+
+            const results = [];
+
+            for (let provider in plans) {
+                const plan = plans[provider];
+                const cost = plan.base + (plan.perGB * dataUsage) + (plan.call * callMinutes) + plan.roaming + (devicePayment === 'installment' ? 10 : 0);
+                results.push({
+                    name: provider,
+                    total: cost,
+                    adjusted: cost + (priority === 'price' ? 0 : priority === 'brand' ? (10 - plan.brandScore) : (10 - plan.supportScore)),
+                    savings: 0
+                });
+            }
+
+            results.sort((a, b) => a.adjusted - b.adjusted);
+            const best = results[0];
+            const highest = results[results.length - 1];
+            best.savings = (highest.total - best.total) * 12;
+
+            let message = `Recommended Provider: ${best.name}\nEstimated Annual Savings: $${best.savings.toFixed(2)}\n`;
+
+            if (best.name === "Trump Mobile") {
+                message += `Includes Patriotic Value Bonus: Yes`;
+            }
+
+            document.getElementById('trump-mobile-result').innerText = message;
+        }
+    </script>
+
+      <!-- section-bottom -->
+      <section class="section-bottom">
+        <!-- shell -->
+        <div class="shell">
+            <!-- cols -->
+            <div class="cols">
+                <div class="col">
+                    <h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
+                    <p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
+    <p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
+    
+                    <a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
+                </div>
+                <div class="col">
+                    <h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
+                    <p>
+                          Q: Can I link from my website to a calculator?
+                         A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
+                <p>Q: How should I send suggestions or report problems?
+    A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
+    
+                        <a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
+                    <br>
+                    <br><br>
+                    
+                
+                </div>
+                <div class="col subscribe-col">
+                    <h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
+                    <div class="col-cnt">
+                        <p>Contact Us
+                            If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website.</p> <br>
+                        <p>We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
+                            <a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+                            <!--<form method="post">
+                            <input type="text" class="field" value="Your Email Here" title="Your Email Here" />
+                            <input type="submit" class="submit-btn" value="Submit" />
+                        </form>
+                        <a href="#">XXXX@Caculator.com</a>-->
+                    </div>  
+                </div>
+                <div class="cl">&nbsp;</div>
+            </div>
+            <!-- end of cols -->
+        </div>
+        <!-- end of shell -->
+    </section>
+    <!-- end of section-bottom -->
+    </div>
+    <!-- end of main -->
+    <div id="footer-push"></div>
+    </div>
+    <!-- end of wrapper -->
+    <!-- footer -->
+    <div id="footer">
+    <div class="footer-bottom">
+    <div class="shell">
+        <nav class="footer-nav left">
+            <ul>
+                <li class="active"><a href="https://widecalculator.com/">HOME</a></li>
+                <li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
+                <li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
+            </ul>
+        </nav>
+        <p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+        <div class="cl">&nbsp;</div>
+    </div>  
+    </div>
+    </div>
+    <!-- end of footer -->
+    <div style="display:none;">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'G-816SNX8L7X');
+    </script>
+    </div>
+    </body>
+    </html>
+    
+    
