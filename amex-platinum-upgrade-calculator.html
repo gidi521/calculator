@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amex Platinum Upgrade Calculator</title>
+    <meta name="description" content="The Amex Platinum Upgrade Calculator helps you evaluate whether upgrading to the Amex Platinum Card is financially worth it based on your annual spending, travel frequency, and benefits used." />
+    <meta itemprop="description" content="Estimate whether an upgrade to the American Express Platinum Card is worthwhile based on your lifestyle, including travel habits, benefits utilization, and annual spending." />
+    <meta name="author" content="Wide Calculator" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
+        #amex-calculator {
+            margin-top: -10px;
+            margin-bottom: -10px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        #amex-calculator label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        #amex-calculator input {
+            width: 100px;
+            margin-top: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #amex-calculator button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #amex-calculator button:hover {
+            background-color: #0056b3;
+        }
+
+        #amex-result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main">
+            <div id="amex-calculator">
+                <h2>Amex Platinum Upgrade Calculator</h2>
+                <label for="spending">Annual Spending ($):</label>
+                <input type="number" id="spending" placeholder="Annual Spending" />
+
+                <label for="travel-days">Travel Days per Year:</label>
+                <input type="number" id="travel-days" placeholder="Travel Days" />
+
+                <label for="airport-visits">Airport Lounge Visits:</label>
+                <input type="number" id="airport-visits" placeholder="Lounge Visits" />
+
+                <label for="uber-use">Uber Benefit Used Monthly? (Yes=1 / No=0):</label>
+                <input type="number" id="uber-use" min="0" max="1" />
+
+                <label for="hotel-benefits">Hotel Credits Used ($/Year):</label>
+                <input type="number" id="hotel-benefits" placeholder="Hotel Credits" />
+
+                <button onclick="calculateAmexValue()">Calculate</button>
+                <p id="amex-result"></p>
+            </div>
+        </div>
+
+        <div id="content" class="text-center">
+            <h2>Understanding the Amex Platinum Upgrade Value</h2><br>
+            <p>The Amex Platinum Upgrade Calculator is a helpful tool for determining whether moving to the American Express Platinum Card aligns with your lifestyle and financial habits. This card is known for its premium travel benefits, luxury perks, and higher annual fee. Many users wonder: is the annual cost justified by the value received?</p>
+            <br>
+            <h3>Factors Included in the Calculation:</h3><br>
+            <ul>
+                <li><strong>Annual Spending:</strong> Helps assess how much value you get through points, cashback, or statement credits.</li>
+                <li><strong>Travel Days:</strong> Frequent flyers may receive substantial benefits through travel insurance, airport lounge access, and hotel upgrades.</li>
+                <li><strong>Airport Lounge Visits:</strong> Lounge access alone can provide hundreds of dollars in value, depending on frequency.</li>
+                <li><strong>Uber Benefit:</strong> The Amex Platinum card offers monthly Uber credits, totaling $200 per year when fully utilized.</li>
+                <li><strong>Hotel Credits:</strong> Amex offers benefits like $200 Fine Hotels & Resorts credits that can directly reduce travel costs.</li>
+            </ul>
+            <br>
+            <h3>Who Should Consider Upgrading?</h3><br>
+            <p>Those who frequently travel, stay at premium hotels, or value airport perks may find the upgrade worthwhile. For someone who only travels once a year, the benefits may not outweigh the cost.</p>
+            <p>Travelers who make use of annual credits, such as Uber rides, TSA PreCheck/Global Entry, and digital entertainment reimbursements, can significantly reduce the effective cost of the card.</p>
+            <br>
+            <h3>Using the Calculator:</h3><br>
+            <ol>
+                <li>Enter your estimated annual spending.</li>
+                <li>Indicate how many days per year you travel.</li>
+                <li>Enter the number of lounge visits.</li>
+                <li>Specify if you plan to use Uber credits every month.</li>
+                <li>Input estimated hotel credits usage per year.</li>
+                <li>Click "Calculate" to estimate your net annual benefit from upgrading.</li>
+            </ol>
+            <br>
+            <h3>Result Interpretation:</h3><br>
+            <p>The result shows the estimated total value of benefits minus the annual fee. A positive number means the upgrade likely offers good value. A negative number suggests the annual cost exceeds the value you'd receive from the card.</p>
+            <br>
+            <h3>Final Thoughts:</h3><br>
+            <p>The Amex Platinum Card is not for everyone. It’s best suited for individuals who travel frequently, appreciate luxury perks, and are likely to utilize the offered benefits. The calculator helps demystify whether the upgrade suits your specific needs, ensuring that you make an informed financial decision.</p>
+            <br><br><br>
+        </div>
+    </div>
+    <script>
+        function calculateAmexValue() {
+            const spending = parseFloat(document.getElementById('spending').value);
+            const travelDays = parseInt(document.getElementById('travel-days').value);
+            const loungeVisits = parseInt(document.getElementById('airport-visits').value);
+            const uberUse = parseInt(document.getElementById('uber-use').value);
+            const hotelCredits = parseFloat(document.getElementById('hotel-benefits').value);
+
+            if (isNaN(spending) || isNaN(travelDays) || isNaN(loungeVisits) || isNaN(uberUse) || isNaN(hotelCredits)) {
+                alert("Please fill in all fields with valid numbers.");
+                return;
+            }
+
+            const annualFee = 695;
+
+            const loungeValue = loungeVisits * 30;
+            const travelValue = travelDays * 5;
+            const spendingPoints = spending * 0.015;
+            const uberValue = uberUse === 1 ? 200 : 0;
+
+            const totalValue = loungeValue + travelValue + spendingPoints + uberValue + hotelCredits;
+            const netBenefit = totalValue - annualFee;
+
+            document.getElementById('amex-result').innerText =
+                "Estimated Net Benefit: $" + netBenefit.toFixed(2);
+        }
+    </script>
+
+      <!-- section-bottom -->
+      <section class="section-bottom">
+        <!-- shell -->
+        <div class="shell">
+            <!-- cols -->
+            <div class="cols">
+                <div class="col">
+                    <h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
+                    <p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
+    <p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
+    
+                    <a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
+                </div>
+                <div class="col">
+                    <h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
+                    <p>
+                          Q: Can I link from my website to a calculator?
+                         A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
+                <p>Q: How should I send suggestions or report problems?
+    A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
+    
+                        <a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
+                    <br>
+                    <br><br>
+                    
+                
+                </div>
+                <div class="col subscribe-col">
+                    <h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
+                    <div class="col-cnt">
+                        <p>Contact Us
+                            If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website.</p> <br>
+                        <p>We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
+                            <a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+                            <!--<form method="post">
+                            <input type="text" class="field" value="Your Email Here" title="Your Email Here" />
+                            <input type="submit" class="submit-btn" value="Submit" />
+                        </form>
+                        <a href="#">XXXX@Caculator.com</a>-->
+                    </div>  
+                </div>
+                <div class="cl">&nbsp;</div>
+            </div>
+            <!-- end of cols -->
+        </div>
+        <!-- end of shell -->
+    </section>
+    <!-- end of section-bottom -->
+    </div>
+    <!-- end of main -->
+    <div id="footer-push"></div>
+    </div>
+    <!-- end of wrapper -->
+    <!-- footer -->
+    <div id="footer">
+    <div class="footer-bottom">
+    <div class="shell">
+        <nav class="footer-nav left">
+            <ul>
+                <li class="active"><a href="https://widecalculator.com/">HOME</a></li>
+                <li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
+                <li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
+            </ul>
+        </nav>
+        <p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+        <div class="cl">&nbsp;</div>
+    </div>  
+    </div>
+    </div>
+    <!-- end of footer -->
+    <div style="display:none;">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'G-816SNX8L7X');
+    </script>
+    </div>
+    </body>
+    </html>
+    
+    
