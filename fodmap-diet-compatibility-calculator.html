@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FODMAP Diet Compatibility Calculator</title>
+    <meta name="description" content="The FODMAP Diet Compatibility Calculator helps evaluate whether a meal is suitable for individuals following a low FODMAP diet by analyzing common food ingredients and portion sizes." />
+    <meta itemprop="description" content="The FODMAP Diet Compatibility Calculator is a tool designed to assess the compatibility of meals with a low FODMAP diet, based on selected food ingredients and their portions." />
+    <meta name="author" content="Wide Calculator" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
+        #fodmap-calculator {
+            margin-top: -10px;
+            margin-bottom: -10px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        #fodmap-calculator label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        #fodmap-calculator select,
+        #fodmap-calculator input {
+            width: 80%;
+            margin-top: 10px;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #fodmap-calculator button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #fodmap-calculator button:hover {
+            background-color: #218838;
+        }
+
+        #fodmap-result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main">
+            <div id="fodmap-calculator" class="text-center">
+                <h2>FODMAP Diet Compatibility Calculator</h2>
+                <label for="ingredient">Choose Food Ingredient:</label>
+                <select id="ingredient">
+                    <option value="garlic">Garlic (1 clove)</option>
+                    <option value="onion">Onion (1/2 cup)</option>
+                    <option value="milk">Cow's Milk (1 cup)</option>
+                    <option value="cheddar">Cheddar Cheese (1 slice)</option>
+                    <option value="apple">Apple (1 medium)</option>
+                    <option value="banana">Banana (1 medium)</option>
+                    <option value="rice">White Rice (1 cup)</option>
+                    <option value="zucchini">Zucchini (1/2 cup)</option>
+                    <option value="wheatbread">Wheat Bread (1 slice)</option>
+                </select>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" placeholder="e.g., 2" min="1" />
+                <button onclick="evaluateFODMAP()">Check Compatibility</button>
+                <p id="fodmap-result"></p>
+            </div>
+        </div>
+
+        <div id="content" class="text-center">
+            <h2>Understanding the FODMAP Diet</h2><br>
+            <p>The FODMAP Diet Compatibility Calculator helps individuals determine whether a particular food or combination of foods is likely to trigger digestive discomfort under the FODMAP dietary guidelines. FODMAP stands for Fermentable Oligosaccharides, Disaccharides, Monosaccharides, And Polyols—types of short-chain carbohydrates that can be poorly absorbed by the gut, leading to symptoms such as bloating, gas, and stomach pain, especially in individuals with irritable bowel syndrome (IBS).</p>
+
+            <br><h3>What Are High and Low FODMAP Foods?</h3><br>
+            <p>High FODMAP foods are those that contain fermentable carbohydrates which can ferment in the gut. Common examples include onions, garlic, wheat, apples, and milk. On the other hand, low FODMAP foods such as zucchini, rice, bananas, and hard cheeses are less likely to cause digestive symptoms.</p>
+
+            <br><h3>Why Use a FODMAP Calculator?</h3><br>
+            <p>Understanding how different foods contribute to FODMAP intake helps individuals personalize their diet while managing symptoms. The FODMAP Diet Compatibility Calculator provides an easy way to input specific food items and get immediate feedback on whether the combination might be suitable for a low FODMAP approach.</p>
+
+            <br><h3>How to Use This Calculator:</h3><br>
+            <ol>
+                <li>Select a food ingredient from the dropdown list.</li>
+                <li>Input the quantity of the selected food (e.g., how many cloves of garlic or cups of milk).</li>
+                <li>Click "Check Compatibility" to get the result.</li>
+            </ol>
+
+            <br><h3>Examples:</h3><br>
+            <ul>
+                <li>1 clove of garlic is high FODMAP, and even small quantities may be problematic.</li>
+                <li>Cheddar cheese, in small portions, is low in lactose and thus often low FODMAP compatible.</li>
+                <li>Bananas are low FODMAP when unripe, but high FODMAP when overly ripe.</li>
+            </ul>
+
+            <br><h3>Tips for Maintaining a Low FODMAP Diet:</h3><br>
+            <ul>
+                <li>Use garlic-infused oil instead of whole garlic.</li>
+                <li>Choose lactose-free dairy or aged cheeses.</li>
+                <li>Limit servings of fruits to avoid fructose overload.</li>
+                <li>Include low FODMAP grains like rice, quinoa, and oats.</li>
+            </ul>
+
+            <br><h3>Conclusion:</h3><br>
+            <p>The FODMAP Diet Compatibility Calculator supports informed food choices for people with digestive sensitivities. It offers a user-friendly way to explore the impact of different ingredients on gut health and dietary comfort. Whether you're just beginning a low FODMAP diet or managing symptoms long-term, this tool helps you make confident, gut-friendly decisions.</p>
+
+            <br><br><br><br>
+        </div>
+    </div>
+
+    <script>
+        const fodmapDatabase = {
+            garlic: { factor: 5, name: "Garlic" },
+            onion: { factor: 4, name: "Onion" },
+            milk: { factor: 3.5, name: "Cow's Milk" },
+            cheddar: { factor: 0.5, name: "Cheddar Cheese" },
+            apple: { factor: 4, name: "Apple" },
+            banana: { factor: 2, name: "Banana" },
+            rice: { factor: 0.2, name: "White Rice" },
+            zucchini: { factor: 0.3, name: "Zucchini" },
+            wheatbread: { factor: 3, name: "Wheat Bread" }
+        };
+
+        function evaluateFODMAP() {
+            const ingredient = document.getElementById("ingredient").value;
+            const quantity = parseFloat(document.getElementById("quantity").value);
+
+            if (!ingredient || isNaN(quantity) || quantity <= 0) {
+                alert("Please enter a valid ingredient and quantity.");
+                return;
+            }
+
+            const score = fodmapDatabase[ingredient].factor * quantity;
+            let resultText;
+
+            if (score <= 1) {
+                resultText = "Low FODMAP: This portion is likely safe.";
+            } else if (score <= 3) {
+                resultText = "Moderate FODMAP: May be tolerated by some individuals.";
+            } else {
+                resultText = "High FODMAP: Likely to cause symptoms for sensitive individuals.";
+            }
+
+            document.getElementById("fodmap-result").innerText = `${fodmapDatabase[ingredient].name} x ${quantity} — ${resultText}`;
+        }
+    </script>
+
+      <!-- section-bottom -->
+      <section class="section-bottom">
+        <!-- shell -->
+        <div class="shell">
+            <!-- cols -->
+            <div class="cols">
+                <div class="col">
+                    <h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
+                    <p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
+    <p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
+    
+                    <a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
+                </div>
+                <div class="col">
+                    <h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
+                    <p>
+                          Q: Can I link from my website to a calculator?
+                         A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
+                <p>Q: How should I send suggestions or report problems?
+    A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
+    
+                        <a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
+                    <br>
+                    <br><br>
+                    
+                
+                </div>
+                <div class="col subscribe-col">
+                    <h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
+                    <div class="col-cnt">
+                        <p>Contact Us
+                            If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website.</p> <br>
+                        <p>We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
+                            <a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+                            <!--<form method="post">
+                            <input type="text" class="field" value="Your Email Here" title="Your Email Here" />
+                            <input type="submit" class="submit-btn" value="Submit" />
+                        </form>
+                        <a href="#">XXXX@Caculator.com</a>-->
+                    </div>  
+                </div>
+                <div class="cl">&nbsp;</div>
+            </div>
+            <!-- end of cols -->
+        </div>
+        <!-- end of shell -->
+    </section>
+    <!-- end of section-bottom -->
+    </div>
+    <!-- end of main -->
+    <div id="footer-push"></div>
+    </div>
+    <!-- end of wrapper -->
+    <!-- footer -->
+    <div id="footer">
+    <div class="footer-bottom">
+    <div class="shell">
+        <nav class="footer-nav left">
+            <ul>
+                <li class="active"><a href="https://widecalculator.com/">HOME</a></li>
+                <li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
+                <li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
+            </ul>
+        </nav>
+        <p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+        <div class="cl">&nbsp;</div>
+    </div>  
+    </div>
+    </div>
+    <!-- end of footer -->
+    <div style="display:none;">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'G-816SNX8L7X');
+    </script>
+    </div>
+    </body>
+    </html>
+    
+    

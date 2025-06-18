@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Zones Diet Calculator</title>
+    <meta name="description" content="The Blue Zones Diet Calculator estimates how closely your diet aligns with the eating habits of the world’s longest-living people." />
+    <meta itemprop="description" content="Use the Blue Zones Diet Calculator to evaluate your daily food choices and determine how well they match the dietary patterns of the healthiest and longest-living communities." />
+    <meta name="author" content="Wide Calculator" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
+        #blue-zones-calculator {
+            margin-top: -10px;
+            margin-bottom: -10px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #blue-zones-calculator label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        #blue-zones-calculator input {
+            width: 60px;
+            margin-top: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #blue-zones-calculator button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #blue-zones-calculator button:hover {
+            background-color: #1e7e34;
+        }
+
+        #blue-zones-result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main">
+            <div id="blue-zones-calculator" class="text-center">
+                <h2>Blue Zones Diet Calculator</h2>
+                <label for="veggies">Servings of Vegetables per Day:</label>
+                <input type="text" id="veggies" placeholder="e.g. 5" />
+                <label for="meat">Servings of Meat per Week:</label>
+                <input type="text" id="meat" placeholder="e.g. 3" />
+                <label for="legumes">Servings of Legumes per Day:</label>
+                <input type="text" id="legumes" placeholder="e.g. 2" />
+                <label for="processed">Processed Food Servings per Week:</label>
+                <input type="text" id="processed" placeholder="e.g. 4" />
+                <br />
+                <button onclick="calculateBlueZonesScore()">Calculate</button>
+                <p id="blue-zones-result"></p>
+            </div>
+        </div>
+
+        <div id="content" class="text-center">
+            <h2>Understanding the Blue Zones Diet</h2><br>
+            <p>The Blue Zones Diet Calculator is a useful tool designed to help you evaluate your daily and weekly eating habits based on the nutritional patterns observed in Blue Zones—regions in the world where people live the longest and healthiest lives. This tool analyzes key dietary elements such as plant-based food intake, meat consumption, legume intake, and processed food usage to provide a score representing your dietary alignment with Blue Zones principles.</p>
+            <br>
+            <h3>What Are Blue Zones?</h3><br>
+            <p>Blue Zones refer to five geographic regions identified by researchers as having the highest concentrations of centenarians—people who live to be 100 or older. These regions include Okinawa (Japan), Sardinia (Italy), Nicoya Peninsula (Costa Rica), Ikaria (Greece), and Loma Linda (California, USA). Despite being located in different parts of the world, people in these regions share common lifestyle and dietary patterns.</p>
+            <br>
+            <h3>Core Principles of the Blue Zones Diet</h3><br>
+            <ul>
+                <li>High consumption of vegetables and leafy greens.</li>
+                <li>Regular intake of legumes like beans, lentils, and chickpeas.</li>
+                <li>Minimal consumption of meat (often fewer than 5 servings per week).</li>
+                <li>Limited processed and packaged foods.</li>
+                <li>Occasional consumption of whole grains, nuts, and healthy fats.</li>
+            </ul>
+            <br>
+            <h3>Using the Blue Zones Diet Calculator</h3><br>
+            <p>To use the calculator, simply input the average number of servings you consume in the following categories:</p>
+            <ol>
+                <li><strong>Vegetables:</strong> Daily servings of fresh, non-starchy vegetables.</li>
+                <li><strong>Meat:</strong> Weekly servings of any kind of red meat or poultry.</li>
+                <li><strong>Legumes:</strong> Daily servings of beans, peas, lentils, etc.</li>
+                <li><strong>Processed Food:</strong> Weekly servings of processed, packaged, or fast food items.</li>
+            </ol>
+            <p>Click the "Calculate" button to receive a percentage score indicating how closely your diet aligns with Blue Zones dietary recommendations.</p>
+            <br>
+            <h3>Why This Calculator Matters</h3><br>
+            <p>By gaining insights into your eating habits, this tool empowers you to make more informed dietary decisions. Whether you’re looking to increase longevity, reduce chronic disease risk, or simply eat healthier, understanding how your current habits compare to those in the Blue Zones can be a powerful motivator.</p>
+            <br>
+            <h3>Sample Interpretations</h3><br>
+            <ul>
+                <li><strong>90-100%:</strong> Excellent alignment. Your diet strongly reflects Blue Zones eating habits.</li>
+                <li><strong>70-89%:</strong> Good alignment. A few adjustments can bring you closer to the ideal.</li>
+                <li><strong>50-69%:</strong> Moderate alignment. Consider reducing meat and processed foods.</li>
+                <li><strong>Below 50%:</strong> Low alignment. Significant dietary changes may be beneficial.</li>
+            </ul>
+            <br>
+            <h3>Conclusion</h3><br>
+            <p>The Blue Zones Diet Calculator offers a simple yet informative way to reflect on your nutrition and work toward healthier goals inspired by the world’s longest-living communities. Try adjusting your food choices based on your results to enjoy greater well-being and long-term vitality.</p>
+        </div>
+    </div>
+
+    <script>
+        function calculateBlueZonesScore() {
+            const veggies = parseInt(document.getElementById('veggies').value);
+            const meat = parseInt(document.getElementById('meat').value);
+            const legumes = parseInt(document.getElementById('legumes').value);
+            const processed = parseInt(document.getElementById('processed').value);
+
+            if (isNaN(veggies) || isNaN(meat) || isNaN(legumes) || isNaN(processed) || veggies < 0 || meat < 0 || legumes < 0 || processed < 0) {
+                alert("Please enter valid values in all fields.");
+                return;
+            }
+
+            // Each component contributes to a 100-point scale
+            let score = 0;
+
+            // Vegetables: max 30 points if 5+ servings per day
+            score += Math.min(veggies, 5) * 6;
+
+            // Meat: fewer is better. 5+ servings per week = 0 pts, 0 servings = 30 pts
+            if (meat === 0) score += 30;
+            else if (meat <= 2) score += 20;
+            else if (meat <= 4) score += 10;
+
+            // Legumes: max 20 points if 2+ servings per day
+            score += Math.min(legumes, 2) * 10;
+
+            // Processed food: fewer is better. 0 = 20 pts, up to 3 = 10 pts, >3 = 0 pts
+            if (processed === 0) score += 20;
+            else if (processed <= 3) score += 10;
+
+            const percentage = Math.min((score / 100) * 100, 100).toFixed(2);
+            document.getElementById('blue-zones-result').innerText = "Your Blue Zones Diet Score: " + percentage + "%";
+        }
+    </script>
+
+      <!-- section-bottom -->
+      <section class="section-bottom">
+        <!-- shell -->
+        <div class="shell">
+            <!-- cols -->
+            <div class="cols">
+                <div class="col">
+                    <h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
+                    <p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
+    <p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
+    
+                    <a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
+                </div>
+                <div class="col">
+                    <h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
+                    <p>
+                          Q: Can I link from my website to a calculator?
+                         A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
+                <p>Q: How should I send suggestions or report problems?
+    A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
+    
+                        <a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
+                    <br>
+                    <br><br>
+                    
+                
+                </div>
+                <div class="col subscribe-col">
+                    <h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
+                    <div class="col-cnt">
+                        <p>Contact Us
+                            If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website.</p> <br>
+                        <p>We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
+                            <a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+                            <!--<form method="post">
+                            <input type="text" class="field" value="Your Email Here" title="Your Email Here" />
+                            <input type="submit" class="submit-btn" value="Submit" />
+                        </form>
+                        <a href="#">XXXX@Caculator.com</a>-->
+                    </div>  
+                </div>
+                <div class="cl">&nbsp;</div>
+            </div>
+            <!-- end of cols -->
+        </div>
+        <!-- end of shell -->
+    </section>
+    <!-- end of section-bottom -->
+    </div>
+    <!-- end of main -->
+    <div id="footer-push"></div>
+    </div>
+    <!-- end of wrapper -->
+    <!-- footer -->
+    <div id="footer">
+    <div class="footer-bottom">
+    <div class="shell">
+        <nav class="footer-nav left">
+            <ul>
+                <li class="active"><a href="https://widecalculator.com/">HOME</a></li>
+                <li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
+                <li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
+            </ul>
+        </nav>
+        <p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+        <div class="cl">&nbsp;</div>
+    </div>  
+    </div>
+    </div>
+    <!-- end of footer -->
+    <div style="display:none;">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'G-816SNX8L7X');
+    </script>
+    </div>
+    </body>
+    </html>
+    
+    
