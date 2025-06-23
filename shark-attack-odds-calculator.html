@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shark Attack Odds Calculator</title>
+    <meta name="description" content="Estimate your chance of a shark attack based on region, activity, water type, and time of day using the Shark Attack Odds Calculator." />
+    <meta itemprop="description" content="The Shark Attack Odds Calculator helps you estimate the likelihood of a shark attack depending on beach location, water activity, and more." />
+    <meta name="author" content="Wide Calculator" />
+    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+        <script src="js/modernizr.custom.js"></script>
+    <![endif]-->
+    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
+    <style>
+        #plane-crash-calculator {
+            margin-top: -10px;
+            margin-bottom: -10px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #plane-crash-calculator label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        #plane-crash-calculator select,
+        #plane-crash-calculator input {
+            width: 100%;
+            margin-top: 10px;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #plane-crash-calculator button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #plane-crash-calculator button:hover {
+            background-color: #0056b3;
+        }
+
+        #plane-crash-result {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="shell">
+                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
+                <nav id="navigation">
+                    <ul>
+                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
+                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="main">
+            <div id="plane-crash-calculator" class="text-center">
+                <h2>Shark Attack Odds Calculator</h2>
+                <label for="region">Select Region:</label>
+                <select id="region">
+                    <option value="florida">Florida (USA)</option>
+                    <option value="australia">Australia</option>
+                    <option value="south-africa">South Africa</option>
+                    <option value="california">California (USA)</option>
+                    <option value="hawaii">Hawaii</option>
+                    <option value="brazil">Brazil</option>
+                    <option value="bahamas">Bahamas</option>
+                    <option value="new-zealand">New Zealand</option>
+                </select>
+                <label for="activity">Water Activity:</label>
+                <select id="activity">
+                    <option value="swimming">Swimming</option>
+                    <option value="surfing">Surfing</option>
+                    <option value="diving">Diving</option>
+                    <option value="fishing">Shore Fishing</option>
+                </select>
+                <label for="water-type">Water Type:</label>
+                <select id="water-type">
+                    <option value="clear">Clear</option>
+                    <option value="murky">Murky</option>
+                </select>
+                <label for="time">Time of Day:</label>
+                <select id="time">
+                    <option value="day">Day</option>
+                    <option value="dusk">Dusk</option>
+                    <option value="night">Night</option>
+                </select>
+                <br />
+                <button onclick="calculateSharkOdds()">Calculate</button>
+                <p id="plane-crash-result"></p>
+            </div>
+        </div>
+
+        <div id="content" class="text-center">
+            <h2>Understanding Your Chances of a Shark Attack</h2><br>
+            <p>The Shark Attack Odds Calculator is an intuitive tool designed to estimate your likelihood of encountering a shark attack based on a combination of factors such as your beach destination, water activity, time of day, and the clarity of the water. Whether you're planning a beach holiday in Australia or surfing the waves in California, this tool can help you make informed decisions while enjoying the ocean.</p>
+            <br>
+            <h3>How Shark Attack Odds Are Calculated:</h3><br>
+            <p>Shark attack odds are influenced by multiple variables that align with historical patterns of shark-human encounters. Each factor modifies the baseline odds using a multiplier derived from data and trends. For example, murky water and low-light conditions such as dusk or night increase risk, as sharks rely on sensory perception and may mistake humans for prey. Similarly, different activities—like surfing or diving—expose individuals more directly to potential shark paths.</p>
+            <br>
+            <h3>Regions Where Shark Attacks Are More Common:</h3><br>
+            <p>Certain global coastal regions are statistically more prone to shark incidents. These include:</p>
+            <ul>
+                <li>**Florida, USA** – Particularly the Atlantic coast and areas like Volusia County.</li>
+                <li>**Australia** – Especially New South Wales and Western Australia.</li>
+                <li>**South Africa** – With notable activity near Cape Town and the Eastern Cape.</li>
+                <li>**Hawaii** – Maui and Oahu beaches report frequent sightings and occasional incidents.</li>
+                <li>**California, USA** – Particularly Central California, with seasonal great white shark presence.</li>
+                <li>**Brazil** – Particularly around Recife in the northeast.</li>
+                <li>**Bahamas** – Where shallow clear waters bring humans and sharks close together.</li>
+                <li>**New Zealand** – Especially during warmer months and near river mouths.</li>
+            </ul>
+            <br>
+            <h3>Water Clarity and Time of Day:</h3><br>
+            <p>Sharks tend to be more active at dusk and dawn. Poor visibility—such as in murky or sediment-rich waters—reduces a shark’s ability to identify its target, increasing the chances of mistaken identity. Many shark bites happen during early morning or evening when people are surfing, swimming, or diving in low-visibility conditions.</p>
+            <br>
+            <h3>Risk by Activity Type:</h3><br>
+            <ul>
+                <li><strong>Surfing</strong> places individuals in areas with deeper water and may simulate prey movements from below.</li>
+                <li><strong>Diving</strong> involves descending into territories sharks may consider part of their hunting ground.</li>
+                <li><strong>Swimming</strong> is relatively lower-risk but still presents some exposure.</li>
+                <li><strong>Shore Fishing</strong> can attract sharks with bait and blood, raising risk near the shoreline.</li>
+            </ul>
+            <br>
+            <h3>How to Use This Calculator:</h3><br>
+            <ol>
+                <li>Select your region/beach destination.</li>
+                <li>Choose the water activity you plan to do.</li>
+                <li>Select the water clarity at your location (clear or murky).</li>
+                <li>Choose the time of day you plan to be in the water.</li>
+                <li>Click the “Calculate” button to estimate your shark attack odds.</li>
+            </ol>
+            <br>
+            <h3>Conclusion:</h3><br>
+            <p>While shark attacks are statistically rare, knowing your risk based on geography and behavior can help you make better decisions. Whether you’re surfing near Byron Bay, diving in the Bahamas, or swimming in Waikiki, this calculator helps you assess risk levels with contextual accuracy. By understanding factors like activity, water type, and timing, you can enjoy ocean activities more safely and confidently.</p>
+            <br>
+            <br>
+        </div>
+    </div>
+    <script>
+        function calculateSharkOdds() {
+            const region = document.getElementById('region').value;
+            const activity = document.getElementById('activity').value;
+            const waterType = document.getElementById('water-type').value;
+            const time = document.getElementById('time').value;
+
+            let baseOdds = 0.000002; // Baseline: 1 in 500,000
+
+            // Regional multipliers
+            const regionFactors = {
+                'florida': 1.4,
+                'australia': 1.8,
+                'south-africa': 1.9,
+                'california': 1.3,
+                'hawaii': 1.6,
+                'brazil': 1.7,
+                'bahamas': 1.5,
+                'new-zealand': 1.2
+            };
+
+            // Activity multipliers
+            const activityFactors = {
+                'swimming': 1.0,
+                'surfing': 1.8,
+                'diving': 2.0,
+                'fishing': 1.6
+            };
+
+            // Water clarity multipliers
+            const waterFactors = {
+                'clear': 1.0,
+                'murky': 1.5
+            };
+
+            // Time of day multipliers
+            const timeFactors = {
+                'day': 1.0,
+                'dusk': 1.6,
+                'night': 2.0
+            };
+
+            const odds = baseOdds *
+                         regionFactors[region] *
+                         activityFactors[activity] *
+                         waterFactors[waterType] *
+                         timeFactors[time];
+
+            const oddsPercentage = (odds * 100).toFixed(6);
+            const oddsRatio = Math.round(1 / odds).toLocaleString();
+
+            document.getElementById('plane-crash-result').innerText =
+                "Estimated Odds of Shark Attack: " + oddsPercentage + "% (1 in " + oddsRatio + ")";
+        }
+    </script>
+
+      <!-- section-bottom -->
+      <section class="section-bottom">
+        <!-- shell -->
+        <div class="shell">
+            <!-- cols -->
+            <div class="cols">
+                <div class="col">
+                    <h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
+                    <p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
+    <p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
+    
+                    <a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
+                </div>
+                <div class="col">
+                    <h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
+                    <p>
+                          Q: Can I link from my website to a calculator?
+                         A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
+                <p>Q: How should I send suggestions or report problems?
+    A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
+    
+                        <a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
+                    <br>
+                    <br><br>
+                    
+                
+                </div>
+                <div class="col subscribe-col">
+                    <h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
+                    <div class="col-cnt">
+                        <p>Contact Us
+                            If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website.</p> <br>
+                        <p>We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
+                            <a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
+                            <!--<form method="post">
+                            <input type="text" class="field" value="Your Email Here" title="Your Email Here" />
+                            <input type="submit" class="submit-btn" value="Submit" />
+                        </form>
+                        <a href="#">XXXX@Caculator.com</a>-->
+                    </div>  
+                </div>
+                <div class="cl">&nbsp;</div>
+            </div>
+            <!-- end of cols -->
+        </div>
+        <!-- end of shell -->
+    </section>
+    <!-- end of section-bottom -->
+    </div>
+    <!-- end of main -->
+    <div id="footer-push"></div>
+    </div>
+    <!-- end of wrapper -->
+    <!-- footer -->
+    <div id="footer">
+    <div class="footer-bottom">
+    <div class="shell">
+        <nav class="footer-nav left">
+            <ul>
+                <li class="active"><a href="https://widecalculator.com/">HOME</a></li>
+                <li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
+                <li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
+            </ul>
+        </nav>
+        <p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
+        <div class="cl">&nbsp;</div>
+    </div>  
+    </div>
+    </div>
+    <!-- end of footer -->
+    <div style="display:none;">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'G-816SNX8L7X');
+    </script>
+    </div>
+    </body>
+    </html>
+    
+    
