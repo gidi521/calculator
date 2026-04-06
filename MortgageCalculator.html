@@ -13,7 +13,7 @@
     <script src="js/jquery-1.7.2.min.js"></script>
     <!--[if lt IE 9]>
         <script src="js/modernizr.custom.js"></script>
-    <![endif]-->
+    ![endif]-->
     <script src="js/jquery.flexslider-min.js"></script>
     <script src="js/functions.js"></script>
 
@@ -38,6 +38,7 @@
 <body>
     <div id="wrapper">
         <div id="header"></div>
+
         <div class="main">
             <div id="content">
                 <h1>All-in-One Mortgage & Home Loan Calculators</h1>
@@ -68,7 +69,7 @@
                 <a href="#c20">Biweekly Payment</a>
             </div>
 
-            <!-- 1 -->
+            <!-- 1 Monthly Payment -->
             <div id="c1" class="calc-card">
                 <h3>1. Monthly Mortgage Payment</h3>
                 <input id="m1a" placeholder="Loan Amount" type="number">
@@ -80,7 +81,7 @@
             <div class="calc-desc">This basic tool calculates your fixed monthly principal and interest payment for standard home loans.</div>
             <div class="divider"></div>
 
-            <!-- 2 -->
+            <!-- 2 Refinance Savings -->
             <div id="c2" class="calc-card">
                 <h3>2. Refinance Savings Calculator</h3>
                 <input id="m2a" placeholder="Current Loan Balance" type="number">
@@ -92,7 +93,7 @@
             <div class="calc-desc">Compare your old loan with a new lower rate to see monthly savings and long-term interest reduction.</div>
             <div class="divider"></div>
 
-            <!-- 3 -->
+            <!-- 3 Down Payment -->
             <div id="c3" class="calc-card">
                 <h3>3. Down Payment Impact Calculator</h3>
                 <input id="m3a" placeholder="Home Price" type="number">
@@ -104,7 +105,7 @@
             <div class="calc-desc">Check how different down payment percentages change your loan amount and monthly cost.</div>
             <div class="divider"></div>
 
-            <!-- 4 -->
+            <!-- 4 Home Affordability -->
             <div id="c4" class="calc-card">
                 <h3>4. Home Affordability Calculator</h3>
                 <input id="m4a" placeholder="Monthly Income" type="number">
@@ -116,7 +117,7 @@
             <div class="calc-desc">Find the maximum home price you can afford safely based on income and existing monthly debts.</div>
             <div class="divider"></div>
 
-            <!-- 5 -->
+            <!-- 5 PMI Calculator -->
             <div id="c5" class="calc-card">
                 <h3>5. PMI Mortgage Insurance Calculator</h3>
                 <input id="m5a" placeholder="Home Price" type="number">
@@ -128,7 +129,7 @@
             <div class="calc-desc">Estimate extra monthly PMI cost when your down payment is less than 20%.</div>
             <div class="divider"></div>
 
-            <!-- 6 -->
+            <!-- 6 Extra Payment -->
             <div id="c6" class="calc-card">
                 <h3>6. Extra Payment Loan Payoff</h3>
                 <input id="m6a" placeholder="Original Loan" type="number">
@@ -140,7 +141,7 @@
             <div class="calc-desc">See how much interest you save and how many years you shorten by paying extra each month.</div>
             <div class="divider"></div>
 
-            <!-- 7 -->
+            <!-- 7 Rent vs Buy -->
             <div id="c7" class="calc-card">
                 <h3>7. Rent vs Buy Comparison</h3>
                 <input id="m7a" placeholder="Monthly Rent" type="number">
@@ -152,7 +153,7 @@
             <div class="calc-desc">Compare long-term cost and wealth growth between renting and buying a house.</div>
             <div class="divider"></div>
 
-            <!-- 8 -->
+            <!-- 8 Cash Out Refi -->
             <div id="c8" class="calc-card">
                 <h3>8. Cash Out Refinance Equity</h3>
                 <input id="m8a" placeholder="Home Current Value" type="number">
@@ -164,7 +165,7 @@
             <div class="calc-desc">Calculate how much cash you can take out from your home equity with refinancing.</div>
             <div class="divider"></div>
 
-            <!-- 9 -->
+            <!-- 9 Property Tax -->
             <div id="c9" class="calc-card">
                 <h3>9. Monthly Property Tax Estimator</h3>
                 <input id="m9a" placeholder="Home Assessed Value" type="number">
@@ -175,7 +176,7 @@
             <div class="calc-desc">Estimate monthly real estate tax to complete your full housing budget.</div>
             <div class="divider"></div>
 
-            <!-- 10 -->
+            <!-- 10 Home Insurance -->
             <div id="c10" class="calc-card">
                 <h3>10. Homeowners Insurance Monthly</h3>
                 <input id="m10a" placeholder="Home Replacement Value" type="number">
@@ -186,7 +187,7 @@
             <div class="calc-desc">Get monthly home insurance cost for full PITI budget planning.</div>
             <div class="divider"></div>
 
-            <!-- 11 -->
+            <!-- 11 15 vs 30 Year -->
             <div id="c11" class="calc-card">
                 <h3>11. 15 Year vs 30 Year Loan</h3>
                 <input id="m11a" placeholder="Loan Amount" type="number">
@@ -198,7 +199,7 @@
             <div class="calc-desc">See payment difference and total interest saved between short-term and long-term mortgages.</div>
             <div class="divider"></div>
 
-            <!-- 12 -->
+            <!-- 12 HELOC Equity -->
             <div id="c12" class="calc-card">
                 <h3>12. HELOC Home Equity Calculator</h3>
                 <input id="m12a" placeholder="Home Value" type="number">
@@ -210,19 +211,19 @@
             <div class="calc-desc">Check how much credit you can get from your home equity line of credit.</div>
             <div class="divider"></div>
 
-            <!-- 13 -->
+            <!-- 13 PITI Full Cost -->
             <div id="c13" class="calc-card">
                 <h3>13. PITI Full Monthly Cost</h3>
                 <input id="m13a" placeholder="Loan Amount" type="number">
                 <input id="m13b" placeholder="Rate %" step="0.01" type="number">
-                <input id="m13c" placeholder="Tax+Insurance/mo" type="number">
+                <input id="m13c" placeholder="Tax + Insurance / Mo" type="number">
                 <button onclick="calcM13()">Calculate PITI</button>
                 <div class="calc-result" id="resM13"></div>
             </div>
             <div class="calc-desc">Calculate full monthly housing cost (Principal + Interest + Tax + Insurance).</div>
             <div class="divider"></div>
 
-            <!-- 14 -->
+            <!-- 14 Investment Property -->
             <div id="c14" class="calc-card">
                 <h3>14. Investment Property Loan</h3>
                 <input id="m14a" placeholder="Loan Amount" type="number">
@@ -233,7 +234,7 @@
             <div class="calc-desc">Monthly payment calculator for rental and investment property mortgages.</div>
             <div class="divider"></div>
 
-            <!-- 15 -->
+            <!-- 15 Second Home Loan -->
             <div id="c15" class="calc-card">
                 <h3>15. Second Home Loan</h3>
                 <input id="m15a" placeholder="Loan Amount" type="number">
@@ -244,7 +245,7 @@
             <div class="calc-desc">Monthly payment for second homes, vacation properties and getaway houses.</div>
             <div class="divider"></div>
 
-            <!-- 16 -->
+            <!-- 16 FHA Loan PMI -->
             <div id="c16" class="calc-card">
                 <h3>16. FHA Loan + MIP</h3>
                 <input id="m16a" placeholder="Loan Amount" type="number">
@@ -255,7 +256,7 @@
             <div class="calc-desc">FHA loan payment including mandatory mortgage insurance premium (MIP).</div>
             <div class="divider"></div>
 
-            <!-- 17 -->
+            <!-- 17 VA Loan Estimate -->
             <div id="c17" class="calc-card">
                 <h3>17. VA Loan Estimate</h3>
                 <input id="m17a" placeholder="Loan Amount" type="number">
@@ -266,7 +267,7 @@
             <div class="calc-desc">VA loan monthly payment with zero down payment benefit.</div>
             <div class="divider"></div>
 
-            <!-- 18 -->
+            <!-- 18 Closing Cost -->
             <div id="c18" class="calc-card">
                 <h3>18. Closing Cost Estimator</h3>
                 <input id="m18a" placeholder="Home Price" type="number">
@@ -277,7 +278,7 @@
             <div class="calc-desc">Estimate total closing costs for purchase or refinance transactions.</div>
             <div class="divider"></div>
 
-            <!-- 19 -->
+            <!-- 19 Total Interest -->
             <div id="c19" class="calc-card">
                 <h3>19. Total Interest Paid</h3>
                 <input id="m19a" placeholder="Loan Amount" type="number">
@@ -289,7 +290,7 @@
             <div class="calc-desc">See total interest you pay over the entire life of your mortgage.</div>
             <div class="divider"></div>
 
-            <!-- 20 -->
+            <!-- 20 Biweekly Payment -->
             <div id="c20" class="calc-card">
                 <h3>20. Biweekly Payment Savings</h3>
                 <input id="m20a" placeholder="Loan Amount" type="number">
@@ -310,14 +311,14 @@
     fetch("/header.html").then(r=>r.text()).then(d=>document.getElementById("header").innerHTML=d);
     fetch("/footer.html").then(r=>r.text()).then(d=>document.getElementById("footer-placeholder").innerHTML=d);
 
-    // 20个全功能正确公式
+    // 全20个完整正确计算函数（和Loan Calculator完全一致写法）
     function calcM1(){let L=+m1a.value,R=+m1b.value/1200,N=+m1c.value*12;let M=(L*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);resM1.innerText="Monthly Payment: $"+M.toFixed(2);}
     function calcM2(){let B=+m2a.value,Ro=+m2b.value/1200,Rn=+m2c.value/1200,N=360;let Mo=(B*Ro*Math.pow(1+Ro,N))/(Math.pow(1+Ro,N)-1);let Mn=(B*Rn*Math.pow(1+Rn,N))/(Math.pow(1+Rn,N)-1);resM2.innerText="Monthly Save: $"+(Mo-Mn).toFixed(2);}
     function calcM3(){let P=+m3a.value,dp=+m3b.value/100,L=P*(1-dp),R=+m3c.value/1200,N=360;let M=(L*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);resM3.innerText="Loan:$"+L.toFixed(2)+" | Monthly:$"+M.toFixed(2);}
     function calcM4(){let i=+m4a.value,d=+m4b.value,allow=i*0.28-d,R=+m4c.value/1200,N=360;let maxL=allow*(1-Math.pow(1+R,-N))/R;resM4.innerText="Max Affordable Loan: $"+maxL.toFixed(2);}
     function calcM5(){let P=+m5a.value,dp=+m5b.value/100,L=P*(1-dp),pmi=+m5c.value/100/12;resM5.innerText="Monthly PMI: $"+(L*pmi).toFixed(2);}
-    function calcM6(){let L=+m6a.value,R=+m6b.value/1200,ex=+m6c.value;let baseM=(L*R*Math.pow(1+R,360))/(Math.pow(1+R,360)-1);let newM=baseM+ex;let newN=Math.log(newM/(newM-L*R))/Math.log(1+R);let save=(baseM*360)-(newM*newN);resM6.innerText="Total Save: $"+save.toFixed(2);}
-    function calcM7(){let r=+m7a.value,m=+m7b.value,g=+m7c.value/100;resM7.innerText="Yearly Difference: $"+((r-m)+(m7a*g)).toFixed(2);}
+    function calcM6(){let L=+m6a.value,R=+m6b.value/1200,ex=+m6c.value;let baseM=(L*R*Math.pow(1+R,360))/(Math.pow(1+R,360)-1);let newM=baseM+ex;let newN=Math.log(newM/(newM-L*R))/Math.log(1+R);let save=(baseM*360)-(newM*newN);resM6.innerText="Total Interest Save: $"+save.toFixed(2);}
+    function calcM7(){let r=+m7a.value,m=+m7b.value,g=+m7c.value/100;resM7.innerText="Yearly Difference: $"+((r-m)+(r*g)).toFixed(2);}
     function calcM8(){let v=+m8a.value,l=+m8b.value,ltv=+m8c.value/100;resM8.innerText="Cash Available: $"+((v*ltv)-l).toFixed(2);}
     function calcM9(){let v=+m9a.value,t=+m9b.value/100;resM9.innerText="Monthly Tax: $"+((v*t)/12).toFixed(2);}
     function calcM10(){let v=+m10a.value,r=+m10b.value/100;resM10.innerText="Monthly Insurance: $"+((v*r)/12).toFixed(2);}
