@@ -4,126 +4,76 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - WideCalculator</title>
-    <meta name="description" content="Contact WideCalculator for any inquiries, feedback, or suggestions. We value your input and strive to respond promptly to all messages." />
+    <meta name="description" content="Contact WideCalculator for inquiries, feedback, calculator suggestions, or support. Reach us via email at info@widecalculator.com.">
+    <meta itemprop="description" content="WideCalculator provides free online calculators for finance, math, health, science, and daily use. Contact us at info@widecalculator.com for support or feedback.">
     <meta name="author" content="Wide Calculator" />
     <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
     <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+
     <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
     <!--[if lt IE 9]>
         <script src="js/modernizr.custom.js"></script>
     <![endif]-->
     <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
     <script src="js/functions.js" type="text/javascript"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-        label, input, textarea {
-            margin-bottom: 10px;
-        }
-        input[type="text"], input[type="email"], textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        input[type="submit"] {
-            width: 100px;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-    </style>
 </head>
+
 <body>
-    <!-- wrapper -->
     <div id="wrapper">
-        <!-- header -->
-        <header>
-            <div class="shell">
-                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
-                <nav id="navigation">
-                    <ul>
-                        <li><a href="https://widecalculator.com/">Home</a></li>
-                        <li><a href="https://widecalculator.com/aboutus.html">About Us</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <!-- end of header -->
+        <!-- 自动加载头部 -->
+        <div id="header"></div>
 
         <!-- main -->
         <div class="main">
-            <div id="content" class="text-center">
-                <h1>Contact Us</h1>
-                <form action="mailto:widecalculator@gmail.com" method="post" enctype="text/plain">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                    
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="4" required></textarea>
-                    
-                    <input type="submit" value="Submit">
-                </form>
+            <div id="content" style="text-align: left !important; max-width: 800px; margin: 0 auto;">
+                <h1 style="text-align: left !important;">Contact Us</h1>
+                <br>
+
+                <p>If you have any questions, feedback, or suggestions regarding our calculators and services, please feel free to contact us through the email below.</p>
+                <br>
+
+                <p><strong>Email:</strong> <a href="mailto:info@widecalculator.com">info@widecalculator.com</a></p>
+                <br>
+
+                <p>We strive to respond to all messages as soon as possible and value your input to help us improve our tools and services.</p>
+                <br>
+
+                <p>Whether you need support, want to report an issue, or request a new calculator, we are happy to assist you.</p>
             </div>
         </div>
-        <!-- end of main -->
+        <!-- main end -->
 
         <div id="footer-push"></div>
     </div>
-    <!-- end of wrapper -->
+    <!-- wrapper end -->
 
-    <!-- footer -->
-    <div id="footer">
-        <div class="footer-bottom">
-            <div class="shell">
-                <nav class="footer-nav left">
-                    <ul>
-                        <li><a href="https://widecalculator.com/">Home</a></li>
-                        <li><a href="https://widecalculator.com/aboutus.html">About Us</a></li>
-                        <li class="active"><a href="https://widecalculator.com/contactus.html">Contact Us</a></li>
-                    </ul>
-                </nav>
-                <p class="copy right"> All Rights Reserved. Copyright &copy; <a href="https://widecalculator.com" title="WideCalculator" target="_blank">WideCalculator.com</a> </p>
-                <div class="cl">&nbsp;</div>
-            </div>
-        </div>
-    </div>
-    <!-- end of footer -->
-    <div style="display:none;">
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-816SNX8L7X');
-        </script>
-    </div>
+    <!-- 自动加载底部 -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        // 加载头部
+        fetch("/header.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+            });
+
+        // 加载底部
+        fetch("/footer.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("footer-placeholder").innerHTML = data;
+            });
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-816SNX8L7X');
+    </script>
 </body>
 </html>
