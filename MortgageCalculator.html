@@ -18,42 +18,7 @@
     <script src="js/functions.js"></script>
 
     <style>
-        /* 头部样式修正 - 完全匹配 LoanCalculator.html 的头部布局 */
-        #header {
-            width: 100%;
-            padding: 20px 0;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 30px;
-        }
-        #header .logo {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            display: block;
-        }
-        #header .logo a {
-            color: #0066cc;
-            text-decoration: none;
-        }
-        #header .main-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        #header .main-nav ul li {
-            display: inline-block;
-            margin-right: 20px;
-        }
-        #header .main-nav ul li a {
-            color: #0066cc;
-            text-decoration: none;
-            font-size: 16px;
-        }
-        #header .main-nav ul li a:hover {
-            text-decoration: underline;
-        }
-
-        /* 原有样式保留 */
+        /* Mortgage计算器专属样式 - 仅保留主体样式，不干扰头尾 */
         .toc{max-width:900px;margin:0 auto 40px auto;padding:20px;background:#f5f7fa;border-radius:10px;}
         .toc h3{margin-top:0;}
         .toc a{display:inline-block;margin:6px 8px;padding:4px 10px;background:#0066cc;color:#fff;border-radius:4px;text-decoration:none;font-size:14px;}
@@ -61,7 +26,6 @@
 
         .calc-card{max-width:440px;margin:50px auto;padding:28px;border:1px #e5e7eb solid;border-radius:12px;background:#f9fafb;text-align:center;box-shadow:0 2px 8px #00000008;}
         .calc-card h3{margin:0 0 16px 0;font-size:18px;color:#111;}
-        .calc-card label{display:block;margin-top:10px;font-weight:600;font-size:15px;}
         .calc-card input{width:180px;padding:7px;margin:6px auto;border:1px #ccc solid;border-radius:6px;text-align:center;font-size:15px;}
         .calc-card button{margin-top:18px;padding:10px 24px;background:#0066cc;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:16px;}
         .calc-card button:hover{background:#0052a3;}
@@ -74,19 +38,8 @@
 
 <body>
     <div id="wrapper">
-        <!-- 修正后的头部 - 完全匹配 LoanCalculator.html 样式 -->
-        <div id="header">
-            <div style="max-width:960px;margin:0 auto;padding:0 20px;">
-                <div class="logo"><a href="/">Wide Calculator</a></div>
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="/LoanCalculator.html">Loan Calculators</a></li>
-                        <li><a href="/MortgageCalculator.html">Mortgage Calculators</a></li>
-                        <li><a href="/auto-loan-calculators/">Auto Loan</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+        <!-- 统一动态加载头部（和首页逻辑一致） -->
+        <div id="header"></div>
 
         <div class="main">
             <div id="content">
@@ -355,16 +308,26 @@
         <div id="footer-push"></div>
     </div>
 
-    <!-- 底部保持不变 -->
-    <div id="footer-placeholder">
-        <div class="footer-copyright">
-            <p>© 2025 Wide Calculator | All Rights Reserved</p>
-            <p><a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Use</a></p>
-        </div>
-    </div>
+    <!-- 统一动态加载底部（和首页逻辑一致） -->
+    <div id="footer-placeholder"></div>
 
+    <!-- 全站统一加载头尾JS -->
     <script>
-    // 原有计算函数保持不变
+        fetch("/header.html")
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("header").innerHTML = data;
+        });
+
+        fetch("/footer.html")
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("footer-placeholder").innerHTML = data;
+        });
+    </script>
+
+    <!-- Mortgage专属计算函数 - 聚焦房产房贷蓝海公式 -->
+    <script>
     function calcM1(){let L=+m1a.value,R=+m1b.value/1200,N=+m1c.value*12;let M=(L*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);resM1.innerText="Monthly Payment: $"+M.toFixed(2);}
     function calcM2(){let B=+m2a.value,Ro=+m2b.value/1200,Rn=+m2c.value/1200,N=360;let Mo=(B*Ro*Math.pow(1+Ro,N))/(Math.pow(1+Ro,N)-1);let Mn=(B*Rn*Math.pow(1+Rn,N))/(Math.pow(1+Rn,N)-1);resM2.innerText="Monthly Save: $"+(Mo-Mn).toFixed(2);}
     function calcM3(){let P=+m3a.value,dp=+m3b.value/100,L=P*(1-dp),R=+m3c.value/1200,N=360;let M=(L*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);resM3.innerText="Loan:$"+L.toFixed(2)+" | Monthly:$"+M.toFixed(2);}
@@ -387,6 +350,7 @@
     function calcM20(){let L=+m20a.value,R=+m20b.value/1200,N=+m20c.value*12;let mo=(L*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);let bi=mo/2;let totalBi=bi*26*+m20c.value;let totalMo=mo*N;resM20.innerText="Biweekly Save: $"+(totalMo-totalBi).toFixed(2);}
     </script>
 
+    <!-- 全站统一Google统计 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-816SNX8L7X');</script>
 </body>
