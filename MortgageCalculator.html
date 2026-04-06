@@ -13,11 +13,12 @@
     <script src="js/jquery-1.7.2.min.js"></script>
     <!--[if lt IE 9]>
         <script src="js/modernizr.custom.js"></script>
-    ![endif]-->
+    <![endif]-->
     <script src="js/jquery.flexslider-min.js"></script>
     <script src="js/functions.js"></script>
 
     <style>
+        /* 全局样式 */
         .toc{max-width:900px;margin:0 auto 40px auto;padding:20px;background:#f5f7fa;border-radius:10px;}
         .toc h3{margin-top:0;}
         .toc a{display:inline-block;margin:6px 8px;padding:4px 10px;background:#0066cc;color:#fff;border-radius:4px;text-decoration:none;font-size:14px;}
@@ -32,12 +33,39 @@
         .calc-desc{max-width:900px;margin:12px auto 40px auto;text-align:left;padding:0 20px;line-height:1.7;font-size:15px;color:#333;}
         #content{text-align:left !important;max-width:960px;margin:0 auto;padding:20px;}
         .divider{height:1px;background:#eee;margin:60px 0;}
+
+        /* 新增：header/footer 基础样式（可根据你的 css 修改） */
+        #header{background:#fff;border-bottom:1px solid #eee;padding:15px 0;}
+        .header-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
+        .logo a{font-size:24px;font-weight:bold;color:#0066cc;text-decoration:none;}
+        .menu ul{list-style:none;margin:0;padding:0;display:flex;gap:20px;}
+        .menu a{text-decoration:none;color:#333;font-size:16px;}
+        .menu a:hover{color:#0066cc;}
+
+        #footer{background:#f5f7fa;padding:30px 0;margin-top:60px;}
+        .footer-inner{max-width:1200px;margin:0 auto;text-align:center;color:#666;}
+        .footer-inner p{margin:5px 0;}
+        .footer-inner a{color:#0066cc;text-decoration:none;margin:0 10px;}
     </style>
 </head>
 
 <body>
     <div id="wrapper">
-        <div id="header"></div>
+        <!-- 直接写死的头部（本地/服务器都显示） -->
+        <div id="header">
+            <div class="header-inner">
+                <div class="logo"><a href="/">Wide Calculator</a></div>
+                <nav class="menu">
+                    <ul>
+                        <li><a href="/mortgage-calculators/">Mortgage</a></li>
+                        <li><a href="/loan-calculators/">Personal Loan</a></li>
+                        <li><a href="/auto-loan-calculators/">Auto Loan</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
 
         <div class="main">
             <div id="content">
@@ -306,12 +334,16 @@
         <div id="footer-push"></div>
     </div>
 
-    <div id="footer-placeholder"></div>
-    <script>
-    fetch("/header.html").then(r=>r.text()).then(d=>document.getElementById("header").innerHTML=d);
-    fetch("/footer.html").then(r=>r.text()).then(d=>document.getElementById("footer-placeholder").innerHTML=d);
+    <!-- 直接写死的底部（本地/服务器都显示） -->
+    <div id="footer">
+        <div class="footer-inner">
+            <p>© 2026 Wide Calculator | All Rights Reserved</p>
+            <p><a href="/about">About</a> | <a href="/contact">Contact</a> | <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Use</a></p>
+        </div>
+    </div>
 
-    // 全20个完整正确计算函数（和Loan Calculator完全一致写法）
+    <script>
+    // 全20个完整正确计算函数
     function calcM1(){let L=+m1a.value,R=+m1b.value/1200,N=+m1c.value*12;let M=(L*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);resM1.innerText="Monthly Payment: $"+M.toFixed(2);}
     function calcM2(){let B=+m2a.value,Ro=+m2b.value/1200,Rn=+m2c.value/1200,N=360;let Mo=(B*Ro*Math.pow(1+Ro,N))/(Math.pow(1+Ro,N)-1);let Mn=(B*Rn*Math.pow(1+Rn,N))/(Math.pow(1+Rn,N)-1);resM2.innerText="Monthly Save: $"+(Mo-Mn).toFixed(2);}
     function calcM3(){let P=+m3a.value,dp=+m3b.value/100,L=P*(1-dp),R=+m3c.value/1200,N=360;let M=(L*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);resM3.innerText="Loan:$"+L.toFixed(2)+" | Monthly:$"+M.toFixed(2);}
@@ -324,7 +356,7 @@
     function calcM10(){let v=+m10a.value,r=+m10b.value/100;resM10.innerText="Monthly Insurance: $"+((v*r)/12).toFixed(2);}
     function calcM11(){let L=+m11a.value,r30=+m11b.value/1200,r15=+m11c.value/1200;let m30=(L*r30*Math.pow(1+r30,360))/(Math.pow(1+r30,360)-1);let m15=(L*r15*Math.pow(1+r15,180))/(Math.pow(1+r15,180)-1);resM11.innerText="30Y:$"+m30.toFixed(2)+" | 15Y:$"+m15.toFixed(2);}
     function calcM12(){let v=+m12a.value,l=+m12b.value,ltv=+m12c.value/100;resM12.innerText="Available Equity: $"+((v*ltv)-l).toFixed(2);}
-    function calcM13(){let L=+m13a.value,R=+m13b.value/1200;let m=(L*R*Math.pow(1+R,360))/(Math.pow(1+R,360)-1);let total=m++m13c.value;resM13.innerText="Full PITI: $"+total.toFixed(2);}
+    function calcM13(){let L=+m13a.value,R=+m13b.value/1200;let m=(L*R*Math.pow(1+R,360))/(Math.pow(1+R,360)-1);let total=m + +m13c.value;resM13.innerText="Full PITI: $"+total.toFixed(2);}
     function calcM14(){let L=+m14a.value,R=+m14b.value/1200;let m=(L*R*Math.pow(1+R,360))/(Math.pow(1+R,360)-1);resM14.innerText="Investment Monthly: $"+m.toFixed(2);}
     function calcM15(){let L=+m15a.value,R=+m15b.value/1200;let m=(L*R*Math.pow(1+R,360))/(Math.pow(1+R,360)-1);resM15.innerText="Second Home Monthly: $"+m.toFixed(2);}
     function calcM16(){let L=+m16a.value,R=+m16b.value/1200;let m=(L*R*Math.pow(1+R,360))/(Math.pow(1+R,360)-1);let mip=L*0.0085/12;resM16.innerText="FHA Total Monthly: $"+(m+mip).toFixed(2);}
