@@ -3,21 +3,20 @@
 body, html { height: 100%; }
 
 body {
-    font-size: 12px;
-    line-height: 19px;
-    font-family: arial, sans-serif;
-    color: #696969;
+    font-size: 16px; /* 全局字体放大，更易读 */
+    line-height: 1.8; /* 行高优化，英文阅读更舒服 */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #444; /* 深灰更柔和，不刺眼 */
   	background: #fff;
     min-width: 942px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-a { color: #b0c5ff; text-decoration: none; cursor: pointer; }
+a { color: #0000FF; text-decoration: none; cursor: pointer; }
 a:hover { text-decoration: underline; }
 a img { border: 0; }
 
 article, aside, details, footer, header, menu, nav, section { display: block; }
-input, textarea, select { font-size: 12px; font-family: arial, sans-serif; }
+input, textarea, select { font-size: 14px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 textarea { overflow: auto; }
 
 .cl { display: block; height: 0; font-size: 0; line-height: 0; text-indent: -4000px; clear: both; }
@@ -36,7 +35,7 @@ header .shell { position: relative; }
 #navigation ul li.last { background: transparent; padding-right: 0; }
 #navigation li a { color: #c9c9c9; }
 #navigation li a:hover ,
-#navigation li.active a { color: #696969; text-decoration: none; }
+#navigation li.active a { color: #444; text-decoration: none; }
 
 .top-section { background: #f6f3f3 url(images/top-section.png) repeat-x center 0; }
 
@@ -70,38 +69,87 @@ header .shell { position: relative; }
 
 .main { background: url(images/main.png) repeat-x 0 0; padding-top: 60px; padding-bottom: 47px; }
 .main section { padding-bottom: 50px; }
-.main h2 { font-size: 20px; line-height: 20px; font-weight: normal; }
-.main h3 { font-weight: normal; font-size: 18px; color: #696969; padding-bottom: 19px; }
-.main h3 a { color: #696969; }
+.main h2 { font-size: 24px; line-height: 1.4; font-weight: 600; color: #333; margin-bottom: 15px; }
+.main h3 { font-weight: normal; font-size: 20px; color: #444; padding-bottom: 19px; }
+.main h3 a { color: #444; }
 .copyrights{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
 
 .main .cols .col { width: 208px; float: left; }
 .main .cols .col + .col { padding-left: 36px; }
 .main .cols .last-col { padding-right: 0; }
 .main .cols .col ul { list-style: none; list-style-position: outside; }
-.main .cols .col ul li { background: url(images/list-arr.png) no-repeat 0 6px; padding-left: 14px; color: #696969; font-size: 16px; padding-bottom: 4px; }
+.main .cols .col ul li { background: url(images/list-arr.png) no-repeat 0 6px; padding-left: 14px; color: #444; font-size: 16px; padding-bottom: 6px; line-height: 1.6; }
 .main .cols .col ul li a { color: #0000FF; }
 
+/* =====================================
+   About Us 页面专属美化（解决字小、排版丑）
+   ===================================== */
+#content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: #fff;
+  border-radius: 8px;
+}
+
+#content h1 {
+  font-size: 32px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 35px;
+  line-height: 1.2;
+}
+
+#content h2 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #444;
+  margin: 30px 0 12px;
+  line-height: 1.3;
+}
+
+#content p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 18px;
+}
+
+#content ul {
+  margin: 15px 0 20px 25px;
+}
+
+#content ul li {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+/* =====================================
+   底部三栏（About/FAQ/Contact）样式优化
+   ===================================== */
 .section-bottom  { padding-top: 56px;  background: url(images/section-bottom.png) repeat-x center 0; }
 .section-bottom .cols .col { width: 274px; float: left; }
 .section-bottom .cols .col + .col { padding-left: 55px; }
 .section-bottom .cols .col h2 { font-size: 20px; line-height: 20px; font-weight: normal; }
 .section-bottom .cols .col h2 span.plus { color: #bebebe; }
-.section-bottom .cols .col h3 { color: #696969; font-size: 18px; font-weight: normal; position: relative; padding-bottom: 25px; height: 100%; }
-.section-bottom .cols .col h3 a { color: #696969; padding-left: 67px; }
+.section-bottom .cols .col h3 { color: #444; font-size: 20px; font-weight: 600; position: relative; padding-bottom: 25px; height: 100%; }
+.section-bottom .cols .col h3 a { color: #444; padding-left: 67px; }
 .section-bottom .cols .col h3 span { width: 48px; height: 46px; position: absolute; top: -17px; left: 2px; display: block;  background: url(images/title-ico.png) no-repeat 0 0; }
 .section-bottom .cols .col h3 span.about-ico { background-position: 0 0; }
 .section-bottom .cols .col h3 span.news-ico { background-position: -48px 0; }
 .section-bottom .cols .col h3 span.subscribe-ico { background-position: -97px 0; }
-.section-bottom .cols .col p { color: #696969; padding-bottom: 18px; }
-.section-bottom .cols .col a:hover { color: #696969; }
-.section-bottom .cols .col a.more-btn { padding: 5px 24px 5px 24px; font-size: 12px; color: #fff; font-weight: bold;  background: url(images/more-btn.png) repeat-x 0 0; border-radius: 12px; -moz-border-radius: 12px; -webkit-border-radius: 12px; -o-border-radius: 12px; }
+.section-bottom .cols .col p { color: #555; padding-bottom: 18px; font-size: 16px; line-height: 1.7; }
+.section-bottom .cols .col a:hover { color: #444; }
+.section-bottom .cols .col a.more-btn { padding: 8px 28px; font-size: 16px; color: #fff; font-weight: bold;  background: url(images/more-btn.png) repeat-x 0 0; border-radius: 15px; -moz-border-radius: 15px; -webkit-border-radius: 15px; -o-border-radius: 15px; }
 .section-bottom .cols .col a.more-btn:hover { text-decoration: none; background-position: 0 bottom; }
 .section-bottom .cols .col ul { list-style: none; list-style-position: outside; }
 .section-bottom .cols .col ul li { background: transparent; background-color: #f3eaea; margin-bottom: 2px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; padding: 7px 9px 8px; }
 .section-bottom .cols .col ul li.bg { background-color: #f8f4f4;  }
-.section-bottom .cols .col ul li small { font-size: 11px; display: block; line-height: 16px; }
-.section-bottom .cols .col ul li h5 { font-size: 14px; font-weight: bold; }
+.section-bottom .cols .col ul li small { font-size: 14px; display: block; line-height: 1.6; }
+.section-bottom .cols .col ul li h5 { font-size: 16px; font-weight: bold; }
 
 .section-bottom .cols .subscribe-col { padding-left: 44px  !important; }
 .section-bottom .cols .subscribe-col .col-cnt { width: 234px; padding-left: 15px; }
@@ -109,33 +157,47 @@ header .shell { position: relative; }
 
 .section-bottom .cols .col form { position: relative; width: 235px; padding-bottom: 23px; height: 100%; }
 .section-bottom .cols .col input.field { width: 143px; height: 15px; padding: 4px 24px 4px 15px; border: 0; background-color: #f4eef5;  border-radius: 11px; -moz-border-radius: 11px; -webkit-border-radius: 11px; -o-border-radius: 11px;
-box-shadow: 3px 2px 2px #eae5eb inset; -moz-box-shadow: 3px 2px 2px #eae5eb inset; -webkit-box-shadow: 3px 2px 2px #eae5eb inset; -o-box-shadow: 3px 2px 2px #eae5eb inset; font-size: 12px; color: #b1aeb2; }
+box-shadow: 3px 2px 2px #eae5eb inset; -moz-box-shadow: 3px 2px 2px #eae5eb inset; -webkit-box-shadow: 3px 2px 2px #eae5eb inset; -o-box-shadow: 3px 2px 2px #eae5eb inset; font-size: 14px; color: #b1aeb2; }
 .section-bottom .cols .col input.submit-btn { width: 70px; height: 23px; background: url(images/submit-btn.png) repeat-x 0 0; text-align: center; line-height: px; cursor: pointer; border: 0;
-border-radius: 12px; -moz-border-radius: 12px; -webkit-border-radius: 12px; -o-border-radius: 12px; color: #fff; font-size: 11px; font-weight: bold; position: absolute; top: 0; right: 0; }
+border-radius: 12px; -moz-border-radius: 12px; -webkit-border-radius: 12px; -o-border-radius: 12px; color: #fff; font-size: 13px; font-weight: bold; position: absolute; top: 0; right: 0; }
 .section-bottom .cols .col input.submit-btn:hover { background-position: 0 bottom;  }
 
-#wrapper { min-height: 100%; height: auto !important; height: 100%; margin: 0 auto -46px; }
-#footer, #footer-push { height: 46px; }
-#footer { background-color: #f1ecec; line-height: 46px; }
-#footer p.copy { color: #c9c9c9; }
-#footer p.copy a { color: #afafaf; text-decoration: underline; }
-#footer p.copy a:hover { text-decoration: none; }
+/* =====================================
+   Footer 底部版权栏美化（解决字小、不好看）
+   ===================================== */
+#wrapper { min-height: 100%; height: auto !important; height: 100%; margin: 0 auto -60px; }
+#footer, #footer-push { height: 60px; }
+#footer { 
+  background-color: #f1ecec; 
+  line-height: 60px;
+  border-top: 1px solid #e8e2e2;
+}
+#footer p.copy { 
+  color: #888; 
+  font-size: 14px;
+}
+#footer p.copy a { 
+  color: #666; 
+  text-decoration: underline;
+}
+#footer p.copy a:hover { 
+  text-decoration: none;
+  color: #333;
+}
 
 .footer-nav ul { list-style: none; list-style-position: outside; }
 .footer-nav ul li { display: inline; background: url(images/nav-border.png) no-repeat right 0; padding: 0 10px; }
 .footer-nav ul li.last { background: transparent; padding-right: 0; }
-.footer-nav li a { color: #c9c9c9; }
+.footer-nav li a { 
+  color: #888;
+  font-size: 15px;
+}
 .footer-nav li a:hover ,
-.footer-nav li.active a { color: #696969; text-decoration: none; }
-
-.text-center {
-  margin-left: 211px;
+.footer-nav li.active a { 
+  color: #444; 
+  text-decoration: none;
 }
 
-#content {
-  margin-left: 211px; /* 与logo的宽度相同，使文本与logo的左侧对齐 */
-  margin-right: 200px; /* 导航栏的宽度（假设200px），使文本与导航栏的右侧对齐 */
-  font-size: 16px; /* 设置字体大小为14px */
-  margin-bottom: 2em; /* 两行空白行 */
-
+.text-center {
+  text-align: center;
 }
