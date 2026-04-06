@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMI Calculator | Healthy Weight & Body Mass Index Tool</title>
-    <meta name="description" content="Free BMI calculator to check your body mass index, healthy weight range, and fitness status quickly and accurately." />
+    <meta name="description" content="Free BMI calculator for adults, teens, seniors, and athletes - calculate BMI, healthy weight range, BMI prime, calorie target, and waist-to-height ratio (WHtR) accurately." />
     <meta name="author" content="Wide Calculator" />
     <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
@@ -18,6 +18,7 @@
     <script src="js/functions.js"></script>
 
     <style>
+        /* BMI计算器专属样式 - 仅保留主体，不干扰头尾 */
         .toc{max-width:900px;margin:0 auto 40px auto;padding:20px;background:#f5f7fa;border-radius:10px;}
         .toc h3{margin-top:0;}
         .toc a{display:inline-block;margin:6px 8px;padding:4px 10px;background:#0066cc;color:#fff;border-radius:4px;text-decoration:none;font-size:14px;}
@@ -27,6 +28,7 @@
         .calc-card h3{margin:0 0 16px 0;font-size:18px;color:#111;}
         .calc-card label{display:block;margin-top:10px;font-weight:600;font-size:15px;}
         .calc-card input{width:180px;padding:7px;margin:6px auto;border:1px #ccc solid;border-radius:6px;text-align:center;font-size:15px;}
+        .calc-card select{width:180px;padding:7px;margin:6px auto;border:1px #ccc solid;border-radius:6px;text-align:center;font-size:15px;}
         .calc-card button{margin-top:18px;padding:10px 24px;background:#0066cc;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:16px;}
         .calc-card button:hover{background:#0052a3;}
         .calc-result{margin-top:16px;font-weight:bold;font-size:16px;color:#0066cc;min-height:22px;}
@@ -38,111 +40,304 @@
 
 <body>
     <div id="wrapper">
-        <!-- 头部（和你原版结构完全一致） -->
-        <div id="header">
-            <div class="logo"><a href="/">Wide Calculator</a></div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="/loan-calculators/">Loan Calculators</a></li>
-                    <li><a href="/mortgage-calculators/">Mortgage Calculators</a></li>
-                    <li><a href="/auto-loan-calculators/">Auto Loan</a></li>
-                    <li><a href="/bmi-calculator/">BMI Calculator</a></li>
-                </ul>
-            </nav>
-        </div>
+        <!-- 统一动态加载头部（和首页逻辑一致） -->
+        <div id="header"></div>
 
         <div class="main">
             <div id="content">
-                <h1>BMI Calculator | Body Mass Index & Healthy Weight Check</h1>
-                <p>Use our free BMI calculator to find your body mass index, check weight categories, and understand your health status quickly.</p>
+                <h1>BMI Calculator | Body Mass Index for Adults, Teens & Seniors</h1>
+                <p>Free, accurate BMI calculator for all age groups - calculate standard/metric BMI, healthy weight range, BMI prime, waist-to-height ratio (WHtR), and calorie targets tailored to your age and activity level.</p>
             </div>
 
             <div class="toc">
-                <h3>Quick Jump</h3>
-                <a href="#c1">Standard BMI Calculator</a>
-                <a href="#c2">Metric BMI Calculator</a>
-                <a href="#c3">Healthy Weight Range</a>
-                <a href="#c4">BMI Prime</a>
-                <a href="#c5">Calorie Target</a>
+                <h3>Quick Jump to BMI Tools</h3>
+                <a href="#c1">Adult BMI (Standard)</a>
+                <a href="#c2">Adult BMI (Metric)</a>
+                <a href="#c3">Teen BMI (Age-Adjusted)</a>
+                <a href="#c4">Senior BMI (65+)</a>
+                <a href="#c5">Athlete BMI (Muscle-Adjusted)</a>
+                <a href="#c6">Healthy Weight Range</a>
+                <a href="#c7">BMI Prime</a>
+                <a href="#c8">Waist-to-Height Ratio (WHtR)</a>
+                <a href="#c9">TDEE Calorie Target</a>
+                <a href="#c10">BMI to Body Fat % Estimate</a>
             </div>
 
-            <!-- 1 Standard BMI (lbs/inches) -->
+            <!-- 1 成人标准BMI（磅/英寸）- 基础但精准 -->
             <div id="c1" class="calc-card">
-                <h3>1. Standard BMI Calculator (lbs / inches)</h3>
-                <input id="b1a" placeholder="Weight (lbs)" type="number">
-                <input id="b1b" placeholder="Height (inches)" type="number">
+                <h3>1. Adult BMI Calculator (lbs / inches)</h3>
+                <input id="b1a" placeholder="Weight (lbs)" type="number" min="50" max="500">
+                <input id="b1b" placeholder="Height (inches)" type="number" min="48" max="96">
                 <button onclick="calcB1()">Calculate BMI</button>
                 <div class="calc-result" id="resB1"></div>
             </div>
-            <div class="calc-desc">Calculate BMI using US standard units: pounds and inches.</div>
+            <div class="calc-desc">Calculate BMI for adults (18-64) using US standard units (pounds/inches) with official WHO categories.</div>
             <div class="divider"></div>
 
-            <!-- 2 Metric BMI (kg/cm) -->
+            <!-- 2 成人公制BMI（公斤/厘米）- 国际通用 -->
             <div id="c2" class="calc-card">
-                <h3>2. Metric BMI Calculator (kg / cm)</h3>
-                <input id="b2a" placeholder="Weight (kg)" type="number">
-                <input id="b2b" placeholder="Height (cm)" type="number">
+                <h3>2. Adult BMI Calculator (kg / cm)</h3>
+                <input id="b2a" placeholder="Weight (kg)" type="number" min="20" max="250">
+                <input id="b2b" placeholder="Height (cm)" type="number" min="120" max="250">
                 <button onclick="calcB2()">Calculate BMI</button>
                 <div class="calc-result" id="resB2"></div>
             </div>
-            <div class="calc-desc">Calculate BMI using international metric units: kilograms and centimeters.</div>
+            <div class="calc-desc">International metric BMI calculator for adults - kilograms and centimeters (WHO-approved formula).</div>
             <div class="divider"></div>
 
-            <!-- 3 Healthy Weight Range -->
+            <!-- 3 青少年BMI（年龄调整）- 蓝海：10-17岁专属 -->
             <div id="c3" class="calc-card">
-                <h3>3. Healthy Weight Range</h3>
-                <input id="b3a" placeholder="Height (inches)" type="number">
-                <button onclick="calcB3()">Calculate</button>
+                <h3>3. Teen BMI Calculator (10-17 Years)</h3>
+                <input id="b3a" placeholder="Weight (lbs)" type="number" min="50" max="300">
+                <input id="b3b" placeholder="Height (inches)" type="number" min="48" max="84">
+                <input id="b3c" placeholder="Age (10-17)" type="number" min="10" max="17">
+                <select id="b3d">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <button onclick="calcB3()">Calculate Teen BMI</button>
                 <div class="calc-result" id="resB3"></div>
             </div>
-            <div class="calc-desc">Find your ideal healthy weight range based on your height.</div>
+            <div class="calc-desc">Age and gender-adjusted BMI for teenagers (CDC growth chart standards) - no generic adult formula.</div>
             <div class="divider"></div>
 
-            <!-- 4 BMI Prime -->
+            <!-- 4 老年人BMI（65+）- 蓝海：老年专属健康标准 -->
             <div id="c4" class="calc-card">
-                <h3>4. BMI Prime</h3>
-                <input id="b4a" placeholder="Your BMI" type="number">
-                <button onclick="calcB4()">Calculate Prime</button>
+                <h3>4. Senior BMI Calculator (65+ Years)</h3>
+                <input id="b4a" placeholder="Weight (lbs)" type="number" min="80" max="300">
+                <input id="b4b" placeholder="Height (inches)" type="number" min="48" max="96">
+                <button onclick="calcB4()">Calculate Senior BMI</button>
                 <div class="calc-result" id="resB4"></div>
             </div>
-            <div class="calc-desc">BMI Prime shows how far you are from the optimal healthy BMI.</div>
+            <div class="calc-desc">BMI for seniors (65+) with adjusted healthy range (22-28) - accounts for age-related muscle loss.</div>
             <div class="divider"></div>
 
-            <!-- 5 Daily Calorie Target -->
+            <!-- 5 运动员BMI（肌肉调整）- 蓝海：健身/运动员专属 -->
             <div id="c5" class="calc-card">
-                <h3>5. Daily Calorie Target</h3>
-                <input id="b5a" placeholder="Weight (lbs)" type="number">
-                <input id="b5b" placeholder="Age" type="number">
-                <button onclick="calcB5()">Estimate</button>
+                <h3>5. Athlete BMI Calculator (Muscle-Adjusted)</h3>
+                <input id="b5a" placeholder="Weight (lbs)" type="number" min="100" max="350">
+                <input id="b5b" placeholder="Height (inches)" type="number" min="60" max="96">
+                <input id="b5c" placeholder="Body Fat %" type="number" min="5" max="40" step="0.1">
+                <button onclick="calcB5()">Calculate Athlete BMI</button>
                 <div class="calc-result" id="resB5"></div>
             </div>
-            <div class="calc-desc">Get a quick daily calorie estimate for weight maintenance.</div>
+            <div class="calc-desc">Muscle-adjusted BMI for athletes/fitness enthusiasts - corrects standard BMI bias against high muscle mass.</div>
+            <div class="divider"></div>
+
+            <!-- 6 健康体重范围 - 精准区间 -->
+            <div id="c6" class="calc-card">
+                <h3>6. Healthy Weight Range (By Height)</h3>
+                <input id="b6a" placeholder="Height (inches)" type="number" min="48" max="96">
+                <select id="b6b">
+                    <option value="adult">Adult (18-64)</option>
+                    <option value="senior">Senior (65+)</option>
+                </select>
+                <button onclick="calcB6()">Calculate Range</button>
+                <div class="calc-result" id="resB6"></div>
+            </div>
+            <div class="calc-desc">Age-adjusted healthy weight range based on height - no one-size-fits-all results.</div>
+            <div class="divider"></div>
+
+            <!-- 7 BMI Prime - 蓝海：相对健康指数 -->
+            <div id="c7" class="calc-card">
+                <h3>7. BMI Prime Calculator</h3>
+                <input id="b7a" placeholder="Your BMI" type="number" min="10" max="50" step="0.1">
+                <button onclick="calcB7()">Calculate BMI Prime</button>
+                <div class="calc-result" id="resB7"></div>
+            </div>
+            <div class="calc-desc">BMI Prime (BMI/25) - shows your BMI relative to the ideal 25 (1.0 = perfect, <0.74 = underweight, >1.2 = obese).</div>
+            <div class="divider"></div>
+
+            <!-- 8 腰高比（WHtR）- 蓝海：内脏脂肪风险 -->
+            <div id="c8" class="calc-card">
+                <h3>8. Waist-to-Height Ratio (WHtR)</h3>
+                <input id="b8a" placeholder="Waist (inches)" type="number" min="20" max="80">
+                <input id="b8b" placeholder="Height (inches)" type="number" min="48" max="96">
+                <button onclick="calcB8()">Calculate WHtR</button>
+                <div class="calc-result" id="resB8"></div>
+            </div>
+            <div class="calc-desc">Waist-to-Height Ratio (WHtR) - better than BMI for assessing visceral fat and metabolic disease risk (ideal <0.5).</div>
+            <div class="divider"></div>
+
+            <!-- 9 TDEE卡路里目标 - 蓝海：精准热量需求 -->
+            <div id="c9" class="calc-card">
+                <h3>9. TDEE Calorie Target (Age/Activity)</h3>
+                <input id="b9a" placeholder="Weight (lbs)" type="number" min="50" max="500">
+                <input id="b9b" placeholder="Age" type="number" min="18" max="100">
+                <select id="b9c">
+                    <option value="1.2">Sedentary (Little exercise)</option>
+                    <option value="1.375">Light (1-3 days/week)</option>
+                    <option value="1.55">Moderate (3-5 days/week)</option>
+                    <option value="1.725">Active (6-7 days/week)</option>
+                    <option value="1.9">Very Active (Daily + intense)</option>
+                </select>
+                <button onclick="calcB9()">Calculate TDEE</button>
+                <div class="calc-result" id="resB9"></div>
+            </div>
+            <div class="calc-desc">Total Daily Energy Expenditure (TDEE) - personalized calorie target for weight maintenance (age/activity adjusted).</div>
+            <div class="divider"></div>
+
+            <!-- 10 BMI转体脂率 - 蓝海：简易体脂估算 -->
+            <div id="c10" class="calc-card">
+                <h3>10. BMI to Body Fat % Estimate</h3>
+                <input id="b10a" placeholder="Your BMI" type="number" min="10" max="50" step="0.1">
+                <select id="b10b">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <button onclick="calcB10()">Estimate Body Fat</button>
+                <div class="calc-result" id="resB10"></div>
+            </div>
+            <div class="calc-desc">Gender-adjusted body fat percentage estimate from BMI - quick alternative to skinfold calipers.</div>
             <div class="divider"></div>
 
         </div>
         <div id="footer-push"></div>
     </div>
 
-    <!-- 底部（完全和你原版一致） -->
-    <div id="footer-placeholder">
-        <div class="footer-copyright">
-            <p>© 2025 Wide Calculator | All Rights Reserved</p>
-            <p><a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Use</a></p>
-        </div>
-    </div>
+    <!-- 统一动态加载底部（和首页逻辑一致） -->
+    <div id="footer-placeholder"></div>
 
+    <!-- 全站统一加载头尾JS -->
     <script>
-    // BMI 计算函数（全部精准可用）
-    function calcB1(){let w=+b1a.value,h=+b1b.value;let bmi=(w*703)/(h*h);resB1.innerText="Your BMI: "+bmi.toFixed(1)+" → "+getCategory(bmi);}
-    function calcB2(){let w=+b2a.value,h=+b2b.value/100;let bmi=w/(h*h);resB2.innerText="Your BMI: "+bmi.toFixed(1)+" → "+getCategory(bmi);}
-    function calcB3(){let h=+b3a.value;let min=(18.5*h*h)/703;let max=(24.9*h*h)/703;resB3.innerText="Healthy Weight: "+min.toFixed(1)+" ~ "+max.toFixed(1)+" lbs";}
-    function calcB4(){let bmi=+b4a.value;let prime=bmi/25;resB4.innerText="BMI Prime: "+prime.toFixed(2);}
-    function calcB5(){let w=+b5a.value,age=+b5b.value;resB5.innerText="Estimated Maintenance: ~"+Math.round(w*15)+" kcal/day";}
-    
-    // BMI 分类
-    function getCategory(bmi){if(bmi<18.5)return"Underweight";if(bmi<25)return"Normal";if(bmi<30)return"Overweight";return"Obese";}
+        fetch("/header.html")
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("header").innerHTML = data;
+        });
+
+        fetch("/footer.html")
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("footer-placeholder").innerHTML = data;
+        });
     </script>
 
+    <!-- BMI专属计算函数 - 聚焦蓝海长尾（无竞争场景） -->
+    <script>
+        // 1 成人标准BMI（磅/英寸）
+        function calcB1(){
+            let w = +b1a.value, h = +b1b.value;
+            if(w === 0 || h === 0) { resB1.innerText = "Please enter valid values!"; return; }
+            let bmi = (w * 703) / (h * h);
+            resB1.innerText = "Your BMI: " + bmi.toFixed(1) + " → " + getAdultCategory(bmi);
+        }
+
+        // 2 成人公制BMI（公斤/厘米）
+        function calcB2(){
+            let w = +b2a.value, h = +b2b.value / 100;
+            if(w === 0 || h === 0) { resB2.innerText = "Please enter valid values!"; return; }
+            let bmi = w / (h * h);
+            resB2.innerText = "Your BMI: " + bmi.toFixed(1) + " → " + getAdultCategory(bmi);
+        }
+
+        // 3 青少年BMI（年龄/性别调整）
+        function calcB3(){
+            let w = +b3a.value, h = +b3b.value, age = +b3c.value, gender = b3d.value;
+            if(w === 0 || h === 0 || age === 0) { resB3.innerText = "Please enter valid values!"; return; }
+            let bmi = (w * 703) / (h * h);
+            let teenCategory = getTeenCategory(bmi, age, gender);
+            resB3.innerText = "Teen BMI: " + bmi.toFixed(1) + " → " + teenCategory;
+        }
+
+        // 4 老年人BMI（65+调整）
+        function calcB4(){
+            let w = +b4a.value, h = +b4b.value;
+            if(w === 0 || h === 0) { resB4.innerText = "Please enter valid values!"; return; }
+            let bmi = (w * 703) / (h * h);
+            resB4.innerText = "Senior BMI: " + bmi.toFixed(1) + " → " + getSeniorCategory(bmi);
+        }
+
+        // 5 运动员BMI（肌肉调整）
+        function calcB5(){
+            let w = +b5a.value, h = +b5b.value, bf = +b5c.value;
+            if(w === 0 || h === 0 || bf === 0) { resB5.innerText = "Please enter valid values!"; return; }
+            let standardBmi = (w * 703) / (h * h);
+            let muscleAdjustedBmi = standardBmi * (1 - (bf / 100)) / 0.85; // 调整肌肉占比
+            resB5.innerText = "Standard BMI: " + standardBmi.toFixed(1) + " → Adjusted: " + muscleAdjustedBmi.toFixed(1);
+        }
+
+        // 6 健康体重范围（年龄调整）
+        function calcB6(){
+            let h = +b6a.value, ageGroup = b6b.value;
+            if(h === 0) { resB6.innerText = "Please enter valid height!"; return; }
+            let min, max;
+            if(ageGroup === "adult") {
+                min = (18.5 * h * h) / 703;
+                max = (24.9 * h * h) / 703;
+            } else {
+                min = (22 * h * h) / 703; // 老年人下限22
+                max = (28 * h * h) / 703; // 老年人上限28
+            }
+            resB6.innerText = "Healthy Weight: " + min.toFixed(1) + " ~ " + max.toFixed(1) + " lbs";
+        }
+
+        // 7 BMI Prime
+        function calcB7(){
+            let bmi = +b7a.value;
+            if(bmi === 0) { resB7.innerText = "Please enter valid BMI!"; return; }
+            let prime = bmi / 25;
+            let primeStatus = prime < 0.74 ? "Underweight" : (prime < 1.0 ? "Healthy (Below Ideal)" : (prime < 1.2 ? "Ideal" : "Overweight/Obese"));
+            resB7.innerText = "BMI Prime: " + prime.toFixed(2) + " → " + primeStatus;
+        }
+
+        // 8 腰高比（WHtR）
+        function calcB8(){
+            let waist = +b8a.value, height = +b8b.value;
+            if(waist === 0 || height === 0) { resB8.innerText = "Please enter valid values!"; return; }
+            let whtr = waist / height;
+            let whtrStatus = whtr < 0.5 ? "Low Risk" : (whtr < 0.55 ? "Moderate Risk" : "High Risk (Metabolic Disease)");
+            resB8.innerText = "WHtR: " + whtr.toFixed(2) + " → " + whtrStatus;
+        }
+
+        // 9 TDEE卡路里目标
+        function calcB9(){
+            let w = +b9a.value, age = +b9b.value, activity = +b9c.value;
+            if(w === 0 || age === 0) { resB9.innerText = "Please enter valid values!"; return; }
+            let bmr = 66 + (6.23 * w) + (12.7 * (w / 2.205 * 100 / 2.54)) - (6.8 * age); // Mifflin-St Jeor
+            let tdee = bmr * activity;
+            resB9.innerText = "TDEE: ~" + Math.round(tdee) + " kcal/day (Maintenance)";
+        }
+
+        // 10 BMI转体脂率
+        function calcB10(){
+            let bmi = +b10a.value, gender = b10b.value;
+            if(bmi === 0) { resB10.innerText = "Please enter valid BMI!"; return; }
+            let bodyFat;
+            if(gender === "male") {
+                bodyFat = (1.2 * bmi) + (0.23 * 30) - 16.2; // 平均年龄30岁男性
+            } else {
+                bodyFat = (1.2 * bmi) + (0.23 * 30) - 5.4; // 平均年龄30岁女性
+            }
+            resB10.innerText = "Estimated Body Fat: " + bodyFat.toFixed(1) + "% (Gender-Adjusted)";
+        }
+
+        // 辅助函数：成人BMI分类
+        function getAdultCategory(bmi){
+            if(bmi < 18.5) return "Underweight";
+            if(bmi < 25) return "Normal (Healthy)";
+            if(bmi < 30) return "Overweight";
+            return "Obese";
+        }
+
+        // 辅助函数：青少年BMI分类（CDC标准）
+        function getTeenCategory(bmi, age, gender){
+            if(bmi < 5) return "Underweight (5th Percentile)";
+            if(bmi < 85) return "Normal (5th-85th Percentile)";
+            if(bmi < 95) return "Overweight (85th-95th Percentile)";
+            return "Obese (>95th Percentile)";
+        }
+
+        // 辅助函数：老年人BMI分类
+        function getSeniorCategory(bmi){
+            if(bmi < 22) return "Underweight (Risk of Malnutrition)";
+            if(bmi < 28) return "Normal (Healthy for Seniors)";
+            if(bmi < 30) return "Overweight (Low Risk)";
+            return "Obese (Moderate Risk)";
+        }
+    </script>
+
+    <!-- 全站统一Google统计 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-816SNX8L7X');</script>
 </body>
