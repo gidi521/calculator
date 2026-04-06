@@ -8,7 +8,7 @@
     <meta name="author" content="Wide Calculator" />
     <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+    <link rel="css/flexslider.css" type="text/css" media="all" />
 
     <script src="js/jquery-1.7.2.min.js"></script>
     <!--[if lt IE 9]>
@@ -18,7 +18,6 @@
     <script src="js/functions.js"></script>
 
     <style>
-        /* 全局样式 */
         .toc{max-width:900px;margin:0 auto 40px auto;padding:20px;background:#f5f7fa;border-radius:10px;}
         .toc h3{margin-top:0;}
         .toc a{display:inline-block;margin:6px 8px;padding:4px 10px;background:#0066cc;color:#fff;border-radius:4px;text-decoration:none;font-size:14px;}
@@ -26,6 +25,7 @@
 
         .calc-card{max-width:440px;margin:50px auto;padding:28px;border:1px #e5e7eb solid;border-radius:12px;background:#f9fafb;text-align:center;box-shadow:0 2px 8px #00000008;}
         .calc-card h3{margin:0 0 16px 0;font-size:18px;color:#111;}
+        .calc-card label{display:block;margin-top:10px;font-weight:600;font-size:15px;}
         .calc-card input{width:180px;padding:7px;margin:6px auto;border:1px #ccc solid;border-radius:6px;text-align:center;font-size:15px;}
         .calc-card button{margin-top:18px;padding:10px 24px;background:#0066cc;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:16px;}
         .calc-card button:hover{background:#0052a3;}
@@ -33,38 +33,22 @@
         .calc-desc{max-width:900px;margin:12px auto 40px auto;text-align:left;padding:0 20px;line-height:1.7;font-size:15px;color:#333;}
         #content{text-align:left !important;max-width:960px;margin:0 auto;padding:20px;}
         .divider{height:1px;background:#eee;margin:60px 0;}
-
-        /* 新增：header/footer 基础样式（可根据你的 css 修改） */
-        #header{background:#fff;border-bottom:1px solid #eee;padding:15px 0;}
-        .header-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
-        .logo a{font-size:24px;font-weight:bold;color:#0066cc;text-decoration:none;}
-        .menu ul{list-style:none;margin:0;padding:0;display:flex;gap:20px;}
-        .menu a{text-decoration:none;color:#333;font-size:16px;}
-        .menu a:hover{color:#0066cc;}
-
-        #footer{background:#f5f7fa;padding:30px 0;margin-top:60px;}
-        .footer-inner{max-width:1200px;margin:0 auto;text-align:center;color:#666;}
-        .footer-inner p{margin:5px 0;}
-        .footer-inner a{color:#0066cc;text-decoration:none;margin:0 10px;}
     </style>
 </head>
 
 <body>
     <div id="wrapper">
-        <!-- 直接写死的头部（本地/服务器都显示） -->
+        <!-- 直接内嵌头部，和你原页面#header标签一致 -->
         <div id="header">
-            <div class="header-inner">
-                <div class="logo"><a href="/">Wide Calculator</a></div>
-                <nav class="menu">
-                    <ul>
-                        <li><a href="/mortgage-calculators/">Mortgage</a></li>
-                        <li><a href="/loan-calculators/">Personal Loan</a></li>
-                        <li><a href="/auto-loan-calculators/">Auto Loan</a></li>
-                        <li><a href="/about">About</a></li>
-                        <li><a href="/contact">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
+            <!-- 你把这里替换成自己header.html里的源码即可 -->
+            <div class="logo"><a href="/">Wide Calculator</a></div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/loan-calculators/">Loan Calculators</a></li>
+                    <li><a href="/mortgage-calculators/">Mortgage Calculators</a></li>
+                    <li><a href="/auto-loan-calculators/">Auto Loan</a></li>
+                </ul>
+            </nav>
         </div>
 
         <div class="main">
@@ -334,16 +318,17 @@
         <div id="footer-push"></div>
     </div>
 
-    <!-- 直接写死的底部（本地/服务器都显示） -->
-    <div id="footer">
-        <div class="footer-inner">
-            <p>© 2026 Wide Calculator | All Rights Reserved</p>
-            <p><a href="/about">About</a> | <a href="/contact">Contact</a> | <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Use</a></p>
+    <!-- 底部直接内嵌，对应你原#footer-placeholder标签 -->
+    <div id="footer-placeholder">
+        <!-- 你把这里替换成自己footer.html里的源码即可 -->
+        <div class="footer-copyright">
+            <p>© 2025 Wide Calculator | All Rights Reserved</p>
+            <p><a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Use</a></p>
         </div>
     </div>
 
     <script>
-    // 全20个完整正确计算函数
+    // 删掉了fetch异步加载，纯本地JS，打开就显示头尾
     function calcM1(){let L=+m1a.value,R=+m1b.value/1200,N=+m1c.value*12;let M=(L*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);resM1.innerText="Monthly Payment: $"+M.toFixed(2);}
     function calcM2(){let B=+m2a.value,Ro=+m2b.value/1200,Rn=+m2c.value/1200,N=360;let Mo=(B*Ro*Math.pow(1+Ro,N))/(Math.pow(1+Ro,N)-1);let Mn=(B*Rn*Math.pow(1+Rn,N))/(Math.pow(1+Rn,N)-1);resM2.innerText="Monthly Save: $"+(Mo-Mn).toFixed(2);}
     function calcM3(){let P=+m3a.value,dp=+m3b.value/100,L=P*(1-dp),R=+m3c.value/1200,N=360;let M=(L*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);resM3.innerText="Loan:$"+L.toFixed(2)+" | Monthly:$"+M.toFixed(2);}
