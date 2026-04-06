@@ -8,7 +8,7 @@
     <meta name="author" content="Wide Calculator" />
     <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-    <link rel="css/flexslider.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
 
     <script src="js/jquery-1.7.2.min.js"></script>
     <!--[if lt IE 9]>
@@ -18,6 +18,42 @@
     <script src="js/functions.js"></script>
 
     <style>
+        /* 头部样式修正 - 完全匹配 LoanCalculator.html 的头部布局 */
+        #header {
+            width: 100%;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+        }
+        #header .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+        #header .logo a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        #header .main-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #header .main-nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        #header .main-nav ul li a {
+            color: #0066cc;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        #header .main-nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* 原有样式保留 */
         .toc{max-width:900px;margin:0 auto 40px auto;padding:20px;background:#f5f7fa;border-radius:10px;}
         .toc h3{margin-top:0;}
         .toc a{display:inline-block;margin:6px 8px;padding:4px 10px;background:#0066cc;color:#fff;border-radius:4px;text-decoration:none;font-size:14px;}
@@ -38,17 +74,18 @@
 
 <body>
     <div id="wrapper">
-        <!-- 直接内嵌头部，和你原页面#header标签一致 -->
+        <!-- 修正后的头部 - 完全匹配 LoanCalculator.html 样式 -->
         <div id="header">
-            <!-- 你把这里替换成自己header.html里的源码即可 -->
-            <div class="logo"><a href="/">Wide Calculator</a></div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="/loan-calculators/">Loan Calculators</a></li>
-                    <li><a href="/mortgage-calculators/">Mortgage Calculators</a></li>
-                    <li><a href="/auto-loan-calculators/">Auto Loan</a></li>
-                </ul>
-            </nav>
+            <div style="max-width:960px;margin:0 auto;padding:0 20px;">
+                <div class="logo"><a href="/">Wide Calculator</a></div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="/LoanCalculator.html">Loan Calculators</a></li>
+                        <li><a href="/MortgageCalculator.html">Mortgage Calculators</a></li>
+                        <li><a href="/auto-loan-calculators/">Auto Loan</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
 
         <div class="main">
@@ -318,9 +355,8 @@
         <div id="footer-push"></div>
     </div>
 
-    <!-- 底部直接内嵌，对应你原#footer-placeholder标签 -->
+    <!-- 底部保持不变 -->
     <div id="footer-placeholder">
-        <!-- 你把这里替换成自己footer.html里的源码即可 -->
         <div class="footer-copyright">
             <p>© 2025 Wide Calculator | All Rights Reserved</p>
             <p><a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Use</a></p>
@@ -328,7 +364,7 @@
     </div>
 
     <script>
-    // 删掉了fetch异步加载，纯本地JS，打开就显示头尾
+    // 原有计算函数保持不变
     function calcM1(){let L=+m1a.value,R=+m1b.value/1200,N=+m1c.value*12;let M=(L*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);resM1.innerText="Monthly Payment: $"+M.toFixed(2);}
     function calcM2(){let B=+m2a.value,Ro=+m2b.value/1200,Rn=+m2c.value/1200,N=360;let Mo=(B*Ro*Math.pow(1+Ro,N))/(Math.pow(1+Ro,N)-1);let Mn=(B*Rn*Math.pow(1+Rn,N))/(Math.pow(1+Rn,N)-1);resM2.innerText="Monthly Save: $"+(Mo-Mn).toFixed(2);}
     function calcM3(){let P=+m3a.value,dp=+m3b.value/100,L=P*(1-dp),R=+m3c.value/1200,N=360;let M=(L*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);resM3.innerText="Loan:$"+L.toFixed(2)+" | Monthly:$"+M.toFixed(2);}
