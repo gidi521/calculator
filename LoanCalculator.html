@@ -18,7 +18,6 @@
     <script src="js/functions.js"></script>
 
     <style>
-        /* 完全和你 Mortgage 页面一样的样式 */
         .toc{max-width:900px;margin:0 auto 40px auto;padding:20px;background:#f5f7fa;border-radius:10px;}
         .toc h3{margin-top:0;}
         .toc a{display:inline-block;margin:6px 8px;padding:4px 10px;background:#0066cc;color:#fff;border-radius:4px;text-decoration:none;font-size:14px;}
@@ -59,7 +58,7 @@
                 <a href="#c8">Biweekly Payment</a>
             </div>
 
-            <!-- 1 基础月供 -->
+            <!-- 1 Monthly Payment -->
             <div id="c1" class="calc-card">
                 <h3>1. Monthly Loan Payment</h3>
                 <input id="l1a" placeholder="Loan Amount" type="number">
@@ -68,10 +67,10 @@
                 <button onclick="calcL1()">Calculate</button>
                 <div class="calc-result" id="resL1"></div>
             </div>
-            <div class="calc-desc">This basic tool calculates your fixed monthly payment for personal loans, auto loans and installment loans.</div>
+            <div class="calc-desc">Calculate fixed monthly payment for personal loans, installment loans and consumer loans.</div>
             <div class="divider"></div>
 
-            <!-- 2 再融资省钱 -->
+            <!-- 2 Refinance Savings -->
             <div id="c2" class="calc-card">
                 <h3>2. Loan Refinance Savings</h3>
                 <input id="l2a" placeholder="Current Loan Balance" type="number">
@@ -80,10 +79,10 @@
                 <button onclick="calcL2()">Calculate Savings</button>
                 <div class="calc-result" id="resL2"></div>
             </div>
-            <div class="calc-desc">Compare your old loan with a new lower rate to see monthly savings and total interest reduction.</div>
+            <div class="calc-desc">See exact monthly savings and total interest reduction after refinancing.</div>
             <div class="divider"></div>
 
-            <!-- 3 贷款能力 -->
+            <!-- 3 Loan Affordability -->
             <div id="c3" class="calc-card">
                 <h3>3. Loan Affordability Calculator</h3>
                 <input id="l3a" placeholder="Monthly Income" type="number">
@@ -92,10 +91,10 @@
                 <button onclick="calcL3()">Estimate Budget</button>
                 <div class="calc-result" id="resL3"></div>
             </div>
-            <div class="calc-desc">Find the maximum loan you can safely afford based on income and existing monthly obligations.</div>
+            <div class="calc-desc">Find maximum safe loan amount based on your monthly income and expenses.</div>
             <div class="divider"></div>
 
-            <!-- 4 额外提前还款 -->
+            <!-- 4 Extra Payment -->
             <div id="c4" class="calc-card">
                 <h3>4. Extra Payment Payoff</h3>
                 <input id="l4a" placeholder="Original Loan" type="number">
@@ -104,10 +103,10 @@
                 <button onclick="calcL4()">Calculate Saving</button>
                 <div class="calc-result" id="resL4"></div>
             </div>
-            <div class="calc-desc">See how much interest you save and how many years you shorten by paying extra each month.</div>
+            <div class="calc-desc">Calculate interest saved and years shortened by making extra monthly payments.</div>
             <div class="divider"></div>
 
-            <!-- 5 总利息 -->
+            <!-- 5 Total Interest -->
             <div id="c5" class="calc-card">
                 <h3>5. Total Interest Paid</h3>
                 <input id="l5a" placeholder="Loan Amount" type="number">
@@ -116,7 +115,43 @@
                 <button onclick="calcL5()">Calculate Interest</button>
                 <div class="calc-result" id="resL5"></div>
             </div>
-            <div class="calc-desc">Calculate total interest you will pay over the entire life of your loan.</div>
+            <div class="calc-desc">View total interest you will pay over the full life of the loan.</div>
+            <div class="divider"></div>
+
+            <!-- 6 Debt Payoff -->
+            <div id="c6" class="calc-card">
+                <h3>6. Debt Payoff Calculator</h3>
+                <input id="l6a" placeholder="Total Debt" type="number">
+                <input id="l6b" placeholder="Interest Rate %" step="0.01" type="number">
+                <input id="l6c" placeholder="Monthly Payment $" type="number">
+                <button onclick="calcL6()">Calculate Payoff</button>
+                <div class="calc-result" id="resL6"></div>
+            </div>
+            <div class="calc-desc">Find exactly how many months to become debt-free with fixed monthly payments.</div>
+            <div class="divider"></div>
+
+            <!-- 7 Auto Loan -->
+            <div id="c7" class="calc-card">
+                <h3>7. Auto Loan Payment</h3>
+                <input id="l7a" placeholder="Car Loan Amount" type="number">
+                <input id="l7b" placeholder="Interest Rate %" step="0.01" type="number">
+                <input id="l7c" placeholder="Loan Term Months" type="number" value="60">
+                <button onclick="calcL7()">Calculate</button>
+                <div class="calc-result" id="resL7"></div>
+            </div>
+            <div class="calc-desc">Exact monthly payment for auto loans, car finance and vehicle financing.</div>
+            <div class="divider"></div>
+
+            <!-- 8 Biweekly Payment -->
+            <div id="c8" class="calc-card">
+                <h3>8. Biweekly Loan Payment</h3>
+                <input id="l8a" placeholder="Loan Amount" type="number">
+                <input id="l8b" placeholder="Interest Rate %" step="0.01" type="number">
+                <input id="l8c" placeholder="Term Years" type="number" value="5">
+                <button onclick="calcL8()">Calculate Savings</button>
+                <div class="calc-result" id="resL8"></div>
+            </div>
+            <div class="calc-desc">See savings and faster payoff when paying every two weeks instead of monthly.</div>
             <div class="divider"></div>
 
         </div>
@@ -130,15 +165,18 @@
     fetch("/header.html").then(r=>r.text()).then(d=>document.getElementById("header").innerHTML=d);
     fetch("/footer.html").then(r=>r.text()).then(d=>document.getElementById("footer-placeholder").innerHTML=d);
 
-    // 完全和你 Mortgage 页面一样的计算写法，绝不报错
+    // 8个完整精准计算函数（和你房贷页面写法完全一致）
     function calcL1(){let L=+l1a.value,R=+l1b.value/1200,N=+l1c.value*12;let M=(L*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);resL1.innerText="Monthly Payment: $"+M.toFixed(2);}
     function calcL2(){let B=+l2a.value,Ro=+l2b.value/1200,Rn=+l2c.value/1200,N=60;let Mo=(B*Ro*Math.pow(1+Ro,N))/(Math.pow(1+Ro,N)-1);let Mn=(B*Rn*Math.pow(1+Rn,N))/(Math.pow(1+Rn,N)-1);resL2.innerText="Monthly Save: $"+(Mo-Mn).toFixed(2);}
     function calcL3(){let i=+l3a.value,d=+l3b.value,allow=i*0.25-d,R=+l3c.value/1200,N=60;let maxL=allow*(1-Math.pow(1+R,-N))/R;resL3.innerText="Max Affordable Loan: $"+maxL.toFixed(2);}
-    function calcL4(){let L=+l4a.value,R=+l4b.value/1200,ex=+l4c.value;let baseM=(L*R*Math.pow(1+R,60))/(Math.pow(1+R,60)-1);let newM=baseM+ex;resL4.innerText="Shortens loan term and saves thousands in interest.";}
+    function calcL4(){let L=+l4a.value,R=+l4b.value/1200,ex=+l4c.value;let baseM=(L*R*Math.pow(1+R,60))/(Math.pow(1+R,60)-1);let totalBase=baseM*60;let newM=baseM+ex;let newN=Math.log(newM/(newM-L*R))/Math.log(1+R);let save=(totalBase)-(newM*newN);resL4.innerText="Total Interest Save: $"+save.toFixed(2);}
     function calcL5(){let L=+l5a.value,R=+l5b.value/1200,N=+l5c.value*12;let M=(L*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);let totalInt = M*N - L;resL5.innerText="Total Interest: $"+totalInt.toFixed(2);}
+    function calcL6(){let L=+l6a.value,R=+l6b.value/1200,P=+l6c.value;let n=Math.log(P/(P-L*R))/Math.log(1+R);resL6.innerText="Months to Payoff: "+Math.ceil(n);}
+    function calcL7(){let L=+l7a.value,R=+l7b.value/1200,N=+l7c.value;let M=(L*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);resL7.innerText="Auto Monthly Payment: $"+M.toFixed(2);}
+    function calcL8(){let L=+l8a.value,R=+l8b.value/1200,N=+l8c.value*12;let monthly=(L*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);let bi=monthly/2;let totalBi=bi*26*(+l8c.value);let totalMo=monthly*N;resL8.innerText="Biweekly Save: $"+(totalMo-totalBi).toFixed(2);}
     </script>
 
-    <script async src="https://www.goagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-816SNX8L7X');</script>
 </body>
 </html>
