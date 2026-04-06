@@ -226,6 +226,60 @@ border-radius: 12px; -moz-border-radius: 12px; -webkit-border-radius: 12px; -o-b
   color: #444;
   text-decoration: none;
 }
+/* 底部三列等高统一 */
+.footer-three-cols {
+  display: flex;
+  flex-wrap: wrap;
+}
+.footer-col {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+.footer-col p:last-child {
+  flex-grow: 1;
+}
+
+/* 纯文字图标替代图片 */
+.footer-icon {
+  font-size: 22px;
+  margin-right: 10px;
+  vertical-align: middle;
+  color: #696969;
+}
+.section-bottom .col h3 {
+  display: flex;
+  align-items: center;
+  position: static !important;
+  padding-left: 0 !important;
+}
+/* 隐藏旧图片图标 & 旧按钮 */
+.section-bottom .col h3 span.about-ico,
+.section-bottom .col h3 span.news-ico,
+.section-bottom .col h3 span.subscribe-ico {
+  display: none !important;
+}
+.more-btn {
+  display: none !important;
+}
+
+/* 版权区正常居中、不乱飘 */
+#footer .footer-nav {
+  text-align: center;
+  float: none !important;
+  margin-bottom: 12px;
+}
+#footer .copyright-text {
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+#footer p.copy {
+  display: none !important;
+}
 
 .text-center {
   text-align: center;
