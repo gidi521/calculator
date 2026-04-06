@@ -3,15 +3,15 @@
 body, html { height: 100%; }
 
 body {
-    font-size: 16px; /* 全局字体放大，更易读 */
-    line-height: 1.8; /* 行高优化，英文阅读更舒服 */
+    font-size: 16px;
+    line-height: 1.8;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #444; /* 深灰更柔和，不刺眼 */
-  	background: #fff;
+    color: #444;
+    background: #fff;
     min-width: 942px;
 }
 
-a { color: #0000FF; text-decoration: none; cursor: pointer; }
+a { color: #0066cc; text-decoration: none; cursor: pointer; }
 a:hover { text-decoration: underline; }
 a img { border: 0; }
 
@@ -79,11 +79,8 @@ header .shell { position: relative; }
 .main .cols .last-col { padding-right: 0; }
 .main .cols .col ul { list-style: none; list-style-position: outside; }
 .main .cols .col ul li { background: url(images/list-arr.png) no-repeat 0 6px; padding-left: 14px; color: #444; font-size: 16px; padding-bottom: 6px; line-height: 1.6; }
-.main .cols .col ul li a { color: #0000FF; }
+.main .cols .col ul li a { color: #0066cc; }
 
-/* =====================================
-   About Us 页面专属美化（解决字小、排版丑）
-   ===================================== */
 #content {
   max-width: 900px;
   margin: 0 auto;
@@ -127,9 +124,6 @@ header .shell { position: relative; }
   margin-bottom: 8px;
 }
 
-/* =====================================
-   底部三栏（About/FAQ/Contact）样式优化
-   ===================================== */
 .section-bottom  { padding-top: 56px;  background: url(images/section-bottom.png) repeat-x center 0; }
 .section-bottom .cols .col { width: 274px; float: left; }
 .section-bottom .cols .col + .col { padding-left: 55px; }
@@ -158,43 +152,78 @@ header .shell { position: relative; }
 .section-bottom .cols .col form { position: relative; width: 235px; padding-bottom: 23px; height: 100%; }
 .section-bottom .cols .col input.field { width: 143px; height: 15px; padding: 4px 24px 4px 15px; border: 0; background-color: #f4eef5;  border-radius: 11px; -moz-border-radius: 11px; -webkit-border-radius: 11px; -o-border-radius: 11px;
 box-shadow: 3px 2px 2px #eae5eb inset; -moz-box-shadow: 3px 2px 2px #eae5eb inset; -webkit-box-shadow: 3px 2px 2px #eae5eb inset; -o-box-shadow: 3px 2px 2px #eae5eb inset; font-size: 14px; color: #b1aeb2; }
-.section-bottom .cols .col input.submit-btn { width: 70px; height: 23px; background: url(images/submit-btn.png) repeat-x 0 0; text-align: center; line-height: px; cursor: pointer; border: 0;
+.section-bottom .cols .col input.submit-btn { width: 70px; height: 23px; background: url(images/submit-btn.png) repeat-x 0 0; text-align: center; line-height: 23px; cursor: pointer; border: 0;
 border-radius: 12px; -moz-border-radius: 12px; -webkit-border-radius: 12px; -o-border-radius: 12px; color: #fff; font-size: 13px; font-weight: bold; position: absolute; top: 0; right: 0; }
 .section-bottom .cols .col input.submit-btn:hover { background-position: 0 bottom;  }
 
-/* =====================================
-   Footer 底部版权栏美化（解决字小、不好看）
-   ===================================== */
-#wrapper { min-height: 100%; height: auto !important; height: 100%; margin: 0 auto -60px; }
-#footer, #footer-push { height: 60px; }
-#footer { 
-  background-color: #f1ecec; 
-  line-height: 60px;
+#wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -80px;
+}
+
+#footer-push {
+  height: 80px;
+  clear: both;
+}
+
+#footer {
+  background-color: #f1ecec;
+  height: 80px;
+  line-height: 80px;
   border-top: 1px solid #e8e2e2;
+  clear: both;
+  position: relative;
+  z-index: 1;
 }
-#footer p.copy { 
-  color: #888; 
+
+#footer p.copy {
+  color: #888;
   font-size: 14px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
-#footer p.copy a { 
-  color: #666; 
+
+#footer p.copy a {
+  color: #666;
   text-decoration: underline;
 }
-#footer p.copy a:hover { 
+
+#footer p.copy a:hover {
   text-decoration: none;
   color: #333;
 }
 
-.footer-nav ul { list-style: none; list-style-position: outside; }
-.footer-nav ul li { display: inline; background: url(images/nav-border.png) no-repeat right 0; padding: 0 10px; }
-.footer-nav ul li.last { background: transparent; padding-right: 0; }
-.footer-nav li a { 
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.footer-nav ul li {
+  display: inline-block;
+  background: url(images/nav-border.png) no-repeat right center;
+  padding: 0 10px;
+  line-height: 18px;
+  vertical-align: middle;
+}
+
+.footer-nav ul li.last {
+  background: transparent;
+  padding-right: 0;
+}
+
+.footer-nav li a {
   color: #888;
   font-size: 15px;
 }
-.footer-nav li a:hover ,
-.footer-nav li.active a { 
-  color: #444; 
+
+.footer-nav li a:hover,
+.footer-nav li.active a {
+  color: #444;
   text-decoration: none;
 }
 
