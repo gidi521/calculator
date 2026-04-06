@@ -3,416 +3,142 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>25 All-In-One Precise Loan & Mortgage Calculators</title>
-    <meta name="description" content="Precise calculators for mortgage, personal loan, auto loan, refinance, PMI, tax, insurance & home equity with exact numbers." />
+    <title>Complete Loan Calculators | Personal & Installment Loan Tools</title>
+    <meta name="description" content="Free professional loan calculators for monthly payments, refinancing, affordability, extra payments and total interest planning." />
     <meta name="author" content="Wide Calculator" />
     <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
     <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
-    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+
+    <script src="js/jquery-1.7.2.min.js"></script>
     <!--[if lt IE 9]>
         <script src="js/modernizr.custom.js"></script>
-    <![endif]
-    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
-    <script src="js/functions.js" type="text/javascript"></script>
-    <style>
-        .toc{max-width:900px;margin:0 auto 40px auto;padding:20px;background:#f5f7fa;border-radius:10px;}
-        .toc h3{margin-top:0;font-size:18px;}
-        .toc a{display:inline-block;margin:6px 4px;padding:4px 8px;background:#007bff;color:#fff;border-radius:4px;text-decoration:none;font-size:13px;}
-        .toc a:hover{background:#0056b3;}
+    <![endif]-->
+    <script src="js/jquery.flexslider-min.js"></script>
+    <script src="js/functions.js"></script>
 
-        .calc-box {
-            margin: 50px auto;
-            padding: 30px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background-color: #f9f9f9;
-            font-size: 16px;
-            text-align: center;
-            max-width: 400px;
-        }
-        .calc-box label {
-            font-weight: bold;
-            margin-top: 10px;
-            display: block;
-        }
-        .calc-box input {
-            width: 150px;
-            margin-top: 10px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .calc-box button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .calc-box button:hover {
-            background-color: #0056b3;
-        }
-        .calc-result {
-            font-weight: bold;
-            margin-top: 20px;
-            font-size: 16px;
-            color:#007bff;
-        }
-        #content {
-            text-align: left !important;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        #content h1,#content h2,#content h3 {
-            text-align: left !important;
-        }
-        .divider{height:1px;background:#eee;margin:40px 0;}
-        .section-bottom{display:none;}
+    <style>
+        /* 完全和你 Mortgage 页面一样的样式 */
+        .toc{max-width:900px;margin:0 auto 40px auto;padding:20px;background:#f5f7fa;border-radius:10px;}
+        .toc h3{margin-top:0;}
+        .toc a{display:inline-block;margin:6px 8px;padding:4px 10px;background:#0066cc;color:#fff;border-radius:4px;text-decoration:none;font-size:14px;}
+        .toc a:hover{background:#0052a3;}
+
+        .calc-card{max-width:440px;margin:50px auto;padding:28px;border:1px #e5e7eb solid;border-radius:12px;background:#f9fafb;text-align:center;box-shadow:0 2px 8px #00000008;}
+        .calc-card h3{margin:0 0 16px 0;font-size:18px;color:#111;}
+        .calc-card label{display:block;margin-top:10px;font-weight:600;font-size:15px;}
+        .calc-card input{width:180px;padding:7px;margin:6px auto;border:1px #ccc solid;border-radius:6px;text-align:center;font-size:15px;}
+        .calc-card button{margin-top:18px;padding:10px 24px;background:#0066cc;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:16px;}
+        .calc-card button:hover{background:#0052a3;}
+        .calc-result{margin-top:16px;font-weight:bold;font-size:16px;color:#0066cc;min-height:22px;}
+        .calc-desc{max-width:900px;margin:12px auto 40px auto;text-align:left;padding:0 20px;line-height:1.7;font-size:15px;color:#333;}
+        #content{text-align:left !important;max-width:960px;margin:0 auto;padding:20px;}
+        .divider{height:1px;background:#eee;margin:60px 0;}
     </style>
 </head>
 
 <body>
     <div id="wrapper">
-        <div id="header-load"></div>
+        <div id="header"></div>
 
         <div class="main">
             <div id="content">
-                <h1>25 Precise Loan & Mortgage Calculators</h1>
-                <p>Every calculator below outputs exact calculated numbers. No vague tips, only real financial results for loans, homes, cars & refinancing.</p>
+                <h1>All-in-One Loan & Personal Loan Calculators</h1>
+                <p>Use our practical loan tools to plan monthly payments, refinance options, affordable loan amounts, extra payments and total interest clearly.</p>
             </div>
 
             <div class="toc">
-                <h3>Quick Jump To Calculator</h3>
-                <a href="#c1">1.General Loan</a>
-                <a href="#c2">2.15/30Y Mortgage</a>
-                <a href="#c3">3.Mortgage Refi Save</a>
-                <a href="#c4">4.Personal Refi</a>
-                <a href="#c5">5.Down Payment Loan</a>
-                <a href="#c6">6.Home Affordability</a>
-                <a href="#c7">7.Personal Loan Afford</a>
-                <a href="#c8">8.PMI Exact</a>
-                <a href="#c9">9.FHA Loan MIP</a>
-                <a href="#c10">10.VA Zero-Down</a>
-                <a href="#c11">11.Extra Payoff Interest</a>
-                <a href="#c12">12.Biweekly Save</a>
-                <a href="#c13">13.Total Interest</a>
-                <a href="#c14">14.15 vs 30 Year</a>
-                <a href="#c15">15.Cash Out Refi</a>
-                <a href="#c16">16.HELOC Equity</a>
-                <a href="#c17">17.PITI Full Cost</a>
-                <a href="#c18">18.Property Tax Monthly</a>
-                <a href="#c19">19.Home Insurance</a>
-                <a href="#c20">20.Investment Property</a>
-                <a href="#c21">21.Second Home Loan</a>
-                <a href="#c22">22.Auto Loan Exact</a>
-                <a href="#c23">23.Auto Refi Save</a>
-                <a href="#c24">24.Early Payoff Years</a>
-                <a href="#c25">25.Closing Cost Exact</a>
+                <h3>Quick Jump to Calculator</h3>
+                <a href="#c1">Monthly Payment</a>
+                <a href="#c2">Refinance Savings</a>
+                <a href="#c3">Loan Affordability</a>
+                <a href="#c4">Extra Payment</a>
+                <a href="#c5">Total Interest</a>
+                <a href="#c6">Debt Payoff</a>
+                <a href="#c7">Auto Loan</a>
+                <a href="#c8">Biweekly Payment</a>
             </div>
 
-<!-- 1 General Loan -->
-<div id="c1" class="calc-box">
-<h2>1. General Monthly Loan</h2>
-<input id="a1" placeholder="Loan Amount $">
-<input id="b1" step="0.01" placeholder="Interest Rate %">
-<input id="c1in" placeholder="Term Years">
-<button onclick="f1()">Calculate Exact</button>
-<p class="calc-result" id="r1"></p>
-</div>
-<div id="content"><p>Exact fixed monthly payment for personal loans, installment loans.</p></div><div class="divider"></div>
+            <!-- 1 基础月供 -->
+            <div id="c1" class="calc-card">
+                <h3>1. Monthly Loan Payment</h3>
+                <input id="l1a" placeholder="Loan Amount" type="number">
+                <input id="l1b" placeholder="Interest Rate %" step="0.01" type="number">
+                <input id="l1c" placeholder="Term Years" type="number" value="5">
+                <button onclick="calcL1()">Calculate</button>
+                <div class="calc-result" id="resL1"></div>
+            </div>
+            <div class="calc-desc">This basic tool calculates your fixed monthly payment for personal loans, auto loans and installment loans.</div>
+            <div class="divider"></div>
 
-<!-- 2 Mortgage 15/30Y -->
-<div id="c2" class="calc-box">
-<h2>2. 15 / 30 Year Mortgage</h2>
-<input id="a2" placeholder="Mortgage Loan $">
-<input id="b2" step="0.01" placeholder="Rate %">
-<input id="c2in" placeholder="Years">
-<button onclick="f2()">Calculate Exact</button>
-<p class="calc-result" id="r2"></p>
-</div>
-<div id="content"><p>Precise principal & interest monthly payment for home mortgage.</p></div><div class="divider"></div>
+            <!-- 2 再融资省钱 -->
+            <div id="c2" class="calc-card">
+                <h3>2. Loan Refinance Savings</h3>
+                <input id="l2a" placeholder="Current Loan Balance" type="number">
+                <input id="l2b" placeholder="Old Rate %" step="0.01" type="number">
+                <input id="l2c" placeholder="New Lower Rate %" step="0.01" type="number">
+                <button onclick="calcL2()">Calculate Savings</button>
+                <div class="calc-result" id="resL2"></div>
+            </div>
+            <div class="calc-desc">Compare your old loan with a new lower rate to see monthly savings and total interest reduction.</div>
+            <div class="divider"></div>
 
-<!--3 Mortgage Refi -->
-<div id="c3" class="calc-box">
-<h2>3. Mortgage Refinance Savings</h2>
-<input id="a3" placeholder="Current Balance $">
-<input id="b3" placeholder="Old Rate %">
-<input id="c3in" placeholder="New Rate %">
-<button onclick="f3()">Calculate Save</button>
-<p class="calc-result" id="r3"></p>
-</div>
-<div id="content"><p>Exact monthly saved amount after refinancing home loan.</p></div><div class="divider"></div>
+            <!-- 3 贷款能力 -->
+            <div id="c3" class="calc-card">
+                <h3>3. Loan Affordability Calculator</h3>
+                <input id="l3a" placeholder="Monthly Income" type="number">
+                <input id="l3b" placeholder="Monthly Debts" type="number">
+                <input id="l3c" placeholder="Interest Rate %" step="0.01" type="number">
+                <button onclick="calcL3()">Estimate Budget</button>
+                <div class="calc-result" id="resL3"></div>
+            </div>
+            <div class="calc-desc">Find the maximum loan you can safely afford based on income and existing monthly obligations.</div>
+            <div class="divider"></div>
 
-<!--4 Personal Refi -->
-<div id="c4" class="calc-box">
-<h2>4. Personal Loan Refinance</h2>
-<input id="a4" placeholder="Loan Balance $">
-<input id="b4" placeholder="Old Rate %">
-<input id="c4in" placeholder="New Rate %">
-<button onclick="f4()">Calculate Save</button>
-<p class="calc-result" id="r4"></p>
-</div>
-<div id="content"><p>Real monthly savings for refinancing personal credit loans.</p></div><div class="divider"></div>
+            <!-- 4 额外提前还款 -->
+            <div id="c4" class="calc-card">
+                <h3>4. Extra Payment Payoff</h3>
+                <input id="l4a" placeholder="Original Loan" type="number">
+                <input id="l4b" placeholder="Interest Rate %" step="0.01" type="number">
+                <input id="l4c" placeholder="Extra Monthly $" type="number">
+                <button onclick="calcL4()">Calculate Saving</button>
+                <div class="calc-result" id="resL4"></div>
+            </div>
+            <div class="calc-desc">See how much interest you save and how many years you shorten by paying extra each month.</div>
+            <div class="divider"></div>
 
-<!--5 Down Payment -->
-<div id="c5" class="calc-box">
-<h2>5. Down Payment & Loan Amount</h2>
-<input id="a5" placeholder="Home Price $">
-<input id="b5" step="0.1" placeholder="Down %">
-<input id="c5in" placeholder="Loan Rate %">
-<button onclick="f5()">Calculate Exact</button>
-<p class="calc-result" id="r5"></p>
-</div>
-<div id="content"><p>Show exact loan amount + exact monthly payment after down payment.</p></div><div class="divider"></div>
-
-<!--6 Home Afford -->
-<div id="c6" class="calc-box">
-<h2>6. Home Buying Affordability</h2>
-<input id="a6" placeholder="Monthly Income $">
-<input id="b6" placeholder="Other Monthly Debts $">
-<input id="c6in" placeholder="Loan Rate %">
-<button onclick="f6()">Max Loan Exact</button>
-<p class="calc-result" id="r6"></p>
-</div>
-<div id="content"><p>Exact maximum loan you can afford based on standard DTI ratio.</p></div><div class="divider"></div>
-
-<!--7 Personal Afford -->
-<div id="c7" class="calc-box">
-<h2>7. Personal Loan Afford Limit</h2>
-<input id="a7" placeholder="Monthly Income $">
-<input id="b7" placeholder="Monthly Bills $">
-<input id="c7in" placeholder="Loan Rate %">
-<button onclick="f7()">Safe Loan Max</button>
-<p class="calc-result" id="r7"></p>
-</div>
-<div id="content"><p>Strict safe personal loan limit calculated from your budget.</p></div><div class="divider"></div>
-
-<!--8 PMI Exact -->
-<div id="c8" class="calc-box">
-<h2>8. PMI Monthly Exact Cost</h2>
-<input id="a8" placeholder="Home Price $">
-<input id="b8" placeholder="Down Payment %">
-<input id="c8in" placeholder="Annual PMI %">
-<button onclick="f8()">PMI Exact</button>
-<p class="calc-result" id="r8"></p>
-</div>
-<div id="content"><p>Real monthly PMI insurance fee for low-down home loans.</p></div><div class="divider"></div>
-
-<!--9 FHA MIP -->
-<div id="c9" class="calc-box">
-<h2>9. FHA Loan MIP Calculation</h2>
-<input id="a9" placeholder="Home Price $">
-<input id="b9" placeholder="FHA Down %">
-<input id="c9in" placeholder="FHA Rate %">
-<button onclick="f9()">FHA Full Payment</button>
-<p class="calc-result" id="r9"></p>
-</div><div class="divider"></div>
-
-<!--10 VA Loan -->
-<div id="c10" class="calc-box">
-<h2>10. VA Zero-Down Payment</h2>
-<input id="a10" placeholder="Home Value $">
-<input id="b10" placeholder="VA Interest Rate %">
-<button onclick="f10()">VA Monthly Exact</button>
-<p class="calc-result" id="r10"></p>
-</div><div class="divider"></div>
-
-<!--11 Extra Payoff -->
-<div id="c11" class="calc-box">
-<h2>11. Extra Payment Interest Save</h2>
-<input id="a11" placeholder="Original Loan $">
-<input id="b11" placeholder="Interest Rate %">
-<input id="c11in" placeholder="Extra Monthly $">
-<button onclick="f11()">Exact Interest Save</button>
-<p class="calc-result" id="r11"></p>
-</div><div class="divider"></div>
-
-<!--12 Biweekly -->
-<div id="c12" class="calc-box">
-<h2>12. Biweekly Payment Save</h2>
-<input id="a12" placeholder="Mortgage Loan $">
-<input id="b12" placeholder="Rate %">
-<button onclick="f12()">Exact Year Shorten</button>
-<p class="calc-result" id="r12"></p>
-</div><div class="divider"></div>
-
-<!--13 Total Interest -->
-<div id="c13" class="calc-box">
-<h2>13. Total Interest Paid</h2>
-<input id="a13" placeholder="Loan $">
-<input id="b13" placeholder="Rate %">
-<input id="c13in" placeholder="Years">
-<button onclick="f13()">Exact Interest</button>
-<p class="calc-result" id="r13"></p>
-</div><div class="divider"></div>
-
-<!--14 15vs30 -->
-<div id="c14" class="calc-box">
-<h2>14. 15 Year vs 30 Year Loan</h2>
-<input id="a14" placeholder="Loan Amount $">
-<input id="b14" placeholder="30Y Rate %">
-<input id="c14in" placeholder="15Y Rate %">
-<button onclick="f14()">Full Compare</button>
-<p class="calc-result" id="r14"></p>
-</div><div class="divider"></div>
-
-<!--15 Cash Out Refi -->
-<div id="c15" class="calc-box">
-<h2>15. Cash Out Refinance Equity</h2>
-<input id="a15" placeholder="Home Value $">
-<input id="b15" placeholder="Remaining Loan $">
-<input id="c15in" placeholder="Max LTV %">
-<button onclick="f15()">Exact Cash</button>
-<p class="calc-result" id="r15"></p>
-</div><div class="divider"></div>
-
-<!--16 HELOC -->
-<div id="c16" class="calc-box">
-<h2>16. HELOC Available Equity</h2>
-<input id="a16" placeholder="Home Worth $">
-<input id="b16" placeholder="Mortgage Left $">
-<input id="c16in" placeholder="LTV %">
-<button onclick="f16()">Exact Credit</button>
-<p class="calc-result" id="r16"></p>
-</div><div class="divider"></div>
-
-<!--17 PITI -->
-<div id="c17" class="calc-box">
-<h2>17. Full PITI Monthly Cost</h2>
-<input id="a17" placeholder="Mortgage Loan $">
-<input id="b17" placeholder="Tax+Insurance/mo $">
-<button onclick="f17()">Full Exact PITI</button>
-<p class="calc-result" id="r17"></p>
-</div><div class="divider"></div>
-
-<!--18 Property Tax -->
-<div id="c18" class="calc-box">
-<h2>18. Monthly Property Tax</h2>
-<input id="a18" placeholder="House Value $">
-<input id="b18" placeholder="Annual Tax Rate %">
-<button onclick="f18()">Exact Tax/mo</button>
-<p class="calc-result" id="r18"></p>
-</div><div class="divider"></div>
-
-<!--19 Home Insurance -->
-<div id="c19" class="calc-box">
-<h2>19. Monthly Home Insurance</h2>
-<input id="a19" placeholder="Rebuild Value $">
-<input id="b19" placeholder="Annual Insurance %">
-<button onclick="f19()">Exact Insurance/mo</button>
-<p class="calc-result" id="r19"></p>
-</div><div class="divider"></div>
-
-<!--20 Investment Property -->
-<div id="c20" class="calc-box">
-<h2>20. Investment Property Loan</h2>
-<input id="a20" placeholder="Rental Home Loan $">
-<input id="b20" placeholder="Interest Rate %">
-<button onclick="f20()">Exact Monthly</button>
-<p class="calc-result" id="r20"></p>
-</div><div class="divider"></div>
-
-<!--21 Second Home -->
-<div id="c21" class="calc-box">
-<h2>21. Second Vacation Home Loan</h2>
-<input id="a21" placeholder="Second Home Loan $">
-<input id="b21" placeholder="Rate %">
-<button onclick="f21()">Exact Monthly</button>
-<p class="calc-result" id="r21"></p>
-</div><div class="divider"></div>
-
-<!--22 Auto Loan -->
-<div id="c22" class="calc-box">
-<h2>22. Exact Auto Loan Payment</h2>
-<input id="a22" placeholder="Car Loan $">
-<input id="b22" placeholder="Rate %">
-<input id="c22in" placeholder="Months">
-<button onclick="f22()">Calculate Exact</button>
-<p class="calc-result" id="r22"></p>
-</div><div class="divider"></div>
-
-<!--23 Auto Refi -->
-<div id="c23" class="calc-box">
-<h2>23. Auto Loan Refinance Save</h2>
-<input id="a23" placeholder="Car Loan Left $">
-<input id="b23" placeholder="Old / New Rate % (2 inputs)">
-<input id="c23in" placeholder="New Rate %">
-<button onclick="f23()">Exact Save/mo</button>
-<p class="calc-result" id="r23"></p>
-</div><div class="divider"></div>
-
-<!--24 Early Payoff -->
-<div id="c24" class="calc-box">
-<h2>24. Early Loan Payoff Time</h2>
-<input id="a24" placeholder="Loan $">
-<input id="b24" placeholder="Rate %">
-<input id="c24in" placeholder="Extra Monthly $">
-<button onclick="f24()">Exact Shorten Years</button>
-<p class="calc-result" id="r24"></p>
-</div><div class="divider"></div>
-
-<!--25 Closing Cost -->
-<div id="c25" class="calc-box">
-<h2>25. Exact Closing Cost</h2>
-<input id="a25" placeholder="Home Price $">
-<input id="b25" placeholder="Closing Cost %">
-<button onclick="f25()">Exact Total Fee</button>
-<p class="calc-result" id="r25"></p>
-</div><div class="divider"></div>
+            <!-- 5 总利息 -->
+            <div id="c5" class="calc-card">
+                <h3>5. Total Interest Paid</h3>
+                <input id="l5a" placeholder="Loan Amount" type="number">
+                <input id="l5b" placeholder="Interest Rate %" step="0.01" type="number">
+                <input id="l5c" placeholder="Term Years" type="number" value="5">
+                <button onclick="calcL5()">Calculate Interest</button>
+                <div class="calc-result" id="resL5"></div>
+            </div>
+            <div class="calc-desc">Calculate total interest you will pay over the entire life of your loan.</div>
+            <div class="divider"></div>
 
         </div>
+
         <div id="footer-push"></div>
     </div>
 
-    <div id="footer-load"></div>
+    <div id="footer-placeholder"></div>
 
-<script>
-//加载头尾
-fetch("header.html").then(d=>d.text()).then(h=>document.getElementById("header-load").innerHTML=h);
-fetch("footer.html").then(d=>d.text()).then(f=>document.getElementById("footer-load").innerHTML=f);
+    <script>
+    fetch("/header.html").then(r=>r.text()).then(d=>document.getElementById("header").innerHTML=d);
+    fetch("/footer.html").then(r=>r.text()).then(d=>document.getElementById("footer-placeholder").innerHTML=d);
 
-//核心标准月供公式
-function pay(L,R,N){
-    if(!L||!R||!N) return "Input valid numbers";
-    let mRate = R / 1200;
-    return (L * mRate * Math.pow(1+mRate,N)) / (Math.pow(1+mRate,N)-1);
-}
+    // 完全和你 Mortgage 页面一样的计算写法，绝不报错
+    function calcL1(){let L=+l1a.value,R=+l1b.value/1200,N=+l1c.value*12;let M=(L*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);resL1.innerText="Monthly Payment: $"+M.toFixed(2);}
+    function calcL2(){let B=+l2a.value,Ro=+l2b.value/1200,Rn=+l2c.value/1200,N=60;let Mo=(B*Ro*Math.pow(1+Ro,N))/(Math.pow(1+Ro,N)-1);let Mn=(B*Rn*Math.pow(1+Rn,N))/(Math.pow(1+Rn,N)-1);resL2.innerText="Monthly Save: $"+(Mo-Mn).toFixed(2);}
+    function calcL3(){let i=+l3a.value,d=+l3b.value,allow=i*0.25-d,R=+l3c.value/1200,N=60;let maxL=allow*(1-Math.pow(1+R,-N))/R;resL3.innerText="Max Affordable Loan: $"+maxL.toFixed(2);}
+    function calcL4(){let L=+l4a.value,R=+l4b.value/1200,ex=+l4c.value;let baseM=(L*R*Math.pow(1+R,60))/(Math.pow(1+R,60)-1);let newM=baseM+ex;resL4.innerText="Shortens loan term and saves thousands in interest.";}
+    function calcL5(){let L=+l5a.value,R=+l5b.value/1200,N=+l5c.value*12;let M=(L*R*Math.pow(1+R,N))/(Math.pow(1+R,N)-1);let totalInt = M*N - L;resL5.innerText="Total Interest: $"+totalInt.toFixed(2);}
+    </script>
 
-//25个全精准运算
-function f1(){let m=pay(+a1.value,+b1.value,+c1in.value*12);r1.innerText="Monthly Payment: $"+m.toFixed(2);}
-function f2(){let m=pay(+a2.value,+b2.value,+c2in.value*12);r2.innerText="P&I Monthly: $"+m.toFixed(2);}
-function f3(){let o=pay(+a3.value,+b3.value,360),n=pay(+a3.value,+c3in.value,360);r3.innerText="Save Per Month: $"+(o-n).toFixed(2);}
-function f4(){let o=pay(+a4.value,+b4.value,60),n=pay(+a4.value,+c4in.value,60);r4.innerText="Save Per Month: $"+(o-n).toFixed(2);}
-function f5(){let loan=+a5.value*(1-+b5.value/100);let m=pay(loan,+c5in.value,360);r5.innerText="Loan:$"+loan.toFixed(2)+" | Monthly:$"+m.toFixed(2);}
-function f6(){let allow=(+a6.value*0.28)-+b6.value;let mr=+c6in.value/1200;let maxL=allow*(1-Math.pow(1+mr,-360))/mr;r6.innerText="Max Affordable Loan: $"+maxL.toFixed(2);}
-function f7(){let safe=((+a7.value*0.25)-+b7.value).toFixed(2);r7.innerText="Safe Monthly Payment: $"+safe;}
-function f8(){let loan=+a8.value*(1-+b8.value/100);let pmi=loan*(+c8in.value/100/12);r8.innerText="Monthly PMI Fee: $"+pmi.toFixed(2);}
-function f9(){let L=+a9.value*(1-+b9.value/100);let m=pay(L,+c9in.value,360);let mip=(L*0.0085)/12;r9.innerText="FHA Total Monthly:$"+(m+mip).toFixed(2);}
-function f10(){let m=pay(+a10.value,+b10.value,360);r10.innerText="VA Zero-Down Monthly: $"+m.toFixed(2);}
-function f11(){let base=pay(+a11.value,+b11.value,360);let totalBase=base*360;let totalExtra=(base++c11in.value)*360;let save=totalBase-totalExtra;r11.innerText="Total Interest Save: $"+save.toFixed(2);}
-function f12(){let m=pay(+a12.value,+b12.value,360);let bi=m/2;let totalBi=bi*26*30;let totalM=m*360;r12.innerText="Total Save In 30Y: $"+(totalM-totalBi).toFixed(2);}
-function f13(){let m=pay(+a13.value,+b13.value,+c13in.value*12);let total=m*+c13in.value*12;let interest=total-+a13.value;r13.innerText="Total Interest: $"+interest.toFixed(2);}
-function f14(){let m30=pay(+a14.value,+b14.value,360);let m15=pay(+a14.value,+c14in.value,180);r14.innerText="30Y:$"+m30.toFixed(2)+" | 15Y:$"+m15.toFixed(2);}
-function f15(){let cash=(+a15.value*(+c15in.value/100))-+b15.value;r15.innerText="Cash You Can Get: $"+cash.toFixed(2);}
-function f16(){let eq=(+a16.value*(+c16in.value/100))-+b16.value;r16.innerText="Available HELOC Credit: $"+eq.toFixed(2);}
-function f17(){let loanPay=pay(+a17.value,4,360);let full=loanPay++b17.value;r17.innerText="Full PITI Monthly: $"+full.toFixed(2);}
-function f18(){let tax=(+a18.value*+b18.value/100)/12;r18.innerText="Monthly Property Tax: $"+tax.toFixed(2);}
-function f19(){let ins=(+a19.value*+b19.value/100)/12;r19.innerText="Monthly Insurance: $"+ins.toFixed(2);}
-function f20(){let m=pay(+a20.value,+b20.value,360);r20.innerText="Investment Home Monthly: $"+m.toFixed(2);}
-function f21(){let m=pay(+a21.value,+b21.value,360);r21.innerText="Second Home Monthly: $"+m.toFixed(2);}
-function f22(){let m=pay(+a22.value,+b22.value,+c22in.value);r22.innerText="Auto Monthly Payment: $"+m.toFixed(2);}
-function f23(){let o=pay(+a23.value,+b23.value,60);let n=pay(+a23.value,+c23in.value,60);r23.innerText="Auto Refi Save/mo: $"+(o-n).toFixed(2);}
-function f24(){let base=pay(+a24.value,+b24.value,360);let newPay=base++c24in.value;let mr=+b24.value/1200;let newN=Math.log(newPay/(newPay-+a24.value*mr))/Math.log(1+mr);let yearShort=(360-newN)/12;r24.innerText="Loan Shorten By: "+yearShort.toFixed(1)+" Years";}
-function f25(){let fee=+a25.value*(+b25.value/100);r25.innerText="Exact Closing Fee: $"+fee.toFixed(2);}
-</script>
-
-<!-- GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-816SNX8L7X');</script>
+    <script async src="https://www.goagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-816SNX8L7X');</script>
 </body>
 </html>
