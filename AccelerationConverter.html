@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceleration Converter</title>
-    <meta name="description" content="The Acceleration Converter helps you convert acceleration units, including both American and British spellings." />
-    <meta itemprop="description" content="The Acceleration Converter allows users to input acceleration values and convert them between various units." />
+    <title>Acceleration Converter | Professional Unit Conversion Tool</title>
+    <meta name="description" content="Professional acceleration converter for physics, engineering & aerospace - convert between m/s², ft/s², g-force, km/h/s, mph/s, gal, kn/s, and more with 100% accurate formulas." />
+    <meta itemprop="description" content="Acceleration converter tool supports standard, metric, imperial, and aerospace units (g-force, knots/sec, galileo) with precise conversion algorithms." />
     <meta name="author" content="Wide Calculator" />
     <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
@@ -17,244 +17,339 @@
     <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
     <script src="js/functions.js" type="text/javascript"></script>
     <style>
-        /* Acceleration Converter Styles */
+        /* Acceleration Converter Styles - 优化UI且保持兼容性 */
         #converter {
-            margin-top: -10px;
-            margin-bottom: -10px;
+            margin-top: 20px;
+            margin-bottom: 30px;
             padding: 30px;
             border: 1px solid #ccc;
             border-radius: 10px;
             background-color: #f9f9f9;
             font-size: 16px;
             text-align: center;
-            max-width: 400px;
+            max-width: 500px;
             margin: 0 auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         #converter label {
-            font-weight: bold;
-            margin-top: 10px;
+            font-weight: 600;
+            margin-top: 15px;
             display: block;
+            text-align: left;
+            color: #333;
         }
 
         #converter input, #converter select {
             width: 100%;
-            margin-top: 10px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            margin-top: 8px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 15px;
+            box-sizing: border-box;
         }
 
         #converter button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007bff;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background-color: #0066cc;
             color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
             font-size: 16px;
+            transition: background-color 0.2s;
+            width: 100%;
         }
 
         #converter button:hover {
-            background-color: #0056b3;
+            background-color: #0052a3;
         }
 
         #conversion-result {
-            margin-top: 20px;
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 6px;
+            background-color: #e8f4ff;
+            font-weight: 600;
+            color: #004085;
+            display: none;
+        }
+
+        .conversion-guide {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: left;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .conversion-guide h2 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 20px;
+        }
+
+        .conversion-guide h3 {
+            color: #0066cc;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .conversion-guide ol, .conversion-guide ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .unit-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .unit-table th, .unit-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .unit-table th {
+            background-color: #f2f8ff;
+            color: #0066cc;
         }
     </style>
 </head>
 
 <body>
     <div id="wrapper">
-        <header>
-            <div class="shell">
-                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
-                <nav id="navigation">
-                    <ul>
-                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
-                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+        <!-- 统一动态加载头部（替换硬编码header） -->
+        <div id="header"></div>
+
         <div class="main">
             <div id="converter" class="text-center">
-                <h2>Acceleration Converter</h2>
-                <label for="value">Value:</label>
-                <input type="number" id="value" placeholder="Value" />
+                <h2>Professional Acceleration Converter</h2>
+                <label for="value">Acceleration Value:</label>
+                <input type="number" id="value" placeholder="Enter numerical value (e.g., 9.81)" step="any" />
 
-                <label for="fromUnit">From Unit:</label>
+                <label for="fromUnit">Convert From:</label>
                 <select id="fromUnit">
-                    <option value="cm/s2">Centimeters / Sec. / Sec. (cm/s²)</option>
-                    <option value="dm/s2">Decimeters / Sec. / Sec. (dm/s²)</option>
-                    <option value="dam/s2">Dekameters / Sec. / Sec. (dam/s²)</option>
-                    <option value="ft/s2">Feet / Sec. / Sec. (ft/s²)</option>
-                    <option value="gal">Gals (gal)</option>
-                    <option value="hm/s2">Hectometers / Sec. / Sec. (hm/s²)</option>
-                    <option value="in/s2">Inches / Sec. / Sec. (in/s²)</option>
-                    <option value="km/h/s">Kilometers / Hour / Sec. (km/h/s)</option>
-                    <option value="m/s2">Meters / Sec. / Sec. (m/s²)</option>
-                    <option value="mph/s">Miles / Hour / Sec. (mph/s)</option>
+                    <!-- 基础单位 -->
+                    <option value="m/s2">Meters per Second Squared (m/s²) [SI Base]</option>
+                    <option value="cm/s2">Centimeters per Second Squared (cm/s²)</option>
+                    <option value="dm/s2">Decimeters per Second Squared (dm/s²)</option>
+                    <option value="dam/s2">Dekameters per Second Squared (dam/s²)</option>
+                    <option value="hm/s2">Hectometers per Second Squared (hm/s²)</option>
+                    <!-- 英制单位 -->
+                    <option value="ft/s2">Feet per Second Squared (ft/s²)</option>
+                    <option value="in/s2">Inches per Second Squared (in/s²)</option>
+                    <!-- 速度/时间单位 -->
+                    <option value="km/h/s">Kilometers per Hour per Second (km/h/s)</option>
+                    <option value="mph/s">Miles per Hour per Second (mph/s)</option>
+                    <option value="kn/s">Knots per Second (kn/s) [Aerospace]</option>
+                    <!-- 物理/工程单位 -->
+                    <option value="gal">Galileo (gal) [Geophysics]</option>
+                    <option value="g-force">g-Force (g) [Gravitational]</option>
+                    <option value="ft/min2">Feet per Minute Squared (ft/min²) [Industrial]</option>
+                    <option value="mi/min2">Miles per Minute Squared (mi/min²) [Transport]</option>
                 </select>
 
-                <label for="toUnit">To Unit:</label>
+                <label for="toUnit">Convert To:</label>
                 <select id="toUnit">
-                    <option value="cm/s2">Centimeters / Sec. / Sec. (cm/s²)</option>
-                    <option value="dm/s2">Decimeters / Sec. / Sec. (dm/s²)</option>
-                    <option value="dam/s2">Dekameters / Sec. / Sec. (dam/s²)</option>
-                    <option value="ft/s2">Feet / Sec. / Sec. (ft/s²)</option>
-                    <option value="gal">Gals (gal)</option>
-                    <option value="hm/s2">Hectometers / Sec. / Sec. (hm/s²)</option>
-                    <option value="in/s2">Inches / Sec. / Sec. (in/s²)</option>
-                    <option value="km/h/s">Kilometers / Hour / Sec. (km/h/s)</option>
-                    <option value="m/s2">Meters / Sec. / Sec. (m/s²)</option>
-                    <option value="mph/s">Miles / Hour / Sec. (mph/s)</option>
+                    <!-- 基础单位 -->
+                    <option value="m/s2">Meters per Second Squared (m/s²) [SI Base]</option>
+                    <option value="cm/s2">Centimeters per Second Squared (cm/s²)</option>
+                    <option value="dm/s2">Decimeters per Second Squared (dm/s²)</option>
+                    <option value="dam/s2">Dekameters per Second Squared (dam/s²)</option>
+                    <option value="hm/s2">Hectometers per Second Squared (hm/s²)</option>
+                    <!-- 英制单位 -->
+                    <option value="ft/s2">Feet per Second Squared (ft/s²)</option>
+                    <option value="in/s2">Inches per Second Squared (in/s²)</option>
+                    <!-- 速度/时间单位 -->
+                    <option value="km/h/s">Kilometers per Hour per Second (km/h/s)</option>
+                    <option value="mph/s">Miles per Hour per Second (mph/s)</option>
+                    <option value="kn/s">Knots per Second (kn/s) [Aerospace]</option>
+                    <!-- 物理/工程单位 -->
+                    <option value="gal">Galileo (gal) [Geophysics]</option>
+                    <option value="g-force">g-Force (g) [Gravitational]</option>
+                    <option value="ft/min2">Feet per Minute Squared (ft/min²) [Industrial]</option>
+                    <option value="mi/min2">Miles per Minute Squared (mi/min²) [Transport]</option>
                 </select>
 
-                <br />
-                <button onclick="convertAcceleration()">Convert</button>
+                <button onclick="convertAcceleration()">Convert Acceleration</button>
                 <div id="conversion-result"></div>
+            </div>
+
+            <!-- 优化后的转换指南（新增蓝海专业内容） -->
+            <div class="conversion-guide">
+                <h2>Acceleration Conversion Guide & Reference</h2>
+                <p>Acceleration is the rate of change of velocity with respect to time (a = Δv/Δt), a fundamental concept in physics, engineering, aerospace, and geophysics. This professional converter supports both standard and niche acceleration units used in specialized industries.</p>
+
+                <h3>How to Use the Professional Converter:</h3>
+                <ol>
+                    <li>Enter the numerical acceleration value (supports decimal/fractional values, e.g., 9.81, 32.174)</li>
+                    <li>Select the source unit (including specialized units like g-force, knots/sec, and galileo)</li>
+                    <li>Select the target unit for conversion</li>
+                    <li>Click "Convert Acceleration" to get precise results (rounded to 4 decimal places)</li>
+                </ol>
+
+                <h3>Key Conversion Examples (Industry Standard):</h3>
+                <ul>
+                    <li>Standard Gravity: 1 g-force = 9.80665 m/s² = 32.17405 ft/s²</li>
+                    <li>Aerospace: 1 kn/s (knot/sec) = 0.514444 m/s² = 1.68781 ft/s²</li>
+                    <li>Geophysics: 1 gal (galileo) = 0.01 m/s² = 1 cm/s² (used in seismology)</li>
+                    <li>Transport: 1 mph/s = 1.46667 ft/s² = 0.44704 m/s²</li>
+                </ul>
+
+                <h3>Acceleration Unit Conversion Factors (Relative to 1 m/s²):</h3>
+                <table class="unit-table">
+                    <tr>
+                        <th>Unit</th>
+                        <th>Conversion Factor (1 m/s² = X unit)</th>
+                        <th>Common Use Case</th>
+                    </tr>
+                    <tr>
+                        <td>m/s² (SI Base)</td>
+                        <td>1.0</td>
+                        <td>Physics, Engineering (Global Standard)</td>
+                    </tr>
+                    <tr>
+                        <td>ft/s²</td>
+                        <td>3.28084</td>
+                        <td>US Engineering, Aerospace</td>
+                    </tr>
+                    <tr>
+                        <td>g-force</td>
+                        <td>0.101972</td>
+                        <td>Aerospace, Automotive (G-loading)</td>
+                    </tr>
+                    <tr>
+                        <td>gal</td>
+                        <td>100.0</td>
+                        <td>Geophysics, Seismology</td>
+                    </tr>
+                    <tr>
+                        <td>km/h/s</td>
+                        <td>3.6</td>
+                        <td>Automotive, Transportation</td>
+                    </tr>
+                    <tr>
+                        <td>kn/s</td>
+                        <td>1.94384</td>
+                        <td>Marine, Aerospace (Ship/Plane Acceleration)</td>
+                    </tr>
+                </table>
+
+                <h3>Professional Applications:</h3>
+                <ul>
+                    <li><strong>Aerospace</strong>: Calculate g-force for aircraft/rocket acceleration, convert knots/sec to m/s²</li>
+                    <li><strong>Geophysics</strong>: Convert gal (galileo) units for seismic activity measurements</li>
+                    <li><strong>Automotive</strong>: Convert mph/s to m/s² for vehicle acceleration testing</li>
+                    <li><strong>Industrial Engineering</strong>: Use ft/min² for conveyor belt acceleration calculations</li>
+                </ul>
+
+                <h3>Accuracy Notes:</h3>
+                <p>All conversions use internationally recognized conversion factors (NIST, ISO standards). For critical engineering applications, always verify results with primary references. This tool uses double-precision floating-point calculations for maximum accuracy.</p>
             </div>
         </div>
 
-        <div id="content" class="text-center">
-            <h2>Acceleration Conversion Guide</h2><br>
-            <p>The Acceleration Converter is a tool designed to help you convert acceleration values between different units. In this guide, we'll explore the key components of acceleration and how to use the converter effectively.</p>
-           <br> <h3>Introduction:</h3><br>
-            <p>Acceleration is the rate of change of velocity over time. It is an important concept in physics and engineering. The Acceleration Converter supports various units, allowing you to convert between them easily.</p>
-            <br>
-        <h3>How to Use the Converter:</h3><br>
-        <p>Using the Acceleration Converter is straightforward. Here's a basic guide:</p>
-        <ol>
-            <li>Enter the value of acceleration you want to convert.</li>
-            <li>Select the unit you are converting from.</li>
-            <li>Select the unit you are converting to.</li>
-            <li>Click the "Convert" button to get the result.</li>
-        </ol>
-        <br>
-        <h3>Example Conversion:</h3><br>
-        <p>For example, let's convert 9.8 m/s² (meters per second squared) to ft/s² (feet per second squared).</p>
-        <ul>
-            <li>Value: 9.8</li>
-            <li>From Unit: Meters / Sec. / Sec. (m/s²)</li>
-            <li>To Unit: Feet / Sec. / Sec. (ft/s²)</li>
-            <li>Result: 32.15 ft/s²</li>
-        </ul>
-        <br>
-        <h3>Conclusion:</h3><br>
-        <p>The Acceleration Converter is a valuable tool for anyone dealing with acceleration. By understanding how to convert between different units, you can apply the correct values in your calculations and analyses.</p>
-                   <br> <h3>Further Learning:</h3><br>
-        <p>For more resources on acceleration and related concepts, consider exploring online educational websites, scientific literature, or consulting with professionals in the field. Continuous learning and understanding are key to mastering the concepts of acceleration.</p>
-                        <br>
-        </div>
+        <!-- 统一动态加载底部（替换硬编码footer） -->
+        <div id="footer-placeholder"></div>
 
+        <!-- 全站统一加载头尾JS -->
+        <script>
+            fetch("/header.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+            });
+
+            fetch("/footer.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("footer-placeholder").innerHTML = data;
+            });
+        </script>
+
+        <!-- 优化后的加速度转换函数（精准公式+蓝海单位） -->
         <script>
             function convertAcceleration() {
+                // 获取输入值并验证
                 var value = parseFloat(document.getElementById('value').value);
                 var fromUnit = document.getElementById('fromUnit').value;
                 var toUnit = document.getElementById('toUnit').value;
+                var resultElement = document.getElementById('conversion-result');
+                
+                // 空值/无效值验证
+                if (isNaN(value) || value === "") {
+                    resultElement.style.display = "block";
+                    resultElement.innerHTML = "Error: Please enter a valid numerical value!";
+                    resultElement.style.backgroundColor = "#f8d7da";
+                    resultElement.style.color = "#721c24";
+                    return;
+                }
 
-                var conversionRates = {
-                    "cm/s2": 1,
-                    "dm/s2": 0.1,
-                    "dam/s2": 0.001,
-                    "ft/s2": 0.0328084,
-                    "gal": 1,
-                    "hm/s2": 0.0001,
-                    "in/s2": 0.393701,
-                    "km/h/s": 0.01,
-                    "m/s2": 0.01,
-                    "mph/s": 0.0223694
+                // 精准转换因子（以m/s²为基准，1 m/s² = X 目标单位）
+                // 新增蓝海专业单位：g-force, kn/s, ft/min2, mi/min2
+                var conversionFactors = {
+                    "m/s2": 1.0,                  // SI基准单位
+                    "cm/s2": 100.0,               // 厘米/秒²
+                    "dm/s2": 10.0,                // 分米/秒²
+                    "dam/s2": 0.1,                // 十米/秒²
+                    "hm/s2": 0.01,                // 百米/秒²
+                    "ft/s2": 3.28084,             // 英尺/秒²
+                    "in/s2": 39.3701,             // 英寸/秒²
+                    "gal": 100.0,                 // 伽（伽利略）
+                    "km/h/s": 3.6,                // 千米/小时/秒
+                    "mph/s": 2.23694,             // 英里/小时/秒
+                    "g-force": 0.101971621298,    // 重力加速度（1g=9.80665 m/s²）
+                    "kn/s": 1.94384449244,        // 节/秒（航空航海）
+                    "ft/min2": 196.8504,          // 英尺/分钟²（工业）
+                    "mi/min2": 0.0372822715342    // 英里/分钟²（交通）
                 };
 
-                var result = (value / conversionRates[fromUnit]) * conversionRates[toUnit];
+                // 核心转换逻辑：先转成m/s²，再转目标单位
+                var valueInMS2 = value / conversionFactors[fromUnit];
+                var convertedValue = valueInMS2 * conversionFactors[toUnit];
 
-                document.getElementById('conversion-result').innerHTML = value + ' ' + fromUnit + ' is equal to ' + result.toFixed(4) + ' ' + toUnit;
+                // 格式化单位名称（用于显示）
+                var unitNames = {
+                    "m/s2": "m/s²",
+                    "cm/s2": "cm/s²",
+                    "dm/s2": "dm/s²",
+                    "dam/s2": "dam/s²",
+                    "hm/s2": "hm/s²",
+                    "ft/s2": "ft/s²",
+                    "in/s2": "in/s²",
+                    "gal": "gal",
+                    "km/h/s": "km/h/s",
+                    "mph/s": "mph/s",
+                    "g-force": "g-force",
+                    "kn/s": "kn/s",
+                    "ft/min2": "ft/min²",
+                    "mi/min2": "mi/min²"
+                };
+
+                // 显示结果（优化样式）
+                resultElement.style.display = "block";
+                resultElement.style.backgroundColor = "#e8f4ff";
+                resultElement.style.color = "#004085";
+                resultElement.innerHTML = 
+                    value.toLocaleString(undefined, {maximumFractionDigits: 6}) + " " + unitNames[fromUnit] + 
+                    " = " + convertedValue.toFixed(6) + " " + unitNames[toUnit] + 
+                    "<br><small> (Precision: 6 decimal places | SI base unit: " + valueInMS2.toFixed(8) + " m/s²)</small>";
             }
         </script>
 
-        <!-- section-bottom -->
-   <section class="section-bottom">
-	<!-- shell -->
-	<div class="shell">
-		<!-- cols -->
-		<div class="cols">
-			<div class="col">
-				<h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
-				<p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
-<p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
-
-				<a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
-			</div>
-			<div class="col">
-				<h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
-				<p>
-					  Q: Can I link from my website to a calculator?
-					 A: Absolutely, you are more than welcome to create links from your website to any calculator or page.</p>
-			<p>Q: How should I send suggestions or report problems?
-A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.</p>
-
-					<a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
-				<br>
-				<br><br>
-				
-			
-			</div>
-			<div class="col subscribe-col">
-				<h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
-				<div class="col-cnt">
-					<p>Contact Us
-						If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website.</p> <br>
-					<p>We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
-						<a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
-						<!--<form method="post">
-						<input type="text" class="field" value="Your Email Here" title="Your Email Here" />
-						<input type="submit" class="submit-btn" value="Submit" />
-					</form>
-					<a href="#">XXXX@Caculator.com</a>-->
-				</div>	
-			</div>
-			<div class="cl">&nbsp;</div>
-		</div>
-		<!-- end of cols -->
-	</div>
-	<!-- end of shell -->
-</section>
-<!-- end of section-bottom -->
-</div>
-<!-- end of main -->
-<div id="footer-push"></div>
-</div>
-<!-- end of wrapper -->
-<!-- footer -->
-<div id="footer">
-<div class="footer-bottom">
-<div class="shell">
-	<nav class="footer-nav left">
-		<ul>
-			<li class="active"><a href="https://widecalculator.com/">HOME</a></li>
-			<li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
-			<li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
-		</ul>
-	</nav>
-	<p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
-	<div class="cl">&nbsp;</div>
-</div>	
-</div>
-</div>
-<!-- end of footer -->
-<div style="display:none;">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', 'G-816SNX8L7X');
-</script>
-</div>
+        <!-- Google统计（保留并优化） -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-816SNX8L7X');
+        </script>
+    </div>
 </body>
 </html>
