@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>About Us - WideCalculator | Free Online Calculators</title>
-	<meta name="description" content="WideCalculator provides free, accurate, and user-friendly online calculators for finance, health, math, science and daily conversion tools. All tools are built in-house and fully tested." />
+	<meta name="description" content="Learn more about WideCalculator, your trusted source for free online calculators across finance, health, math, science and more." />
 	<meta name="author" content="Wide Calculator" />
 	<link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
@@ -20,55 +20,74 @@
 
 <body>
 	<div id="wrapper">
-		<!-- 公共头部自动加载 -->
+
+		<!-- 公共头部 -->
 		<div id="header"></div>
 
 		<div class="main">
 			<div class="shell">
-				<div style="padding:30px 0;line-height:1.8;">
-					<h1 style="text-align:center;margin-bottom:25px;">About WideCalculator</h1>
 
-					<h2>Our Overview</h2>
-					<p>WideCalculator is a free online platform dedicated to offering reliable and easy‑to‑use calculation tools for everyday users, students, professionals, and researchers. We cover finance, fitness & health, mathematics, science, unit conversion, and general daily calculators.</p>
+				<!-- ===================================== -->
+				<!-- 主要内容：加了内边距+宽度+美观样式 -->
+				<!-- ===================================== -->
+				<div style="max-width:900px;margin:0 auto;padding:40px 15px;background:#fff;border-radius:6px;">
 
-					<h2>Our Mission</h2>
-					<p>We aim to make complex calculations simple, fast, and accessible to everyone worldwide. Every tool on our website is designed to save your time and provide clear, accurate results without complicated steps.</p>
+					<h1 style="text-align:center;margin-bottom:35px;color:#222;">About WideCalculator</h1>
 
-					<h2>What We Offer</h2>
-					<ul style="margin:15px 0;padding-left:20px;">
-						<li>Financial calculators: loans, mortgages, investment, interest & retirement planning</li>
-						<li>Health & fitness calculators: BMI, body fat, calories, diet and weight management</li>
-						<li>Math & science tools: fractions, percentage, statistics, geometry and converters</li>
-						<li>Daily utilities: age, time, date, password generator and character counters</li>
-					</ul>
+					<section class="about-section">
+						<h2>Our Overview</h2>
+						<p>WideCalculator is a free online platform dedicated to offering reliable and easy‑to‑use calculation tools for everyday users, students, professionals, and researchers. We cover finance, fitness & health, mathematics, science, unit conversion, and general daily calculators.</p>
+					</section>
 
-					<h2>Quality & Accuracy Promise</h2>
-					<p>All calculators on WideCalculator are developed in‑house, manually checked, and fully tested before publication. We continuously optimize formulas and user experience to keep every result precise and trustworthy.</p>
+					<section class="about-section">
+						<h2>Our Mission</h2>
+						<p>We aim to make complex calculations simple, fast, and accessible to everyone worldwide. Every tool on our website is designed to save your time and provide clear, accurate results without complicated steps.</p>
+					</section>
 
-					<h2>Contact & Feedback</h2>
-					<p>If you find any errors, want to suggest new calculators, or need support, feel free to reach out through our official contact page. We welcome all constructive feedback to improve our platform.</p>
+					<section class="about-section">
+						<h2>What We Offer</h2>
+						<ul style="margin:15px 0 0 20px;line-height:1.8;">
+							<li>Financial calculators: loans, mortgages, investment, interest & retirement planning</li>
+							<li>Health & fitness calculators: BMI, body fat, calories, diet and weight management</li>
+							<li>Math & science tools: fractions, percentage, statistics, geometry and converters</li>
+							<li>Daily utilities: age, time, date, password generator and character counters</li>
+						</ul>
+					</section>
+
+					<section class="about-section">
+						<h2>Quality & Accuracy Promise</h2>
+						<p>All calculators on WideCalculator are developed in‑house, manually checked, and fully tested before publication. We continuously optimize formulas and user experience to keep every result precise and trustworthy.</p>
+					</section>
+
+					<section class="about-section">
+						<h2>Contact & Feedback</h2>
+						<p>If you find any errors, want to suggest new calculators, or need support, feel free to reach out through our official contact page. We welcome all constructive feedback to improve our platform.</p>
+					</section>
+
 				</div>
+				<!-- 内容容器结束 -->
+
 			</div>
 		</div>
 
 		<div id="footer-push"></div>
 	</div>
 
-	<!-- 公共底部自动加载 -->
+	<!-- 公共底部 -->
 	<div id="footer-placeholder"></div>
 
 	<script>
 		fetch("/header.html")
-		.then(res => res.text())
-		.then(data => document.getElementById("header").innerHTML = data);
+		.then(res=>res.text())
+		.then(data=>document.getElementById("header").innerHTML = data);
 
 		fetch("/footer.html")
-		.then(res => res.text())
-		.then(data => document.getElementById("footer-placeholder").innerHTML = data);
+		.then(res=>res.text())
+		.then(data=>document.getElementById("footer-placeholder").innerHTML = data);
 	</script>
 
-	<!-- Google Analytics -->
-	<script async src="https://www.googletagjs.com/gtag/js?id=G-816SNX8L7X"></script>
+	<!-- Google统计 -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
