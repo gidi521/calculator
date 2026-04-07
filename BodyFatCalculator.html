@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Body Fat Calculator | BMI + Body Fat % + Lean Mass + Health Category - Wide Calculator</title>
-    <meta name="description" content="Professional body fat calculator for men & women: calculate body fat percentage, BMI, lean body mass, fat mass, and health category using US Navy & BMI-based formulas." />
-    <meta itemprop="description" content="Wide Calculator's Body Fat Calculator supports gender-specific formulas, lean mass calculation, fat mass, BMI, and health risk assessment for fitness & health tracking." />
+    <title>Body Fat Calculator Suite | US Navy • BMI • Skinfold • Ideal Fat - Wide Calculator</title>
+    <meta name="description" content="All-in-one body fat calculator suite: US Navy method, BMI to body fat, skinfold caliper formula, and ideal body fat & target weight calculator for men & women.">
+    <meta itemprop="description" content="Complete body fat calculation tools: Navy formula, BMI conversion, skinfold 3-site, and ideal body fat percentage for fitness & health tracking.">
     <meta name="author" content="Wide Calculator" />
     <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
@@ -22,128 +22,100 @@
             margin: 20px auto;
             padding: 0 20px;
         }
-
-        #bodyfat-calculator {
+        #bodyfat-suite {
             padding: 30px;
             border: 1px solid #ccc;
             border-radius: 10px;
             background-color: #f9f9f9;
-            font-size: 16px;
             margin: 20px 0;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
-
         .calc-module {
-            margin-bottom: 25px;
+            margin-bottom: 28px;
             padding-bottom: 20px;
             border-bottom: 1px solid #eee;
         }
-
         .calc-module:last-child {
             border-bottom: none;
         }
-
         .calc-module h3 {
             color: #0066cc;
-            margin-bottom: 15px;
+            margin-bottom: 14px;
             font-size: 18px;
         }
-
-        #bodyfat-calculator label {
+        #bodyfat-suite label {
             font-weight: 600;
-            margin-top: 15px;
+            margin-top: 12px;
             display: block;
             color: #333;
         }
-
-        #bodyfat-calculator input,
-        #bodyfat-calculator select {
+        #bodyfat-suite input,
+        #bodyfat-suite select {
             width: 100%;
-            margin-top: 8px;
-            padding: 10px;
+            margin-top: 6px;
+            padding: 9px;
             border: 1px solid #ddd;
             border-radius: 6px;
-            font-size: 15px;
             box-sizing: border-box;
         }
-
-        #bodyfat-calculator button {
-            margin-top: 25px;
-            padding: 12px 25px;
+        #bodyfat-suite button {
+            margin-top: 20px;
+            padding: 11px 22px;
             background-color: #0066cc;
             color: #fff;
             border: none;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.2s;
             width: 100%;
         }
-
-        #bodyfat-calculator button:hover {
+        #bodyfat-suite button:hover {
             background-color: #0052a3;
         }
-
         .result-box {
-            font-weight: 600;
-            margin-top: 20px;
-            padding: 15px;
+            margin-top: 18px;
+            padding: 14px;
             border-radius: 6px;
             display: none;
-            line-height: 1.7;
-            text-align: left;
+            line-height: 1.6;
+            font-weight: 600;
         }
-
         .result-success {
             background-color: #e8f4ff;
             color: #004085;
         }
-
         .result-error {
             background-color: #f8d7da;
             color: #721c24;
         }
-
         .tool-guide {
             line-height: 1.8;
             color: #444;
             margin: 40px 0;
         }
-
         .tool-guide h2 {
             color: #222;
             margin-bottom: 20px;
             text-align: center;
         }
-
         .tool-guide h3 {
             color: #0066cc;
-            margin-top: 25px;
-            margin-bottom: 10px;
+            margin-top: 26px;
         }
-
-        .tool-guide ol, .tool-guide ul {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
             margin: 20px 0;
         }
-
         .feature-card {
-            padding: 15px;
+            padding: 14px;
             border: 1px solid #eee;
             border-radius: 8px;
-            background-color: #f8f9fa;
+            background: #f8f9fa;
         }
-
         .feature-card h4 {
             color: #0066cc;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
     </style>
 </head>
@@ -151,95 +123,125 @@
 <body>
     <div id="wrapper">
         <div id="header"></div>
-
         <div class="main">
             <div id="tool-container">
-                <div id="bodyfat-calculator">
-                    <h2 style="text-align:center; color:#222; margin-bottom:25px;">Body Fat Calculator</h2>
+                <div id="bodyfat-suite">
+                    <h2 style="text-align:center; margin-bottom:26px;">Body Fat Calculator Suite</h2>
 
-                    <!-- 主功能：体脂率计算 -->
+                    <!-- ================== 1. US Navy 体脂率 ================== -->
                     <div class="calc-module">
-                        <h3>1. Body Fat & BMI Calculation</h3>
-                        <label for="gender">Gender:</label>
-                        <select id="gender">
+                        <h3>1. US Navy Body Fat (Most Accurate)</h3>
+                        <label>Gender</label>
+                        <select id="navy_gender">
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
-
-                        <label for="age">Age (years):</label>
-                        <input type="number" id="age" placeholder="Enter age" min="10" max="100">
-
-                        <label for="height">Height (cm):</label>
-                        <input type="number" id="height" placeholder="Height in cm">
-
-                        <label for="weight">Weight (kg):</label>
-                        <input type="number" id="weight" placeholder="Weight in kg">
-
-                        <label for="waist">Waist (cm):</label>
-                        <input type="number" id="waist" placeholder="Waist circumference">
-
-                        <label for="neck">Neck (cm):</label>
-                        <input type="number" id="neck" placeholder="Neck circumference">
-
-                        <label for="hip">Hip (cm — female only):</label>
-                        <input type="number" id="hip" placeholder="Hip circumference">
-
-                        <button onclick="calculateBodyFat()">Calculate Body Fat & Full Metrics</button>
-                        <div id="bodyfat-result" class="result-box"></div>
+                        <label>Height (cm)</label>
+                        <input type="number" id="navy_height">
+                        <label>Weight (kg)</label>
+                        <input type="number" id="navy_weight">
+                        <label>Waist (cm)</label>
+                        <input type="number" id="navy_waist">
+                        <label>Neck (cm)</label>
+                        <input type="number" id="navy_neck">
+                        <label>Hip (cm, female only)</label>
+                        <input type="number" id="navy_hip">
+                        <button onclick="calcNavy()">Calculate Navy Body Fat</button>
+                        <div class="result-box" id="res_navy"></div>
                     </div>
 
-                    <!-- 重置功能 -->
+                    <!-- ================== 2. BMI → 体脂率 ================== -->
                     <div class="calc-module">
-                        <h3>2. Reset All</h3>
-                        <button onclick="resetBodyFat()">Clear Inputs & Results</button>
+                        <h3>2. BMI to Body Fat (No Tape)</h3>
+                        <label>Gender</label>
+                        <select id="bmi_gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                        <label>Age</label>
+                        <input type="number" id="bmi_age">
+                        <label>BMI</label>
+                        <input type="number" id="bmi_val" placeholder="Or fill height/weight below">
+                        <label>Height (cm)</label>
+                        <input type="number" id="bmi_h">
+                        <label>Weight (kg)</label>
+                        <input type="number" id="bmi_w">
+                        <button onclick="calcBmiToFat()">Calculate BMI → Fat %</button>
+                        <div class="result-box" id="res_bmi"></div>
+                    </div>
+
+                    <!-- ================== 3. Skinfold 皮褶体脂 ================== -->
+                    <div class="calc-module">
+                        <h3>3. Skinfold Body Fat (Caliper)</h3>
+                        <label>Gender</label>
+                        <select id="skin_gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                        <label>Chest (mm)</label>
+                        <input type="number" id="skin_chest">
+                        <label>Abdomen (mm)</label>
+                        <input type="number" id="skin_abdomen">
+                        <label>Thigh (mm)</label>
+                        <input type="number" id="skin_thigh">
+                        <button onclick="calcSkinfold()">Calculate Skinfold Fat %</button>
+                        <div class="result-box" id="res_skin"></div>
+                    </div>
+
+                    <!-- ================== 4. Ideal Body Fat 理想体脂 ================== -->
+                    <div class="calc-module">
+                        <h3>4. Ideal Body Fat & Target Weight</h3>
+                        <label>Gender</label>
+                        <select id="ideal_gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                        <label>Age</label>
+                        <input type="number" id="ideal_age">
+                        <label>Current Weight (kg)</label>
+                        <input type="number" id="ideal_weight">
+                        <label>Current Body Fat %</label>
+                        <input type="number" id="ideal_fat">
+                        <label>Target Body Fat %</label>
+                        <input type="number" id="ideal_target" placeholder="e.g. 15">
+                        <button onclick="calcIdealFat()">Calculate Ideal Weight</button>
+                        <div class="result-box" id="res_ideal"></div>
+                    </div>
+
+                    <!-- ================== 重置 ================== -->
+                    <div class="calc-module">
+                        <h3>Reset All</h3>
+                        <button onclick="resetAll()">Clear All Inputs & Results</button>
                     </div>
                 </div>
 
-                <!-- 专业说明（统一风格） -->
                 <div class="tool-guide">
-                    <h2>Body Fat Analysis & Health Guide</h2>
-                    <p>This professional Body Fat Calculator uses the U.S. Navy formula & BMI method to estimate body fat percentage, lean mass, fat mass, and health category for men and women.</p>
+                    <h2>Body Fat Calculators Explained</h2>
+                    <p>This page includes 4 professional body fat tools for fitness, weight loss, and health tracking. All use industry-standard formulas.</p>
 
-                    <h3>Key Features</h3>
                     <div class="feature-grid">
                         <div class="feature-card">
-                            <h4>Body Fat Percentage</h4>
-                            <p>Accurate estimate using gender-specific Navy formula</p>
+                            <h4>US Navy Method</h4>
+                            <p>Most reliable without special equipment</p>
                         </div>
                         <div class="feature-card">
-                            <h4>BMI Calculation</h4>
-                            <p>Body Mass Index for health risk assessment</p>
+                            <h4>BMI to Fat %</h4>
+                            <p>Quick estimate using only height & weight</p>
                         </div>
                         <div class="feature-card">
-                            <h4>Lean & Fat Mass</h4>
-                            <p>Breakdown fat weight and muscle weight</p>
+                            <h4>Skinfold Caliper</h4>
+                            <p>Gym & fitness enthusiast standard</p>
                         </div>
                         <div class="feature-card">
-                            <h4>Health Category</h4>
-                            <p>Essential, Athlete, Fitness, Acceptable, Obese</p>
-                        </div>
-                        <div class="feature-card">
-                            <h4>Gender Specific</h4>
-                            <p>Separate algorithms for male & female accuracy</p>
-                        </div>
-                        <div class="feature-card">
-                            <h4>Health Risk</h4>
-                            <p>Simple evaluation of metabolic health risk</p>
+                            <h4>Ideal Body Fat</h4>
+                            <p>Set goals & target weight for fat loss</p>
                         </div>
                     </div>
 
-                    <h3>How To Use</h3>
-                    <ol>
-                        <li>Select gender and enter age</li>
-                        <li>Enter height, weight, waist, neck, and hip (female)</li>
-                        <li>Click calculate to view full body composition</li>
-                        <li>Use results to track fitness & weight goals</li>
-                    </ol>
-
-                    <h3>Body Fat Categories (General)</h3>
+                    <h3>Body Fat Categories</h3>
                     <ul>
                         <li>Essential Fat: 2–5% (men) | 10–13% (women)</li>
-                        <li>Athletes: 6–13% | 14–20%</li>
+                        <li>Athlete: 6–13% | 14–20%</li>
                         <li>Fitness: 14–17% | 21–24%</li>
                         <li>Acceptable: 18–24% | 25–31%</li>
                         <li>Obese: >25% | >32%</li>
@@ -247,102 +249,139 @@
                 </div>
             </div>
         </div>
-
         <div id="footer-push"></div>
     </div>
-
     <div id="footer-placeholder"></div>
 
-    <!-- 加载头尾 -->
     <script>
-        fetch("/header.html")
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById("header").innerHTML = data;
-            });
+        fetch("/header.html").then(r=>r.text()).then(d=>{ document.getElementById("header").innerHTML = d; });
+        fetch("/footer.html").then(r=>r.text()).then(d=>{ document.getElementById("footer-placeholder").innerHTML = d; });
 
-        fetch("/footer.html")
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById("footer-placeholder").innerHTML = data;
-            });
-    </script>
+        // ------------------------------
+        // 1. US Navy Body Fat
+        // ------------------------------
+        function calcNavy() {
+            const g = document.getElementById("navy_gender").value;
+            const h = +document.getElementById("navy_height").value;
+            const w = +document.getElementById("navy_weight").value;
+            const waist = +document.getElementById("navy_waist").value;
+            const neck = +document.getElementById("navy_neck").value;
+            const hip = +document.getElementById("navy_hip").value;
+            const r = document.getElementById("res_navy");
 
-    <!-- 核心功能 -->
-    <script>
-        function calculateBodyFat() {
-            const gender = document.getElementById('gender').value;
-            const age = parseFloat(document.getElementById('age').value);
-            const height = parseFloat(document.getElementById('height').value);
-            const weight = parseFloat(document.getElementById('weight').value);
-            const waist = parseFloat(document.getElementById('waist').value);
-            const neck = parseFloat(document.getElementById('neck').value);
-            const hip = parseFloat(document.getElementById('hip').value);
-            const res = document.getElementById('bodyfat-result');
-
-            if (!age || !height || !weight || !waist || !neck) {
-                res.style.display = 'block';
-                res.className = 'result-box result-error';
-                res.innerHTML = 'Please fill all required fields.';
+            if (!h || !w || !waist || !neck) {
+                r.className = "result-box result-error";
+                r.innerHTML = "Please fill required fields.";
+                r.style.display = "block";
                 return;
             }
 
-            // BMI
-            const bmi = weight / Math.pow(height / 100, 2);
-
-            // US Navy Body Fat Formula
-            let bodyFat;
-            if (gender === 'male') {
-                bodyFat = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450;
+            let bfp;
+            if (g === "male") {
+                bfp = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(h)) - 450;
             } else {
-                bodyFat = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.22100 * Math.log10(height)) - 450;
+                bfp = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.221 * Math.log10(h)) - 450;
             }
+            bfp = Math.max(bfp, 3);
+            const fat = w * bfp / 100;
+            const lean = w - fat;
 
-            if (bodyFat < 0) bodyFat = 5;
-
-            // 体重组成
-            const fatMass = (bodyFat / 100) * weight;
-            const leanMass = weight - fatMass;
-
-            // 体脂分类
-            let category;
-            if (gender === 'male') {
-                if (bodyFat < 6) category = 'Essential Fat';
-                else if (bodyFat < 14) category = 'Athlete';
-                else if (bodyFat < 18) category = 'Fitness';
-                else if (bodyFat < 25) category = 'Acceptable';
-                else category = 'Obese';
-            } else {
-                if (bodyFat < 11) category = 'Essential Fat';
-                else if (bodyFat < 21) category = 'Athlete';
-                else if (bodyFat < 25) category = 'Fitness';
-                else if (bodyFat < 33) category = 'Acceptable';
-                else category = 'Obese';
-            }
-
-            res.style.display = 'block';
-            res.className = 'result-box result-success';
-            res.innerHTML = `
-                <strong>BMI:</strong> ${bmi.toFixed(1)}<br>
-                <strong>Body Fat Percentage:</strong> ${bodyFat.toFixed(1)}%<br>
-                <strong>Category:</strong> ${category}<br>
-                <strong>Fat Mass:</strong> ${fatMass.toFixed(1)} kg<br>
-                <strong>Lean Body Mass:</strong> ${leanMass.toFixed(1)} kg
-            `;
+            r.className = "result-box result-success";
+            r.innerHTML = `Navy Body Fat: ${bfp.toFixed(1)}%<br>Fat Mass: ${fat.toFixed(1)}kg<br>Lean Mass: ${lean.toFixed(1)}kg`;
+            r.style.display = "block";
         }
 
-        function resetBodyFat() {
-            document.getElementById('age').value = '';
-            document.getElementById('height').value = '';
-            document.getElementById('weight').value = '';
-            document.getElementById('waist').value = '';
-            document.getElementById('neck').value = '';
-            document.getElementById('hip').value = '';
-            document.getElementById('bodyfat-result').style.display = 'none';
+        // ------------------------------
+        // 2. BMI → Body Fat
+        // ------------------------------
+        function calcBmiToFat() {
+            const g = document.getElementById("bmi_gender").value;
+            const age = +document.getElementById("bmi_age").value;
+            let bmi = +document.getElementById("bmi_val").value;
+            const h = +document.getElementById("bmi_h").value;
+            const w = +document.getElementById("bmi_w").value;
+            const r = document.getElementById("res_bmi");
+
+            if (!bmi && h && w) bmi = w / Math.pow(h/100, 2);
+            if (!bmi || !age) {
+                r.className = "result-box result-error";
+                r.innerHTML = "Enter age + BMI OR height + weight.";
+                r.style.display = "block";
+                return;
+            }
+
+            let fat;
+            if (g === "male") fat = 1.2 * bmi + 0.23 * age - 16.2;
+            else fat = 1.2 * bmi + 0.23 * age - 5.4;
+
+            r.className = "result-box result-success";
+            r.innerHTML = `BMI: ${bmi.toFixed(1)}<br>Estimated Body Fat: ${fat.toFixed(1)}%`;
+            r.style.display = "block";
+        }
+
+        // ------------------------------
+        // 3. Skinfold 3-site
+        // ------------------------------
+        function calcSkinfold() {
+            const g = document.getElementById("skin_gender").value;
+            const c = +document.getElementById("skin_chest").value;
+            const a = +document.getElementById("skin_abdomen").value;
+            const t = +document.getElementById("skin_thigh").value;
+            const sum = c + a + t;
+            const r = document.getElementById("res_skin");
+
+            if (!sum) {
+                r.className = "result-box result-error";
+                r.innerHTML = "Enter all 3 skinfold values.";
+                r.style.display = "block";
+                return;
+            }
+
+            let fat;
+            if (g === "male") fat = 86.010 * Math.log10(sum) - 70.041 * Math.log10(170) + 36.1;
+            else fat = 133.902 * Math.log10(sum) - 45.577 * Math.log10(160) + 85.8;
+
+            r.className = "result-box result-success";
+            r.innerHTML = `Sum of Skinfolds: ${sum}mm<br>Estimated Body Fat: ${fat.toFixed(1)}%`;
+            r.style.display = "block";
+        }
+
+        // ------------------------------
+        // 4. Ideal Body Fat & Target Weight
+        // ------------------------------
+        function calcIdealFat() {
+            const g = document.getElementById("ideal_gender").value;
+            const age = +document.getElementById("ideal_age").value;
+            const w = +document.getElementById("ideal_weight").value;
+            const cf = +document.getElementById("ideal_fat").value;
+            const tf = +document.getElementById("ideal_target").value;
+            const r = document.getElementById("res_ideal");
+
+            if (!w || !cf || !tf) {
+                r.className = "result-box result-error";
+                r.innerHTML = "Fill weight, current fat %, target fat %.";
+                r.style.display = "block";
+                return;
+            }
+
+            const lean = w * (1 - cf/100);
+            const targetW = lean / (1 - tf/100);
+            const lose = w - targetW;
+
+            r.className = "result-box result-success";
+            r.innerHTML = `Lean Mass: ${lean.toFixed(1)}kg<br>Target Weight: ${targetW.toFixed(1)}kg<br>Weight to Lose: ${Math.max(0, lose).toFixed(1)}kg`;
+            r.style.display = "block";
+        }
+
+        // ------------------------------
+        // Reset
+        // ------------------------------
+        function resetAll() {
+            document.querySelectorAll("input").forEach(i => i.value = "");
+            document.querySelectorAll(".result-box").forEach(x => x.style.display = "none");
         }
     </script>
 
-    <!-- Google 统计 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
