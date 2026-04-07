@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Call Options Calculator</title>
-    <meta name="description" content="The Call Options Calculator helps you estimate the potential profit and loss from trading call options." />
-    <meta itemprop="description" content="The Call Options Calculator allows users to input call option details to generate potential profit and loss scenarios." />
+    <title>Call Options Calculator Suite | Profit/Loss + Break Even + Risk/Reward + Payoff Table - Wide Calculator</title>
+    <meta name="description" content="Professional Call Options Calculator Suite: calculate profit/loss, break-even point, risk/reward ratio, max profit, max loss, and full options payoff table for stock options trading." />
+    <meta itemprop="description" content="Free call options calculator for traders: compute maximum profit, maximum loss, break-even price, risk-reward ratio, and expiration payoff table for bullish call option strategies." />
     <meta name="author" content="Wide Calculator" />
     <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
@@ -17,242 +17,401 @@
     <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
     <script src="js/functions.js" type="text/javascript"></script>
     <style>
-        /* Call Options Calculator Styles */
-        #options-calculator {
-            margin-top: -10px;
-            margin-bottom: -10px;
+        #tool-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        #call-options-suite {
             padding: 30px;
             border: 1px solid #ccc;
             border-radius: 10px;
-            background-color: #f9f9f9;
-            font-size: 16px;
-            text-align: center;
-            max-width: 400px;
-            margin: 0 auto;
+            background: #f9f9f9;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
-
-        #options-calculator label {
-            font-weight: bold;
-            margin-top: 10px;
+        .calc-module {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .calc-module:last-child { border-bottom: none; }
+        .calc-module h3 {
+            color: #0066cc;
+            margin-bottom: 15px;
+            font-size: 19px;
+        }
+        #call-options-suite label {
+            font-weight: 600;
+            margin-top: 14px;
             display: block;
+            color: #222;
         }
-
-        #options-calculator input, #options-calculator select {
+        #call-options-suite input,
+        #call-options-suite select {
             width: 100%;
-            margin-top: 10px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            margin-top: 8px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
         }
-
-        #options-calculator button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007bff;
+        #call-options-suite button {
+            margin-top: 22px;
+            padding: 12px 24px;
+            background: #0066cc;
             color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 16px;
+            width: 100%;
         }
-
-        #options-calculator button:hover {
-            background-color: #0056b3;
+        #call-options-suite button:hover {
+            background: #0052a3;
         }
-
-        #options-schedule {
+        .result-box {
             margin-top: 20px;
+            padding: 16px;
+            border-radius: 6px;
+            display: none;
+            line-height: 1.7;
+            font-weight: 600;
         }
-
-        #options-schedule table {
+        .result-success {
+            background: #e8f4ff;
+            color: #004085;
+        }
+        .result-error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .payoff-table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 14px;
         }
-
-        #options-schedule th, #options-schedule td {
-            border: 1px solid #ccc;
+        .payoff-table th, .payoff-table td {
+            border: 1px solid #ddd;
             padding: 8px;
+            text-align: center;
         }
-
-        #options-schedule th {
-            background-color: #f2f2f2;
+        .payoff-table th {
+            background: #f2f2f2;
+        }
+        .content-section {
+            margin: 50px 0;
+            line-height: 1.8;
+            color: #333;
+            font-size: 16px;
+        }
+        .content-section h2 {
+            color: #111;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+        .content-section h3 {
+            color: #0066cc;
+            margin-top: 30px;
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+        .content-section p {
+            margin-bottom: 16px;
+        }
+        .content-section ul,
+        .content-section ol {
+            margin-left: 22px;
+            margin-bottom: 20px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin: 30px 0;
+        }
+        .feature-card {
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+        .feature-card h4 {
+            color: #0066cc;
+            margin-bottom: 10px;
+            font-size: 17px;
         }
     </style>
 </head>
 
 <body>
-    <div id="wrapper">
-        <header>
-            <div class="shell">
-                <h1 id="logo"><a href="https://widecalculator.com">Calculator</a></h1>
-                <nav id="navigation">
-                    <ul>
-                        <li class="active"><a href="https://widecalculator.com/">Home</a></li>
-                        <li><a href="https://widecalculator.com/aboutus.html">About US</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-        <div class="main">
-            <div id="options-calculator" class="text-center">
-                <h2>Call Options Calculator</h2>
-                <label for="stockPrice">Stock Price:</label>
-                <input type="number" id="stockPrice" placeholder="Stock Price" />
+<div id="wrapper">
+<div id="header"></div>
+<div class="main">
+<div id="tool-container">
 
-                <label for="strikePrice">Strike Price:</label>
-                <input type="number" id="strikePrice" placeholder="Strike Price" />
+<div id="call-options-suite">
+    <h2 style="text-align:center; margin-bottom:26px;">Call Options Calculator Suite</h2>
 
-                <label for="premium">Option Premium:</label>
-                <input type="number" id="premium" placeholder="Option Premium" />
+    <!-- 1. 基础盈亏计算 -->
+    <div class="calc-module">
+        <h3>1. Call Option Profit / Loss Calculation</h3>
+        <label>Current Stock Price ($)</label>
+        <input type="number" id="stockPrice" step="0.01">
 
-                <label for="expirationDate">Expiration Date:</label>
-                <input type="date" id="expirationDate" placeholder="Expiration Date" />
+        <label>Strike Price ($)</label>
+        <input type="number" id="strikePrice" step="0.01">
 
-                <br />
-                <button onclick="calculateOptions()">Calculate Profit and Loss</button>
-                <div id="options-schedule"></div>
-            </div>
+        <label>Option Premium Paid ($)</label>
+        <input type="number" id="premium" step="0.01">
+
+        <label>Number of Contracts (1 contract = 100 shares)</label>
+        <input type="number" id="contracts" value="1" min="1">
+
+        <button onclick="calculateCallOption()">Calculate Full Results</button>
+        <div class="result-box" id="resultMain"></div>
+    </div>
+
+    <!-- 2. 盈亏平衡点 -->
+    <div class="calc-module">
+        <h3>2. Break-Even Price & Risk/Reward</h3>
+        <button onclick="calculateBreakEven()">Calculate Break-Even & RR</button>
+        <div class="result-box" id="resultBE"></div>
+    </div>
+
+    <!-- 3. 到期收益表 -->
+    <div class="calc-module">
+        <h3>3. Expiration Payoff Table</h3>
+        <button onclick="generatePayoffTable()">Generate Payoff Table</button>
+        <div id="resultTable" style="display:none; margin-top:15px;"></div>
+    </div>
+
+    <!-- 重置 -->
+    <div class="calc-module">
+        <h3>Reset All</h3>
+        <button onclick="resetAll()">Clear All Data</button>
+    </div>
+</div>
+
+<!-- ====================== 超大篇幅专业内容 ====================== -->
+<div class="content-section">
+    <h2>Call Options Trading: Complete Guide for Traders</h2>
+
+    <p>A call option is a financial contract that gives the buyer the right, but not the obligation, to purchase a stock at a fixed price (strike price) before or at expiration. Call options are among the most popular bullish trading strategies used by investors worldwide.</p>
+
+    <p>Our Call Options Calculator Suite helps you analyze every aspect of a call option trade, including profit potential, maximum loss, break-even point, risk-reward ratio, and expiration payoff scenarios. This tool is designed for both new and experienced traders to make smarter, data-driven decisions.</p>
+
+    <h3>Key Features of This Call Options Calculator</h3>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h4>Profit & Loss Analysis</h4>
+            <p>Calculate exact profit or loss at any stock price</p>
         </div>
+        <div class="feature-card">
+            <h4>Break-Even Price</h4>
+            <p>Find the exact price where trade becomes profitable</p>
+        </div>
+        <div class="feature-card">
+            <h4>Risk/Reward Ratio</h4>
+            <p>Evaluate trade quality with professional RR metric</p>
+        </div>
+        <div class="feature-card">
+            <h4>Max Profit & Max Loss</h4>
+            <p>Know your upside and downside in advance</p>
+        </div>
+        <div class="feature-card">
+            <h4>Payoff Table</h4>
+            <p>View full expiration scenario table</p>
+        </div>
+        <div class="feature-card">
+            <h4>Multiple Contracts</h4>
+            <p>Calculate for 1, 5, 10, or more contracts</p>
+        </div>
+    </div>
 
-        <div id="content" class="text-center">
-            <h2>Understanding Call Options</h2><br>
-            <p>The Call Options Calculator helps you estimate potential profits and losses from trading call options. By inputting the stock price, strike price, option premium, and expiration date, you can see potential outcomes.</p>
-            <br>
-            <h3>Introduction:</h3><br>
-            <p>Call options give the holder the right to buy a stock at a specified price within a certain time frame. This tool calculates potential outcomes based on user inputs.</p>
-            <br>
-            <h3>Calculator Principle:</h3><br>
-            <p>The calculator operates based on the stock price, strike price, option premium, and expiration date. It calculates the potential profit and loss scenarios for the call option.</p>
-            <br>
-            <p>By reviewing the potential outcomes, you can understand the risk and reward of the call option, helping you make informed trading decisions.</p>
-            <br>
-            <h3>Components of the Calculator:</h3><br>
-            <ul>
-                <li>Stock Price: The current price of the underlying stock.</li>
-                <li>Strike Price: The price at which the option can be exercised.</li>
-                <li>Option Premium: The cost of purchasing the option.</li>
-                <li>Expiration Date: The date when the option expires.</li>
-            </ul>
-            <br>
-            <h3>How to Use the Calculator:</h3><br>
-            <p>Using the Call Options Calculator is straightforward. Here's a basic guide:</p>
-            <ol>
-                <li>Enter the stock price, strike price, option premium, and expiration date.</li>
-                <li>Click the "Calculate Profit and Loss" button to generate potential outcomes.</li>
-                <li>Review the results to understand the potential profit and loss scenarios.</li>
-            </ol>
-            <br>
-            <h3>Example Calculation:</h3><br>
-            <p>For example, let's consider a call option with a stock price of $100, a strike price of $105, an option premium of $2, and an expiration date of one month from now.</p>
-            <ul>
-                <li>Potential profit: Varies based on the stock price at expiration.</li>
-                <li>Potential loss: Limited to the option premium paid ($2).</li>
-            </ul>
-            <br>
-            <h3>Conclusion:</h3><br>
-            <p>The Call Options Calculator is a valuable tool for options traders. By understanding the potential outcomes, you can make more informed decisions about your options trading strategy.</p>
-            <br> <h3>Further Learning:</h3><br>
-            <p>For more resources on options trading and financial planning, consider exploring online financial resources, educational websites, or consulting with a financial advisor. Continuous learning and understanding are key to successful trading.</p>
-            <br>
-            </div>
+    <h3>What Is a Call Option?</h3>
+    <p>A call option is a bullish strategy. When you buy a call option, you believe the underlying stock will rise above the strike price before expiration. Your risk is limited to the premium you pay, while your profit potential is unlimited.</p>
+
+    <h3>Key Terms You Need to Know</h3>
+    <ul>
+        <li><strong>Stock Price:</strong> Current market price of the stock</li>
+        <li><strong>Strike Price:</strong> Price you can buy the stock at</li>
+        <li><strong>Premium:</strong> Cost to buy the option contract</li>
+        <li><strong>Expiration Date:</strong> Last day the option is valid</li>
+        <li><strong>Contract:</strong> 1 option = 100 shares of stock</li>
+        <li><strong>Break-Even:</strong> Stock price where profit = 0</li>
+        <li><strong>Max Profit:</strong> Unlimited (the higher stock goes, the more you earn)</li>
+        <li><strong>Max Loss:</strong> Limited to the total premium paid</li>
+    </ul>
+
+    <h3>How to Calculate Call Option Profit</h3>
+    <p>The formula for call option profit at expiration:</p>
+    <p><strong>Profit = (Stock Price − Strike Price − Premium) × 100 × Number of Contracts</strong></p>
+    <p>If the stock price is below strike price at expiration, the option expires worthless, and you lose the full premium.</p>
+
+    <h3>Break-Even Price Formula</h3>
+    <p><strong>Break-Even = Strike Price + Premium Paid</strong></p>
+    <p>Above this price = profit. Below this price = loss.</p>
+
+    <h3>Why Risk/Reward Ratio Is Critical</h3>
+    <p>Professional traders only take trades with strong risk-reward ratios. A ratio of 1:3 or higher means you risk $1 to make $3 — the ideal setup for long-term success.</p>
+
+    <h3>How to Use This Calculator</h3>
+    <ol>
+        <li>Enter current stock price</li>
+        <li>Enter option strike price</li>
+        <li>Enter the premium you paid</li>
+        <li>Enter number of contracts</li>
+        <li>Calculate profit, break-even, risk/reward, and payoff table</li>
+        <li>Analyze if the trade fits your strategy</li>
+    </ol>
+
+    <h3>Example of a Call Option Trade</h3>
+    <p>Stock Price = $100</p>
+    <p>Strike Price = $105</p>
+    <p>Premium = $2</p>
+    <p>Contracts = 1</p>
+    <p><strong>Break-Even = $105 + $2 = $107</strong></p>
+    <p>If stock rises to $110:</p>
+    <p>Profit = (110 − 105 − 2) × 100 = $300</p>
+    <p>If stock stays below $105:</p>
+    <p>Loss = $2 × 100 = $200</p>
+
+    <h3>Who Should Use Call Options?</h3>
+    <ul>
+        <li>Bullish traders expecting a price increase</li>
+        <li>Investors looking for leveraged gains</li>
+        <li>Traders who want limited risk</li>
+        <li>People who want high upside with low capital</li>
+    </ul>
+
+    <h3>Risks of Trading Call Options</h3>
+    <ul>
+        <li>Options expire worthless if price does not rise</li>
+        <li>Time decay (theta) reduces value daily</li>
+        <li>Implied volatility changes affect pricing</li>
+    </ul>
+
+    <h3>Final Tips for Successful Call Option Trading</h3>
+    <ul>
+        <li>Only trade with capital you can afford to lose</li>
+        <li>Choose high-liquidity options and stocks</li>
+        <li>Use stop-losses and position sizing</li>
+        <li>Analyze break-even and risk/reward before entering</li>
+        <li>Use this calculator for every trade</li>
+    </ul>
+
+    <p>Call options can be extremely profitable when used correctly. This calculator helps you remove emotion and trade with logic, precision, and confidence.</p>
+</div>
+
+</div>
+</div>
+<div id="footer-push"></div>
+</div>
+<div id="footer-placeholder"></div>
+
+<script>
+fetch("/header.html").then(r=>r.text()).then(d=>{ document.getElementById("header").innerHTML = d; });
+fetch("/footer.html").then(r=>r.text()).then(d=>{ document.getElementById("footer-placeholder").innerHTML = d; });
+
+// 主计算
+function calculateCallOption() {
+    const s = parseFloat(document.getElementById('stockPrice').value);
+    const k = parseFloat(document.getElementById('strikePrice').value);
+    const p = parseFloat(document.getElementById('premium').value);
+    const c = parseInt(document.getElementById('contracts').value) || 1;
+    const res = document.getElementById('resultMain');
+
+    if (!s || !k || !p || s<=0 || k<=0 || p<=0) {
+        res.className = "result-box result-error";
+        res.innerHTML = "Please enter valid positive numbers.";
+        res.style.display = "block";
+        return;
+    }
+
+    const perShareProfit = Math.max(0, s - k) - p;
+    const totalProfit = perShareProfit * 100 * c;
+    const maxLoss = p * 100 * c;
+    const maxProfit = "Unlimited (theoretical)";
+
+    res.className = "result-box result-success";
+    res.innerHTML = `
+        Profit per Share: $${perShareProfit.toFixed(2)}<br>
+        Total Profit: $${totalProfit.toFixed(2)}<br>
+        Max Loss: $${maxLoss.toFixed(2)}<br>
+        Max Profit: ${maxProfit}
+    `;
+    res.style.display = "block";
+}
+
+// 盈亏平衡 + 风险回报
+function calculateBreakEven() {
+    const k = parseFloat(document.getElementById('strikePrice').value);
+    const p = parseFloat(document.getElementById('premium').value);
+    const c = parseInt(document.getElementById('contracts').value) || 1;
+    const res = document.getElementById('resultBE');
+
+    if (!k || !p) {
+        res.className = "result-box result-error";
+        res.innerHTML = "Enter strike price and premium first.";
+        res.style.display = "block";
+        return;
+    }
+
+    const be = k + p;
+    const maxLoss = p * 100 * c;
+    const riskReward = "1:∞ (Unlimited Upside)";
+
+    res.className = "result-box result-success";
+    res.innerHTML = `
+        Break-Even Price: $${be.toFixed(2)}<br>
+        Total Risk (Max Loss): $${maxLoss.toFixed(2)}<br>
+        Risk/Reward Ratio: ${riskReward}
+    `;
+    res.style.display = "block";
+}
+
+// 收益表
+function generatePayoffTable() {
+    const k = parseFloat(document.getElementById('strikePrice').value);
+    const p = parseFloat(document.getElementById('premium').value);
+    const c = parseInt(document.getElementById('contracts').value) || 1;
+    const container = document.getElementById('resultTable');
+
+    if (!k || !p) {
+        container.innerHTML = "<div class='result-box result-error'>Enter strike & premium.</div>";
+        container.style.display = "block";
+        return;
+    }
+
+    const prices = [k-10, k-5, k, k+5, k+10, k+15, k+20];
+    let html = "<table class='payoff-table'><tr><th>Stock Price</th><th>Profit / Loss</th></tr>";
     
-            <script>
-                function calculateOptions() {
-                    var stockPrice = parseFloat(document.getElementById('stockPrice').value);
-                    var strikePrice = parseFloat(document.getElementById('strikePrice').value);
-                    var premium = parseFloat(document.getElementById('premium').value);
-                    var expirationDate = new Date(document.getElementById('expirationDate').value);
-    
-                    var potentialProfit = Math.max(0, stockPrice - strikePrice) - premium;
-                    var potentialLoss = premium;
-    
-                    displayOptionsResult(potentialProfit, potentialLoss);
-                }
-    
-                function displayOptionsResult(profit, loss) {
-                    var resultHtml = '<table><tr><th>Scenario</th><th>Profit/Loss</th></tr>';
-                    resultHtml += '<tr><td>Potential Profit</td><td>' + profit.toFixed(2) + '</td></tr>';
-                    resultHtml += '<tr><td>Potential Loss</td><td>' + loss.toFixed(2) + '</td></tr>';
-                    resultHtml += '</table>';
-                    document.getElementById('options-schedule').innerHTML = resultHtml;
-                }
-            </script>
-    
-            <!-- section-bottom -->
-            <section class="section-bottom">
-            <!-- shell -->
-            <div class="shell">
-                <!-- cols -->
-                <div class="cols">
-                    <div class="col">
-                        <h3><span class="about-ico"></span><a href="https://widecalculator.com/aboutus.html">MORE <strong>ABOUT US</strong></a></h3>
-                        <p>Widecalculator aims to provide fast, comprehensive, and user-friendly online calculators across various fields.</p>
-                        <p>Each calculator on Widecalculator.com is meticulously crafted and developed in-house, followed by rigorous and thorough testing to ensure accuracy and reliability. However, we understand that perfection is an ongoing pursuit, so we highly value any feedback regarding potential errors or discrepancies. Your observations are of immense importance to us.</p>
-                        <a href="https://widecalculator.com/aboutus.html" class="more-btn">Read More</a>
-                    </div>
-                    <div class="col">
-                        <h3><span class="news-ico"></span><a href="https://widecalculator.com/FAQ.html"><strong>FAQ</strong></a></h3>
-                        <p>
-                            Q: Can I link from my website to a calculator?
-                            A: Absolutely, you are more than welcome to create links from your website to any calculator or page.
-                        </p>
-                        <p>
-                            Q: How should I send suggestions or report problems?
-                            A: Your feedback is invaluable to us. For any suggestions or to report an issue, please use our contact form. When reporting a problem with a calculator, it would be extremely helpful if you could provide the URL of the specific calculator and details about the parameters or inputs you were using when the issue occurred.
-                        </p>
-                        <a href="https://widecalculator.com/FAQ.html" class="more-btn">Read More</a>
-                    </div>
-                    <div class="col subscribe-col">
-                        <h3><span class="subscribe-ico"></span><a href="https://widecalculator.com/contactus.html">KEEP IN <strong>TOUCH</strong></a></h3>
-                        <div class="col-cnt">
-                            <p>Contact Us
-                                If you have any inquiries, feedback, or need assistance, please use our contact form provided on our website.
-                            </p>
-                            <br>
-                            <p>We strive to maintain prompt communication with our users and typically aim to respond to all messages within 2 business days. Your satisfaction and the quality of our interaction are important to us, so don't hesitate to get in touch.</p>
-                            <a href="https://widecalculator.com/contactus.html" class="more-btn"> More</a>
-                        </div>    
-                    </div>
-                    <div class="cl">&nbsp;</div>
-                </div>
-                <!-- end of cols -->
-            </div>
-            <!-- end of shell -->
-            </section>
-            <!-- end of section-bottom -->
-            </div>
-            <!-- end of main -->
-            <div id="footer-push"></div>
-            </div>
-            <!-- end of wrapper -->
-            <!-- footer -->
-            <div id="footer">
-            <div class="footer-bottom">
-            <div class="shell">
-                <nav class="footer-nav left">
-                    <ul>
-                        <li class="active"><a href="https://widecalculator.com/">HOME</a></li>
-                        <li><a href="https://widecalculator.com/aboutus.html">ABOUT US</a></li>
-                        <li><a href="https://widecalculator.com/contactus.html">CONTACT US</a></li>
-                    </ul>
-                </nav>
-                <p class="copy right"> All Rights Reserved Copyright Collect from <a href="https://widecalculator.com/" title="Online Caculator" target="_blank">Widecalculator.com</a> </p>
-                <div class="cl">&nbsp;</div>
-            </div>    
-            </div>
-            </div>
-            <!-- end of footer -->
-            <div style="display:none;">
-            <!-- Google tag (gtag.js) -->
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
-            <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-    
-            gtag('config', 'G-816SNX8L7X');
-            </script>
-            </div>
-    </body>
-    </html>
-    
+    prices.forEach(price => {
+        const profit = (Math.max(0, price - k) - p) * 100 * c;
+        html += `<tr><td>$${price.toFixed(2)}</td><td>$${profit.toFixed(2)}</td></tr>`;
+    });
+    html += "</table>";
+    container.innerHTML = html;
+    container.style.display = "block";
+}
+
+// 重置
+function resetAll() {
+    document.querySelectorAll('input').forEach(i => i.value = '');
+    document.getElementById('contracts').value = 1;
+    document.querySelectorAll('.result-box').forEach(r => r.style.display = 'none');
+    document.getElementById('resultTable').style.display = 'none';
+}
+</script>
+
+<script async src="https://www.googgtagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-816SNX8L7X');
+</script>
+</body>
+</html>
