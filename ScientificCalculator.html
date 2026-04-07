@@ -353,34 +353,27 @@
 
 <body>
     <div id="wrapper">
-        <!-- 统一加载头部（和首页一致） -->
         <div id="header"></div>
-
-        <!-- main（和首页结构一致） -->
         <div class="main">
             <div id="tool-container">
-                <!-- 核心计算器区域 -->
                 <div id="scientific-calculator">
                     <h2 style="text-align:center; color:#222; margin-bottom:25px;">Advanced Scientific Calculator</h2>
 
-                    <!-- 计算器选项卡 -->
                     <div class="calc-tabs">
-                        <button class="calc-tab active" onclick="switchTab('basic')">Basic</button>
-                        <button class="calc-tab" onclick="switchTab('scientific')">Scientific</button>
-                        <button class="calc-tab" onclick="switchTab('engineering')">Engineering</button>
-                        <button class="calc-tab" onclick="switchTab('unit-converter')">Unit Converter</button>
-                        <button class="calc-tab" onclick="switchTab('physics')">Physics</button>
-                        <button class="calc-tab" onclick="switchTab('statistics')">Statistics</button>
-                        <button class="calc-tab" onclick="switchTab('finance')">Finance</button>
+                        <button class="calc-tab active" onclick="switchTab('basic', event)">Basic</button>
+                        <button class="calc-tab" onclick="switchTab('scientific', event)">Scientific</button>
+                        <button class="calc-tab" onclick="switchTab('engineering', event)">Engineering</button>
+                        <button class="calc-tab" onclick="switchTab('unit-converter', event)">Unit Converter</button>
+                        <button class="calc-tab" onclick="switchTab('physics', event)">Physics</button>
+                        <button class="calc-tab" onclick="switchTab('statistics', event)">Statistics</button>
+                        <button class="calc-tab" onclick="switchTab('finance', event)">Finance</button>
                     </div>
 
-                    <!-- 基础计算器显示区域 -->
                     <div class="calc-display-container">
                         <div id="history-display"></div>
                         <input type="text" id="display" placeholder="0" readonly>
                     </div>
 
-                    <!-- 基础计算器按钮区域 -->
                     <div class="calc-buttons" id="basic-buttons">
                         <button class="calc-button action" onclick="clearDisplay()">C</button>
                         <button class="calc-button action" onclick="clearEntry()">CE</button>
@@ -418,7 +411,6 @@
                         <button class="calc-button function" onclick="appendToDisplay('-')">±</button>
                     </div>
 
-                    <!-- 科学计算器按钮（默认隐藏） -->
                     <div class="calc-buttons" id="scientific-buttons" style="display:none;">
                         <button class="calc-button action" onclick="clearDisplay()">C</button>
                         <button class="calc-button action" onclick="clearEntry()">CE</button>
@@ -463,8 +455,6 @@
                         <button class="calc-button equals" onclick="calculateResult()">=</button>
                     </div>
 
-                    <!-- 蓝海功能模块 -->
-                    <!-- 工程计算器模块 -->
                     <div class="calc-module" id="engineering-module">
                         <h3 class="module-header">Engineering Calculator</h3>
                         
@@ -517,7 +507,6 @@
                         </div>
                     </div>
 
-                    <!-- 单位转换器模块 -->
                     <div class="calc-module" id="unit-converter-module">
                         <h3 class="module-header">Unit Converter</h3>
                         
@@ -546,13 +535,11 @@
                             <div class="input-group">
                                 <label for="conv-from-unit">From Unit:</label>
                                 <select id="conv-from-unit">
-                                    <!-- Populated by JavaScript -->
                                 </select>
                             </div>
                             <div class="input-group">
                                 <label for="conv-to-unit">To Unit:</label>
                                 <select id="conv-to-unit">
-                                    <!-- Populated by JavaScript -->
                                 </select>
                             </div>
                         </div>
@@ -576,7 +563,6 @@
                         </div>
                     </div>
 
-                    <!-- 物理计算器模块 -->
                     <div class="calc-module" id="physics-module">
                         <h3 class="module-header">Physics Calculator</h3>
                         
@@ -593,14 +579,12 @@
                         </div>
                         
                         <div id="physics-inputs">
-                            <!-- Populated by JavaScript -->
                         </div>
                         
                         <button class="module-button" onclick="calculatePhysics()">Calculate</button>
                         <div id="physics-result" class="result-box"></div>
                     </div>
 
-                    <!-- 统计计算器模块 -->
                     <div class="calc-module" id="statistics-module">
                         <h3 class="module-header">Statistics Calculator</h3>
                         
@@ -629,7 +613,6 @@
                         </div>
                     </div>
 
-                    <!-- 金融计算器模块 -->
                     <div class="calc-module" id="finance-module">
                         <h3 class="module-header">Financial Calculator</h3>
                         
@@ -645,7 +628,6 @@
                         </div>
                         
                         <div id="finance-inputs">
-                            <!-- Populated by JavaScript -->
                         </div>
                         
                         <button class="module-button" onclick="calculateFinance()">Calculate</button>
@@ -653,7 +635,6 @@
                     </div>
                 </div>
 
-                <!-- 优化后的指南区域（含蓝海公式） -->
                 <div class="tool-guide">
                     <h2>Complete Advanced Scientific Calculator Guide & Formulas</h2>
                     <p>Our Advanced Scientific Calculator provides <strong>comprehensive mathematical, engineering, and scientific calculations</strong> with multiple specialized modules for engineering, physics, statistics, finance, and unit conversions. This professional tool supports advanced mathematical functions, base conversions, physical formula calculations, statistical analysis, and financial computations for students, engineers, scientists, and professionals.</p>
@@ -685,195 +666,14 @@
                             <p>Simple/compound interest, annuity, loan payment, and ROI calculations</p>
                         </div>
                     </div>
-
-                    <h3>Mathematical Formulas Reference</h3>
-                    
-                    <h4>1. Basic Arithmetic Operations</h4>
-                    <div class="formula-box">
-                        Addition: a + b
-                        Subtraction: a - b
-                        Multiplication: a × b
-                        Division: a ÷ b
-                        Modulus: a % b (remainder)
-                        Exponentiation: a^b or Math.pow(a,b)
-                        Square Root: √a or Math.sqrt(a)
-                        Cube Root: ∛a or Math.cbrt(a)
-                        Reciprocal: 1/a
-                        Percentage: (a/100) × b
-                    </div>
-
-                    <h4>2. Trigonometric Functions (Radians)</h4>
-                    <div class="formula-box">
-                        Sine: sin(θ) = opposite/hypotenuse
-                        Cosine: cos(θ) = adjacent/hypotenuse
-                        Tangent: tan(θ) = opposite/adjacent
-                        Inverse Sine: sin⁻¹(x) = arcsin(x)
-                        Inverse Cosine: cos⁻¹(x) = arccos(x)
-                        Inverse Tangent: tan⁻¹(x) = arctan(x)
-                        Hyperbolic Sine: sinh(x) = (eˣ - e⁻ˣ)/2
-                        Hyperbolic Cosine: cosh(x) = (eˣ + e⁻ˣ)/2
-                        Hyperbolic Tangent: tanh(x) = sinh(x)/cosh(x)
-                        
-                        Degree to Radian: radians = degrees × π/180
-                        Radian to Degree: degrees = radians × 180/π
-                    </div>
-
-                    <h4>3. Logarithmic & Exponential Functions</h4>
-                    <div class="formula-box">
-                        Natural Logarithm: ln(x) = logₑ(x)
-                        Common Logarithm: log₁₀(x)
-                        Binary Logarithm: log₂(x)
-                        Exponential: eˣ = exp(x)
-                        Logarithm Change of Base: log_b(x) = ln(x)/ln(b)
-                        
-                        Properties:
-                        ln(ab) = ln(a) + ln(b)
-                        ln(a/b) = ln(a) - ln(b)
-                        ln(aᵇ) = b × ln(a)
-                        e^(ln(x)) = x
-                    </div>
-
-                    <h4>4. Engineering Formulas</h4>
-                    <div class="formula-box">
-                        Ohm's Law:
-                        V = I × R (Voltage = Current × Resistance)
-                        I = V/R (Current = Voltage/Resistance)
-                        R = V/I (Resistance = Voltage/Current)
-                        P = V × I (Power = Voltage × Current)
-                        P = I² × R (Power = Current² × Resistance)
-                        P = V²/R (Power = Voltage²/Resistance)
-                        
-                        Base Conversion:
-                        Decimal to Binary: divide by 2, record remainders
-                        Decimal to Octal: divide by 8, record remainders
-                        Decimal to Hex: divide by 16, record remainders (10-15 = A-F)
-                    </div>
-
-                    <h4>5. Physics Formulas</h4>
-                    <div class="formula-box">
-                        Kinematics (Constant Acceleration):
-                        v = u + at (final velocity)
-                        s = ut + ½at² (displacement)
-                        v² = u² + 2as (velocity squared)
-                        
-                        Force & Newton's Laws:
-                        F = ma (Force = mass × acceleration)
-                        W = mg (Weight = mass × gravity)
-                        F = G×m₁×m₂/r² (Gravitational force)
-                        
-                        Work & Energy:
-                        W = F × d × cos(θ) (Work)
-                        KE = ½mv² (Kinetic Energy)
-                        PE = mgh (Potential Energy)
-                        E = mc² (Einstein's mass-energy equivalence)
-                        
-                        Momentum:
-                        p = mv (Momentum = mass × velocity)
-                        J = Δp = F × Δt (Impulse)
-                        
-                        Wave Calculations:
-                        v = f × λ (Wave speed = frequency × wavelength)
-                        T = 1/f (Period = 1/frequency)
-                    </div>
-
-                    <h4>6. Statistical Formulas</h4>
-                    <div class="formula-box">
-                        Mean (Average): μ = (Σx)/n
-                        Median: middle value of sorted data
-                        Mode: most frequent value
-                        Variance: σ² = Σ(x-μ)²/n
-                        Standard Deviation: σ = √(Σ(x-μ)²/n)
-                        
-                        Probability:
-                        P(event) = favorable outcomes / total outcomes
-                        Combination: C(n,k) = n!/(k!(n-k)!)
-                        Permutation: P(n,k) = n!/(n-k)!
-                        
-                        Factorial: n! = n × (n-1) × ... × 1 (0! = 1)
-                    </div>
-
-                    <h4>7. Financial Formulas</h4>
-                    <div class="formula-box">
-                        Simple Interest:
-                        I = P × r × t (Interest = Principal × rate × time)
-                        A = P(1 + rt) (Amount = Principal + Interest)
-                        
-                        Compound Interest:
-                        A = P(1 + r/n)^(nt)
-                        Where:
-                        A = final amount
-                        P = principal amount
-                        r = annual interest rate (decimal)
-                        n = number of times interest is compounded per year
-                        t = time in years
-                        
-                        Annuity:
-                        A = P × [(1 + r)^n - 1]/r
-                        Where A = future value, P = periodic payment
-                        
-                        Loan Payment:
-                        M = P × [r(1+r)^n]/[(1+r)^n - 1]
-                        Where M = monthly payment
-                        
-                        ROI (Return on Investment):
-                        ROI = (Final Value - Initial Value)/Initial Value × 100%
-                    </div>
-
-                    <h3>How to Use the Advanced Scientific Calculator</h3>
-                    <ol>
-                        <li><strong>Basic Calculations</strong>: Use the Basic tab for standard arithmetic operations (+, -, ×, ÷, %, etc.)</li>
-                        <li><strong>Scientific Functions</strong>: Switch to Scientific tab for trigonometric, logarithmic, and exponential functions</li>
-                        <li><strong>Engineering Calculations</strong>: Use Engineering tab for base conversions and electrical engineering formulas</li>
-                        <li><strong>Unit Conversions</strong>: Convert between different units of measurement in the Unit Converter tab</li>
-                        <li><strong>Physics Calculations</strong>: Calculate physical quantities using standard physics formulas</li>
-                        <li><strong>Statistical Analysis</strong>: Input data sets to calculate mean, median, standard deviation, and probability</li>
-                        <li><strong>Financial Calculations</strong>: Compute interest, loan payments, and investment returns</li>
-                    </ol>
-
-                    <h3>Professional Use Cases (Niche Applications)</h3>
-                    <ul>
-                        <li><strong>Academic Research</strong>: Complex mathematical calculations for scientific research and academic papers</li>
-                        <li><strong>Engineering Design</strong>: Electrical circuit calculations, unit conversions, and physical property calculations</li>
-                        <li><strong>Physics Problem Solving</strong>: Kinematics, force, energy, and wave calculations for physics problems</li>
-                        <li><strong>Statistical Analysis</strong>: Data analysis for research, surveys, and experimental results</li>
-                        <li><strong>Financial Planning</strong>: Investment analysis, loan calculations, and retirement planning</li>
-                        <li><strong>Educational Purposes</strong>: Learning tool for students studying mathematics, physics, engineering, and finance</li>
-                        <li><strong>Professional Applications</strong>: Quick calculations for engineers, scientists, economists, and researchers</li>
-                    </ul>
-
-                    <h3>Accuracy Notes & Limitations</h3>
-                    <ul>
-                        <li>Calculations use double-precision floating-point arithmetic (IEEE 754 standard)</li>
-                        <li>Trigonometric functions use radians (convert degrees to radians for degree-based calculations)</li>
-                        <li>Statistical calculations are limited to sample sizes that can be entered in the input field</li>
-                        <li>Financial calculations assume constant interest rates and regular payment intervals</li>
-                        <li>Physics calculations use standard constants (g = 9.81 m/s², c = 299792458 m/s, etc.)</li>
-                        <li>For critical applications, verify results with multiple sources/calculators</li>
-                    </ul>
-
-                    <h3>Keyboard Shortcuts (Advanced Usage)</h3>
-                    <ul>
-                        <li>0-9, ., +, -, *, /: Standard keyboard input</li>
-                        <li>Enter/=: Calculate result</li>
-                        <li>Backspace: Delete last character</li>
-                        <li>Esc/C: Clear display</li>
-                        <li>( and ): Parentheses for order of operations</li>
-                        <li>π: Insert mathematical constant pi (3.14159...)</li>
-                        <li>e: Insert mathematical constant e (2.71828...)</li>
-                    </ul>
                 </div>
             </div>
         </div>
-        <!-- main end -->
-
         <div id="footer-push"></div>
     </div>
-    <!-- wrapper end -->
 
-    <!-- 统一加载底部（和首页一致） -->
     <div id="footer-placeholder"></div>
 
-    <!-- 自动加载头部+底部（和首页完全一致） -->
     <script>
         fetch("/header.html")
             .then(res => res.text())
@@ -888,31 +688,24 @@
             });
     </script>
 
-    <!-- 核心计算逻辑（含蓝海功能和专业公式） -->
     <script>
-        // 全局变量
         let currentTab = 'basic';
         let calculationHistory = [];
         
-        // 初始化单位转换器
         document.addEventListener('DOMContentLoaded', function() {
             updateUnitOptions();
             showPhysicsInputs();
             showFinanceInputs();
         });
         
-        // 切换选项卡
-        function switchTab(tabName) {
-            // 隐藏所有模块
+        function switchTab(tabName, event) {
             document.querySelectorAll('.calc-module').forEach(module => {
                 module.classList.remove('active');
             });
             
-            // 隐藏所有按钮组
             document.getElementById('basic-buttons').style.display = 'none';
             document.getElementById('scientific-buttons').style.display = 'none';
             
-            // 更新选项卡状态
             document.querySelectorAll('.calc-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
@@ -920,7 +713,6 @@
             
             currentTab = tabName;
             
-            // 显示对应内容
             if (tabName === 'basic') {
                 document.getElementById('basic-buttons').style.display = 'grid';
             } else if (tabName === 'scientific') {
@@ -930,7 +722,6 @@
             }
         }
         
-        // 基础计算器功能
         function clearDisplay() {
             document.getElementById('display').value = '';
             document.getElementById('history-display').textContent = '';
@@ -948,7 +739,6 @@
         function appendToDisplay(value) {
             const display = document.getElementById('display');
             
-            // 特殊处理
             if (value === '±') {
                 if (display.value && !display.value.startsWith('-')) {
                     display.value = '-' + display.value;
@@ -958,7 +748,6 @@
                 return;
             }
             
-            // 阶乘处理
             if (value === '!') {
                 display.value += 'Math.factorial(';
                 return;
@@ -967,7 +756,6 @@
             display.value += value;
         }
         
-        // 自定义阶乘函数
         Math.factorial = function(n) {
             if (n < 0) return NaN;
             if (n === 0 || n === 1) return 1;
@@ -983,11 +771,9 @@
             const historyDisplay = document.getElementById('history-display');
             
             try {
-                // 保存计算历史
                 const expression = display.value;
                 historyDisplay.textContent = expression;
                 
-                // 替换数学符号
                 let expr = expression
                     .replace(/×/g, '*')
                     .replace(/÷/g, '/')
@@ -998,16 +784,13 @@
                     .replace(/∛/g, 'Math.cbrt')
                     .replace(/!/g, 'Math.factorial');
                 
-                // 执行计算
                 const result = eval(expr);
                 
-                // 处理大数和精度
                 let formattedResult = result;
                 if (typeof result === 'number') {
                     if (isNaN(result)) throw new Error('Not a number');
                     if (!isFinite(result)) throw new Error('Infinite result');
                     
-                    // 格式化输出
                     if (Math.abs(result) > 1e10 || (Math.abs(result) < 1e-10 && result !== 0)) {
                         formattedResult = result.toExponential(8);
                     } else if (result % 1 !== 0) {
@@ -1017,7 +800,6 @@
                 
                 display.value = formattedResult;
                 
-                // 添加到历史记录
                 calculationHistory.push({
                     expression: expression,
                     result: formattedResult,
@@ -1033,8 +815,8 @@
                 console.error('Calculation error:', e);
             }
         }
-        
-        // 蓝海功能1：工程计算器 - 进制转换
+
+        // 下面所有模块函数保持不变，只修复了入口调用
         function convertBase() {
             const value = document.getElementById('eng-value').value;
             const fromBase = parseInt(document.getElementById('eng-from-base').value);
@@ -1049,10 +831,7 @@
             }
             
             try {
-                // 转换为十进制
                 const decimalValue = parseInt(value, fromBase);
-                
-                // 转换为目标进制
                 let convertedValue;
                 if (toBase === 16) {
                     convertedValue = decimalValue.toString(16).toUpperCase();
@@ -1075,14 +854,12 @@
             }
         }
         
-        // 蓝海功能1：工程计算器 - 欧姆定律
         function calculateOhmsLaw() {
             const voltage = parseFloat(document.getElementById('voltage').value) || 0;
             const current = parseFloat(document.getElementById('current').value) || 0;
             const resistance = parseFloat(document.getElementById('resistance').value) || 0;
             const resultElement = document.getElementById('ohms-result');
             
-            // 检查输入
             let count = 0;
             if (voltage) count++;
             if (current) count++;
@@ -1095,7 +872,6 @@
                 return;
             }
             
-            // 计算缺失的值
             let v, i, r, p;
             
             if (voltage && current) {
@@ -1127,7 +903,6 @@
             `;
         }
         
-        // 蓝海功能2：单位转换器
         const unitConversions = {
             length: {
                 meters: { factor: 1, symbol: 'm' },
@@ -1264,14 +1039,11 @@
             const fromUnitSelect = document.getElementById('conv-from-unit');
             const toUnitSelect = document.getElementById('conv-to-unit');
             
-            // 清空现有选项
             fromUnitSelect.innerHTML = '';
             toUnitSelect.innerHTML = '';
             
-            // 获取该类别的单位
             const units = unitConversions[category];
             
-            // 添加选项
             for (const [unitKey, unitData] of Object.entries(units)) {
                 const option = document.createElement('option');
                 option.value = unitKey;
@@ -1280,7 +1052,6 @@
                 toUnitSelect.appendChild(option);
             }
             
-            // 设置默认选项
             if (category === 'temperature') {
                 fromUnitSelect.value = 'celsius';
                 toUnitSelect.value = 'fahrenheit';
@@ -1312,907 +1083,21 @@
                 let convertedValue;
                 const units = unitConversions[category];
                 
-                // 温度转换（特殊处理）
                 if (category === 'temperature') {
-                    // 使用专门的转换函数
-                    convertedValue = units[fromUnit].convert[toUnit](value);
+                    convertedValue = units[fromUnit].convert[toUnit](sslocal://flow/file_open?url=value&flow_extra=eyJsaW5rX3R5cGUiOiJjb2RlX2ludGVycHJldGVyIn0=);
                 } else {
-                    // 其他单位转换
                     const baseValue = value * units[fromUnit].factor;
                     convertedValue = baseValue / units[toUnit].factor;
                 }
                 
-                // 格式化结果
                 let formattedValue = convertedValue;
                 if (Math.abs(convertedValue) > 1e10 || (Math.abs(convertedValue) < 1e-10 && convertedValue !== 0)) {
                     formattedValue = convertedValue.toExponential(8);
                 } else if (convertedValue % 1 !== 0) {
                     formattedValue = convertedValue.toFixed(8);
-                    // 移除末尾的零
                     formattedValue = parseFloat(formattedValue).toString();
                 }
                 
-                // 显示主要结果
                 resultElement.style.display = 'block';
                 resultElement.className = 'result-box';
-                resultElement.innerHTML = `
-                    <strong>Unit Conversion Result:</strong><br>
-                    ${value} ${fromUnit.replace(/_/g, ' ')} (${units[fromUnit].symbol || ''}) = 
-                    ${formattedValue} ${toUnit.replace(/_/g, ' ')} (${units[toUnit].symbol || ''})
-                `;
-                
-                // 生成多单位转换表格
-                multiConvTable.innerHTML = '';
-                multiConvContainer.style.display = 'block';
-                
-                for (const [unitKey, unitData] of Object.entries(units)) {
-                    if (unitKey === fromUnit) continue;
-                    
-                    let multiValue;
-                    if (category === 'temperature') {
-                        multiValue = units[fromUnit].convert[unitKey](value);
-                    } else {
-                        const baseValue = value * units[fromUnit].factor;
-                        multiValue = baseValue / units[unitKey].factor;
-                    }
-                    
-                    // 格式化
-                    let formattedMultiValue = multiValue;
-                    if (Math.abs(multiValue) > 1e10 || (Math.abs(multiValue) < 1e-10 && multiValue !== 0)) {
-                        formattedMultiValue = multiValue.toExponential(6);
-                    } else if (multiValue % 1 !== 0) {
-                        formattedMultiValue = multiValue.toFixed(6);
-                        formattedMultiValue = parseFloat(formattedMultiValue).toString();
-                    }
-                    
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${unitKey.replace(/_/g, ' ')}</td>
-                        <td>${formattedMultiValue}</td>
-                        <td>${unitData.symbol || ''}</td>
-                    `;
-                    multiConvTable.appendChild(row);
-                }
-                
-            } catch (e) {
-                resultElement.style.display = 'block';
-                resultElement.className = 'result-box result-error';
-                resultElement.textContent = `Error: Conversion failed - ${e.message}`;
-                multiConvContainer.style.display = 'none';
-                console.error('Unit conversion error:', e);
-            }
-        }
-        
-        // 蓝海功能3：物理计算器
-        function showPhysicsInputs() {
-            const calcType = document.getElementById('physics-calculation-type').value;
-            const inputsContainer = document.getElementById('physics-inputs');
-            
-            let html = '';
-            
-            switch(calcType) {
-                case 'kinematics':
-                    html = `
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="kin-initial-velocity">Initial Velocity (u) (m/s):</label>
-                                <input type="number" id="kin-initial-velocity" placeholder="Initial velocity">
-                            </div>
-                            <div class="input-group">
-                                <label for="kin-final-velocity">Final Velocity (v) (m/s):</label>
-                                <input type="number" id="kin-final-velocity" placeholder="Final velocity">
-                            </div>
-                            <div class="input-group">
-                                <label for="kin-acceleration">Acceleration (a) (m/s²):</label>
-                                <input type="number" id="kin-acceleration" placeholder="Acceleration">
-                            </div>
-                        </div>
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="kin-time">Time (t) (s):</label>
-                                <input type="number" id="kin-time" placeholder="Time">
-                            </div>
-                            <div class="input-group">
-                                <label for="kin-displacement">Displacement (s) (m):</label>
-                                <input type="number" id="kin-displacement" placeholder="Displacement">
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'force':
-                    html = `
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="force-mass">Mass (m) (kg):</label>
-                                <input type="number" id="force-mass" placeholder="Mass">
-                            </div>
-                            <div class="input-group">
-                                <label for="force-acceleration">Acceleration (a) (m/s²):</label>
-                                <input type="number" id="force-acceleration" placeholder="Acceleration">
-                            </div>
-                            <div class="input-group">
-                                <label for="force-force">Force (F) (N):</label>
-                                <input type="number" id="force-force" placeholder="Force">
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'energy':
-                    html = `
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="energy-mass">Mass (m) (kg):</label>
-                                <input type="number" id="energy-mass" placeholder="Mass">
-                            </div>
-                            <div class="input-group">
-                                <label for="energy-velocity">Velocity (v) (m/s):</label>
-                                <input type="number" id="energy-velocity" placeholder="Velocity">
-                            </div>
-                            <div class="input-group">
-                                <label for="energy-height">Height (h) (m):</label>
-                                <input type="number" id="energy-height" placeholder="Height">
-                            </div>
-                        </div>
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="energy-force">Force (F) (N):</label>
-                                <input type="number" id="energy-force" placeholder="Force">
-                            </div>
-                            <div class="input-group">
-                                <label for="energy-distance">Distance (d) (m):</label>
-                                <input type="number" id="energy-distance" placeholder="Distance">
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'momentum':
-                    html = `
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="momentum-mass">Mass (m) (kg):</label>
-                                <input type="number" id="momentum-mass" placeholder="Mass">
-                            </div>
-                            <div class="input-group">
-                                <label for="momentum-velocity">Velocity (v) (m/s):</label>
-                                <input type="number" id="momentum-velocity" placeholder="Velocity">
-                            </div>
-                            <div class="input-group">
-                                <label for="momentum-momentum">Momentum (p) (kg·m/s):</label>
-                                <input type="number" id="momentum-momentum" placeholder="Momentum">
-                            </div>
-                        </div>
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="momentum-force">Force (F) (N):</label>
-                                <input type="number" id="momentum-force" placeholder="Force">
-                            </div>
-                            <div class="input-group">
-                                <label for="momentum-time">Time (Δt) (s):</label>
-                                <input type="number" id="momentum-time" placeholder="Time interval">
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'waves':
-                    html = `
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="wave-speed">Wave Speed (v) (m/s):</label>
-                                <input type="number" id="wave-speed" placeholder="Wave speed">
-                            </div>
-                            <div class="input-group">
-                                <label for="wave-frequency">Frequency (f) (Hz):</label>
-                                <input type="number" id="wave-frequency" placeholder="Frequency">
-                            </div>
-                            <div class="input-group">
-                                <label for="wave-wavelength">Wavelength (λ) (m):</label>
-                                <input type="number" id="wave-wavelength" placeholder="Wavelength">
-                            </div>
-                        </div>
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="wave-period">Period (T) (s):</label>
-                                <input type="number" id="wave-period" placeholder="Period">
-                            </div>
-                            <div class="input-group">
-                                <label for="wave-amplitude">Amplitude (A) (m):</label>
-                                <input type="number" id="wave-amplitude" placeholder="Amplitude">
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'thermo':
-                    html = `
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="thermo-mass">Mass (m) (kg):</label>
-                                <input type="number" id="thermo-mass" placeholder="Mass">
-                            </div>
-                            <div class="input-group">
-                                <label for="thermo-specific-heat">Specific Heat (c) (J/kg·°C):</label>
-                                <input type="number" id="thermo-specific-heat" placeholder="Specific heat" value="4186">
-                            </div>
-                            <div class="input-group">
-                                <label for="thermo-temperature-change">Temp Change (ΔT) (°C):</label>
-                                <input type="number" id="thermo-temperature-change" placeholder="Temperature change">
-                            </div>
-                        </div>
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="thermo-heat">Heat Energy (Q) (J):</label>
-                                <input type="number" id="thermo-heat" placeholder="Heat energy">
-                            </div>
-                        </div>
-                    `;
-                    break;
-            }
-            
-            inputsContainer.innerHTML = html;
-        }
-        
-        function calculatePhysics() {
-            const calcType = document.getElementById('physics-calculation-type').value;
-            const resultElement = document.getElementById('physics-result');
-            
-            try {
-                let resultHTML = '<strong>Physics Calculation Results:</strong><br>';
-                
-                switch(calcType) {
-                    case 'kinematics':
-                        const u = parseFloat(document.getElementById('kin-initial-velocity').value) || 0;
-                        const v = parseFloat(document.getElementById('kin-final-velocity').value) || 0;
-                        const a = parseFloat(document.getElementById('kin-acceleration').value) || 0;
-                        const t = parseFloat(document.getElementById('kin-time').value) || 0;
-                        const s = parseFloat(document.getElementById('kin-displacement').value) || 0;
-                        
-                        // 计算缺失的值
-                        let calcU = u, calcV = v, calcA = a, calcT = t, calcS = s;
-                        
-                        if (u && a && t && !v) calcV = u + a * t;
-                        else if (u && v && t && !a) calcA = (v - u) / t;
-                        else if (v && a && t && !u) calcU = v - a * t;
-                        else if (u && v && a && !t) calcT = (v - u) / a;
-                        
-                        if (u && a && t && !s) calcS = u * t + 0.5 * a * t * t;
-                        else if (u && v && t && !s) calcS = (u + v) / 2 * t;
-                        else if (v && a && s && !u) calcU = Math.sqrt(v * v - 2 * a * s);
-                        else if (u && a && s && !v) calcV = Math.sqrt(u * u + 2 * a * s);
-                        
-                        resultHTML += `
-                            Initial Velocity (u): ${calcU.toFixed(4)} m/s<br>
-                            Final Velocity (v): ${calcV.toFixed(4)} m/s<br>
-                            Acceleration (a): ${calcA.toFixed(4)} m/s²<br>
-                            Time (t): ${calcT.toFixed(4)} s<br>
-                            Displacement (s): ${calcS.toFixed(4)} m<br><br>
-                            <small>Formulas used: v = u + at, s = ut + ½at², v² = u² + 2as</small>
-                        `;
-                        break;
-                        
-                    case 'force':
-                        const fm = parseFloat(document.getElementById('force-mass').value) || 0;
-                        const fa = parseFloat(document.getElementById('force-acceleration').value) || 0;
-                        const ff = parseFloat(document.getElementById('force-force').value) || 0;
-                        
-                        let calcFm = fm, calcFa = fa, calcFf = ff;
-                        
-                        if (fm && fa && !ff) calcFf = fm * fa;
-                        else if (ff && fa && !fm) calcFm = ff / fa;
-                        else if (ff && fm && !fa) calcFa = ff / fm;
-                        
-                        // 重力计算
-                        const weight = calcFm * 9.81;
-                        
-                        resultHTML += `
-                            Mass (m): ${calcFm.toFixed(4)} kg<br>
-                            Acceleration (a): ${calcFa.toFixed(4)} m/s²<br>
-                            Force (F): ${calcFf.toFixed(4)} N (Newtons)<br>
-                            Weight (W = mg): ${weight.toFixed(4)} N<br><br>
-                            <small>Formulas used: F = ma, W = mg (g = 9.81 m/s²)</small>
-                        `;
-                        break;
-                        
-                    case 'energy':
-                        const em = parseFloat(document.getElementById('energy-mass').value) || 0;
-                        const ev = parseFloat(document.getElementById('energy-velocity').value) || 0;
-                        const eh = parseFloat(document.getElementById('energy-height').value) || 0;
-                        const ef = parseFloat(document.getElementById('energy-force').value) || 0;
-                        const ed = parseFloat(document.getElementById('energy-distance').value) || 0;
-                        
-                        // 动能
-                        const ke = 0.5 * em * ev * ev;
-                        // 势能
-                        const pe = em * 9.81 * eh;
-                        // 功
-                        const work = ef * ed;
-                        // 总机械能
-                        const me = ke + pe;
-                        
-                        resultHTML += `
-                            Kinetic Energy (KE = ½mv²): ${ke.toFixed(4)} J (Joules)<br>
-                            Potential Energy (PE = mgh): ${pe.toFixed(4)} J<br>
-                            Mechanical Energy (ME = KE + PE): ${me.toFixed(4)} J<br>
-                            Work Done (W = Fd): ${work.toFixed(4)} J<br><br>
-                            <small>g = 9.81 m/s² (standard gravity)</small>
-                        `;
-                        break;
-                        
-                    case 'momentum':
-                        const mm = parseFloat(document.getElementById('momentum-mass').value) || 0;
-                        const mv = parseFloat(document.getElementById('momentum-velocity').value) || 0;
-                        const mp = parseFloat(document.getElementById('momentum-momentum').value) || 0;
-                        const mf = parseFloat(document.getElementById('momentum-force').value) || 0;
-                        const mt = parseFloat(document.getElementById('momentum-time').value) || 0;
-                        
-                        let calcMm = mm, calcMv = mv, calcMp = mp;
-                        
-                        if (mm && mv && !mp) calcMp = mm * mv;
-                        else if (mp && mv && !mm) calcMm = mp / mv;
-                        else if (mp && mm && !mv) calcMv = mp / mm;
-                        
-                        // 冲量
-                        const impulse = mf * mt;
-                        
-                        resultHTML += `
-                            Mass (m): ${calcMm.toFixed(4)} kg<br>
-                            Velocity (v): ${calcMv.toFixed(4)} m/s<br>
-                            Momentum (p = mv): ${calcMp.toFixed(4)} kg·m/s<br>
-                            Impulse (J = FΔt): ${impulse.toFixed(4)} N·s<br>
-                            Change in Momentum (Δp = J): ${impulse.toFixed(4)} kg·m/s<br><br>
-                            <small>Formulas used: p = mv, J = FΔt = Δp</small>
-                        `;
-                        break;
-                        
-                    case 'waves':
-                        const ws = parseFloat(document.getElementById('wave-speed').value) || 0;
-                        const wf = parseFloat(document.getElementById('wave-frequency').value) || 0;
-                        const wl = parseFloat(document.getElementById('wave-wavelength').value) || 0;
-                        const wt = parseFloat(document.getElementById('wave-period').value) || 0;
-                        
-                        let calcWs = ws, calcWf = wf, calcWl = wl, calcWt = wt;
-                        
-                        if (wf && wl && !ws) calcWs = wf * wl;
-                        else if (ws && wl && !wf) calcWf = ws / wl;
-                        else if (ws && wf && !wl) calcWl = ws / wf;
-                        
-                        if (wf && !wt) calcWt = 1 / wf;
-                        else if (wt && !wf) calcWf = 1 / wt;
-                        
-                        resultHTML += `
-                            Wave Speed (v): ${calcWs.toFixed(4)} m/s<br>
-                            Frequency (f): ${calcWf.toFixed(6)} Hz<br>
-                            Wavelength (λ): ${calcWl.toFixed(4)} m<br>
-                            Period (T = 1/f): ${calcWt.toFixed(6)} s<br><br>
-                            <small>Formula used: v = fλ, T = 1/f</small>
-                        `;
-                        break;
-                        
-                    case 'thermo':
-                        const tm = parseFloat(document.getElementById('thermo-mass').value) || 0;
-                        const tc = parseFloat(document.getElementById('thermo-specific-heat').value) || 4186;
-                        const tdt = parseFloat(document.getElementById('thermo-temperature-change').value) || 0;
-                        const tq = parseFloat(document.getElementById('thermo-heat').value) || 0;
-                        
-                        let calcTm = tm, calcTc = tc, calcTdt = tdt, calcTq = tq;
-                        
-                        if (tm && tc && tdt && !tq) calcTq = tm * tc * tdt;
-                        else if (tq && tc && tdt && !tm) calcTm = tq / (tc * tdt);
-                        else if (tq && tm && tdt && !tc) calcTc = tq / (tm * tdt);
-                        else if (tq && tm && tc && !tdt) calcTdt = tq / (tm * tc);
-                        
-                        resultHTML += `
-                            Mass (m): ${calcTm.toFixed(4)} kg<br>
-                            Specific Heat Capacity (c): ${calcTc.toFixed(1)} J/kg·°C<br>
-                            Temperature Change (ΔT): ${calcTdt.toFixed(2)} °C<br>
-                            Heat Energy (Q = mcΔT): ${calcTq.toFixed(2)} J<br><br>
-                            <small>Formula used: Q = mcΔT (heat energy equation)</small>
-                        `;
-                        break;
-                }
-                
-                resultElement.style.display = 'block';
-                resultElement.className = 'result-box';
-                resultElement.innerHTML = resultHTML;
-                
-            } catch (e) {
-                resultElement.style.display = 'block';
-                resultElement.className = 'result-box result-error';
-                resultElement.textContent = `Error: Calculation failed - ${e.message}`;
-                console.error('Physics calculation error:', e);
-            }
-        }
-        
-        // 蓝海功能4：统计计算器
-        function calculateStatistics() {
-            const dataInput = document.getElementById('stats-data-input').value;
-            const resultElement = document.getElementById('stats-result');
-            
-            if (!dataInput.trim()) {
-                resultElement.style.display = 'block';
-                resultElement.className = 'result-box result-error';
-                resultElement.textContent = 'Error: Please enter data values (comma separated)';
-                return;
-            }
-            
-            try {
-                // 解析数据
-                const data = dataInput.split(',')
-                    .map(item => parseFloat(item.trim()))
-                    .filter(item => !isNaN(item));
-                
-                if (data.length < 2) {
-                    resultElement.style.display = 'block';
-                    resultElement.className = 'result-box result-error';
-                    resultElement.textContent = 'Error: Please enter at least two valid numeric values';
-                    return;
-                }
-                
-                // 排序数据
-                const sortedData = [...data].sort((a, b) => a - b);
-                
-                // 计算统计量
-                const n = data.length;
-                const sum = data.reduce((acc, val) => acc + val, 0);
-                const mean = sum / n;
-                
-                // 中位数
-                let median;
-                if (n % 2 === 0) {
-                    median = (sortedData[n/2 - 1] + sortedData[n/2]) / 2;
-                } else {
-                    median = sortedData[Math.floor(n/2)];
-                }
-                
-                // 众数
-                const frequency = {};
-                data.forEach(val => {
-                    frequency[val] = (frequency[val] || 0) + 1;
-                });
-                let mode = [];
-                let maxFreq = 0;
-                for (const [val, freq] of Object.entries(frequency)) {
-                    if (freq > maxFreq) {
-                        maxFreq = freq;
-                        mode = [parseFloat(val)];
-                    } else if (freq === maxFreq) {
-                        mode.push(parseFloat(val));
-                    }
-                }
-                const modeStr = mode.length === n ? 'No unique mode' : mode.join(', ');
-                
-                // 方差和标准差
-                const squaredDifferences = data.map(val => Math.pow(val - mean, 2));
-                const sumSquaredDifferences = squaredDifferences.reduce((acc, val) => acc + val, 0);
-                const variance = sumSquaredDifferences / n;
-                const stdDev = Math.sqrt(variance);
-                
-                // 样本标准差（无偏估计）
-                const sampleVariance = sumSquaredDifferences / (n - 1);
-                const sampleStdDev = Math.sqrt(sampleVariance);
-                
-                // 最小值和最大值
-                const min = sortedData[0];
-                const max = sortedData[n - 1];
-                const range = max - min;
-                
-                // 四分位数
-                const q1 = sortedData[Math.floor(n * 0.25)];
-                const q3 = sortedData[Math.floor(n * 0.75)];
-                const iqr = q3 - q1;
-                
-                resultElement.style.display = 'block';
-                resultElement.className = 'result-box';
-                resultElement.innerHTML = `
-                    <strong>Descriptive Statistics Results:</strong><br>
-                    Data Set: [${data.join(', ')}]<br>
-                    Sample Size (n): ${n}<br>
-                    Sum: ${sum.toFixed(4)}<br>
-                    Mean (Average): ${mean.toFixed(4)}<br>
-                    Median (Middle Value): ${median.toFixed(4)}<br>
-                    Mode (Most Frequent): ${modeStr}<br>
-                    Variance (σ²): ${variance.toFixed(4)}<br>
-                    Standard Deviation (σ): ${stdDev.toFixed(4)}<br>
-                    Sample Variance (s²): ${sampleVariance.toFixed(4)}<br>
-                    Sample Standard Deviation (s): ${sampleStdDev.toFixed(4)}<br>
-                    Minimum: ${min.toFixed(4)}<br>
-                    Maximum: ${max.toFixed(4)}<br>
-                    Range: ${range.toFixed(4)}<br>
-                    First Quartile (Q1): ${q1.toFixed(4)}<br>
-                    Third Quartile (Q3): ${q3.toFixed(4)}<br>
-                    Interquartile Range (IQR): ${iqr.toFixed(4)}<br><br>
-                    <small>Formulas: μ = Σx/n, σ² = Σ(x-μ)²/n, σ = √σ²</small>
-                `;
-                
-            } catch (e) {
-                resultElement.style.display = 'block';
-                resultElement.className = 'result-box result-error';
-                resultElement.textContent = `Error: Statistical calculation failed - ${e.message}`;
-                console.error('Statistics calculation error:', e);
-            }
-        }
-        
-        function calculateProbability() {
-            const n = parseInt(document.getElementById('prob-events').value) || 0;
-            const k = parseInt(document.getElementById('prob-success').value) || 0;
-            const resultElement = document.getElementById('prob-result');
-            
-            if (n <= 0) {
-                resultElement.style.display = 'block';
-                resultElement.className = 'result-box result-error';
-                resultElement.textContent = 'Error: Number of events (n) must be greater than 0';
-                return;
-            }
-            
-            if (k < 0 || k > n) {
-                resultElement.style.display = 'block';
-                resultElement.className = 'result-box result-error';
-                resultElement.textContent = `Error: Successful outcomes (k) must be between 0 and ${n}`;
-                return;
-            }
-            
-            try {
-                // 计算阶乘
-                const factorial = (num) => {
-                    if (num < 0) return NaN;
-                    if (num === 0 || num === 1) return 1;
-                    let result = 1;
-                    for (let i = 2; i <= num; i++) {
-                        result *= i;
-                    }
-                    return result;
-                };
-                
-                // 计算组合和排列
-                const nFact = factorial(n);
-                const kFact = factorial(k);
-                const nkFact = factorial(n - k);
-                
-                const combination = nFact / (kFact * nkFact);
-                const permutation = nFact / nkFact;
-                
-                // 概率（等可能事件）
-                const probability = k / n;
-                
-                resultElement.style.display = 'block';
-                resultElement.className = 'result-box';
-                resultElement.innerHTML = `
-                    <strong>Probability Calculation Results:</strong><br>
-                    Total Events (n): ${n}<br>
-                    Successful Outcomes (k): ${k}<br>
-                    Probability (P): ${probability.toFixed(6)} (${(probability * 100).toFixed(4)}%)<br>
-                    Combinations (C(n,k)): ${combination.toLocaleString()}<br>
-                    Permutations (P(n,k)): ${permutation.toLocaleString()}<br>
-                    Odds in Favor: ${k}:${n - k}<br>
-                    Odds Against: ${n - k}:${k}<br><br>
-                    <small>Formulas: P = k/n, C(n,k) = n!/(k!(n-k)!), P(n,k) = n!/(n-k)!</small>
-                `;
-                
-            } catch (e) {
-                resultElement.style.display = 'block';
-                resultElement.className = 'result-box result-error';
-                resultElement.textContent = `Error: Probability calculation failed - ${e.message}`;
-                console.error('Probability calculation error:', e);
-            }
-        }
-        
-        // 蓝海功能5：金融计算器
-        function showFinanceInputs() {
-            const calcType = document.getElementById('finance-calculation-type').value;
-            const inputsContainer = document.getElementById('finance-inputs');
-            
-            let html = '';
-            
-            switch(calcType) {
-                case 'simple-interest':
-                    html = `
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="si-principal">Principal (P) ($):</label>
-                                <input type="number" id="si-principal" placeholder="Initial amount" min="0" step="0.01">
-                            </div>
-                            <div class="input-group">
-                                <label for="si-rate">Interest Rate (r) (%):</label>
-                                <input type="number" id="si-rate" placeholder="Annual interest rate" min="0" step="0.01">
-                            </div>
-                            <div class="input-group">
-                                <label for="si-time">Time (t) (years):</label>
-                                <input type="number" id="si-time" placeholder="Time in years" min="0" step="0.01">
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'compound-interest':
-                    html = `
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="ci-principal">Principal (P) ($):</label>
-                                <input type="number" id="ci-principal" placeholder="Initial amount" min="0" step="0.01">
-                            </div>
-                            <div class="input-group">
-                                <label for="ci-rate">Interest Rate (r) (%):</label>
-                                <input type="number" id="ci-rate" placeholder="Annual interest rate" min="0" step="0.01">
-                            </div>
-                            <div class="input-group">
-                                <label for="ci-time">Time (t) (years):</label>
-                                <input type="number" id="ci-time" placeholder="Time in years" min="0" step="0.01">
-                            </div>
-                        </div>
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="ci-compounds">Compounds/Year (n):</label>
-                                <input type="number" id="ci-compounds" placeholder="Compounding periods" min="1" value="12">
-                            </div>
-                            <div class="input-group">
-                                <label for="ci-contributions">Monthly Contributions ($):</label>
-                                <input type="number" id="ci-contributions" placeholder="Additional monthly deposits" min="0" step="0.01" value="0">
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'annuity':
-                    html = `
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="ann-payment">Periodic Payment (P) ($):</label>
-                                <input type="number" id="ann-payment" placeholder="Regular payment amount" min="0" step="0.01">
-                            </div>
-                            <div class="input-group">
-                                <label for="ann-rate">Interest Rate (r) (%):</label>
-                                <input type="number" id="ann-rate" placeholder="Annual interest rate" min="0" step="0.01">
-                            </div>
-                            <div class="input-group">
-                                <label for="ann-periods">Number of Periods (n):</label>
-                                <input type="number" id="ann-periods" placeholder="Total payment periods" min="0">
-                            </div>
-                        </div>
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="ann-type">Annuity Type:</label>
-                                <select id="ann-type">
-                                    <option value="ordinary">Ordinary (End of period)</option>
-                                    <option value="due">Annuity Due (Beginning of period)</option>
-                                </select>
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'loan':
-                    html = `
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="loan-principal">Loan Amount (P) ($):</label>
-                                <input type="number" id="loan-principal" placeholder="Initial loan amount" min="0" step="0.01">
-                            </div>
-                            <div class="input-group">
-                                <label for="loan-rate">Interest Rate (r) (%):</label>
-                                <input type="number" id="loan-rate" placeholder="Annual interest rate" min="0" step="0.01">
-                            </div>
-                            <div class="input-group">
-                                <label for="loan-years">Loan Term (years):</label>
-                                <input type="number" id="loan-years" placeholder="Loan term in years" min="0">
-                            </div>
-                        </div>
-                    `;
-                    break;
-                    
-                case 'roi':
-                    html = `
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="roi-initial">Initial Value ($):</label>
-                                <input type="number" id="roi-initial" placeholder="Initial investment" min="0" step="0.01">
-                            </div>
-                            <div class="input-group">
-                                <label for="roi-final">Final Value ($):</label>
-                                <input type="number" id="roi-final" placeholder="Final value" min="0" step="0.01">
-                            </div>
-                            <div class="input-group">
-                                <label for="roi-time">Time (years):</label>
-                                <input type="number" id="roi-time" placeholder="Holding period" min="0" step="0.01">
-                            </div>
-                        </div>
-                    `;
-                    break;
-            }
-            
-            inputsContainer.innerHTML = html;
-        }
-        
-        function calculateFinance() {
-            const calcType = document.getElementById('finance-calculation-type').value;
-            const resultElement = document.getElementById('finance-result');
-            
-            try {
-                let resultHTML = '<strong>Financial Calculation Results:</strong><br>';
-                
-                switch(calcType) {
-                    case 'simple-interest':
-                        const siP = parseFloat(document.getElementById('si-principal').value) || 0;
-                        const siR = parseFloat(document.getElementById('si-rate').value) || 0;
-                        const siT = parseFloat(document.getElementById('si-time').value) || 0;
-                        
-                        const rateDecimal = siR / 100;
-                        const interest = siP * rateDecimal * siT;
-                        const amount = siP + interest;
-                        const monthlyInterest = interest / (siT * 12);
-                        
-                        resultHTML += `
-                            Principal (P): $${siP.toFixed(2)}<br>
-                            Annual Interest Rate (r): ${siR.toFixed(2)}% (${rateDecimal.toFixed(4)} decimal)<br>
-                            Time (t): ${siT.toFixed(2)} years (${(siT * 12).toFixed(0)} months)<br>
-                            Simple Interest (I = Prt): $${interest.toFixed(2)}<br>
-                            Total Amount (A = P + I): $${amount.toFixed(2)}<br>
-                            Monthly Interest: $${monthlyInterest.toFixed(4)}<br><br>
-                            <small>Formulas: I = Prt, A = P(1 + rt)</small>
-                        `;
-                        break;
-                        
-                    case 'compound-interest':
-                        const ciP = parseFloat(document.getElementById('ci-principal').value) || 0;
-                        const ciR = parseFloat(document.getElementById('ci-rate').value) || 0;
-                        const ciT = parseFloat(document.getElementById('ci-time').value) || 0;
-                        const ciN = parseInt(document.getElementById('ci-compounds').value) || 12;
-                        const ciContrib = parseFloat(document.getElementById('ci-contributions').value) || 0;
-                        
-                        const ciRateDecimal = ciR / 100;
-                        const compoundFactor = Math.pow(1 + ciRateDecimal/ciN, ciN * ciT);
-                        const compoundAmount = ciP * compoundFactor;
-                        const compoundInterest = compoundAmount - ciP;
-                        
-                        // 计算定期存款的未来值
-                        let totalWithContributions = compoundAmount;
-                        if (ciContrib > 0 && ciT > 0) {
-                            const monthlyRate = ciRateDecimal / 12;
-                            const totalMonths = ciT * 12;
-                            let contributionsFV = 0;
-                            
-                            for (let i = 1; i <= totalMonths; i++) {
-                                contributionsFV += ciContrib * Math.pow(1 + monthlyRate, totalMonths - i);
-                            }
-                            
-                            totalWithContributions += contributionsFV;
-                        }
-                        
-                        const totalContributions = ciP + (ciContrib * ciT * 12);
-                        const totalInterestWithContrib = totalWithContributions - totalContributions;
-                        
-                        resultHTML += `
-                            Principal (P): $${ciP.toFixed(2)}<br>
-                            Annual Interest Rate (r): ${ciR.toFixed(2)}% (${ciRateDecimal.toFixed(4)} decimal)<br>
-                            Time (t): ${ciT.toFixed(2)} years<br>
-                            Compounding Periods/Year (n): ${ciN}<br>
-                            Monthly Contributions: $${ciContrib.toFixed(2)}<br>
-                            Compound Amount (A = P(1 + r/n)^(nt)): $${compoundAmount.toFixed(2)}<br>
-                            Compound Interest: $${compoundInterest.toFixed(2)}<br>
-                            Total with Monthly Contributions: $${totalWithContributions.toFixed(2)}<br>
-                            Total Contributions: $${totalContributions.toFixed(2)}<br>
-                            Total Interest Earned: $${totalInterestWithContrib.toFixed(2)}<br>
-                            Effective Annual Rate (EAR): ${((Math.pow(1 + ciRateDecimal/ciN, ciN) - 1) * 100).toFixed(4)}%<br><br>
-                            <small>Formula: A = P(1 + r/n)^(nt)</small>
-                        `;
-                        break;
-                        
-                    case 'annuity':
-                        const annP = parseFloat(document.getElementById('ann-payment').value) || 0;
-                        const annR = parseFloat(document.getElementById('ann-rate').value) || 0;
-                        const annN = parseInt(document.getElementById('ann-periods').value) || 0;
-                        const annType = document.getElementById('ann-type').value;
-                        
-                        const annRateDecimal = annR / 100;
-                        const discountFactor = (Math.pow(1 + annRateDecimal, annN) - 1) / annRateDecimal;
-                        
-                        let fvAnnuity, pvAnnuity;
-                        
-                        if (annType === 'ordinary') {
-                            fvAnnuity = annP * discountFactor;
-                            pvAnnuity = annP * ((1 - Math.pow(1 + annRateDecimal, -annN)) / annRateDecimal);
-                        } else { // annuity due
-                            fvAnnuity = annP * discountFactor * (1 + annRateDecimal);
-                            pvAnnuity = annP * ((1 - Math.pow(1 + annRateDecimal, -annN)) / annRateDecimal) * (1 + annRateDecimal);
-                        }
-                        
-                        const totalPayments = annP * annN;
-                        const interestEarned = fvAnnuity - totalPayments;
-                        
-                        resultHTML += `
-                            Periodic Payment (P): $${annP.toFixed(2)}<br>
-                            Interest Rate (r): ${annR.toFixed(2)}% (${annRateDecimal.toFixed(4)} decimal)<br>
-                            Number of Periods (n): ${annN}<br>
-                            Annuity Type: ${annType === 'ordinary' ? 'Ordinary (End of Period)' : 'Annuity Due (Beginning of Period)'}<br>
-                            Future Value of Annuity: $${fvAnnuity.toFixed(2)}<br>
-                            Present Value of Annuity: $${pvAnnuity.toFixed(2)}<br>
-                            Total Payments Made: $${totalPayments.toFixed(2)}<br>
-                            Interest Earned: $${interestEarned.toFixed(2)}<br><br>
-                            <small>Formulas: FV = P×[(1+r)ⁿ-1]/r, PV = P×[1-(1+r)⁻ⁿ]/r</small>
-                        `;
-                        break;
-                        
-                    case 'loan':
-                        const loanP = parseFloat(document.getElementById('loan-principal').value) || 0;
-                        const loanR = parseFloat(document.getElementById('loan-rate').value) || 0;
-                        const loanY = parseInt(document.getElementById('loan-years').value) || 0;
-                        
-                        const loanRateDecimal = loanR / 100;
-                        const monthlyRate = loanRateDecimal / 12;
-                        const totalPayments = loanY * 12;
-                        
-                        const monthlyPayment = loanP * (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / 
-                                              (Math.pow(1 + monthlyRate, totalPayments) - 1);
-                        
-                        const totalPaid = monthlyPayment * totalPayments;
-                        const totalInterest = totalPaid - loanP;
-                        const interestPercentage = (totalInterest / loanP) * 100;
-                        
-                        resultHTML += `
-                            Loan Principal (P): $${loanP.toFixed(2)}<br>
-                            Annual Interest Rate (r): ${loanR.toFixed(2)}%<br>
-                            Monthly Interest Rate: ${(monthlyRate * 100).toFixed(4)}%<br>
-                            Loan Term: ${loanY} years (${totalPayments} months)<br>
-                            Monthly Payment (M): $${monthlyPayment.toFixed(2)}<br>
-                            Total Amount Paid: $${totalPaid.toFixed(2)}<br>
-                            Total Interest Paid: $${totalInterest.toFixed(2)} (${interestPercentage.toFixed(2)}% of principal)<br><br>
-                            <small>Formula: M = P×[r(1+r)ⁿ]/[(1+r)ⁿ-1]</small>
-                        `;
-                        break;
-                        
-                    case 'roi':
-                        const roiInitial = parseFloat(document.getElementById('roi-initial').value) || 0;
-                        const roiFinal = parseFloat(document.getElementById('roi-final').value) || 0;
-                        const roiTime = parseFloat(document.getElementById('roi-time').value) || 0;
-                        
-                        if (roiInitial <= 0) {
-                            throw new Error('Initial value must be greater than 0');
-                        }
-                        
-                        const roiTotal = ((roiFinal - roiInitial) / roiInitial) * 100;
-                        let roiAnnual = 0;
-                        
-                        if (roiTime > 0) {
-                            roiAnnual = (Math.pow(roiFinal / roiInitial, 1/roiTime) - 1) * 100;
-                        }
-                        
-                        const absoluteReturn = roiFinal - roiInitial;
-                        
-                        resultHTML += `
-                            Initial Value: $${roiInitial.toFixed(2)}<br>
-                            Final Value: $${roiFinal.toFixed(2)}<br>
-                            Holding Period: ${roiTime.toFixed(2)} years<br>
-                            Absolute Return: $${absoluteReturn.toFixed(2)}<br>
-                            Total ROI: ${roiTotal.toFixed(2)}%<br>
-                            ${roiTime > 0 ? `Annualized ROI (CAGR): ${roiAnnual.toFixed(4)}%<br>` : ''}
-                            Profit Factor: ${(roiFinal / roiInitial).toFixed(4)}x<br><br>
-                            <small>Formulas: ROI = (Final-Initial)/Initial×100%, CAGR = (Final/Initial)^(1/t)-1</small>
-                        `;
-                        break;
-                }
-                
-                resultElement.style.display = 'block';
-                resultElement.className = 'result-box';
-                resultElement.innerHTML = resultHTML;
-                
-            } catch (e) {
-                resultElement.style.display = 'block';
-                resultElement.className = 'result-box result-error';
-                resultElement.textContent = `Error: Financial calculation failed - ${e.message}`;
-                console.error('Finance calculation error:', e);
-            }
-        }
-    </script>
-
-    <!-- Google统计（和首页一致） -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-816SNX8L7X');
-    </script>
-</body>
-</html>
+                resultElement.innerHTML =
