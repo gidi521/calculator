@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Statistics Calculator Online | Mean Median Mode Variance Calculator</title>
-    <meta name="description" content="Free online Basic Statistics Calculator to calculate mean, median, mode, standard deviation, variance, sum, range, minimum and maximum with one click." />
-    <meta itemprop="description" content="Free online Basic Statistics Calculator to calculate mean, median, mode, standard deviation, variance, sum, range, minimum and maximum with one click." />
+    <title>Basic Statistics Calculator | Mean Median Mode Variance STD Calculator</title>
+    <meta name="description" content="Free online basic statistics calculator to calculate mean, median, mode, standard deviation, variance, sum, range, min & max for data sets with one click." />
+    <meta itemprop="description" content="Basic statistics calculator for mean, median, mode, variance, standard deviation, sum, count, range, minimum and maximum values for students and researchers." />
     <meta name="author" content="Wide Calculator" />
     <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
@@ -17,200 +17,301 @@
     <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
     <script src="js/functions.js" type="text/javascript"></script>
     <style>
+        /* Statistics Calculator Styles - Match Acceleration Converter UI */
         #statistics-calculator {
-            margin-top: -10px;
-            margin-bottom: -10px;
+            margin-top: 20px;
+            margin-bottom: 30px;
             padding: 30px;
             border: 1px solid #ccc;
             border-radius: 10px;
             background-color: #f9f9f9;
             font-size: 16px;
             text-align: center;
-            max-width: 400px;
+            max-width: 500px;
             margin: 0 auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
+
         #statistics-calculator label {
-            font-weight: bold;
-            margin-top: 10px;
+            font-weight: 600;
+            margin-top: 15px;
             display: block;
+            text-align: left;
+            color: #333;
         }
-        #statistics-calculator textarea {
+
+        #statistics-calculator input,
+        #statistics-calculator textarea,
+        #statistics-calculator select {
             width: 100%;
-            margin-top: 10px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            height: 100px;
+            margin-top: 8px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 15px;
+            box-sizing: border-box;
         }
+
         #statistics-calculator button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007bff;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background-color: #0066cc;
             color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
             font-size: 16px;
+            transition: background-color 0.2s;
+            width: 100%;
         }
+
         #statistics-calculator button:hover {
-            background-color: #0056b3;
+            background-color: #0052a3;
         }
-        #statistics-results {
-            margin-top: 20px;
+
+        #statistics-result {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 6px;
+            background-color: #e8f4ff;
+            font-weight: 600;
+            color: #004085;
+            display: none;
+            text-align: left;
+            line-height: 1.7;
         }
-        #statistics-results table {
+
+        .statistics-guide {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: left;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .statistics-guide h2 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 20px;
+        }
+
+        .statistics-guide h3 {
+            color: #0066cc;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .statistics-guide ol, .statistics-guide ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .stats-table {
             width: 100%;
             border-collapse: collapse;
+            margin: 20px 0;
         }
-        #statistics-results th, #statistics-results td {
-            border: 1px solid #ccc;
-            padding: 8px;
+
+        .stats-table th, .stats-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
         }
-        #statistics-results th {
-            background-color: #f2f2f2;
+
+        .stats-table th {
+            background-color: #f2f8ff;
+            color: #0066cc;
         }
     </style>
 </head>
+
 <body>
     <div id="wrapper">
+        <!-- 统一头部 -->
         <div id="header"></div>
+
         <div class="main">
-            <div class="shell">
-                <div class="cl">&nbsp;</div>
-                <h1 style="text-align:center; margin:20px 0;">Basic Statistics Calculator</h1>
-                <div id="statistics-calculator" class="text-center">
-                    <h2>Statistics Calculator</h2>
-                    <label for="numbers">Enter Numbers (comma separated):</label>
-                    <textarea id="numbers" placeholder="e.g. 1, 2, 3, 4, 5"></textarea>
-                    <br />
-                    <button onclick="calculateStatistics()">Calculate Statistics</button>
-                    <div id="statistics-results"></div>
-                </div>
+            <div id="statistics-calculator" class="text-center">
+                <h2>Basic Statistics Calculator</h2>
 
-                <div id="content" class="text-center" style="padding:20px 0;">
-                    <h2>Basic Statistics Calculator Online Free</h2><br>
-                    <p>This free Basic Statistics Calculator helps you compute mean, median, mode, standard deviation, variance, range, sum, count, minimum and maximum values instantly.</p>
-                    <br>
-                    <h3>What is a Basic Statistics Calculator?</h3><br>
-                    <p>A Basic Statistics Calculator is a free online tool to analyze a set of data by calculating key statistical values including average, median, mode, standard deviation, variance, and range.</p>
-                    <br>
-                    <h3>Common Long Tail Searches (蓝海长尾词)</h3><br>
-                    <ul style="list-style:none; text-align:left; max-width:600px; margin:0 auto;">
-                        <li>✔ calculator for mean median mode and range</li>
-                        <li>✔ standard deviation and variance calculator free</li>
-                        <li>✔ online statistics calculator for data analysis</li>
-                        <li>✔ calculate basic statistics for a data set</li>
-                        <li>✔ free online calculator for mean median mode</li>
-                        <li>✔ simple statistics calculator for students</li>
-                        <li>✔ descriptive statistics calculator online</li>
-                    </ul>
-                    <br>
-                    <h3>How to Use This Statistics Calculator</h3><br>
-                    <ol style="text-align:left; max-width:600px; margin:0 auto;">
-                        <li>Enter your numbers separated by commas</li>
-                        <li>Click "Calculate Statistics" button</li>
-                        <li>View all results including mean, median, mode, std dev, variance</li>
-                    </ol>
-                    <br>
-                </div>
+                <label for="dataInput">Enter Data Set (comma separated):</label>
+                <textarea id="dataInput" rows="4" placeholder="Example: 1,2,3,4,5,6,7,8,9,10"></textarea>
 
-                <!-- 相关计算器推荐（SEO + 内链 + 流量提升） -->
-                <section class="cols" style="margin-top:30px;">
-                    <div class="col">
-                        <h3><strong>Math Calculators</strong></h3>
-                        <ul>
-                            <li><a href="ScientificCalculator.html">Scientific Calculator</a></li>
-                            <li><a href="FractionCalculator.html">Fraction Calculator</a></li>
-                            <li><a href="PercentageCalculator.html">Percentage Calculator</a></li>
-                            <li><a href="TriangleCalculator.html">Triangle Calculator</a></li>
-                        </ul>
-                    </div>
-                    <div class="col">
-                        <h3><strong>Data & Stats Tools</strong></h3>
-                        <ul>
-                            <li><a href="BasicStatisticsCalculator.html">Basic Statistics Calculator</a></li>
-                            <li><a href="StandardDeviationCalculator.html">Standard Deviation Calculator</a></li>
-                            <li><a href="RandomNumberGenerator.html">Random Number Generator</a></li>
-                            <li><a href="CharacterCounter.html">Character Counter</a></li>
-                        </ul>
-                    </div>
-                    <div class="col">
-                        <h3><strong>Converters</strong></h3>
-                        <ul>
-                            <li><a href="LengthandDistanceConverter.html">Length Converter</a></li>
-                            <li><a href="LiquidVolumeConverter.html">Volume Converter</a></li>
-                            <li><a href="MassWeightConverter.html">Weight Converter</a></li>
-                            <li><a href="DataStorageConverter.html">Data Storage Converter</a></li>
-                        </ul>
-                    </div>
-                    <div class="cl">&nbsp;</div>
-                </section>
+                <button onclick="calculateStatistics()">Calculate Statistics</button>
+
+                <div id="statistics-result"></div>
+            </div>
+
+            <!-- 蓝海长尾内容 + 专业指南 -->
+            <div class="statistics-guide">
+                <h2>Basic Statistics Calculator Guide & Reference</h2>
+                <p>This free online basic statistics calculator computes all essential descriptive statistics for any numerical data set, including mean, median, mode, standard deviation, variance, sum, range, minimum, and maximum values.</p>
+
+                <h3>How to Use This Calculator:</h3>
+                <ol>
+                    <li>Enter your numbers separated by commas</li>
+                    <li>Click “Calculate Statistics”</li>
+                    <li>View full statistical results instantly</li>
+                </ol>
+
+                <h3>What This Calculator Computes:</h3>
+                <ul>
+                    <li>Minimum & Maximum Values</li>
+                    <li>Range (Max − Min)</li>
+                    <li>Count (Number of data points)</li>
+                    <li>Sum (Total of all values)</li>
+                    <li>Mean (Average)</li>
+                    <li>Median (Middle value)</li>
+                    <li>Mode (Most frequent value)</li>
+                    <li>Variance (Population & Sample)</li>
+                    <li>Standard Deviation (STD)</li>
+                </ul>
+
+                <h3>Common Long-Tail Search Terms:</h3>
+                <ul>
+                    <li>calculator for mean median mode range and standard deviation</li>
+                    <li>free online statistics calculator for large data sets</li>
+                    <li>descriptive statistics calculator with variance</li>
+                    <li>population vs sample standard deviation calculator</li>
+                    <li>statistics calculator for homework and research</li>
+                    <li>mean median mode calculator for ungrouped data</li>
+                </ul>
+
+                <h3>Statistics Formulas Used:</h3>
+                <div class="stats-table">
+                    <tr>
+                        <th>Statistic</th>
+                        <th>Formula</th>
+                    </tr>
+                    <tr>
+                        <td>Mean</td>
+                        <td>μ = Σx / n</td>
+                    </tr>
+                    <tr>
+                        <td>Variance (Population)</td>
+                        <td>σ² = Σ(x−μ)² / n</td>
+                    </tr>
+                    <tr>
+                        <td>Standard Deviation</td>
+                        <td>σ = √Variance</td>
+                    </tr>
+                    <tr>
+                        <td>Range</td>
+                        <td>Max − Min</td>
+                    </tr>
+                </div>
             </div>
         </div>
-        <div id="footer-push"></div>
-    </div>
-    <div id="footer-placeholder"></div>
 
-    <script>
-        fetch("/header.html").then(res=>res.text()).then(data=>{document.getElementById("header").innerHTML=data;});
-        fetch("/footer.html").then(res=>res.text()).then(data=>{document.getElementById("footer-placeholder").innerHTML=data;});
+        <!-- 统一底部 -->
+        <div id="footer-placeholder"></div>
 
-        function calculateStatistics() {
-            var numbers = document.getElementById('numbers').value.split(',').map(Number);
-            numbers.sort((a, b) => a - b);
-            var n = numbers.length;
-            var min = Math.min(...numbers);
-            var max = Math.max(...numbers);
-            var range = max - min;
-            var sum = numbers.reduce((a, b) => a + b, 0);
-            var mean = sum / n;
-            var median = (n % 2 === 0) ? (numbers[n / 2 - 1] + numbers[n / 2]) / 2 : numbers[Math.floor(n / 2)];
-            var mode = calculateMode(numbers);
-            var variance = numbers.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / n;
-            var stdDev = Math.sqrt(variance);
+        <!-- 加载头尾 -->
+        <script>
+            fetch("/header.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+            });
 
-            var results = `
-                <table>
-                    <tr><th>Minimum</th><td>${min}</td></tr>
-                    <tr><th>Maximum</th><td>${max}</td></tr>
-                    <tr><th>Range</th><td>${range}</td></tr>
-                    <tr><th>Count</th><td>${n}</td></tr>
-                    <tr><th>Sum</th><td>${sum}</td></tr>
-                    <tr><th>Mean</th><td>${mean.toFixed(2)}</td></tr>
-                    <tr><th>Median</th><td>${median}</td></tr>
-                    <tr><th>Mode</th><td>${mode}</td></tr>
-                    <tr><th>Standard Deviation</th><td>${stdDev.toFixed(2)}</td></tr>
-                    <tr><th>Variance</th><td>${variance.toFixed(2)}</td></tr>
-                </table>
-            `;
-            document.getElementById('statistics-results').innerHTML = results;
-        }
+            fetch("/footer.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("footer-placeholder").innerHTML = data;
+            });
+        </script>
 
-        function calculateMode(numbers) {
-            var frequency = {};
-            var maxFreq = 0;
-            var modes = [];
-            for (var number of numbers) {
-                frequency[number] = (frequency[number] || 0) + 1;
-                if (frequency[number] > maxFreq) {
-                    maxFreq = frequency[number];
-                    modes = [number];
-                } else if (frequency[number] === maxFreq) {
-                    modes.push(number);
+        <!-- 统计计算核心函数 -->
+        <script>
+            function calculateStatistics() {
+                const input = document.getElementById('dataInput').value.trim();
+                const resultBox = document.getElementById('statistics-result');
+
+                if (!input) {
+                    resultBox.style.display = 'block';
+                    resultBox.style.backgroundColor = '#f8d7da';
+                    resultBox.style.color = '#721c24';
+                    resultBox.innerHTML = 'Error: Please enter your data set first.';
+                    return;
                 }
-            }
-            if (modes.length === numbers.length) modes = [];
-            return modes.length === 1 ? modes[0] : modes.join(', ') || 'None';
-        }
-    </script>
 
-    <!-- Google 统计 -->
-    <script async src="https://www.googgtagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-816SNX8L7X');
-    </script>
+                // 解析数据
+                let data = input.split(',')
+                    .map(item => parseFloat(item.trim()))
+                    .filter(val => !isNaN(val));
+
+                if (data.length === 0) {
+                    resultBox.style.display = 'block';
+                    resultBox.style.backgroundColor = '#f8d7da';
+                    resultBox.style.color = '#721c24';
+                    resultBox.innerHTML = 'Error: No valid numbers found.';
+                    return;
+                }
+
+                // 排序
+                let sorted = [...data].sort((a, b) => a - b);
+                let n = data.length;
+                let min = Math.min(...data);
+                let max = Math.max(...data);
+                let range = max - min;
+                let sum = data.reduce((a, b) => a + b, 0);
+                let mean = sum / n;
+
+                // 中位数
+                let median;
+                if (n % 2 === 0) {
+                    median = (sorted[n/2 - 1] + sorted[n/2]) / 2;
+                } else {
+                    median = sorted[Math.floor(n/2)];
+                }
+
+                // 众数
+                let freq = {};
+                let maxFreq = 0;
+                let modes = [];
+                data.forEach(num => {
+                    freq[num] = (freq[num] || 0) + 1;
+                    if (freq[num] > maxFreq) {
+                        maxFreq = freq[num];
+                        modes = [num];
+                    } else if (freq[num] === maxFreq) {
+                        modes.push(num);
+                    }
+                });
+                if (maxFreq === 1) modes = ['None'];
+
+                // 方差 & 标准差
+                let variance = data.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) / n;
+                let stdDev = Math.sqrt(variance);
+
+                // 输出结果
+                resultBox.style.display = 'block';
+                resultBox.style.backgroundColor = '#e8f4ff';
+                resultBox.style.color = '#004085';
+                resultBox.innerHTML = `
+                    ✅ Count: ${n}<br>
+                    ✅ Min: ${min}<br>
+                    ✅ Max: ${max}<br>
+                    ✅ Range: ${range.toFixed(4)}<br>
+                    ✅ Sum: ${sum.toFixed(4)}<br>
+                    ✅ Mean: ${mean.toFixed(4)}<br>
+                    ✅ Median: ${median.toFixed(4)}<br>
+                    ✅ Mode: ${modes.join(', ')}<br>
+                    ✅ Variance: ${variance.toFixed(4)}<br>
+                    ✅ Standard Deviation: ${stdDev.toFixed(4)}
+                `;
+            }
+        </script>
+
+        <!-- Google 统计 -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-816SNX8L7X');
+        </script>
+    </div>
 </body>
 </html>
