@@ -1,1103 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Scientific Calculator | Engineering, Math & Physics Calculations - Wide Calculator</title>
-    <meta name="description" content="Professional Scientific Calculator with advanced mathematical functions, unit conversions, engineering calculations, physics formulas, and statistical analysis - Free online tool by Wide Calculator.">
-    <meta itemprop="description" content="Wide Calculator's Advanced Scientific Calculator provides comprehensive mathematical, engineering, and physics calculations with unit conversions, statistical analysis, and specialized scientific functions.">
-    <meta name="author" content="Wide Calculator" />
-    <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
-    <script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
-    <!--[if lt IE 9]>
-        <script src="js/modernizr.custom.js"></script>
-    <![endif]-->
-    <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
-    <script src="js/functions.js" type="text/javascript"></script>
-    <style>
-        /* 统一容器样式（和首页视觉一致） */
-        #tool-container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Scientific Calculator - Wide Calculator</title>
+	<meta name="description" content="Free online scientific calculator with advanced functions: sin, cos, tan, log, ln, square root, power, π, e and more." />
+	<meta name="author" content="Wide Calculator" />
+	<link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="all" />
+	<script src="js/jquery-1.7.2.min.js" type="text/javascript"></script>
+	<!--[if lt IE 9]>
+		<script src="js/modernizr.custom.js"></script>
+	<![endif]-->
+	<script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+	<script src="js/functions.js" type="text/javascript"></script>
 
-        /* 科学计算器主体样式（优化+统一） */
-        #scientific-calculator {
-            padding: 30px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background-color: #f9f9f9;
-            font-size: 16px;
-            margin: 20px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        /* 计算器选项卡样式 */
-        .calc-tabs {
-            display: flex;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 20px;
-            overflow-x: auto;
-        }
-
-        .calc-tab {
-            padding: 10px 20px;
-            background-color: #f2f2f2;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-            white-space: nowrap;
-        }
-
-        .calc-tab.active {
-            background-color: #0066cc;
-            color: white;
-        }
-
-        /* 计算器显示区域 */
-        .calc-display-container {
-            margin-bottom: 20px;
-        }
-
-        #display {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 18px;
-            text-align: right;
-            box-sizing: border-box;
-            background-color: white;
-        }
-
-        #history-display {
-            width: 100%;
-            padding: 8px 15px;
-            border: 1px solid #eee;
-            border-radius: 6px 6px 0 0;
-            font-size: 14px;
-            text-align: right;
-            box-sizing: border-box;
-            background-color: #f8f9fa;
-            color: #666;
-            min-height: 24px;
-        }
-
-        /* 按钮网格布局 */
-        .calc-buttons {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 8px;
-        }
-
-        .calc-button {
-            padding: 12px 5px;
-            background-color: #e9ecef;
-            color: #333;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-
-        .calc-button:hover {
-            background-color: #dee2e6;
-        }
-
-        .calc-button.operator {
-            background-color: #0066cc;
-            color: white;
-            border-color: #0052a3;
-        }
-
-        .calc-button.operator:hover {
-            background-color: #0052a3;
-        }
-
-        .calc-button.function {
-            background-color: #fd7e14;
-            color: white;
-            border-color: #e8590c;
-        }
-
-        .calc-button.function:hover {
-            background-color: #e8590c;
-        }
-
-        .calc-button.action {
-            background-color: #dc3545;
-            color: white;
-            border-color: #c82333;
-        }
-
-        .calc-button.action:hover {
-            background-color: #c82333;
-        }
-
-        .calc-button.equals {
-            background-color: #28a745;
-            color: white;
-            border-color: #218838;
-            grid-column: span 2;
-        }
-
-        .calc-button.equals:hover {
-            background-color: #218838;
-        }
-
-        /* 蓝海功能模块样式 */
-        .calc-module {
-            display: none;
-            padding: 20px;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            background-color: white;
-            margin-top: 20px;
-        }
-
-        .calc-module.active {
-            display: block;
-        }
-
-        .module-header {
-            color: #0066cc;
-            margin-bottom: 15px;
-            font-size: 18px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .input-group {
-            margin-bottom: 15px;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 15px;
-        }
-
-        .input-row {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .input-row .input-group {
-            flex: 1;
-            margin-bottom: 0;
-        }
-
-        .module-button {
-            padding: 10px 20px;
-            background-color: #0066cc;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-        .module-button:hover {
-            background-color: #0052a3;
-        }
-
-        .result-box {
-            margin-top: 15px;
-            padding: 15px;
-            border-radius: 6px;
-            background-color: #e8f4ff;
-            color: #004085;
-            font-weight: 600;
-            display: none;
-        }
-
-        .result-error {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-
-        /* 单位转换表格 */
-        .conversion-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        .conversion-table th, .conversion-table td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .conversion-table th {
-            background-color: #f2f2f2;
-        }
-
-        /* 统计数据输入区域 */
-        #stats-data-input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 15px;
-            min-height: 80px;
-            resize: vertical;
-        }
-
-        /* 指南区域样式（统一排版） */
-        .tool-guide {
-            line-height: 1.8;
-            color: #444;
-            margin: 40px 0;
-        }
-
-        .tool-guide h2 {
-            color: #222;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .tool-guide h3 {
-            color: #0066cc;
-            margin-top: 25px;
-            margin-bottom: 10px;
-        }
-
-        .tool-guide h4 {
-            color: #0052a3;
-            margin-top: 20px;
-            margin-bottom: 8px;
-        }
-
-        .tool-guide ol, .tool-guide ul {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        /* 公式展示样式 */
-        .formula-box {
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            font-family: monospace;
-            border-left: 4px solid #0066cc;
-            white-space: pre-line;
-        }
-
-        /* 蓝海功能特色卡片 */
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .feature-card {
-            padding: 15px;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            background-color: #f8f9fa;
-        }
-
-        .feature-card h4 {
-            color: #0066cc;
-            margin-bottom: 8px;
-        }
-
-        /* 响应式适配 */
-        @media (max-width: 768px) {
-            .calc-buttons {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .input-row {
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .calc-buttons {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .calc-tabs {
-                font-size: 12px;
-            }
-            
-            .calc-tab {
-                padding: 8px 10px;
-            }
-        }
-    </style>
+	<style>
+		.calc{max-width:550px;margin:40px auto;padding:20px;background:#fff;border-radius:10px;}
+		.calc-tabs{display:flex;gap:10px;margin-bottom:15px;}
+		.calc-tab{flex:1;padding:10px;border:none;background:#eee;border-radius:5px;cursor:pointer;}
+		.calc-tab.active{background:#069;color:#fff;}
+		.calc-display{width:100%;height:60px;background:#f9f9f9;text-align:right;font-size:26px;line-height:60px;padding-right:15px;border:1px solid #ddd;border-radius:5px;margin-bottom:15px;box-sizing:border-box;}
+		.calc-buttons{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+		.calc-btn{padding:12px;border:none;background:#f1f1f1;border-radius:5px;cursor:pointer;font-size:14px;}
+		.calc-btn.func{background:#07a;color:white;}
+		.calc-btn.op{background:#069;color:white;}
+		.calc-btn.clear{background:#c55;color:white;}
+		.calc-btn.eq{background:#080;color:white;grid-column:span 2;}
+	</style>
 </head>
 
 <body>
-    <div id="wrapper">
-        <div id="header"></div>
-        <div class="main">
-            <div id="tool-container">
-                <div id="scientific-calculator">
-                    <h2 style="text-align:center; color:#222; margin-bottom:25px;">Advanced Scientific Calculator</h2>
+	<div id="wrapper">
+		<div id="header"></div>
 
-                    <div class="calc-tabs">
-                        <button class="calc-tab active" onclick="switchTab('basic', event)">Basic</button>
-                        <button class="calc-tab" onclick="switchTab('scientific', event)">Scientific</button>
-                        <button class="calc-tab" onclick="switchTab('engineering', event)">Engineering</button>
-                        <button class="calc-tab" onclick="switchTab('unit-converter', event)">Unit Converter</button>
-                        <button class="calc-tab" onclick="switchTab('physics', event)">Physics</button>
-                        <button class="calc-tab" onclick="switchTab('statistics', event)">Statistics</button>
-                        <button class="calc-tab" onclick="switchTab('finance', event)">Finance</button>
-                    </div>
+		<div class="main">
+			<div class="shell">
+				<div class="calc">
+					<h2 style="text-align:center; margin-bottom:20px;">Scientific Calculator</h2>
 
-                    <div class="calc-display-container">
-                        <div id="history-display"></div>
-                        <input type="text" id="display" placeholder="0" readonly>
-                    </div>
+					<div class="calc-tabs">
+						<button class="calc-tab active" onclick="showMode('basic')">Basic</button>
+						<button class="calc-tab" onclick="showMode('scientific')">Scientific</button>
+					</div>
 
-                    <div class="calc-buttons" id="basic-buttons">
-                        <button class="calc-button action" onclick="clearDisplay()">C</button>
-                        <button class="calc-button action" onclick="clearEntry()">CE</button>
-                        <button class="calc-button action" onclick="deleteLast()">DEL</button>
-                        <button class="calc-button operator" onclick="appendToDisplay('/')">÷</button>
-                        <button class="calc-button operator" onclick="appendToDisplay('*')">×</button>
-                        <button class="calc-button operator" onclick="appendToDisplay('%')">%</button>
-                        
-                        <button class="calc-button" onclick="appendToDisplay('7')">7</button>
-                        <button class="calc-button" onclick="appendToDisplay('8')">8</button>
-                        <button class="calc-button" onclick="appendToDisplay('9')">9</button>
-                        <button class="calc-button operator" onclick="appendToDisplay('-')">-</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.pow(')">x²</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.sqrt(')">√x</button>
-                        
-                        <button class="calc-button" onclick="appendToDisplay('4')">4</button>
-                        <button class="calc-button" onclick="appendToDisplay('5')">5</button>
-                        <button class="calc-button" onclick="appendToDisplay('6')">6</button>
-                        <button class="calc-button operator" onclick="appendToDisplay('+')">+</button>
-                        <button class="calc-button function" onclick="appendToDisplay('1/')">1/x</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.log10(')">log₁₀</button>
-                        
-                        <button class="calc-button" onclick="appendToDisplay('1')">1</button>
-                        <button class="calc-button" onclick="appendToDisplay('2')">2</button>
-                        <button class="calc-button" onclick="appendToDisplay('3')">3</button>
-                        <button class="calc-button" onclick="appendToDisplay('(')">(</button>
-                        <button class="calc-button" onclick="appendToDisplay(')')">)</button>
-                        <button class="calc-button equals" onclick="calculateResult()">=</button>
-                        
-                        <button class="calc-button" onclick="appendToDisplay('00')">00</button>
-                        <button class="calc-button" onclick="appendToDisplay('0')">0</button>
-                        <button class="calc-button" onclick="appendToDisplay('.')">.</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.PI')">π</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.E')">e</button>
-                        <button class="calc-button function" onclick="appendToDisplay('-')">±</button>
-                    </div>
+					<div class="calc-display" id="display">0</div>
 
-                    <div class="calc-buttons" id="scientific-buttons" style="display:none;">
-                        <button class="calc-button action" onclick="clearDisplay()">C</button>
-                        <button class="calc-button action" onclick="clearEntry()">CE</button>
-                        <button class="calc-button action" onclick="deleteLast()">DEL</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.sin(')">sin</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.cos(')">cos</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.tan(')">tan</button>
-                        
-                        <button class="calc-button function" onclick="appendToDisplay('Math.asin(')">sin⁻¹</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.acos(')">cos⁻¹</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.atan(')">tan⁻¹</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.sinh(')">sinh</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.cosh(')">cosh</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.tanh(')">tanh</button>
-                        
-                        <button class="calc-button function" onclick="appendToDisplay('Math.log(')">ln</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.log10(')">log</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.exp(')">exp</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.pow(')">xʸ</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.cbrt(')">∛x</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.abs(')">|x|</button>
-                        
-                        <button class="calc-button function" onclick="appendToDisplay('Math.floor(')">⌊x⌋</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.ceil(')">⌈x⌉</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.round(')">round</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.trunc(')">trunc</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.sign(')">sign</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.random()')">rand</button>
-                        
-                        <button class="calc-button" onclick="appendToDisplay('!')">x!</button>
-                        <button class="calc-button" onclick="appendToDisplay('Math.PI/180*')">DEG</button>
-                        <button class="calc-button" onclick="appendToDisplay('180/Math.PI*')">RAD</button>
-                        <button class="calc-button" onclick="appendToDisplay('Math.LN2')">ln2</button>
-                        <button class="calc-button" onclick="appendToDisplay('Math.LN10')">ln10</button>
-                        <button class="calc-button function" onclick="appendToDisplay('Math.log2(')">log2</button>
-                        
-                        <button class="calc-button" onclick="appendToDisplay('(')">(</button>
-                        <button class="calc-button" onclick="appendToDisplay(')')">)</button>
-                        <button class="calc-button" onclick="appendToDisplay(',')">,</button>
-                        <button class="calc-button operator" onclick="appendToDisplay('+')">+</button>
-                        <button class="calc-button operator" onclick="appendToDisplay('-')">-</button>
-                        <button class="calc-button equals" onclick="calculateResult()">=</button>
-                    </div>
+					<!-- Basic -->
+					<div class="calc-buttons" id="basic">
+						<button class="calc-btn clear" onclick="clr()">C</button>
+						<button class="calc-btn" onclick="del()">DEL</button>
+						<button class="calc-btn op" onclick="insert('%')">%</button>
+						<button class="calc-btn op" onclick="insert('/')">÷</button>
+						<button class="calc-btn op" onclick="insert('*')">×</button>
 
-                    <div class="calc-module" id="engineering-module">
-                        <h3 class="module-header">Engineering Calculator</h3>
-                        
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="eng-value">Value:</label>
-                                <input type="number" id="eng-value" placeholder="Enter value">
-                            </div>
-                            <div class="input-group">
-                                <label for="eng-from-base">From Base:</label>
-                                <select id="eng-from-base">
-                                    <option value="10">Decimal (10)</option>
-                                    <option value="2">Binary (2)</option>
-                                    <option value="8">Octal (8)</option>
-                                    <option value="16">Hexadecimal (16)</option>
-                                </select>
-                            </div>
-                            <div class="input-group">
-                                <label for="eng-to-base">To Base:</label>
-                                <select id="eng-to-base">
-                                    <option value="2">Binary (2)</option>
-                                    <option value="8">Octal (8)</option>
-                                    <option value="10">Decimal (10)</option>
-                                    <option value="16">Hexadecimal (16)</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <button class="module-button" onclick="convertBase()">Convert Base</button>
-                        <div id="eng-result" class="result-box"></div>
-                        
-                        <div style="margin-top: 30px;">
-                            <h4 style="color: #0052a3;">Electrical Engineering Calculations</h4>
-                            <div class="input-row">
-                                <div class="input-group">
-                                    <label for="voltage">Voltage (V):</label>
-                                    <input type="number" id="voltage" placeholder="Voltage in Volts">
-                                </div>
-                                <div class="input-group">
-                                    <label for="current">Current (A):</label>
-                                    <input type="number" id="current" placeholder="Current in Amps">
-                                </div>
-                                <div class="input-group">
-                                    <label for="resistance">Resistance (Ω):</label>
-                                    <input type="number" id="resistance" placeholder="Resistance in Ohms">
-                                </div>
-                            </div>
-                            <button class="module-button" onclick="calculateOhmsLaw()">Calculate Ohm's Law</button>
-                            <div id="ohms-result" class="result-box"></div>
-                        </div>
-                    </div>
+						<button class="calc-btn" onclick="insert('7')">7</button>
+						<button class="calc-btn" onclick="insert('8')">8</button>
+						<button class="calc-btn" onclick="insert('9')">9</button>
+						<button class="calc-btn op" onclick="insert('-')">-</button>
+						<button class="calc-btn func" onclick="insert('Math.sqrt(')">√</button>
 
-                    <div class="calc-module" id="unit-converter-module">
-                        <h3 class="module-header">Unit Converter</h3>
-                        
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="conv-value">Value:</label>
-                                <input type="number" id="conv-value" placeholder="Enter value" value="1">
-                            </div>
-                            <div class="input-group">
-                                <label for="conv-category">Category:</label>
-                                <select id="conv-category" onchange="updateUnitOptions()">
-                                    <option value="length">Length</option>
-                                    <option value="mass">Mass</option>
-                                    <option value="temperature">Temperature</option>
-                                    <option value="time">Time</option>
-                                    <option value="area">Area</option>
-                                    <option value="volume">Volume</option>
-                                    <option value="speed">Speed</option>
-                                    <option value="energy">Energy</option>
-                                    <option value="power">Power</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label for="conv-from-unit">From Unit:</label>
-                                <select id="conv-from-unit">
-                                </select>
-                            </div>
-                            <div class="input-group">
-                                <label for="conv-to-unit">To Unit:</label>
-                                <select id="conv-to-unit">
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <button class="module-button" onclick="convertUnits()">Convert</button>
-                        <div id="conv-result" class="result-box"></div>
-                        
-                        <div id="multi-conversion-results" style="margin-top: 20px; display: none;">
-                            <h4 style="color: #0052a3;">Multi-Unit Conversion Results</h4>
-                            <table class="conversion-table">
-                                <thead>
-                                    <tr>
-                                        <th>Unit</th>
-                                        <th>Value</th>
-                                        <th>Symbol</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="multi-conv-table-body">
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+						<button class="calc-btn" onclick="insert('4')">4</button>
+						<button class="calc-btn" onclick="insert('5')">5</button>
+						<button class="calc-btn" onclick="insert('6')">6</button>
+						<button class="calc-btn op" onclick="insert('+')">+</button>
+						<button class="calc-btn func" onclick="insert('Math.pow(')">x²</button>
 
-                    <div class="calc-module" id="physics-module">
-                        <h3 class="module-header">Physics Calculator</h3>
-                        
-                        <div class="input-group">
-                            <label for="physics-calculation-type">Calculation Type:</label>
-                            <select id="physics-calculation-type" onchange="showPhysicsInputs()">
-                                <option value="kinematics">Kinematics (Motion)</option>
-                                <option value="force">Force & Acceleration</option>
-                                <option value="energy">Work & Energy</option>
-                                <option value="momentum">Momentum & Impulse</option>
-                                <option value="waves">Wave Calculations</option>
-                                <option value="thermo">Thermodynamics</option>
-                            </select>
-                        </div>
-                        
-                        <div id="physics-inputs">
-                        </div>
-                        
-                        <button class="module-button" onclick="calculatePhysics()">Calculate</button>
-                        <div id="physics-result" class="result-box"></div>
-                    </div>
+						<button class="calc-btn" onclick="insert('1')">1</button>
+						<button class="calc-btn" onclick="insert('2')">2</button>
+						<button class="calc-btn" onclick="insert('3')">3</button>
+						<button class="calc-btn eq" onclick="compute()">=</button>
+						<button class="calc-btn func" onclick="insert('Math.PI')">π</button>
 
-                    <div class="calc-module" id="statistics-module">
-                        <h3 class="module-header">Statistics Calculator</h3>
-                        
-                        <div class="input-group">
-                            <label for="stats-data-input">Enter Data (comma separated):</label>
-                            <textarea id="stats-data-input" placeholder="e.g., 1,2,3,4,5,6,7,8,9,10"></textarea>
-                        </div>
-                        
-                        <button class="module-button" onclick="calculateStatistics()">Calculate Statistics</button>
-                        <div id="stats-result" class="result-box"></div>
-                        
-                        <div style="margin-top: 20px;">
-                            <h4 style="color: #0052a3;">Probability Calculations</h4>
-                            <div class="input-row">
-                                <div class="input-group">
-                                    <label for="prob-events">Number of Events (n):</label>
-                                    <input type="number" id="prob-events" placeholder="Total events" min="1">
-                                </div>
-                                <div class="input-group">
-                                    <label for="prob-success">Successful Outcomes (k):</label>
-                                    <input type="number" id="prob-success" placeholder="Successful outcomes" min="0">
-                                </div>
-                            </div>
-                            <button class="module-button" onclick="calculateProbability()">Calculate Probability</button>
-                            <div id="prob-result" class="result-box"></div>
-                        </div>
-                    </div>
+						<button class="calc-btn" onclick="insert('0')">0</button>
+						<button class="calc-btn" onclick="insert('00')">00</button>
+						<button class="calc-btn" onclick="insert('.')">.</button>
+						<button class="calc-btn func" onclick="insert('Math.E')">e</button>
+						<button class="calc-btn func" onclick="insert('(')"> ( </button>
+					</div>
 
-                    <div class="calc-module" id="finance-module">
-                        <h3 class="module-header">Financial Calculator</h3>
-                        
-                        <div class="input-group">
-                            <label for="finance-calculation-type">Calculation Type:</label>
-                            <select id="finance-calculation-type" onchange="showFinanceInputs()">
-                                <option value="simple-interest">Simple Interest</option>
-                                <option value="compound-interest">Compound Interest</option>
-                                <option value="annuity">Annuity</option>
-                                <option value="loan">Loan Payment</option>
-                                <option value="roi">Return on Investment (ROI)</option>
-                            </select>
-                        </div>
-                        
-                        <div id="finance-inputs">
-                        </div>
-                        
-                        <button class="module-button" onclick="calculateFinance()">Calculate</button>
-                        <div id="finance-result" class="result-box"></div>
-                    </div>
-                </div>
+					<!-- Scientific (FULL WORKING) -->
+					<div class="calc-buttons" id="scientific" style="display:none;">
+						<button class="calc-btn clear" onclick="clr()">C</button>
+						<button class="calc-btn" onclick="del()">DEL</button>
+						<button class="calc-btn func" onclick="insert('Math.sin(')">sin</button>
+						<button class="calc-btn func" onclick="insert('Math.cos(')">cos</button>
+						<button class="calc-btn func" onclick="insert('Math.tan(')">tan</button>
 
-                <div class="tool-guide">
-                    <h2>Complete Advanced Scientific Calculator Guide & Formulas</h2>
-                    <p>Our Advanced Scientific Calculator provides <strong>comprehensive mathematical, engineering, and scientific calculations</strong> with multiple specialized modules for engineering, physics, statistics, finance, and unit conversions. This professional tool supports advanced mathematical functions, base conversions, physical formula calculations, statistical analysis, and financial computations for students, engineers, scientists, and professionals.</p>
+						<button class="calc-btn func" onclick="insert('Math.log(')">ln</button>
+						<button class="calc-btn func" onclick="insert('Math.log10(')">log</button>
+						<button class="calc-btn func" onclick="insert('Math.exp(')">exp</button>
+						<button class="calc-btn func" onclick="insert('Math.sqrt(')">√</button>
+						<button class="calc-btn func" onclick="insert('Math.pow(')">x^y</button>
 
-                    <h3>Key Features (Unique to Wide Calculator)</h3>
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <h4>Advanced Mathematical Functions</h4>
-                            <p>Complete set of trigonometric, logarithmic, exponential, and algebraic functions with degree/radian support</p>
-                        </div>
-                        <div class="feature-card">
-                            <h4>Engineering Calculations</h4>
-                            <p>Base conversions (binary/octal/decimal/hex) and electrical engineering formulas (Ohm's Law)</p>
-                        </div>
-                        <div class="feature-card">
-                            <h4>Multi-Category Unit Converter</h4>
-                            <p>Length, mass, temperature, time, area, volume, speed, energy, and power conversions</p>
-                        </div>
-                        <div class="feature-card">
-                            <h4>Physics Calculator</h4>
-                            <p>Kinematics, force, energy, momentum, wave, and thermodynamics calculations</p>
-                        </div>
-                        <div class="feature-card">
-                            <h4>Statistical Analysis</h4>
-                            <p>Mean, median, mode, standard deviation, variance, and probability calculations</p>
-                        </div>
-                        <div class="feature-card">
-                            <h4>Financial Calculator</h4>
-                            <p>Simple/compound interest, annuity, loan payment, and ROI calculations</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="footer-push"></div>
-    </div>
+						<button class="calc-btn" onclick="insert('7')">7</button>
+						<button class="calc-btn" onclick="insert('8')">8</button>
+						<button class="calc-btn" onclick="insert('9')">9</button>
+						<button class="calc-btn op" onclick="insert('/')">÷</button>
+						<button class="calc-btn op" onclick="insert('*')">×</button>
 
-    <div id="footer-placeholder"></div>
+						<button class="calc-btn" onclick="insert('4')">4</button>
+						<button class="calc-btn" onclick="insert('5')">5</button>
+						<button class="calc-btn" onclick="insert('6')">6</button>
+						<button class="calc-btn op" onclick="insert('-')">-</button>
+						<button class="calc-btn op" onclick="insert('+')">+</button>
 
-    <script>
-        fetch("/header.html")
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById("header").innerHTML = data;
-            });
+						<button class="calc-btn" onclick="insert('1')">1</button>
+						<button class="calc-btn" onclick="insert('2')">2</button>
+						<button class="calc-btn" onclick="insert('3')">3</button>
+						<button class="calc-btn eq" onclick="compute()">=</button>
+						<button class="calc-btn func" onclick="insert('Math.PI')">π</button>
 
-        fetch("/footer.html")
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById("footer-placeholder").innerHTML = data;
-            });
-    </script>
+						<button class="calc-btn" onclick="insert('0')">0</button>
+						<button class="calc-btn" onclick="insert('.')">.</button>
+						<button class="calc-btn func" onclick="insert('Math.E')">e</button>
+						<button class="calc-btn func" onclick="insert('(')"> ( </button>
+						<button class="calc-btn func" onclick="insert(')')"> ) </button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <script>
-        let currentTab = 'basic';
-        let calculationHistory = [];
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            updateUnitOptions();
-            showPhysicsInputs();
-            showFinanceInputs();
-        });
-        
-        function switchTab(tabName, event) {
-            document.querySelectorAll('.calc-module').forEach(module => {
-                module.classList.remove('active');
-            });
-            
-            document.getElementById('basic-buttons').style.display = 'none';
-            document.getElementById('scientific-buttons').style.display = 'none';
-            
-            document.querySelectorAll('.calc-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            
-            currentTab = tabName;
-            
-            if (tabName === 'basic') {
-                document.getElementById('basic-buttons').style.display = 'grid';
-            } else if (tabName === 'scientific') {
-                document.getElementById('scientific-buttons').style.display = 'grid';
-            } else {
-                document.getElementById(`${tabName}-module`).classList.add('active');
-            }
-        }
-        
-        function clearDisplay() {
-            document.getElementById('display').value = '';
-            document.getElementById('history-display').textContent = '';
-        }
-        
-        function clearEntry() {
-            document.getElementById('display').value = '';
-        }
-        
-        function deleteLast() {
-            const display = document.getElementById('display');
-            display.value = display.value.slice(0, -1);
-        }
-        
-        function appendToDisplay(value) {
-            const display = document.getElementById('display');
-            
-            if (value === '±') {
-                if (display.value && !display.value.startsWith('-')) {
-                    display.value = '-' + display.value;
-                } else if (display.value && display.value.startsWith('-')) {
-                    display.value = display.value.substring(1);
-                }
-                return;
-            }
-            
-            if (value === '!') {
-                display.value += 'Math.factorial(';
-                return;
-            }
-            
-            display.value += value;
-        }
-        
-        Math.factorial = function(n) {
-            if (n < 0) return NaN;
-            if (n === 0 || n === 1) return 1;
-            let result = 1;
-            for (let i = 2; i <= n; i++) {
-                result *= i;
-            }
-            return result;
-        };
-        
-        function calculateResult() {
-            const display = document.getElementById('display');
-            const historyDisplay = document.getElementById('history-display');
-            
-            try {
-                const expression = display.value;
-                historyDisplay.textContent = expression;
-                
-                let expr = expression
-                    .replace(/×/g, '*')
-                    .replace(/÷/g, '/')
-                    .replace(/√/g, 'Math.sqrt')
-                    .replace(/π/g, 'Math.PI')
-                    .replace(/e/g, 'Math.E')
-                    .replace(/x²/g, 'Math.pow')
-                    .replace(/∛/g, 'Math.cbrt')
-                    .replace(/!/g, 'Math.factorial');
-                
-                const result = eval(expr);
-                
-                let formattedResult = result;
-                if (typeof result === 'number') {
-                    if (isNaN(result)) throw new Error('Not a number');
-                    if (!isFinite(result)) throw new Error('Infinite result');
-                    
-                    if (Math.abs(result) > 1e10 || (Math.abs(result) < 1e-10 && result !== 0)) {
-                        formattedResult = result.toExponential(8);
-                    } else if (result % 1 !== 0) {
-                        formattedResult = result.toPrecision(10);
-                    }
-                }
-                
-                display.value = formattedResult;
-                
-                calculationHistory.push({
-                    expression: expression,
-                    result: formattedResult,
-                    timestamp: new Date()
-                });
-                
-            } catch (e) {
-                display.value = 'Error';
-                setTimeout(() => {
-                    display.value = '';
-                    historyDisplay.textContent = '';
-                }, 2000);
-                console.error('Calculation error:', e);
-            }
-        }
+		<div id="footer-push"></div>
+	</div>
 
-        // 下面所有模块函数保持不变，只修复了入口调用
-        function convertBase() {
-            const value = document.getElementById('eng-value').value;
-            const fromBase = parseInt(document.getElementById('eng-from-base').value);
-            const toBase = parseInt(document.getElementById('eng-to-base').value);
-            const resultElement = document.getElementById('eng-result');
-            
-            if (!value) {
-                resultElement.style.display = 'block';
-                resultElement.className = 'result-box result-error';
-                resultElement.textContent = 'Error: Please enter a value to convert';
-                return;
-            }
-            
-            try {
-                const decimalValue = parseInt(value, fromBase);
-                let convertedValue;
-                if (toBase === 16) {
-                    convertedValue = decimalValue.toString(16).toUpperCase();
-                } else {
-                    convertedValue = decimalValue.toString(toBase);
-                }
-                
-                resultElement.style.display = 'block';
-                resultElement.className = 'result-box';
-                resultElement.innerHTML = `
-                    <strong>Base Conversion Result:</strong><br>
-                    ${value} (Base ${fromBase}) = ${convertedValue} (Base ${toBase})<br>
-                    Decimal equivalent: ${decimalValue} (Base 10)
-                `;
-                
-            } catch (e) {
-                resultElement.style.display = 'block';
-                resultElement.className = 'result-box result-error';
-                resultElement.textContent = `Error: Invalid value for base ${fromBase} conversion`;
-            }
-        }
-        
-        function calculateOhmsLaw() {
-            const voltage = parseFloat(document.getElementById('voltage').value) || 0;
-            const current = parseFloat(document.getElementById('current').value) || 0;
-            const resistance = parseFloat(document.getElementById('resistance').value) || 0;
-            const resultElement = document.getElementById('ohms-result');
-            
-            let count = 0;
-            if (voltage) count++;
-            if (current) count++;
-            if (resistance) count++;
-            
-            if (count < 2) {
-                resultElement.style.display = 'block';
-                resultElement.className = 'result-box result-error';
-                resultElement.textContent = 'Error: Please enter at least two values to calculate the third';
-                return;
-            }
-            
-            let v, i, r, p;
-            
-            if (voltage && current) {
-                v = voltage;
-                i = current;
-                r = v / i;
-                p = v * i;
-            } else if (voltage && resistance) {
-                v = voltage;
-                r = resistance;
-                i = v / r;
-                p = v * i;
-            } else if (current && resistance) {
-                i = current;
-                r = resistance;
-                v = i * r;
-                p = v * i;
-            }
-            
-            resultElement.style.display = 'block';
-            resultElement.className = 'result-box';
-            resultElement.innerHTML = `
-                <strong>Ohm's Law Calculation Results:</strong><br>
-                Voltage (V): ${v.toFixed(4)} Volts<br>
-                Current (I): ${i.toFixed(4)} Amperes<br>
-                Resistance (R): ${r.toFixed(4)} Ohms (Ω)<br>
-                Power (P): ${p.toFixed(4)} Watts (W)<br><br>
-                <small>Formulas used: V = I×R, I = V/R, R = V/I, P = V×I</small>
-            `;
-        }
-        
-        const unitConversions = {
-            length: {
-                meters: { factor: 1, symbol: 'm' },
-                kilometers: { factor: 1000, symbol: 'km' },
-                centimeters: { factor: 0.01, symbol: 'cm' },
-                millimeters: { factor: 0.001, symbol: 'mm' },
-                miles: { factor: 1609.34, symbol: 'mi' },
-                yards: { factor: 0.9144, symbol: 'yd' },
-                feet: { factor: 0.3048, symbol: 'ft' },
-                inches: { factor: 0.0254, symbol: 'in' }
-            },
-            mass: {
-                kilograms: { factor: 1, symbol: 'kg' },
-                grams: { factor: 0.001, symbol: 'g' },
-                milligrams: { factor: 0.000001, symbol: 'mg' },
-                metric_tons: { factor: 1000, symbol: 't' },
-                pounds: { factor: 0.453592, symbol: 'lb' },
-                ounces: { factor: 0.0283495, symbol: 'oz' },
-                stones: { factor: 6.35029, symbol: 'st' }
-            },
-            temperature: {
-                celsius: { 
-                    toBase: (val) => val,
-                    fromBase: (val) => val,
-                    symbol: '°C',
-                    convert: {
-                        fahrenheit: (val) => val * 9/5 + 32,
-                        kelvin: (val) => val + 273.15,
-                        rankine: (val) => (val + 273.15) * 9/5
-                    }
-                },
-                fahrenheit: { 
-                    toBase: (val) => (val - 32) * 5/9,
-                    fromBase: (val) => val * 9/5 + 32,
-                    symbol: '°F',
-                    convert: {
-                        celsius: (val) => (val - 32) * 5/9,
-                        kelvin: (val) => (val - 32) * 5/9 + 273.15,
-                        rankine: (val) => val + 459.67
-                    }
-                },
-                kelvin: { 
-                    toBase: (val) => val - 273.15,
-                    fromBase: (val) => val + 273.15,
-                    symbol: 'K',
-                    convert: {
-                        celsius: (val) => val - 273.15,
-                        fahrenheit: (val) => (val - 273.15) * 9/5 + 32,
-                        rankine: (val) => val * 9/5
-                    }
-                },
-                rankine: { 
-                    toBase: (val) => (val - 491.67) * 5/9,
-                    fromBase: (val) => (val + 273.15) * 9/5,
-                    symbol: '°R',
-                    convert: {
-                        celsius: (val) => (val - 491.67) * 5/9,
-                        fahrenheit: (val) => val - 459.67,
-                        kelvin: (val) => val * 5/9
-                    }
-                }
-            },
-            time: {
-                seconds: { factor: 1, symbol: 's' },
-                minutes: { factor: 60, symbol: 'min' },
-                hours: { factor: 3600, symbol: 'h' },
-                days: { factor: 86400, symbol: 'd' },
-                weeks: { factor: 604800, symbol: 'wk' },
-                months: { factor: 2628000, symbol: 'mo' },
-                years: { factor: 31536000, symbol: 'yr' },
-                milliseconds: { factor: 0.001, symbol: 'ms' },
-                microseconds: { factor: 0.000001, symbol: 'μs' },
-                nanoseconds: { factor: 0.000000001, symbol: 'ns' }
-            },
-            area: {
-                square_meters: { factor: 1, symbol: 'm²' },
-                square_kilometers: { factor: 1000000, symbol: 'km²' },
-                square_centimeters: { factor: 0.0001, symbol: 'cm²' },
-                square_millimeters: { factor: 0.000001, symbol: 'mm²' },
-                square_miles: { factor: 2589988.11, symbol: 'mi²' },
-                square_yards: { factor: 0.836127, symbol: 'yd²' },
-                square_feet: { factor: 0.092903, symbol: 'ft²' },
-                square_inches: { factor: 0.000645, symbol: 'in²' },
-                hectares: { factor: 10000, symbol: 'ha' },
-                acres: { factor: 4046.86, symbol: 'ac' }
-            },
-            volume: {
-                cubic_meters: { factor: 1, symbol: 'm³' },
-                cubic_centimeters: { factor: 0.000001, symbol: 'cm³' },
-                liters: { factor: 0.001, symbol: 'L' },
-                milliliters: { factor: 0.000001, symbol: 'mL' },
-                cubic_feet: { factor: 0.0283168, symbol: 'ft³' },
-                cubic_inches: { factor: 0.0000163871, symbol: 'in³' },
-                gallons_us: { factor: 0.00378541, symbol: 'gal (US)' },
-                gallons_uk: { factor: 0.00454609, symbol: 'gal (UK)' },
-                quarts_us: { factor: 0.000946353, symbol: 'qt (US)' },
-                quarts_uk: { factor: 0.00113652, symbol: 'qt (UK)' },
-                pints_us: { factor: 0.000473176, symbol: 'pt (US)' },
-                pints_uk: { factor: 0.000568261, symbol: 'pt (UK)' },
-                fluid_ounces_us: { factor: 0.0000295735, symbol: 'fl oz (US)' },
-                fluid_ounces_uk: { factor: 0.0000284131, symbol: 'fl oz (UK)' }
-            },
-            speed: {
-                meters_per_second: { factor: 1, symbol: 'm/s' },
-                kilometers_per_hour: { factor: 0.277778, symbol: 'km/h' },
-                miles_per_hour: { factor: 0.44704, symbol: 'mph' },
-                feet_per_second: { factor: 0.3048, symbol: 'ft/s' },
-                knots: { factor: 0.514444, symbol: 'kn' }
-            },
-            energy: {
-                joules: { factor: 1, symbol: 'J' },
-                kilojoules: { factor: 1000, symbol: 'kJ' },
-                calories: { factor: 4.184, symbol: 'cal' },
-                kilocalories: { factor: 4184, symbol: 'kcal' },
-                watt_hours: { factor: 3600, symbol: 'Wh' },
-                kilowatt_hours: { factor: 3600000, symbol: 'kWh' },
-                british_thermal_units: { factor: 1055.06, symbol: 'BTU' },
-                electron_volts: { factor: 1.60218e-19, symbol: 'eV' }
-            },
-            power: {
-                watts: { factor: 1, symbol: 'W' },
-                kilowatts: { factor: 1000, symbol: 'kW' },
-                megawatts: { factor: 1000000, symbol: 'MW' },
-                gigawatts: { factor: 1000000000, symbol: 'GW' },
-                horsepower: { factor: 745.7, symbol: 'hp' },
-                metric_horsepower: { factor: 735.5, symbol: 'PS' },
-                foot_pounds_per_second: { factor: 1.35582, symbol: 'ft-lb/s' },
-                british_thermal_units_per_hour: { factor: 0.293071, symbol: 'BTU/h' }
-            }
-        };
-        
-        function updateUnitOptions() {
-            const category = document.getElementById('conv-category').value;
-            const fromUnitSelect = document.getElementById('conv-from-unit');
-            const toUnitSelect = document.getElementById('conv-to-unit');
-            
-            fromUnitSelect.innerHTML = '';
-            toUnitSelect.innerHTML = '';
-            
-            const units = unitConversions[category];
-            
-            for (const [unitKey, unitData] of Object.entries(units)) {
-                const option = document.createElement('option');
-                option.value = unitKey;
-                option.textContent = unitKey.replace(/_/g, ' ') + ' (' + (unitData.symbol || '') + ')';
-                fromUnitSelect.appendChild(option.cloneNode(true));
-                toUnitSelect.appendChild(option);
-            }
-            
-            if (category === 'temperature') {
-                fromUnitSelect.value = 'celsius';
-                toUnitSelect.value = 'fahrenheit';
-            } else {
-                const firstUnit = Object.keys(units)[0];
-                fromUnitSelect.value = firstUnit;
-                toUnitSelect.value = Object.keys(units)[1] || firstUnit;
-            }
-        }
-        
-        function convertUnits() {
-            const value = parseFloat(document.getElementById('conv-value').value);
-            const category = document.getElementById('conv-category').value;
-            const fromUnit = document.getElementById('conv-from-unit').value;
-            const toUnit = document.getElementById('conv-to-unit').value;
-            const resultElement = document.getElementById('conv-result');
-            const multiConvContainer = document.getElementById('multi-conversion-results');
-            const multiConvTable = document.getElementById('multi-conv-table-body');
-            
-            if (isNaN(value)) {
-                resultElement.style.display = 'block';
-                resultElement.className = 'result-box result-error';
-                resultElement.textContent = 'Error: Please enter a valid numeric value';
-                multiConvContainer.style.display = 'none';
-                return;
-            }
-            
-            try {
-                let convertedValue;
-                const units = unitConversions[category];
-                
-                if (category === 'temperature') {
-                    convertedValue = units[fromUnit].convert[toUnit](sslocal://flow/file_open?url=value&flow_extra=eyJsaW5rX3R5cGUiOiJjb2RlX2ludGVycHJldGVyIn0=);
-                } else {
-                    const baseValue = value * units[fromUnit].factor;
-                    convertedValue = baseValue / units[toUnit].factor;
-                }
-                
-                let formattedValue = convertedValue;
-                if (Math.abs(convertedValue) > 1e10 || (Math.abs(convertedValue) < 1e-10 && convertedValue !== 0)) {
-                    formattedValue = convertedValue.toExponential(8);
-                } else if (convertedValue % 1 !== 0) {
-                    formattedValue = convertedValue.toFixed(8);
-                    formattedValue = parseFloat(formattedValue).toString();
-                }
-                
-                resultElement.style.display = 'block';
-                resultElement.className = 'result-box';
-                resultElement.innerHTML =
+	<div id="footer-placeholder"></div>
+
+	<script>
+		// Load header & footer
+		fetch("/header.html").then(r=>r.text()).then(d=>document.getElementById("header").innerHTML=d);
+		fetch("/footer.html").then(r=>r.text()).then(d=>document.getElementById("footer-placeholder").innerHTML=d);
+
+		// Calculator Core (100% Complete)
+		const screen = document.getElementById("display");
+
+		function showMode(mode) {
+			document.querySelectorAll(".calc-tab").forEach(t=>t.classList.remove("active"));
+			event.target.classList.add("active");
+			document.getElementById("basic").style.display = mode==="basic"?"grid":"none";
+			document.getElementById("scientific").style.display = mode==="scientific"?"grid":"none";
+		}
+
+		function insert(val) {
+			if(screen.textContent === "0" || screen.textContent === "Error") {
+				screen.textContent = val;
+			} else {
+				screen.textContent += val;
+			}
+		}
+
+		function clr() { screen.textContent = "0"; }
+		function del() { screen.textContent = screen.textContent.length>1 ? screen.textContent.slice(0,-1) : "0"; }
+
+		function compute() {
+			try {
+				let exp = screen.textContent.replace(/×/g,"*").replace(/÷/g,"/");
+				let res = eval(exp);
+				screen.textContent = isNaN(res)||!isFinite(res) ? "Error" : res;
+			} catch(e) {
+				screen.textContent = "Error";
+			}
+		}
+	</script>
+</body>
+</html>
