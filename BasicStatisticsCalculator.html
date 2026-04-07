@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Statistics Calculator | Mean Median Mode Variance STD Calculator</title>
-    <meta name="description" content="Free online Basic Statistics Calculator to calculate mean, median, mode, standard deviation, variance, range, sum, min, max, and count from any data set." />
-    <meta itemprop="description" content="Easy-to-use Basic Statistics Calculator for descriptive statistics: mean, median, mode, variance, standard deviation, range, sum, count, min and max." />
+    <title>Basic Statistics Calculator | Mean Median Mode Variance STD - Wide Calculator</title>
+    <meta name="description" content="Professional basic statistics calculator to compute mean, median, mode, variance, standard deviation, range, sum, min, max, frequency table, and outliers detection for data sets.">
+    <meta itemprop="description" content="Wide Calculator's Basic Statistics Calculator provides descriptive analytics: average, median, mode, population/sample variance, standard deviation, sorted data, and outlier detection.">
     <meta name="author" content="Wide Calculator" />
     <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico" />
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
@@ -17,27 +17,48 @@
     <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
     <script src="js/functions.js" type="text/javascript"></script>
     <style>
-        #statistics-calculator {
-            margin-top: 20px;
-            margin-bottom: 30px;
+        #tool-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        #stats-calculator {
             padding: 30px;
             border: 1px solid #ccc;
             border-radius: 10px;
             background-color: #f9f9f9;
             font-size: 16px;
-            text-align: center;
-            max-width: 500px;
-            margin: 0 auto;
+            margin: 20px 0;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
-        #statistics-calculator label {
+
+        .calc-module {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .calc-module:last-child {
+            border-bottom: none;
+        }
+
+        .calc-module h3 {
+            color: #0066cc;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        #stats-calculator label {
             font-weight: 600;
             margin-top: 15px;
             display: block;
-            text-align: left;
             color: #333;
         }
-        #statistics-calculator textarea {
+
+        #stats-calculator input,
+        #stats-calculator textarea,
+        #stats-calculator select {
             width: 100%;
             margin-top: 8px;
             padding: 10px;
@@ -46,7 +67,8 @@
             font-size: 15px;
             box-sizing: border-box;
         }
-        #statistics-calculator button {
+
+        #stats-calculator button {
             margin-top: 25px;
             padding: 12px 25px;
             background-color: #0066cc;
@@ -58,72 +80,71 @@
             transition: background-color 0.2s;
             width: 100%;
         }
-        #statistics-calculator button:hover {
+
+        #stats-calculator button:hover {
             background-color: #0052a3;
         }
-        #statistics-result {
-            margin-top: 25px;
+
+        .result-box {
+            font-weight: 600;
+            margin-top: 20px;
             padding: 15px;
             border-radius: 6px;
-            background-color: #e8f4ff;
-            font-weight: 600;
-            color: #004085;
             display: none;
+            line-height: 1.7;
             text-align: left;
-            line-height: 1.8;
         }
-        .statistics-guide {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-            text-align: left;
+
+        .result-success {
+            background-color: #e8f4ff;
+            color: #004085;
+        }
+
+        .result-error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .tool-guide {
             line-height: 1.8;
             color: #444;
+            margin: 40px 0;
         }
-        .statistics-guide h2 {
-            text-align: center;
+
+        .tool-guide h2 {
             color: #222;
             margin-bottom: 20px;
+            text-align: center;
         }
-        .statistics-guide h3 {
+
+        .tool-guide h3 {
             color: #0066cc;
             margin-top: 25px;
             margin-bottom: 10px;
         }
 
-        /* 相关计算器推荐（清爽、自然、给用户看） */
-        .related-calculators {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 25px;
-            background: #f9f9f9;
-            border-radius: 10px;
-            border: 1px solid #eee;
+        .tool-guide ol, .tool-guide ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
         }
-        .related-calculators h3 {
-            text-align: center;
-            color: #0066cc;
-            margin-bottom: 20px;
-        }
-        .related-grid {
+
+        .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
         }
-        .related-grid a {
-            display: block;
-            padding: 10px 15px;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            text-align: center;
-            text-decoration: none;
-            color: #333;
-            transition: 0.2s;
+
+        .feature-card {
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background-color: #f8f9fa;
         }
-        .related-grid a:hover {
-            background: #0066cc;
-            color: #fff;
+
+        .feature-card h4 {
+            color: #0066cc;
+            margin-bottom: 8px;
         }
     </style>
 </head>
@@ -131,119 +152,265 @@
 <body>
     <div id="wrapper">
         <div id="header"></div>
+
         <div class="main">
-            <div id="statistics-calculator" class="text-center">
-                <h2>Basic Statistics Calculator</h2>
-                <label for="dataInput">Enter Data Set (comma separated):</label>
-                <textarea id="dataInput" rows="4" placeholder="e.g. 1,2,3,4,5,6,7,8,9,10"></textarea>
-                <button onclick="calculateStatistics()">Calculate Statistics</button>
-                <div id="statistics-result"></div>
-            </div>
+            <div id="tool-container">
+                <div id="stats-calculator">
+                    <h2 style="text-align:center; color:#222; margin-bottom:25px;">Basic Statistics Calculator</h2>
 
-            <div class="statistics-guide">
-                <h2>Basic Statistics Calculator</h2>
-                <p>This free online tool helps you calculate all common descriptive statistics from any set of numbers, including mean, median, mode, standard deviation, variance, range, sum, minimum, maximum, and count.</p>
+                    <div class="calc-module">
+                        <h3>1. Data Input (Comma Separated)</h3>
+                        <label for="dataset">Enter Numbers:</label>
+                        <textarea id="dataset" rows="4" placeholder="Example: 12, 23, 45, 23, 56, 34, 23, 78"></textarea>
+                        <label for="variance-type">Variance Type:</label>
+                        <select id="variance-type">
+                            <option value="population">Population (Whole Data)</option>
+                            <option value="sample">Sample (Subset Data)</option>
+                        </select>
+                        <button onclick="calculateAllStats()">Calculate Full Statistics</button>
+                        <div id="stats-result" class="result-box"></div>
+                    </div>
 
-                <h3>What This Calculator Calculates</h3>
-                <ul>
-                    <li>Mean (Average)</li>
-                    <li>Median (Middle value)</li>
-                    <li>Mode (Most frequent value)</li>
-                    <li>Standard Deviation</li>
-                    <li>Variance</li>
-                    <li>Range</li>
-                    <li>Sum</li>
-                    <li>Minimum & Maximum</li>
-                    <li>Total Count</li>
-                </ul>
+                    <div class="calc-module">
+                        <h3>2. Sorted Data & Frequency</h3>
+                        <button onclick="showSortedAndFrequency()">Show Sorted Data + Frequency</button>
+                        <div id="freq-result" class="result-box"></div>
+                    </div>
 
-                <h3>How to Use</h3>
-                <ol>
-                    <li>Enter your numbers separated by commas</li>
-                    <li>Click “Calculate Statistics”</li>
-                    <li>View all results instantly</li>
-                </ol>
-            </div>
+                    <div class="calc-module">
+                        <h3>3. Outlier Detection (Blue Sea Function)</h3>
+                        <button onclick="detectOutliers()">Detect Outliers in Data</button>
+                        <div id="outlier-result" class="result-box"></div>
+                    </div>
 
-            <!-- ======================== -->
-            <!-- 给用户看：相关统计计算器（蓝海低竞争） -->
-            <!-- ======================== -->
-            <div class="related-calculators">
-                <h3>Related Statistics Calculators You May Need</h3>
-                <div class="related-grid">
-                    <a href="StandardDeviationCalculator.html">Standard Deviation Calculator</a>
-                    <a href="BasicStatisticsCalculator.html">Basic Statistics Calculator</a>
-                    <a href="PercentageCalculator.html">Percentage Calculator</a>
-                    <a href="RandomNumberGenerator.html">Random Number Generator</a>
-                    <a href="TriangleCalculator.html">Triangle Calculator</a>
-                    <a href="FractionCalculator.html">Fraction Calculator</a>
-                    <a href="ScientificCalculator.html">Scientific Calculator</a>
-                    <a href="DataStorageConverter.html">Data Storage Converter</a>
+                    <div class="calc-module">
+                        <h3>4. Quick Reset</h3>
+                        <button onclick="resetAll()">Clear All Data & Results</button>
+                    </div>
+                </div>
+
+                <div class="tool-guide">
+                    <h2>Complete Basic Statistics Guide & Use Cases</h2>
+                    <p>This professional Basic Statistics Calculator delivers full descriptive analytics for any numerical dataset, including central tendency, dispersion, frequency distribution, and outlier detection for study, research, and daily analysis.</p>
+
+                    <h3>Key Features (Unique to Wide Calculator)</h3>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <h4>Mean / Median / Mode</h4>
+                            <p>Central tendency measures for balanced data analysis</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Population & Sample Variance</h4>
+                            <p>Switch between total dataset and sample analysis</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Standard Deviation</h4>
+                            <p>Measure data spread and volatility accurately</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Sorted Data View</h4>
+                            <p>Automatic ascending sort for easy inspection</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Frequency Table</h4>
+                            <p>Count occurrences of each value in dataset</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Outlier Detection</h4>
+                            <p>Identify abnormal values (low-competition niche function)</p>
+                        </div>
+                    </div>
+
+                    <h3>How to Use the Statistics Calculator</h3>
+                    <ol>
+                        <li>Enter your numbers separated by commas in the input box</li>
+                        <li>Choose Population or Sample Variance</li>
+                        <li>Click Calculate Full Statistics for complete results</li>
+                        <li>Use extra tools for sorting, frequency, and outliers</li>
+                    </ol>
+
+                    <h3>Professional Use Cases</h3>
+                    <ul>
+                        <li>Student homework & exam preparation</li>
+                        <li>Small data research & survey analysis</li>
+                        <li>Business data trend & volatility check</li>
+                        <li>Educational teaching & demonstration</li>
+                        <li>Personal data tracking & simple analysis</li>
+                    </ul>
+
+                    <h3>Accuracy Notes</h3>
+                    <ul>
+                        <li>Sample variance uses N-1 for unbiased estimation</li>
+                        <li>Outlier detection uses IQR method (industry standard)</li>
+                        <li>Results rounded to 4 decimal places for clarity</li>
+                        <li>Handles duplicate values & negative numbers correctly</li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div id="footer-placeholder"></div>
 
-        <script>
-            fetch("/header.html").then(res=>res.text()).then(data=>{document.getElementById("header").innerHTML=data;});
-            fetch("/footer.html").then(res=>res.text()).then(data=>{document.getElementById("footer-placeholder").innerHTML=data;});
-
-            function calculateStatistics() {
-                let input = document.getElementById('dataInput').value.trim();
-                let res = document.getElementById('statistics-result');
-                if (!input) {
-                    res.style.display = 'block';
-                    res.style.background = '#f8d7da';
-                    res.style.color = '#721c24';
-                    res.innerHTML = 'Please enter your data set.';
-                    return;
-                }
-                let data = input.split(',').map(Number).filter(n => !isNaN(n));
-                if (data.length === 0) {
-                    res.style.display = 'block';
-                    res.style.background = '#f8d7da';
-                    res.style.color = '#721c24';
-                    res.innerHTML = 'No valid numbers found.';
-                    return;
-                }
-                let n = data.length;
-                let sorted = [...data].sort((a,b)=>a-b);
-                let min = Math.min(...data);
-                let max = Math.max(...data);
-                let range = max - min;
-                let sum = data.reduce((a,b)=>a+b,0);
-                let mean = sum/n;
-                let median = n%2===0 ? (sorted[n/2-1]+sorted[n/2])/2 : sorted[Math.floor(n/2)];
-                let freq = {}, maxFreq=0, modes=[];
-                data.forEach(x => { freq[x]=(freq[x]||0)+1; if(freq[x]>maxFreq){maxFreq=freq[x]; modes=[x];}else if(freq[x]===maxFreq) modes.push(x); });
-                if(maxFreq===1) modes=['None'];
-                let variance = data.reduce((a,b)=>a+Math.pow(b-mean,2),0)/n;
-                let std = Math.sqrt(variance);
-
-                res.style.display = 'block';
-                res.style.background = '#e8f4ff';
-                res.style.color = '#004085';
-                res.innerHTML = `
-                    Count: ${n}<br>
-                    Min: ${min}<br>
-                    Max: ${max}<br>
-                    Range: ${range.toFixed(4)}<br>
-                    Sum: ${sum.toFixed(4)}<br>
-                    Mean: ${mean.toFixed(4)}<br>
-                    Median: ${median.toFixed(4)}<br>
-                    Mode: ${modes.join(', ')}<br>
-                    Variance: ${variance.toFixed(4)}<br>
-                    Std Deviation: ${std.toFixed(4)}
-                `;
-            }
-        </script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-816SNX8L7X');
-        </script>
+        <div id="footer-push"></div>
     </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        fetch("/header.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+            });
+
+        fetch("/footer.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("footer-placeholder").innerHTML = data;
+            });
+    </script>
+
+    <script>
+        function getCleanData() {
+            const input = document.getElementById('dataset').value.trim();
+            if (!input) return [];
+            return input.split(',')
+                .map(item => parseFloat(item.trim()))
+                .filter(val => !isNaN(val));
+        }
+
+        function calculateAllStats() {
+            const data = getCleanData();
+            const res = document.getElementById('stats-result');
+            const type = document.getElementById('variance-type').value;
+
+            if (data.length < 2) {
+                res.style.display = 'block';
+                res.className = 'result-box result-error';
+                res.innerHTML = 'Please enter at least 2 valid numbers.';
+                return;
+            }
+
+            const sorted = [...data].sort((a, b) => a - b);
+            const n = data.length;
+            const min = Math.min(...data);
+            const max = Math.max(...data);
+            const range = max - min;
+            const sum = data.reduce((a, b) => a + b, 0);
+            const mean = sum / n;
+
+            let median;
+            if (n % 2 === 0) {
+                median = (sorted[n/2 - 1] + sorted[n/2]) / 2;
+            } else {
+                median = sorted[Math.floor(n/2)];
+            }
+
+            let freq = {}, maxFreq = 0, modes = [];
+            data.forEach(x => {
+                freq[x] = (freq[x] || 0) + 1;
+                if (freq[x] > maxFreq) {
+                    maxFreq = freq[x];
+                    modes = [x];
+                } else if (freq[x] === maxFreq) {
+                    modes.push(x);
+                }
+            });
+            if (maxFreq === 1) modes = ['None'];
+
+            let variance, std;
+            if (type === 'population') {
+                variance = data.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / n;
+            } else {
+                variance = data.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / (n - 1);
+            }
+            std = Math.sqrt(variance);
+
+            res.style.display = 'block';
+            res.className = 'result-box result-success';
+            res.innerHTML = `
+                <strong>Count:</strong> ${n}<br>
+                <strong>Min:</strong> ${min} | <strong>Max:</strong> ${max} | <strong>Range:</strong> ${range.toFixed(2)}<br>
+                <strong>Sum:</strong> ${sum.toFixed(2)} | <strong>Mean:</strong> ${mean.toFixed(4)}<br>
+                <strong>Median:</strong> ${median.toFixed(4)} | <strong>Mode:</strong> ${modes.join(', ')}<br>
+                <strong>Variance (${type}):</strong> ${variance.toFixed(4)}<br>
+                <strong>Std Deviation:</strong> ${std.toFixed(4)}
+            `;
+        }
+
+        function showSortedAndFrequency() {
+            const data = getCleanData();
+            const res = document.getElementById('freq-result');
+
+            if (data.length === 0) {
+                res.style.display = 'block';
+                res.className = 'result-box result-error';
+                res.innerHTML = 'Please enter valid numbers.';
+                return;
+            }
+
+            const sorted = [...data].sort((a, b) => a - b);
+            let freq = {};
+            data.forEach(x => { freq[x] = (freq[x] || 0) + 1; });
+
+            let freqStr = '';
+            for (let k in freq) {
+                freqStr += k + ': ' + freq[k] + ' times | ';
+            }
+
+            res.style.display = 'block';
+            res.className = 'result-box result-success';
+            res.innerHTML = `
+                <strong>Sorted Data:</strong> ${sorted.join(', ')}<br>
+                <strong>Frequency:</strong> ${freqStr}
+            `;
+        }
+
+        function detectOutliers() {
+            const data = getCleanData();
+            const res = document.getElementById('outlier-result');
+
+            if (data.length < 4) {
+                res.style.display = 'block';
+                res.className = 'result-box result-error';
+                res.innerHTML = 'At least 4 numbers required for outlier detection.';
+                return;
+            }
+
+            const sorted = [...data].sort((a, b) => a - b);
+            const n = sorted.length;
+
+            const q1 = sorted[Math.ceil(n * 0.25) - 1];
+            const q3 = sorted[Math.ceil(n * 0.75) - 1];
+            const iqr = q3 - q1;
+            const low = q1 - 1.5 * iqr;
+            const high = q3 + 1.5 * iqr;
+
+            const outliers = data.filter(x => x < low || x > high);
+
+            res.style.display = 'block';
+            res.className = 'result-box result-success';
+
+            if (outliers.length === 0) {
+                res.innerHTML = '<strong>No outliers detected in your dataset.</strong>';
+            } else {
+                res.innerHTML = `<strong>Detected Outliers:</strong> ${outliers.join(', ')}<br>
+                <strong>IQR:</strong> ${iqr.toFixed(2)} | <strong>Low Bound:</strong> ${low.toFixed(2)} | <strong>High Bound:</strong> ${high.toFixed(2)}`;
+            }
+        }
+
+        function resetAll() {
+            document.getElementById('dataset').value = '';
+            document.getElementById('stats-result').style.display = 'none';
+            document.getElementById('freq-result').style.display = 'none';
+            document.getElementById('outlier-result').style.display = 'none';
+        }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-816SNX8L7X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-816SNX8L7X');
+    </script>
 </body>
 </html>
